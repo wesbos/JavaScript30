@@ -1,0 +1,20 @@
+{
+  "name": "JavaScript30",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/saitodisse/JavaScript30.git",
+  "author": "Julio Makdisse Saito <saitodisse@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "browser-sync start --config bs-config.js"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "eslint": "^3.12.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-config-standard-jsx": "^3.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
