@@ -32,7 +32,7 @@
 
   function addItem(e) {
     e.preventDefault();
-    const text = (this.querySelector('[name=item]')).value;
+    const text = this.item.value;
     const item = {
       text,
       done: false
