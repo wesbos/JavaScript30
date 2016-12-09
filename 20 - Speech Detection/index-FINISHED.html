@@ -23,7 +23,7 @@
     const transcript = Array.from(e.results)
       .map(result => result[0])
       .map(result => result.transcript)
-      .join('')
+      .join('');
 
       const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
       p.textContent = poopScript;
