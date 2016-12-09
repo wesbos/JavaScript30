@@ -42,7 +42,7 @@
       position: relative;
       padding:2rem;
       box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
+        0 0 0px 4px rgba(0,0,0,0.1),
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
         0 0 10px rgba(0,0,0,0.2);
@@ -56,17 +56,51 @@
     }
 
     .hand {
-      width:50%;
-      height:6px;
-      background:black;
+      width: 6px;
+      height: 50%;
+      background: black;
       position: absolute;
-      top:50%;
+      bottom: 50%;
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: auto;
+      transform-origin: bottom;
+    }
+    .hand.second-hand {
+      background: red;
+      width: 2px;
+    }
+    .hand.hour-hand {
+      background: gray;
     }
 
   </style>
 
   <script>
+  function initClock (argument) {
+    const secondHand = document.querySelector('.second-hand');
+    const minsHand = document.querySelector('.min-hand');
+    const hoursHand = document.querySelector('.hour-hand');
 
+    const now = new Date();
+
+    let seconds = now.getSeconds();
+    let mins = now.getMinutes();
+    let hours = now.getHours();
+
+    let secDegrees = (seconds / 60) * 360;
+    let minsDegrees = (mins / 60) * 360;
+    let hoursDegrees = (hours / 12) * 360;
+    console.log(`${hours}:${mins}:${seconds}`);
+
+    secondHand.style.transform = `rotate(${secDegrees}deg)`;
+    minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+    hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+  }
+
+  setInterval(initClock, 1000)
 
   </script>
 </body>
