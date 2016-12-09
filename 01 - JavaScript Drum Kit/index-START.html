@@ -62,7 +62,10 @@
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     console.log(audio)
     if(!audio) return; //stop function all together
+    // note if call .play on audio element already playing, it won't play again. so if press "F" in successsion it will only play every 5 sec
+    audio.currentTime = 0; //rewind to the start, so that it can be played many times quickly
     audio.play();
+
   });
 </script>
 
