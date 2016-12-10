@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -58,26 +58,28 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
-
   function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    if (!audio) return; // stop the function from running all together
-    audio.currentTime = 0; // rewind to the start
+    const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`)
+    const key = document.querySelector(`.key[data-key="${event.keyCode}"]`)
+    if(!audio) return;
+    audio.currentTime = 0; //Rewind to the start
     audio.play();
     key.classList.add('playing');
+    // key.classList.remove('playing');
   }
+
   function removeTransition(e) {
-    if (e.propertyName !== 'transform') return; // skip it if it's not a transform
-    this.classList.remove('playing');
+    if(e.propertyName !== 'transform') return //only listen for tranform
+    this.classList.remove('playing')
   }
 
   const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition))
+
   window.addEventListener('keydown', playSound);
 
-</script>
+  </script>
+
 
 </body>
 </html>
