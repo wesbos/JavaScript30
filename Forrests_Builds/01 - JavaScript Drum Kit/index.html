@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- data-key: links the keyboard event to the corresponding sound in the sound directory. -->
+
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -55,7 +57,30 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-  <script type="text/javascript"></script>
+  <script>
+    // Play Sound Function:
+    function playSound(event) {
+      const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`); // selects AUDIO based on keyCode from keydown event.
+      const key = document.querySelector(`.key[data-key="${event.keyCode}"]`); // selects KEY based on keyCode from keydown event.
+      if(!audio) return; // stops the function from running altogether.
+      audio.currentTime = 0; // rewinds to the start
+      audio.play(); // Plays the sound... duh
+      key.classList.add('playing') // ADDs 'playing' class to key that you press. (Equivalent to jQuery = "key.addClass('playing');")
+    }
+
+    // Transition End Event Function:
+    function removeTransition (event) {
+      if(event.propertyName !== 'transform') return; // SKIP if it's not a 'transform' element.
+      this.classList.remove('playing'); // Removes the 'playing' class from THIS (which happens to be -> key).
+      // console.log(event.propertyName);
+    }
+
+    // Actually Happening:
+    const keys = document.querySelectorAll('.key'); // Selects an array of all keys.
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound)
+    // });
+  </script>
 
 </body>
 </html>
