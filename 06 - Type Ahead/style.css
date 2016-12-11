@@ -40,7 +40,10 @@
       position: relative;
       /*perspective:20px;*/
     }
+
+
     .suggestions li {
+
       background:white;
       list-style: none;
       border-bottom: 1px solid #D8D8D8;
@@ -54,12 +57,12 @@
     }
 
     .suggestions li:nth-child(even) {
-      transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-      background: linear-gradient(to bottom,  #ffffff 0%,#EFEFEF 100%);
+      transform: perspective(100px) rotateX(3deg) translateY(1px) scale(1.001);
+      background: linear-gradient(to bottom,  #ffffff 0%,#555555 100%);
     }
     .suggestions li:nth-child(odd) {
-      transform: perspective(100px) rotateX(-3deg) translateY(3px);
-      background: linear-gradient(to top,  #ffffff 0%,#EFEFEF 100%);
+      transform: perspective(100px) rotateX(-3deg) translateY(1px);
+      background: linear-gradient(to top,  #555555 0%, #ffffff 100%);
     }
 
     span.population {
