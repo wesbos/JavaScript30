@@ -4,8 +4,15 @@ function removeTransition (e) {
   e.target.classList.remove('playing')
 }
 
-function playSound (e) {
-  const keyElement = document.querySelector(`div[data-key="${e.keyCode}"]`)
+function handlekey (e) {
+  playSoundByKey(e.keyCode)
+}
+
+function playSoundByKey (keyCode) {
+  const keyElement = document.querySelector(`div[data-key="${keyCode}"]`)
+  if (!keyElement) {
+    return
+  }
   keyElement.classList.add('playing')
   const audioPath = keyElement.getAttribute('data-audioPath')
   const audio = new Audio(audioPath)
@@ -14,4 +21,4 @@ function playSound (e) {
 
 const keys = Array.from(document.querySelectorAll('.key'))
 keys.forEach(key => key.addEventListener('transitionend', removeTransition))
-window.addEventListener('keydown', playSound)
+window.addEventListener('keydown', handlekey)
