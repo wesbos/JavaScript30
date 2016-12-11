@@ -30,6 +30,7 @@ function start () {
 
   let hithatBuffer
   let kickBuffer
+  let tinkBuffer
 
   loadAudio('sounds/hihat.wav').then((buffer) => {
     hithatBuffer = buffer
@@ -40,24 +41,45 @@ function start () {
       })
     })
     .then(() => {
-      const beatsPerSecond = 4
+      return loadAudio('sounds/tink.wav').then((buffer) => {
+        tinkBuffer = buffer
+      })
+    })
+    .then(() => {
+      const beatsPerSecond = 5
       let seqIndex = 0
 
       function draw () {
         setTimeout(() => {
           requestAnimationFrame(draw)
 
-          if (seqIndex % 4 === 0) {
+          if (seqIndex % 8 === 0) {
             playSound(hithatBuffer)
             playSound(kickBuffer)
           }
-          if (seqIndex % 4 === 1) {
+          if (seqIndex % 8 === 1) {
             playSound(hithatBuffer)
           }
-          if (seqIndex % 4 === 2) {
+          if (seqIndex % 8 === 2) {
+            playSound(hithatBuffer)
+            playSound(tinkBuffer)
+          }
+          if (seqIndex % 8 === 3) {
+            playSound(hithatBuffer)
+            playSound(kickBuffer)
+          }
+          if (seqIndex % 8 === 4) {
+            playSound(hithatBuffer)
+            playSound(kickBuffer)
+          }
+          if (seqIndex % 8 === 5) {
+            playSound(hithatBuffer)
+            playSound(tinkBuffer)
+          }
+          if (seqIndex % 8 === 6) {
             playSound(hithatBuffer)
           }
-          if (seqIndex % 4 === 3) {
+          if (seqIndex % 8 === 7) {
             playSound(hithatBuffer)
             playSound(kickBuffer)
           }
