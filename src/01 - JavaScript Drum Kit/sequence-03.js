@@ -38,46 +38,41 @@ function start () {
       })
     })
     .then(() => {
-      const RhythmSample = {}
-      RhythmSample.play = function () {
-        function playSound (buffer, time) {
-          const source = context.createBufferSource()
-          source.buffer = buffer
-          source.connect(context.destination)
-          if (!source.start) {
-            source.start = source.noteOn
-          }
-          source.start(time)
+      function playSound (buffer, time) {
+        const source = context.createBufferSource()
+        source.buffer = buffer
+        source.connect(context.destination)
+        if (!source.start) {
+          source.start = source.noteOn
         }
-
-        const kick = kickBuffer
-        const snare = snareBuffer
-        const hihat = hithatBuffer
-
-        // We'll start playing the rhythm 100 milliseconds from "now"
-        const startTime = context.currentTime + 0.100
-        const tempo = 80 // BPM (beats per minute)
-        const eighthNoteTime = (60 / tempo) / 2
-
-        // Play 2 bars of the following:
-        for (let bar = 0; bar < 2; bar++) {
-          const time = startTime + bar * 8 * eighthNoteTime
-          // Play the bass (kick) drum on beats 1, 5
-          playSound(kick, time)
-          playSound(kick, time + 4 * eighthNoteTime)
-
-          // Play the snare drum on beats 3, 7
-          playSound(snare, time + 2 * eighthNoteTime)
-          playSound(snare, time + 6 * eighthNoteTime)
-
-          // Play the hi-hat every eighthh note.
-          for (let i = 0; i < 8; ++i) {
-            playSound(hihat, time + i * eighthNoteTime)
-          }
-        }
+        source.start(time)
       }
 
-      RhythmSample.play()
+      const kick = kickBuffer
+      const snare = snareBuffer
+      const hihat = hithatBuffer
+
+      // We'll start playing the rhythm 100 milliseconds from "now"
+      const startTime = context.currentTime
+      const tempo = 120 // BPM (beats per minute)
+      const eighthNoteTime = (60 / tempo) / 2
+
+      // Play 2 bars of the following:
+      for (let bar = 0; bar < 2; bar++) {
+        const time = startTime + bar * 8 * eighthNoteTime
+        // Play the bass (kick) drum on beats 1, 5
+        playSound(kick, time)
+        playSound(kick, time + 4 * eighthNoteTime)
+
+        // Play the snare drum on beats 3, 7
+        playSound(snare, time + 2 * eighthNoteTime)
+        playSound(snare, time + 6 * eighthNoteTime)
+
+        // Play the hi-hat every eighthh note.
+        for (let i = 0; i < 8; ++i) {
+          playSound(hihat, time + i * eighthNoteTime)
+        }
+      }
     })
 }
 
