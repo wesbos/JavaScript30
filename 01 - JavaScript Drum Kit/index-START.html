@@ -58,7 +58,21 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+	const keys = document.querySelectorAll('.key');
+	// Remove playing class from key after transition has ended.
+	keys.forEach(key => key.addEventListener('transitionend', function(e) {
+		this.classList.remove('playing');
+	}));
 
+	// Listens for keystrokes and querys the corresponding button and audio.
+	window.addEventListener("keydown", function(e) {
+		var audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		if (!audio) return;
+		var key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+		key.classList.add('playing')
+		audio.currentTime = 0; //Does not work in Safari
+		audio.play();
+	})
 </script>
 
 
