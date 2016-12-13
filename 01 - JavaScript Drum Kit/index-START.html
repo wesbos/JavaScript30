@@ -57,20 +57,9 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-  <script>
-  // when a key is pressed, that event needs to be recorded and used to trigger the audio file with the same data key.
-  // additionally, it also needs to apply and remove the .playing class
-  window.addEventListener("keydown", function (event) {
-    if(document.querySelector("audio[data-key='"+event.keyCode+"']")){
-      document.querySelector("div[data-key='"+event.keyCode+"']").classList.add("playing");
-      document.querySelector("audio[data-key='"+event.keyCode+"']").play();
-      setTimeout(function(){
-        document.querySelector("div[data-key='"+event.keyCode+"']").classList.remove("playing");
-      }, 250);
-      return false;
-    }
-  });
-  </script>
+<script>
+
+</script>
 
 
 </body>
