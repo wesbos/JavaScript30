@@ -61,12 +61,23 @@
       background:black;
       position: absolute;
       top:50%;
+      transform: rotate(90deg);
+      transform-origin: 100%;
+      transition: all 0.5s;.
+      transition-timing-function: cubic-bezier(0, 2.49, 0.24, 1.18);
     }
 
   </style>
 
   <script>
+    function setDate(){
+      // const is like var for es6, but more defined
+      const now = new Date();
+      const seconds = now.getSeconds();
+      console.log(seconds);
+    };
 
+    setInterval(setDate, 1000);
 
   </script>
 </body>
