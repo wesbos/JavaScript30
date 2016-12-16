@@ -31,29 +31,99 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-
+    console.log(
+      "1. Filter the list of inventors for those who were born in the 1500's"
+    );
+    const filtered = inventors.filter(function (item) {
+      return (1500 <= item.year && item.year < 1600);
+    })
+    console.table(filtered);
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
-
+    console.log(
+      "2. Give us an array of the inventors' first and last names"
+    );
+    const inventor_names = inventors.map(function (item) {
+      return { first: item.first, last: item.last };
+    });
+    console.table(inventor_names);
+    // Having watched the video now I realize what is meant here is an array of
+    // full names as strings. Not first and last names as keys in an object.
+    console.log(
+      "Full names as single strings."
+    );
+    const fullnames = inventors.map(i => i.first + " " + i.last);
+    console.log(fullnames);
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+    console.log(
+      "3. Sort the inventors by birthdate, oldest to youngest"
+    );
+    const birth_sorted = inventors.sort((a, b) => a.year - b.year);
+    console.table(birth_sorted);
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
-
+    console.log(
+      "4. How many years did all the inventors live?"
+    );
+    const total_years = inventors.reduce(
+      function (accumulator, currentValue, currentIndex, self) {
+      return (accumulator + (currentValue.passed - currentValue.year));
+      },
+    0);
+    console.log(total_years);
     // 5. Sort the inventors by years lived
-
+    console.log(
+      "5. Sort the inventors by years lived"
+    );
+    const age_sorted = inventors.sort(function (a, b) {
+      return (b.passed - b.year) - (a.passed - a.year);
+    });
+    console.table(age_sorted);
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    console.log(
+      "6. create a list of Boulevards in Paris that contain 'de' anywhere in the name"
+    );
+//    Array.from(
+//      document.querySelector('.mw-category').querySelectorAll('a')
+//    ).map(link => link.textContent)
+//    .filter(name => name.includes('de'));
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-
+    console.log(
+      "7. Sort the people alphabetically by last name"
+    );
+    console.log(
+      `It's already sorted alphabetically by last name. What he actually wants
+      is to sort by first name, so we gotta split the individual strings at the
+      commas.`
+    );
+    const what_wes_wants = people.sort((a, b) => {
+      const [al, af] = a.split(', ');
+      const [bl, bf] = b.split(', ');
+      return af > bf ? 1 : -1;
+    });
+    console.log(what_wes_wants);
     // 8. Reduce Exercise
     // Sum up the instances of each of these
+//    console.log(
+//      "8. Sum up the instances of each of these"
+//    );
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    const word_counts = data.reduce(
+      function (accumulator, currentValue, currentIndex, self) {
+        if (accumulator.hasOwnProperty(currentValue)) {
+          accumulator[currentValue] += 1;
+        } else {
+          accumulator[currentValue] = 1;
+        }
+      return accumulator;
+      },
+    {});
+    console.log(word_counts);
   </script>
 </body>
 </html>
