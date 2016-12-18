@@ -85,7 +85,7 @@
     minsHand.style.transform = `rotate(${minsDegrees}deg)`;
 
     const hour = now.getHours();
-    const hourDegrees = ((hour / 12) * 360) + 90 + 12 * (minsDegrees - 90) / 60;
+    const hourDegrees = ((hour / 12) * 360) + 90 + (minsDegrees - 90) / 12;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
   }
 
