@@ -81,11 +81,11 @@
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
 
     const mins = now.getMinutes();
-    const minsDegrees = ((mins / 60) * 360) + 90;
+    const minsDegrees = ((mins / 60) * 360) + 90 + (secondsDegrees - 90) / 60;
     minsHand.style.transform = `rotate(${minsDegrees}deg)`;
 
     const hour = now.getHours();
-    const hourDegrees = ((hour / 12) * 360) + 90;
+    const hourDegrees = ((hour / 12) * 360) + 90 + 12 * (minsDegrees - 90) / 60;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
   }
 
