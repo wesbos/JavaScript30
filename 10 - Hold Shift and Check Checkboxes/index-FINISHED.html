@@ -104,15 +104,15 @@
   </div>
 
 <script>
-const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+var checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
-let lastChecked;
+let lastChecked = 'none';
 
 function handleCheck(e) {
   // Check if they had the shift key down
   // AND check that they are checking it
   let inBetween = false;
-  if (e.shiftKey && this.checked) {
+  if (e.shiftKey && lastChecked != 'none' && this !== lastChecked) {
     // go ahead and do what we please
     // loop over every single checkbox
     checkboxes.forEach(checkbox => {
@@ -124,11 +124,21 @@ function handleCheck(e) {
 
       if (inBetween) {
         checkbox.checked = true;
+      }else{
+        if(checkbox !== this && checkbox !== lastChecked){
+          checkbox.checked = false;
+        }
       }
     });
   }
 
-  lastChecked = this;
+  if(e.shiftKey && lastChecked != 'none'){
+    return;
+  }else if(this.checked == true){
+    lastChecked = this;
+  }else{
+    lastChecked = 'none';
+  }
 }
 
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
