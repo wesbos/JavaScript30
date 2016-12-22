@@ -60,24 +60,31 @@
 
 <script>
 
-// listen for a keydown event on the window object
-window.addEventListener('keydown', function (e) {
+function playSound(e) {
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // es6  template strings
   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); // key 
   if (!audio) return;
   audio.currentTime = 0; //rewind to start
   audio.play();
-  console.log(key);
+  // console.log(key);
   key.classList.add('playing');
-});
+  // key.classList.remove('playing');
+  // key.classList.toggle('playing');
+}
 
 function removeTransition(e) {
-  console.log(e);  
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+  // console.log(e.propertyName); 
+  console.log(this); 
 }
 
 const keys = document.querySelectorAll('.key'); // select all the keys
 // loop through array of key - add an event listener to all keys, then remove the eventListener on transitionend
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+// listen for a keydown event on the window object
+window.addEventListener('keydown', playSound);
 
 </script>
 
