@@ -48,9 +48,12 @@
     // Array.prototype.map()
     //  gives same amount of items as you give it
     // 2. Give us an array of the inventors' first and last names
-    const full = inventors.map(function(inventor){
-      return inventor.first + ' ' + inventor.last;
-    });
+    const full = inventors.map(inventor => inventor.first + ' ' + inventor.last);
+
+    // refactored!
+    // const full = inventors.map(function(inventor){
+    //   return inventor.first + ' ' + inventor.last;
+    // });
 
     console.log(full);
 
