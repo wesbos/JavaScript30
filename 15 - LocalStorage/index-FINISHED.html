@@ -45,14 +45,13 @@
   }
 
   function populateList(plates = [], platesList) {
-    platesList.innerHTML = plates.map((plate, i) => {
-      return `
-        <li>
-          <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
-          <label for="item${i}">${plate.text}</label>
-        </li>
-      `;
-    }).join('');
+    //once insert a node
+    if(platesList.childNodes[1].textContent === 'Loading Tapas...'){
+      platesList.removeChild(platesList.childNodes[1])
+    }
+    const plate = document.createElement('li')
+    plate.innerHTML = `<label>${plates[plates.length - 1].text}</label>`
+    platesList.appendChild(plate)
   }
 
   function toggleDone(e) {
@@ -74,4 +73,3 @@
 
 </body>
 </html>
-
