@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/5.0.0-rc.5/Rx.js"></script>
 </head>
 <body>
 
@@ -58,24 +59,59 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
+  // function removeTransition(e) {
+  //   if (e.propertyName !== 'transform') return;
+  //   e.target.classList.remove('playing');
+  // }
+  //
+  // function playSound(e) {
+  //   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  //   const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+  //   if (!audio) return;
+  //
+  //   key.classList.add('playing');
+  //   audio.currentTime = 0;
+  //   audio.play();
+  // }
+  //
+  // const keys = Array.from(document.querySelectorAll('.key'));
+  // keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  // window.addEventListener('keydown', playSound);
+
+  let myListOfObservables = Array.from(document.querySelectorAll('.key')).map(keyelement => Rx.Observable.fromEvent(keyelement, 'transitionend'));
+
+  Rx.Observable.merge(...myListOfObservables)
+    .filter(e => e.propertyName === 'transform')
+    .subscribe(e => e.target.classList.remove('playing'));
+
+
+listenToWindowEventObservable('keydown')
+  .map(makeGroupedElement)
+  .filter(doesAudioEventExist)
+  .subscribe(playSound);
+
+function makeGroupedElement(e) {
+  return {
+      audioElement: document.querySelector(`audio[data-key="${e.keyCode}"]`),
+      keyElement: document.querySelector(`.key[data-key="${e.keyCode}"]`)
+    }
+}
+
+  function listenToWindowEventObservable(eventName) {
+    return Rx.Observable.fromEvent(window, eventName)
   }
 
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
 
-    key.classList.add('playing');
-    audio.currentTime = 0;
-    audio.play();
+  function doesAudioEventExist(groupedEvent) {
+    return groupedEvent.audioElement
   }
 
-  const keys = Array.from(document.querySelectorAll('.key'));
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
+
+    function playSound(e) {
+      e.keyElement.classList.add('playing');
+      e.audioElement.currentTime = 0;
+      e.audioElement.play();
+    }
 </script>
 
 
