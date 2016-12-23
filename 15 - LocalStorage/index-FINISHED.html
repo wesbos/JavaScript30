@@ -50,7 +50,10 @@
       platesList.removeChild(platesList.childNodes[1])
     }
     const plate = document.createElement('li')
-    plate.innerHTML = `<label>${plates[plates.length - 1].text}</label>`
+    plate.innerHTML = `
+       <input type="checkbox" data-index="${plates.length - 1}" id="item${plates.length - 1}" ${plates[plates.length - 1].done ? 'checked' : "" }></input>
+       <label for="item${plates.length - 1}" >${plates[plates.length - 1].text}</label>
+     `
     platesList.appendChild(plate)
   }
 
