@@ -51,9 +51,15 @@
     }
     const plate = document.createElement('li')
     plate.innerHTML = `
+<<<<<<< HEAD
       <input type="checkbox" data-index="${plates.length - 1}" id="item${plates.length - 1}" ${plates[plates.length - 1].done ? 'checked' : "" }></input>
       <label for="item${plates.length - 1}" >${plates[plates.length - 1].text}</label>
     `
+=======
+       <input type="checkbox" data-index="${plates.length - 1}" id="item${plates.length - 1}" ${plates[plates.length - 1].done ? 'checked' : "" }></input>
+       <label for="item${plates.length - 1}" >${plates[plates.length - 1].text}</label>
+     `
+>>>>>>> 59d6cedbf2d3b40f379552437616534efaccde5b
     platesList.appendChild(plate)
   }
 
