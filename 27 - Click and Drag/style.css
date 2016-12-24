@@ -31,6 +31,7 @@ body {
   cursor: pointer;
   transition: all 0.2s;
   transform: scale(0.98);
+  will-change: transform;
   position: relative;
   background: rgba(255,255,255,0.1);
   font-size: 0;
