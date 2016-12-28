@@ -1,0 +1,28 @@
+{
+  "name": "javascript30",
+  "version": "1.0.0",
+  "description": "Javascript 30 days workout",
+  "main": "index.js",
+  "scripts": {
+    "default": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scips/JavaScript30.git"
+  },
+  "keywords": [
+    "javascript",
+    "learn"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scips/JavaScript30/issues"
+  },
+  "homepage": "https://github.com/scips/JavaScript30#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "serve-index": "^1.8.0"
+  }
+}
