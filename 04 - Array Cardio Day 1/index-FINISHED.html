@@ -87,6 +87,8 @@
       const [bLast, bFirst] = nextOne.split(', ');
       return aLast > bLast ? 1 : -1;
     });
+    // OR:
+    // const alpha = people.sort((a, b) => a.split(", ") > b.split(", ") ? 1:-1);
     console.log(alpha);
 
     // 8. Reduce Exercise
