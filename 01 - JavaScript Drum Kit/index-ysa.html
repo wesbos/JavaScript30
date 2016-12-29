@@ -58,7 +58,26 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
- // window.addEventListener
+
+  function playSound(event){
+    const key = document.querySelector(`.key[data-key="${event.keyCode}"`);
+    const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+    if(!audio) return; //stops function from running
+    audio.currenTime = 0; //rewinds it to the start, this is for multiple keydown succession
+    audio.play();
+
+    key.classList.add('playing'); //adds CSS class to highlight keyed letter
+  }
+
+  function removeTransition (event){
+    if(event.propertyName != 'transform') return; //skip if it's not a transform
+    this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+  window.addEventListener('keydown', playSound);
 </script>
 
 
