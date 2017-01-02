@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background:url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+  background:url(https://d103di0l3rpbtf.cloudfront.net/news/wp-content/uploads/2016/01/11162853/Roland-808-blog-post-header-image.jpg) bottom center;
   background-size: cover;
 }
 body,html {
@@ -47,4 +47,16 @@ kbd {
   text-transform: uppercase;
   letter-spacing: 1px;
   color:#ffc600;
+}
+
+footer {
+  display: block;
+  position: static;
+  bottom: 0;
+  color: #CCC;
+  padding: 10px;
+  text-align: right;
+}
+footer a {
+  color: #CCC;
 }

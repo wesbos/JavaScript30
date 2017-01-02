@@ -46,6 +46,7 @@
       <span class="sound">tink</span>
     </div>
   </div>
+  <footer>Photo by <a href="https://www.samplephonics.com/news/808-secrets-8-things-you-didnt-know-you-could-do-with-an-808/" target="_blank">Samplephonics</a></footer>
 
   <audio data-key="65" src="sounds/clap.wav"></audio>
   <audio data-key="83" src="sounds/hihat.wav"></audio>
@@ -58,6 +59,32 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+
+function playSound(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // es6  template strings
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); // key 
+  if (!audio) return;
+  audio.currentTime = 0; //rewind to start
+  audio.play();
+  // console.log(key);
+  key.classList.add('playing');
+  // key.classList.remove('playing');
+  // key.classList.toggle('playing');
+}
+
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+  // console.log(e.propertyName); 
+  console.log(this); 
+}
+
+const keys = document.querySelectorAll('.key'); // select all the keys
+// loop through array of key - add an event listener to all keys, then remove the eventListener on transitionend
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+// listen for a keydown event on the window object
+window.addEventListener('keydown', playSound);
 
 </script>
 
