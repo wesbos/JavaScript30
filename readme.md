@@ -6,9 +6,16 @@ Starter Files + Completed solutions for the JavaScript 30 Day Challenge.
 
 Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
-Text-based guides (unofficial) for the challenges can be found here - [Text Guides](https://github.com/nitishdayal/JavaScript30).
+## Community #JavaScript30 Content
 
-## Pull Requests
+Feel free to submit a PR adding a link to your own recaps, guides or reviews!
+
+* [Nitish Dayal's Text Guides](https://github.com/nitishdayal/JavaScript30) are great for those who like reading over watching
+* [Meredith Underell's](http://blog.meredithunderell.com/tag/javascript30/) Quick Lessons Learned
+* [Rowan Weismiller's](http://rowanweismiller.com/blog/javascript-30/) Recaps + Lessons Learned
+* [Thorsten Frommen](https://tfrommen.de/tag/javascript-30/) shares how he solved the exercises before viewing the answers
+
+## A note on Pull Requests
 
 These are meant to be 1:1 copies of what is done in the video. If you found a better / different way to do things, great, but I will be keeping them the same as the videos. 
 
