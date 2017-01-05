@@ -14,6 +14,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Meredith Underell's](http://blog.meredithunderell.com/tag/javascript30/) Quick Lessons Learned
 * [Rowan Weismiller's](http://rowanweismiller.com/blog/javascript-30/) Recaps + Lessons Learned
 * [Thorsten Frommen](https://tfrommen.de/tag/javascript-30/) shares how he solved the exercises before viewing the answers
+* [Soyaine's Text Guides in chinese](https://github.com/soyaine/JavaScript30)
 
 ## A note on Pull Requests
 
