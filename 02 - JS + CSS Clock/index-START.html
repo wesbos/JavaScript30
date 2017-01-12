@@ -11,7 +11,9 @@
       <div class="clock-face">
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
+        <div class="hand second-hand" style= "
+        transform: rotate(360deg);
+        "></div>
       </div>
     </div>
 
@@ -61,12 +63,33 @@
       background:black;
       position: absolute;
       top:50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
 
   <script>
+  const secondHand = document.querySelector('.second-hand');
+  const minHand = document.querySelector('.min-hand');
+  const hourHand = document.querySelector('.hour-hand');
 
+  function setDate() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+    const secondsDegrees = ((seconds / 60) * 360) + 90;
+    const minutesDegrees = ((minutes / 60) * 360) + 90;
+    const hoursDegrees = ((minutes / 12) * 360) + 90;
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    minHand.style.transform = `rotate(${minutesDegrees}deg)`;
+    hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+  }
+
+  setInterval(setDate, 1000);
 
   </script>
 </body>
