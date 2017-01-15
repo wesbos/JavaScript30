@@ -57,6 +57,13 @@ kbd {
 }
 
 #code  {
+    padding-top: 30px;
     padding-right: 2%;
-    
+    font-size: 1.2em;
+   
+}
+
+#code > p {
+    font-size: 1.2em;
+    color: white;
 }

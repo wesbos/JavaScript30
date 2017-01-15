@@ -49,6 +49,7 @@
   </div>
 
 <div id="code">
+  <p> The code is evaluated as you type...</p>
   <pre><code class="eval-js">
   function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
@@ -70,6 +71,11 @@
   document.addEventListener('keydown', playSound);
 
   </code></pre>
+
+  <p>Here is another javascript interactive snippet to play with code without opening the browser console:</p>
+  <pre><code class="eval-js">
+      [1,2,3].map(x => x + 1)
+  </code></pre>
   </div>
 </div>
   <audio data-key="65" src="sounds/clap.wav"></audio>
@@ -88,6 +94,15 @@
 <script>
   window.klipse_settings = {
   selector_eval_js: '.eval-js', // css selector for the html elements you want to klipsify
+  eval_idle_msec: 1000,
+  codemirror_options_in: {
+    lineWrapping: true,
+    lineNumbers: true,
+    autoCloseBrackets: true
+  },
+  codemirror_options_out: {
+    lineWrapping: true,
+  }
   };
 </script>
 <script src="https://storage.googleapis.com/app.klipse.tech/plugin_prod/js/klipse_plugin.min.js"></script>
