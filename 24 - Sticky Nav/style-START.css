@@ -23,6 +23,12 @@ body {
   transition: transform 0.5s;
 }
 
+
+.fixed-nav nav {
+  position: fixed;
+  box-shadow: 0 5px rgba(0,0,0,0.1)
+}
+
 header {
   text-align: center;
   height:50vh;
@@ -72,8 +78,16 @@ li.logo {
   font-size: 30px;
 }
 
+.fixed-nav li.logo {
+  max-width: 600px;
+}
+
 li.logo a {
   color:black;
+}
+
+.fixed-nav .site-wrap {
+  transform: scale(1);
 }
 
 nav a {
