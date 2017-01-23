@@ -58,15 +58,25 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-function remoteTransistion(e){
-	if (e.propertyName !== 'tranform') return;
-	e.target.clsssList.remove('playing');
-}
-	function playSound(e){
-		const audio = document.querySelector('audio[data-key="$e.keyCode"]');
-		const key = document.querySelector('div[data-key="${e.keycode}"]');
+	window.addEventListener('keydown', function(e){
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+		audio.currenTime = 0;
+		
+		
+		if(!audio) return; //stop the function from running
+		audio.play();
+		key.classList.add('playing');
 		
 	}
+						   );
+	function removeTransition(e){
+	if(e.propertyName !=='tranform') return; 
+		this.classList.remove('playing');
+	}
+	const keys = document.querySelectorAll('.key'); 
+	keys.forEach(key => key.addEventListener('transitioned', removeTransition));
+
 </script>
 
 
