@@ -10,6 +10,7 @@ Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
 Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 
+* [Arjun Khode’s blog](http://thesagittariusme.blogspot.com/search/label/JS30) about summaries for each day, including fixed glitches, bugs and extra features
 * [Nitish Dayal's Text Guides](https://github.com/nitishdayal/JavaScript30) are great for those who like reading over watching
 * [Meredith Underell's](http://blog.meredithunderell.com/tag/javascript30/) Quick Lessons Learned
 * [Rowan Weismiller's](http://rowanweismiller.com/blog/javascript-30/) Recaps + Lessons Learned
