@@ -21,6 +21,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Michael Einsohn](http://30daysofjs.michaeleinsohn.com) publishes each challenge after watching the video once
 * [Mike Ekkel](https://medium.com/@mike_ekkel/javascript-30-a-30-day-vanilla-js-challenge-6a733fc9f62c#.9frjtaje9)
 * [Akinjide Bankole](https://github.com/akinjide/JS30days) used Node.js with [Jade](http://jadelang.net) to solve the exercises
+* [Yusef Habib](https://github.com/yhabib/JavaScript30) lessons and tricks learned, and a [gh-page](https://yhabib.github.io/JavaScript30/) to see working all the mini-projects.
 
 ## A note on Pull Requests
 
