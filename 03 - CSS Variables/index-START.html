@@ -15,17 +15,22 @@
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
     <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#ffc600">
+    <input id="base" type="color" name="color" value="#ffc600">
   </div>
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
-
-    /*
-      misc styles, nothing to do with CSS variables
-    */
-
+      :root{
+          --blur: 10px;
+          --spacing: 10px;
+          --color: green;
+      }
+      img{
+          padding: var(--spacing);
+          background-color: var(--color);
+          filter: blur(var(--blur));
+      }
     body {
       text-align: center;
     }
@@ -48,6 +53,22 @@
   </style>
 
   <script>
+      const types = document.querySelectorAll('.controls input')
+
+      
+      function handleUpdate(){
+          const sizing = this.dataset.sizing || '';
+          document.documentElement.style.setProperty(`--${this.name}`, this.value + sizing)
+            console.log(this.value)
+            
+      }
+      
+      types.forEach(type => type.addEventListener('change', handleUpdate))
+      types.forEach(type => type.addEventListener('mousemove', handleUpdate))
+
+  </script>
+      
+      
   </script>
 
 </body>
