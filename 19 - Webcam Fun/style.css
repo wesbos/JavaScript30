@@ -52,8 +52,8 @@ html {
   background:white;
 }
 
-.strip a:nth-child(5n+1) img { rotate: 10deg; }
-.strip a:nth-child(5n+2) img { rotate: -2deg; }
-.strip a:nth-child(5n+3) img { rotate: 8deg; }
-.strip a:nth-child(5n+4) img { rotate: -11deg; }
-.strip a:nth-child(5n+5) img { rotate: 12deg; }
+.strip a:nth-child(5n+1) img { transform: rotate(10deg); }
+.strip a:nth-child(5n+2) img { transform: rotate(-2deg); }
+.strip a:nth-child(5n+3) img { transform: rotate(8deg); }
+.strip a:nth-child(5n+4) img { transform: rotate(-11deg); }
+.strip a:nth-child(5n+5) img { transform: rotate(12deg); }
