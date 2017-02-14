@@ -124,7 +124,6 @@ input[type=range]::-webkit-slider-runnable-track {
   border: 0.2px solid rgba(1, 1, 1, 0);
 }
 input[type=range]::-webkit-slider-thumb {
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
   height: 15px;
   width: 15px;
   border-radius: 50px;
