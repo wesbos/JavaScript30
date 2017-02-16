@@ -21,6 +21,7 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+
     :root {
       --base: #ffc600;
       --spacing: 10px;
@@ -33,7 +34,7 @@
       filter: blur(var(--blur));
     }
 
-    .hl {
+    .h1 {
       color: var(--base);
     }
 
@@ -63,17 +64,18 @@
   </style>
 
   <script>
-    const inputs = document.querySelectorAll('.controls input');
+
+    const inputs = document.querySelectorAll(".controls input");
 
     function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
+      const suffix = this.dataset.sizing || "";
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+      console.log(suffix);
     }
 
-    inputs.forEach(input => input.addEventListener('change', handleUpdate));
-    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-  </script>
+    inputs.forEach(input => input.addEventListener("input", handleUpdate, false));
 
+  </script>
 
 </body>
 </html>

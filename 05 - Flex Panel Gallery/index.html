@@ -43,8 +43,9 @@
       background-size:cover;
       background-position:center;
       flex: 1;
-      justify-content: center;
       display: flex;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
     }
 
@@ -55,21 +56,31 @@
     .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
     .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
 
-    /* Flex Items */
     .panel > * {
       margin:0;
       width: 100%;
-      transition:transform 0.5s;
+      transition: transform 0.5s;
       flex: 1 0 auto;
-      display:flex;
+      display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .panel > *:first-child { transform: translateY(-100%); }
-    .panel.open-active > *:first-child { transform: translateY(0); }
-    .panel > *:last-child { transform: translateY(100%); }
-    .panel.open-active > *:last-child { transform: translateY(0); }
+    .panel > *:first-child {
+      transform: translateY(-100%);
+    }
+
+    .panel.open-active > *:first-child {
+      transform: translateY(0);
+    }
+
+    .panel > *:last-child {
+      transform: translateY(100%);
+    }
+
+    .panel.open-active > *:last-child {
+      transform: translateY(0);
+    }
 
     .panel p {
       text-transform: uppercase;
@@ -82,8 +93,8 @@
     }
 
     .panel.open {
-      flex: 5;
       font-size:40px;
+      flex: 5;
     }
 
     .cta {
@@ -123,23 +134,23 @@
   </div>
 
   <script>
-    const panels = document.querySelectorAll('.panel');
+    const panels = document.querySelectorAll(".panel");
 
     function toggleOpen() {
-      console.log('Hello');
-      this.classList.toggle('open');
+      this.classList.toggle("open");
     }
 
-    function toggleActive(e) {
-      console.log(e.propertyName);
-      if (e.propertyName.includes('flex')) {
-        this.classList.toggle('open-active');
+    function toggleActive(event) {
+      if (event.propertyName.includes("flex")) {
+        this.classList.toggle("open-active");
       }
     }
 
-    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
-    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+    panels.forEach(panel => panel.addEventListener("click", toggleOpen));
+    panels.forEach(panel => panel.addEventListener("transitionend", toggleActive));
   </script>
+
+
 
 </body>
 </html>
