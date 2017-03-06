@@ -23,7 +23,6 @@ body {
   padding: 100px;
   width:100%;
   border:1px solid white;
-  box-shadow: 0 0 10px 7px rgba(0, 0, 0, 0.09);
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
