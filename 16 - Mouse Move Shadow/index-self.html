@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔥WOAH!</h1>
+  </div>
+
+  <style>
+  html {
+    color:black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(0,0,0,1);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+const hero = document.querySelector('.hero');
+const h1 = document.querySelector('h1');
+const step = 500;
+const {
+  offsetWidth: h1W,
+  offsetHeight: h1H,
+} = hero;
+
+hero.addEventListener('mousemove', mouseMove);
+function mouseMove(e) {
+  let {
+    offsetX: x,
+    offsetY: y,
+  } = e;
+
+  if (e.target !== this) {
+    x = x + e.target.offsetLeft;
+    y = y + e.target.offsetTop;
+  }
+
+  const posX = (x / h1W * step) - (step / 2);
+  const posY = (y / h1H * step) - (step / 2);
+  setPos(posX, posY);
+}
+
+function setPos(x, y) {
+  const shadowArr = [];
+  shadowArr.push(`${x}px ${y}px 0 rgba(255,0,255,1)`);
+  shadowArr.push(`${x * -1}px ${y}px 0 rgba(255,255,0,1)`);
+  shadowArr.push(`${y}px ${x * -1}px 0 rgba(255,0,0,1)`);
+  shadowArr.push(`${y * -1}px ${x}px 0 rgba(0,0,255,1)`);
+  h1.style.textShadow = shadowArr.join(',');
+}
+</script>
+</body>
+</html>
