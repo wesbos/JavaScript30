@@ -134,7 +134,7 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -3.5px;
   box-shadow:0 0 2px rgba(0,0,0,0.2);
 }
-input[type=range]:focus::-wefbkit-slider-runnable-track {
+input[type=range]:focus::-webkit-slider-runnable-track {
   background: #bada55;
 }
 input[type=range]::-moz-range-track {
