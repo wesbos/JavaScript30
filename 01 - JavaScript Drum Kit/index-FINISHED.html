@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+  canvas {
+    border:1px solid #d3d3d3;
+    background-color: darkgrey;
+    opacity:0.75;
+}
+</style>
 </head>
-<body>
+<body onload="startGame()">
+<script>
 
+</script>
 
   <div class="keys">
     <div data-key="65" class="key">
@@ -58,6 +68,109 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+
+var flag=0;
+var myPiece;
+var myObstacles = [];
+
+function startGame() {
+    myPiece = new component(10, 10, "", 10, 10);
+    myPiece.gravity = 0.05;
+    myArea.start();
+}
+
+var myArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = 200;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateArea, 20);
+        },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function component(width, height, color, x, y, type) {
+    this.type = type;
+    this.score = 0;
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;
+    this.gravity = 0;
+    this.gravitySpeed = 0;
+    this.update = function() {
+        ctx = myArea.context;
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+            return;
+    }
+
+}
+var c=0;
+var kcode;
+function updateArea() {
+    c++;
+    var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+    myArea.clear();
+    myArea.frameNo += 1;
+    if (myArea.frameNo == 1 || everyinterval(2)) {
+        x = myArea.canvas.width;
+        minHeight = 20;
+        maxHeight = 200;
+        height = 10
+        minGap = 50;
+        maxGap = 200;
+        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+        if (flag==0)
+        myObstacles.push(new component(2, 2, "darkred", x, 100));
+      else{
+        if (kcode==65){
+        myObstacles.push(new component(2, 90, "darkred", x, 55));
+
+      }
+      else if (kcode==83)
+        myObstacles.push(new component(2, 80, "darkred", x, 60));
+      else if (kcode==68)
+        myObstacles.push(new component(2, 70, "darkred", x, 65));
+      else if (kcode==70)
+        myObstacles.push(new component(2, 60, "darkred", x, 70));
+      else if (kcode==71)
+        myObstacles.push(new component(2, 50, "darkred", x, 75));
+      else if (kcode==72)
+        myObstacles.push(new component(2, 40, "darkred", x, 80));
+      else if (kcode==74)
+        myObstacles.push(new component(2, 30, "darkred", x, 85));
+      else if (kcode==75)
+        myObstacles.push(new component(2, 20, "darkred", x, 90));
+      else if (kcode==76)
+        myObstacles.push(new component(2, 10, "darkred", x, 95));
+        flag=0;
+      }
+
+    }
+    for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].x += -1;
+        myObstacles[i].update();
+    }
+    myPiece.newPos();
+    myPiece.update();
+}
+
+function everyinterval(n) {
+    if ((myArea.frameNo / n) % 1 == 0) {return true;}
+    return false;
+}
+
+function accelerate(n) {
+    myPiece.gravity = n;
+}
   function removeTransition(e) {
     if (e.propertyName !== 'transform') return;
     e.target.classList.remove('playing');
@@ -66,11 +179,17 @@
   function playSound(e) {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
-
+    if (!audio) {
+      plane()
+    }
+    else
     key.classList.add('playing');
-    audio.currentTime = 0;
+    audio.currentTime =0;
+    flag=1;
+    kcode=e.keyCode;
     audio.play();
+    //alert(e.keyCode);
+
   }
 
   const keys = Array.from(document.querySelectorAll('.key'));
