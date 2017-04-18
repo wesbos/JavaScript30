@@ -25,7 +25,7 @@ body {
 
 header {
   text-align: center;
-  height:50vh;
+  height:250px;
   background:url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
   background-size:cover;
   display:flex;
