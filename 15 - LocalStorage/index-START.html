@@ -26,10 +26,55 @@
   </div>
 
 <script>
-  const addItems = document.querySelector('.add-items');
-  const itemsList = document.querySelector('.plates');
-  const items = [];
+  const addItems = document.querySelector('.add-items'); // the form element
+  const itemsList = document.querySelector('.plates'); // where we're loading our tapas dishes
+  const items = JSON.parse(localStorage.getItem('items')) || []; // set items to localStorage items 'items' else fall back to an empty array of objects
+  
+  function addItem(e) {
+    e.preventDefault(); // to prevent our page from redirecting after the form is submitted
+    const text = (this.querySelector('[name=item]')).value;
+    const item = {
+      // text: 'Item Name',
+      text, // es6
+      done: false
+    };
 
+    items.push(item);
+    populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));
+    this.reset(); // reset the form
+  }
+
+  // for the populateList function, we optionally pass in plates, and we set where we want to store the plates (html element which is platesList)
+  function populateList(plates = [], platesList) {
+    platesList.innerHTML = plates.map((plate, i) => {
+      return `
+        <li>
+        <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+          <label for="item${i}">${plate.text}</label>
+        </li>
+      `;
+    }).join('');
+  }
+
+  function toggleDone(e) {
+    //we want to track if the target matches what we're looking for
+    if(!e.target.matches('input')) return; //skip this unless its an input
+    const el = e.target;
+    const index = el.dataset.index;
+    items[index].done = !items[index].done;
+    localStorage.setItem('items', JSON.stringify(items));
+    populateList(items, itemsList);
+  }
+
+  addItems.addEventListener('submit', addItem);
+
+  // const checkBoxes = document.querySelectorAll('input');
+
+  // checkBoxes.forEach(input => input.addEventListener('click', () => alert('hi'))); // this doesn't work because these elements didnt exist on the dom to begin with
+  itemsList.addEventListener('click', toggleDone);
+
+  populateList(items, itemsList); //items doesnt exist on pageload so we need to visit the top.
 </script>
 
 

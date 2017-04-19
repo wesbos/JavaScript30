@@ -1,0 +1,1 @@
+Exercise is to sort the array of band names, but we're sorting it wouthout the articles (a, the etc.) and then put them into the actual html (w/ articles).

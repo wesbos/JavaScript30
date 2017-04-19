@@ -8,15 +8,31 @@
 
   <script>
     // start with strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2); // 100 100
+    age = 200;
+    console.log(age, age2); // 200 100
 
+    let name = 'Wes';
+    let name2 = name;
+    console.log(name, name2); // wes wes
+    name = 'wesley';
+    console.log(name, name2) // wesley wes
+    
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
+    console.log(players, team);
 
     // You might think we can just do something like this:
+    team[3] = 'Lux'; // console logging players shows that both are the same.
+    
 
     // however what happens when we update that array?
+    // team is equal to players
 
     // now here is the problem!
 
@@ -27,24 +43,57 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
+    const team2 = players.slice()
 
     // or create a new array and concat the old one in
+    const team3 = [].concat(players);
 
     // or use the new ES6 Spread
+    const team4 = [...players];
+    team4[3] = 'heeee haww';
+    console.log(team4);
+
+    const team5 = Array.from(players);
 
     // now when we update it, the original one isn't changed
 
     // The same thing goes for objects, let's say we have a person object
 
     // with Objects
+    const person = {
+      name: 'Web Bos',
+      age: 80
+    }
 
     // and think we make a copy:
+    const captain = person; // we just made a reference
+    captain.number = 99;
 
     // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap2);
 
     // We will hopefully soon see the object ...spread
+    // const cap3 = {...person};
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const wes = {
+      name: 'Wes', 
+      age: 100,
+      social: {
+        twitter: '@webbos',
+        facebook: 'webbos.developer'
+      }
+    }
+    console.clear();
+    console.log(wes);
+
+    const dev = Object.assign({}, wes);
+    //when you use object.assign, it only goes 1 level deep, so you'll need to clone deep to clone every level as deep as you want
+    
+    //poor man's deep clone
+    const dev2 = JSON.parse(JSON.stringify(wes));
+    // this works because it converts the object to a string and we parse it to turn it back into an object
 
   </script>
 
