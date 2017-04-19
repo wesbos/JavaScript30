@@ -18,7 +18,7 @@
 
   <style>
     html {
-      background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
+      background:#018DED;
       background-size:cover;
       font-family:'helvetica neue';
       text-align: center;
@@ -59,42 +59,50 @@
     .hand {
       width:50%;
       height:6px;
-      background:black;
+      background: #d50000;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform-origin: 0%;
+      transform-origin: 0;
       transform: rotate(-90deg);
-      transition: all 0.05s;
-      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+      transition: all .3s;
     }
-</style>
 
-<script>
-  const secondHand = document.querySelector('.second-hand');
-  const minsHand = document.querySelector('.min-hand');
-  const hourHand = document.querySelector('.hour-hand');
+    .hour-hand {
+      width: 40%;
+      background: #ff6d00;
+    }
 
-  function setDate() {
+    .min-hand {
+      width: 48%;
+      background: #00bfa5;
+    }
+  </style>
+
+  <script>
+    var transformProp = (function(){
+      var testEl = document.createElement('div');
+      if(testEl.style.transform == null) {
+        var vendors = ['Webkit', 'Moz', 'ms'];
+        for(var vendor in vendors) {
+          if(testEl.style[ vendors[vendor] + 'Transform' ] !== undefined) {
+            return vendors[vendor] + 'Transform';
+          }
+        }
+      }
+      return 'transform';
+  })();
+
+  setInterval(clock, 1000);
+
+  function clock() {
     const now = new Date();
-
-    const seconds = now.getSeconds();
-    const secondsDegrees = ((seconds / 60) * 360) - 90;
-    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
-
-    const mins = now.getMinutes();
-    const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) - 90;
-    minsHand.style.transform = `rotate(${minsDegrees}deg)`;
-
-    const hour = now.getHours();
-    const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) - 90;
-    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    const minutes =
+    document.querySelector('.second-hand').style[transformProp] = `rotate(${now.getSeconds() / 60 * 360 - 90}deg)`;
+    document.querySelector('.min-hand').style[transformProp] = `rotate(${(now.getMinutes() / 60 * 360) + now.getSeconds() / 60 * 6 - 90}deg)`;
+    document.querySelector('.hour-hand').style[transformProp] = `rotate(${(now.getHours() / 12 * 360) + now.getMinutes() / 60 * 30 - 90}deg)`;
   }
 
-  setInterval(setDate, 1000);
-
-  setDate();
-
-</script>
+  </script>
 </body>
 </html>
