@@ -67,6 +67,8 @@
       const nextInventor = b.passed - b.year;
       return lastInventor > nextInventor ? -1 : 1;
     });
+    // OR:
+    // const oldest = inventors.sort((a, b) => (a.passed - a.year) > (b.passed - b.year) ? -1 : 1);
     console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
@@ -85,6 +87,8 @@
       const [bLast, bFirst] = nextOne.split(', ');
       return aLast > bLast ? 1 : -1;
     });
+    // OR:
+    // const alpha = people.sort((a, b) => a.split(", ") > b.split(", ") ? 1:-1);
     console.log(alpha);
 
     // 8. Reduce Exercise
