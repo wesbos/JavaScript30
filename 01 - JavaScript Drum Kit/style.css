@@ -48,3 +48,22 @@ kbd {
   letter-spacing: .1rem;
   color: #ffc600;
 }
+
+#container {
+    width: 50%;
+    float: left;
+    padding-right: 3%;
+    padding-left: 2%;
+}
+
+#code  {
+    padding-top: 30px;
+    padding-right: 2%;
+    font-size: 1.2em;
+   
+}
+
+#code > p {
+    font-size: 1.2em;
+    color: white;
+}
