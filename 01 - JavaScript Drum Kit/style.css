@@ -23,6 +23,7 @@ body,html {
   margin: 1rem;
   font-size: 1.5rem;
   padding: 1rem .5rem;
+  /*creates a "delay" when switching between the classes*/
   transition: all .07s ease;
   width: 10rem;
   text-align: center;
