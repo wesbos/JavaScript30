@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -22,25 +22,30 @@
     }
 
     .panels {
-      min-height:100vh;
-      overflow: hidden;
+		min-height:100vh;
+		overflow: hidden;
+		display: flex;
     }
 
     .panel {
-      background:#6B0F9C;
-      box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
-      color:white;
-      text-align: center;
-      align-items:center;
-      /* Safari transitionend event.propertyName === flex */
-      /* Chrome + FF transitionend event.propertyName === flex-grow */
-      transition:
-        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        background 0.2s;
-      font-size: 20px;
-      background-size:cover;
-      background-position:center;
+		background:#6B0F9C;
+		box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
+		color:white;
+		text-align: center;
+		align-items:center;
+		/* Safari transitionend event.propertyName === flex */
+		/* Chrome + FF transitionend event.propertyName === flex-grow */
+		transition:
+		font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+		flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+		background 0.2s;
+		font-size: 20px;
+		background-size:cover;
+		background-position:center;
+		flex: 1;
+		justify-content: center;
+		display: flex;
+		flex-direction: column;
     }
 
 
@@ -54,7 +59,21 @@
       margin:0;
       width: 100%;
       transition:transform 0.5s;
+      flex: 1 0 auto;
+      display:flex;
+      justify-content: center;
+      align-items: center;
     }
+	  .panel > *:first-child {
+		  transform: translateY(-100%)
+	  }
+	  .panel.open-active > *:first-child,
+	  .panel.open-active > *:last-child {
+		  transform: translateY(0)
+	  }
+	  .panel > *:last-child {
+		  transform: translateY(100%)
+	  }
 
     .panel p {
       text-transform: uppercase;
@@ -67,7 +86,8 @@
     }
 
     .panel.open {
-      font-size:40px;
+		flex: 3;
+		font-size:40px;
     }
 
   </style>
@@ -102,10 +122,28 @@
   </div>
 
   <script>
-
+	 var panels = document.querySelectorAll(".panel")
+	 
+	 function toggleOpen(){
+		 console.log('oi')
+		 this.classList.toggle('open')
+	 }
+	 function toggleOpenActive(e){
+		 console.log(e.propertyName)
+		 if( e.propertyName.includes( 'flex' ))
+		 	this.classList.toggle('open-active')
+		 /*if( e.propertyName.includes( 'transform' ) &&  this.classList.value.includes("open open-active"))
+		 	setTimeout( removeActiveClass.bind(this), 300)*/
+	 }
+	 function removeActiveClass(){
+		this.classList.toggle('open-active')
+		this.classList.toggle('open')
+	  }
+	 	 
+	 panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+	 panels.forEach(panel => panel.addEventListener('transitionend', toggleOpenActive));
+	  
+	  
   </script>
-
-
-
 </body>
 </html>
