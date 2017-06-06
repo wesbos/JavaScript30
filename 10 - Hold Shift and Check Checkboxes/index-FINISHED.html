@@ -123,7 +123,8 @@ function handleCheck(e) {
     });
   }
 
-  lastChecked = this;
+  if(this.checked)
+	  lastChecked = this;
 }
 
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
