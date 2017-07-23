@@ -66,13 +66,15 @@
     let key = getKey(keyNum);
     let audio = getAudio(keyNum);
     
-    key.classList.add('playing');
-    audio.play();
-    setTimeout(() => { 
-      audio.pause();
-      audio.currentTime = 0;
-      key.classList.remove('playing');
-    }, 70);
+    if (key) {
+      key.classList.add('playing');
+      audio.play();
+      setTimeout(() => { 
+        audio.pause();
+        audio.currentTime = 0;
+        key.classList.remove('playing');
+      }, 70);
+    }
   }
   
   function getKey(keyNum) {
@@ -81,6 +83,7 @@
       if(keys[i].getAttribute('data-key') == keyNum)
         return keys[i];
     }
+    return null;
   }
   
   function getAudio(keyNum) {
