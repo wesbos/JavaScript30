@@ -59,8 +59,9 @@
 
 <script>
   function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
+		const key = document.querySelector(`.key[data-key="${e.which}"]`);
+		if(!key) return; 
+		key.classList.remove("playing");
   }
 
   function playSound(e) {
@@ -73,8 +74,7 @@
     audio.play();
   }
 
-  const keys = Array.from(document.querySelectorAll('.key'));
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+	window.addEventListener('keyup', removeTransition);
   window.addEventListener('keydown', playSound);
 </script>
 
