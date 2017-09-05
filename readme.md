@@ -29,6 +29,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [从零到壹全栈部落](https://github.com/liyuechun/JavaScript30-liyuechun),春哥发起的从零到壹全栈部落，旨在带领大家一起学习，一起输出，文档化，代码化，中文视频化，全栈部落口号：输出是最好的学习方式。
 * [Usmaan Ali's](https://github.com/usyyy/javascript/blob/master/JavaScript30/analysis.md) summary of the technical skills learned from each project. He's also posting them as separate blog posts [here](https://medium.com/@usyyy)
 * [Axel](https://github.com/afuh/js30)'s lessons learned and a [showcase](https://afuh.github.io/js30/) with the projects. 
+* [Chris](https://github.com/dwatow/JavaScript30) 中文實戰，目標描述、過程紀錄。
 
 ## A note on Pull Requests
 
