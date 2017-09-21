@@ -11,7 +11,7 @@
       <div class="clock-face">
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
+        <div class="hand hand-trans second-hand"></div>
       </div>
     </div>
 
@@ -64,9 +64,13 @@
       top:50%;
       transform-origin: 100%;
       transform: rotate(90deg);
+    }
+
+    .hand-trans {
       transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
+
 </style>
 
 <script>
@@ -80,6 +84,12 @@
     const seconds = now.getSeconds();
     const secondsDegrees = ((seconds / 60) * 360) + 90;
     secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+    if(seconds === 0) {
+        secondHand.className = secondHand.className.replace(' hand-trans', '');
+      } else if (seconds === 1) {
+        secondHand.className += (' hand-trans')
+      }
 
     const mins = now.getMinutes();
     const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
