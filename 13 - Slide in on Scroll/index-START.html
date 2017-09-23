@@ -43,6 +43,7 @@
   </div>
 
   <script>
+    // Fonction to wait before firing at every event
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -57,6 +58,32 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+
+    const images = document.querySelectorAll('div.site-wrap img.slide-in');
+    //console.log(images);
+
+    function handleScroll(e){
+      //console.log(e);
+      images.forEach(image => {
+        //Determine where the center of the image is (compared to bottom of the window)
+        const slideInPos = window.scrollY + window.innerHeight - (image.height / 2);
+        //console.log(slideInPos);
+        //Determine where the botton of the image is (compared to top of the window)
+        const imageBottom = image.offsetTop + image.height;
+        //console.log(imageBottom);
+        const isHalfShown = slideInPos > image.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+
+        if (isHalfShown && isNotScrolledPast) {
+          image.classList.add('active');
+        }else {
+          image.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', debounce(handleScroll));
 
   </script>
 
