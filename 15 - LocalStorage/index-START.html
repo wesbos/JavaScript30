@@ -28,7 +28,76 @@
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
-  const items = [];
+  const items = JSON.parse(localStorage.getItem('items')) || [];
+  
+
+  function addItem(e) {
+    e.preventDefault();// prevent the form from reloading the page
+    const text = this.querySelector('[name=item]').value;
+    const item = {
+      text: text,
+      done: false
+    };
+    items.push(item);// add typed item to the list of items already typed
+    populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));// localStorage only accepts strings
+    this.reset();
+  }
+
+  function populateList(plates = [], platesList) {
+    platesList.innerHTML = plates.map((plate, i) => {
+      return `
+        <li>
+          <input type="checkbox" data-index=${i} id="item${i}" ${plate.done ? 'checked' : ''} />
+          <label for="item${i}">${plate.text}</label>
+        </li>
+      `;
+    }).join('');
+  }
+
+  function toggleDone(e) {
+    if (!e.target.matches('input')) return; //skip if it's not an input
+    
+    const el = e.target;// what has been clicked
+    const index = el.dataset.index; // index of the checkbox
+
+    items[index].done = el.checked;
+
+    populateList(items, itemsList);
+    localStorage.setItem('items', JSON.stringify(items));// localStorage only accepts strings
+    
+  }
+
+  // Delete all elements of the array
+  function clearItems(plates = [], platesList) {
+    plates.splice(0,plates.length)
+    populateList(plates, platesList);
+    localStorage.clear();
+  }
+
+  // Uncheck all items from the list
+  function uncheckAllItems(plates = [], platesList) {
+
+    plates.map(plate => plate.done = false);
+
+    populateList(plates, platesList);
+    localStorage.setItem('items', JSON.stringify(plates));// localStorage only accepts strings
+  }
+
+  //Check all items from the list
+  function checkAllItems(plates = [], platesList) {
+
+    plates.map(plate => plate.done = true);
+
+    populateList(plates, platesList);
+    localStorage.setItem('items', JSON.stringify(plates));// localStorage only accepts strings
+  }
+
+
+  addItems.addEventListener('submit', addItem);
+  itemsList.addEventListener('click', toggleDone);
+
+  populateList(items, itemsList);
 
 </script>
 
