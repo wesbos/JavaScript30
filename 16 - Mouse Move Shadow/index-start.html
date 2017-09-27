@@ -35,6 +35,30 @@
   </style>
 
 <script>
+  const hero = document.querySelector('.hero');
+  const text = hero.querySelector('h1');
+  const walk = 50; // 50px, determine the max the shadow should be off of the text
+
+  function shadow(e) {
+    // const width = hero.offsetWidth;
+    // const height = hero.offsetHeight;
+    const {offsetWidth: width, offsetHeight: height} = hero; //ES6 syntax, size of the text
+    // const x = e.offsetX;
+    // const y = e.offsetY;
+    let {offsetX: x, offsetY: y} = e; //ES6 syntax, where the cursor is
+
+    if (this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
+    
+    const xWalk = (x / width * walk) - (walk / 2);
+    const yWalk = (y / height * walk) - (walk / 2);
+
+    text.style.textShadow = `${xWalk}px ${yWalk}px 3px black`;// redifine the shadow
+  }
+
+  hero.addEventListener('mousemove', shadow);
 </script>
 </body>
 </html>
