@@ -54,6 +54,33 @@
   </div>
 
 <script>
+  // get the navbar element
+  const nav = document.querySelector('#main');
+  const navTop = nav.offsetTop; // top of the navbar
+  // Logo
+  const logo = document.querySelector('.logo');
+  //Site content
+  const siteWrap = document.querySelector('.site-wrap');
+
+  function fixNav() {
+    //console.log(this.scrollY, this.scrollX);
+    const scrollTop = window.scrollY; // scroll position compare to the top of the page
+
+    // Make the logo appear / disappear + fix the navbar following the position of the scroll
+    if (scrollTop > navTop) {
+      //nav.classList.add('fixed');
+      document.body.classList.add('fixed-nav');
+      document.body.style.paddingTop = `${nav.offsetHeight}px`;
+      //logo.style.maxWidth = '140px'; // not needed, done with css
+    } else {
+      // nav.classList.remove('fixed');
+      document.body.classList.remove('fixed-nav');
+      document.body.style.paddingTop = 0;
+      //logo.style.maxWidth = '0';
+    }
+  }
+
+  window.addEventListener('scroll', fixNav);
 
 </script>
 
