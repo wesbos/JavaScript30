@@ -214,6 +214,51 @@
 </style>
 
 <script>
+  const triggers = document.querySelectorAll('.cool > li');
+  const nav = document.querySelector('.top');
+  const background = document.querySelector('.dropdownBackground');
+
+  function handleEnter() {
+
+    background.classList.add('open');
+    this.classList.add('trigger-enter');
+    setTimeout(() => {
+      if (this.classList.contains('trigger-enter')) {
+        this.classList.add('trigger-enter-active');
+      }
+      
+    }, 150);
+
+    const dropdown = this.querySelector('.dropdown');
+    const dropdownCoords = dropdown.getBoundingClientRect();
+    // We have to take the coordinates of the nav because something could be before it (text, banner, etc...)
+    const navCoords = nav.getBoundingClientRect();
+
+    // console.log(dropdownCoords);
+    // console.log(navCoords);
+
+    const coords = {
+      width: dropdownCoords.width,
+      height: dropdownCoords.height,
+      top: dropdownCoords.top - navCoords.top,
+      left: dropdownCoords.left - navCoords.left
+    };
+
+    // Apply the info of the element to the highlighted element
+    background.style.width = `${coords.width}px`;
+    background.style.height = `${coords.height}px`;
+    background.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+  }
+
+  function handleLeave() {
+
+    background.classList.remove('open');
+    this.classList.remove('trigger-enter', 'trigger-enter-active');
+  }
+
+  triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
+  triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
+
 </script>
 
 </body>
