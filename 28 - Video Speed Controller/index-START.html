@@ -15,6 +15,39 @@
   </div>
 
 <script>
+  const speed = document.querySelector('.speed');
+  const bar = document.querySelector('.speed-bar');
+  const video = document.querySelector('.flex');
+  let isDown = false;
+
+  function handleSpeed(e) {
+
+    if (!isDown) return;
+    e.preventDefault();
+
+    // Where we clicked on the slider (Y)
+    const y = e.pageY - this.offsetTop;
+    // Percentage of the bar filled when we click
+    const percent = y / this.offsetHeight;
+    const min = 0.5; // minimum video speed
+    const max = 4; // maximum video speed
+    // Height in percentage of the filling of the bar
+    const height = Math.round(percent * 100) + '%';
+    // Speed of the video (between min and max)
+    const playbackRate = (max - min) * percent + min;
+
+    // Video speed update
+    video.playbackRate = playbackRate;
+    
+    // Bar speed update
+    bar.style.height = height;
+    bar.textContent = playbackRate.toFixed(2) + '×';
+  }
+
+  speed.addEventListener('mousedown', () => isDown = true);
+  speed.addEventListener('mouseup', () => isDown = false);
+
+  speed.addEventListener('mousemove', handleSpeed);
 </script>
 </body>
 </html>
