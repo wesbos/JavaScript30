@@ -35,6 +35,44 @@
   </div>
 
 <script>
+  const slider = document.querySelector('.items');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  function handleGrab(e) {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft; // pageX : where we clicked on the page / minus the margin applied ot the div
+    scrollLeft = slider.scrollLeft;
+  }
+
+  function handleRelease() {
+    isDown = false;
+    slider.classList.remove('active');
+
+  }
+
+  slider.addEventListener('mousedown', handleGrab);
+  slider.addEventListener('mouseup', handleRelease);
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
+    
+    if (!isDown) return;
+    e.preventDefault();
+
+    // Recalculate the position of the mouse
+    const x = e.pageX - slider.offsetLeft;
+    // Calculate the distance the scroll has been moved
+    const walk = x - startX;
+    // Redefined the scroll
+    slider.scrollLeft = scrollLeft - walk;
+
+    // console.log(x);
+  });
 </script>
 
   </body>

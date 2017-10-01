@@ -7,6 +7,22 @@
 </head>
 <body>
 <script>
+
+  const secretCode = "julie";
+  const typed = [];
+
+  document.addEventListener('keyup', (e) => {
+    //console.log(e.key);
+    //Save what has been typed to compare it to the secretCode
+    typed.push(e.key);
+    typed.splice(-secretCode.length - 1, typed.length - secretCode.length); //Splice the array to be the same length as the secretCode
+    //console.log(typed);
+    if (typed.join('').includes(secretCode)) {
+      console.log("You found the secret code");
+      cornify_add();
+    }
+
+  });
 </script>
 </body>
 </html>
