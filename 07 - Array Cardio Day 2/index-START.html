@@ -40,9 +40,9 @@
     let groupOk = '<div id = "message">Group is OK</div>';
     let groupNotOk = '<div id = "message">Group is not OK</div>';
 
-    verifyGroup = ageCheck ? document.getElementbyId("body").innerHTML = groupOk : document.getElementbyId("body").innerHTML = groupNotOk;
+    /*verifyGroup = ageCheck ? document.getElementbyId("body").innerHTML = groupOk : document.getElementbyId("body").innerHTML = groupNotOk;
 
-    document.body.appendChild(document.createTextNode(verifyGroup));
+    document.body.appendChild(document.createTextNode(verifyGroup));*/
 
     console.log(ageCheck);
 
@@ -50,9 +50,20 @@
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
 
+    const comment = comments.find(comment => 
+      comment.id === 823423 
+    );
+
+    console.log(comment);
+
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+
+    const index = comments.findIndex(comment =>
+    comment.id === 823423);
+
+    comments.splice(index, 1);
 
   </script>
 </body>
