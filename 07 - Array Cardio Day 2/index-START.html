@@ -5,7 +5,7 @@
   <title>Array Cardio 💪💪</title>
 </head>
 <body>
-  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <p><em>Psst: have a look at the JavaScript Console</em> </p>
   <script>
     // ## Array Cardio Day 2
 
@@ -26,15 +26,44 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+
+    const isAdult = people.some(person =>
+    ((new Date()).getFullYear()) - person.year >= 19);
+
+    console.log(isAdult);
+
     // Array.prototype.every() // is everyone 19 or older?
+
+    const ageCheck = people.every(person => 
+    ((new Date()).getFullYear()) - person.year >= 19);
+
+    let groupOk = '<div id = "message">Group is OK</div>';
+    let groupNotOk = '<div id = "message">Group is not OK</div>';
+
+    /*verifyGroup = ageCheck ? document.getElementbyId("body").innerHTML = groupOk : document.getElementbyId("body").innerHTML = groupNotOk;
+
+    document.body.appendChild(document.createTextNode(verifyGroup));*/
+
+    console.log(ageCheck);
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
 
+    const comment = comments.find(comment => 
+      comment.id === 823423 
+    );
+
+    console.log(comment);
+
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+
+    const index = comments.findIndex(comment =>
+    comment.id === 823423);
+
+    comments.splice(index, 1);
 
   </script>
 </body>
