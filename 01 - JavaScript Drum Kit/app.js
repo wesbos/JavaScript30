@@ -8,13 +8,12 @@ window.addEventListener('keydown', function(e){
   audio.currentTime = 0;
   audio.play();
   key.classList.add('playing')
-  console.log(key);
 })
 
 function removeTransition() {
   if(e.propertyName !== 'transform') return;
 
-  console.log(e.propertyName)
+  this.classList.remove('playing');
 }
 
 const keys = document.querySelector('.keys');
