@@ -32,11 +32,14 @@
     // Testing
 
     // clearing
-
+console.clear()
     // Viewing DOM Elements
 
     // Grouping together
-
+dogs.forEach(dog => {
+  console.group(`${dog.name}`);
+  console.log(`This is ${dog.name}`)
+})
     // counting
 
     // timing
