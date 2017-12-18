@@ -8,6 +8,7 @@ Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
 ## Done
 
-- [ ] 01 - Drum Kit
+- [x] 01 - Drum Kit
+- [ ] 02 - JS and CSS Clock
 
 Thanks, @wesbos!
