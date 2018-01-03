@@ -23,6 +23,19 @@ body {
   transition: transform 0.5s;
 }
 
+body.fixed-nav .site-wrap{
+  transform: scale(1);
+}
+
+body.fixed-nav nav {
+  position: fixed;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+}
+
+.fixed-nav li.logo{
+  max-width:500px;
+}
+
 header {
   text-align: center;
   height:50vh;
