@@ -44,6 +44,10 @@
     .join('');
   }
 
+  function setVoice() {
+    msg.voice = voice.find(voice => voice.name === this.value);
+    toggle();
+  }
 
 </script>
 
