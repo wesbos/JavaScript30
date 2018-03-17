@@ -21,10 +21,26 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
-
+    /* :root is like the highest level of CSS structure */
+    /* Define CSS Variables with prepending -- to the property name */
+    :root {
+      --base: #ffc600;
+      --spacing: 50px;
+      --blur: 10px;
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
+    /* Use the var() to declare a CSS variable */
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
 
     body {
       text-align: center;
@@ -45,6 +61,28 @@
   </style>
 
   <script>
+    // Select all control input elements
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+      // this.dataset will list all the data elements for an element. And then we specify that we want the sizing attribute. Need to add the || because if an element doesnt have the sizing attribute, then it would return undefined.
+      const suffix = this.dataset.sizing || '';
+      //console.log(suffix);
+      console.log(this.name);
+
+      // Dynamically change the property values for each of the different inputs
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    // Loop over each input, and listen for a change event to occur, and if there is a change, run the handleUpdate function
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
+
+
+
+
+
   </script>
 
 </body>
