@@ -21,10 +21,26 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
-
+    /* :root is like the highest level of CSS structure */
+    /* Define CSS Variables with prepending -- to the property name */
+    :root {
+      --base: #ffc600;
+      --spacing: 50px;
+      --blur: 10px;
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
+    /* Use the var() to declare a CSS variable */
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
 
     body {
       text-align: center;
