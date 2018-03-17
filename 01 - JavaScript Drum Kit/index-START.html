@@ -59,39 +59,6 @@
 
 <script>
 
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-    //console.log(audio);
-
-    if(!audio) return; // Stop the function from running all together
-
-    audio.currentTime = 0; // rewind to the start, need to do this so that each time you hit the key, that it will rewind the audio to the start, instead of play the whole 2 second clip, that may not allow you to hit the button over and over again and hear the sound
-    
-    // Play audio for specific sound
-    audio.play();
-
-    // Add CSS Animation to the key
-    key.classList.add('playing');
-  }
-
-  function removeTransition(e) {
-    if(e.propertyName !== 'transform') return; // skip if it is NOT a transform
-    //console.log(e.propertyName);
-    this.classList.remove('playing'); // remove 'playing' class after transform ends
-  }
-
-
-  // Get all of the keys on the screen
-  const keys = document.querySelectorAll('.key');
-  console.log('keys: ' + keys);
-
-  // After each key transition ends, then we want to remove the transition
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-
-  window.addEventListener('keydown', playSound);
-
-  
 </script>
 
 
