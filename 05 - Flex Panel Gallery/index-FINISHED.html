@@ -122,6 +122,7 @@
 
     function toggleOpen() {
       console.log('Hello');
+      panels.forEach(panel => panel.classList.remove('open'));
       this.classList.toggle('open');
     }
 
