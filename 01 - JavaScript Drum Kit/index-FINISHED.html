@@ -1,83 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 
+  <!-- Apprently ".keyCode" is deprecated so I found .code as an alternate, using "KeyA" for example instead of the number that was previously being assigned to data-key. -->
   <div class="keys">
-    <div data-key="65" class="key">
-      <kbd>A</kbd>
+    <div data-key="KeyA" class="key">
+      <p>A</p>
       <span class="sound">clap</span>
     </div>
-    <div data-key="83" class="key">
+    <div data-key="KeyS" class="key">
       <kbd>S</kbd>
       <span class="sound">hihat</span>
     </div>
-    <div data-key="68" class="key">
+    <div data-key="KeyD" class="key">
       <kbd>D</kbd>
       <span class="sound">kick</span>
     </div>
-    <div data-key="70" class="key">
+    <div data-key="KeyF" class="key">
       <kbd>F</kbd>
       <span class="sound">openhat</span>
     </div>
-    <div data-key="71" class="key">
+    <div data-key="KeyF" class="key">
       <kbd>G</kbd>
       <span class="sound">boom</span>
     </div>
-    <div data-key="72" class="key">
+    <div data-key="KeyH" class="key">
       <kbd>H</kbd>
       <span class="sound">ride</span>
     </div>
-    <div data-key="74" class="key">
+    <div data-key="KeyJ" class="key">
       <kbd>J</kbd>
       <span class="sound">snare</span>
     </div>
-    <div data-key="75" class="key">
+    <div data-key="KeyK" class="key">
       <kbd>K</kbd>
       <span class="sound">tom</span>
     </div>
-    <div data-key="76" class="key">
+    <div data-key="KeyL" class="key">
       <kbd>L</kbd>
       <span class="sound">tink</span>
     </div>
   </div>
 
-  <audio data-key="65" src="sounds/clap.wav"></audio>
-  <audio data-key="83" src="sounds/hihat.wav"></audio>
-  <audio data-key="68" src="sounds/kick.wav"></audio>
-  <audio data-key="70" src="sounds/openhat.wav"></audio>
-  <audio data-key="71" src="sounds/boom.wav"></audio>
-  <audio data-key="72" src="sounds/ride.wav"></audio>
-  <audio data-key="74" src="sounds/snare.wav"></audio>
-  <audio data-key="75" src="sounds/tom.wav"></audio>
-  <audio data-key="76" src="sounds/tink.wav"></audio>
+  <audio data-key="KeyA" src="sounds/clap.wav"></audio>
+  <audio data-key="KeyS" src="sounds/hihat.wav"></audio>
+  <audio data-key="KeyD" src="sounds/kick.wav"></audio>
+  <audio data-key="KeyF" src="sounds/openhat.wav"></audio>
+  <audio data-key="KeyG" src="sounds/boom.wav"></audio>
+  <audio data-key="KeyH" src="sounds/ride.wav"></audio>
+  <audio data-key="KeyJ" src="sounds/snare.wav"></audio>
+  <audio data-key="KeyK" src="sounds/tom.wav"></audio>
+  <audio data-key="KeyL" src="sounds/tink.wav"></audio>
 
-<script>
-  function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
-  }
+  <script>
 
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
+    // Function playSound now uses .code instead of .keyCode to get the data-key associated with each key press and play it's respective sound.
 
-    key.classList.add('playing');
-    audio.currentTime = 0;
-    audio.play();
-  }
+    function playSound(e) {
 
-  const keys = Array.from(document.querySelectorAll('.key'));
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
-</script>
+      //Use Template Literals to get the code associated with each key
+      const audio = document.querySelector(`audio[data-key='${e.code}']`);
+      const key = document.querySelector(`.key[data-key='${e.code}']`);
+
+      //If there is no associated key code (in our HTML), then we do nothing.
+      if (!audio) return;
+
+      //If there is a code associated with that key, we add the CSS class of playing.
+      key.classList.add('playing');
+
+      //Allows for each press to start the sound over again rather than having to let it play all the way through. i.e. fast consecutive drum beats!
+      audio.currentTime = 0;
+
+      // .play() is a JS method that returns a promise which is fulfilled once playback of an HTML media element starts. Browser support is limited.
+      audio.play();
+
+
+    };
+
+    //We need to remove the playing class immediately after the transition (to CSS class "playing") happens, to create the quick flash effect on the divs. We do this by first determining if there is a property of "transform" on the element. Why? Because "transform" is the only unique property within the "playing" class. If "transform" is there, then we know the element's class has transitioned to "playing".
+
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return;
+
+      this.classList.remove('playing');
+
+    };
+
+    //We have to check each key to see if we need to remove the transition. So, we get all keys in an array and loop removal function over it. Use an event listener to call the removal function at the end of the transition. (transitionend).
+
+    const keys = document.querySelectorAll('.key');
+
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+
+    //And of course, we must call sound playing function on keydown to make the magic happen!
+    window.addEventListener('keydown', playSound)
+
+
+  </script>
 
 
 </body>
+
 </html>
