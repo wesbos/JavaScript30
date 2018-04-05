@@ -11,9 +11,9 @@
 
   <div class="clock">
     <div class="clock-face">
-      <div class="hand hour-hand"></div>
-      <div class="hand minute-hand"></div>
-      <div class="hand second-hand"></div>
+      <div id="hour-hand-id" class="hand hour-hand"></div>
+      <div id="minute-hand-id" class="hand minute-hand"></div>
+      <div id="second-hand-id" class="hand second-hand"></div>
     </div>
   </div>
 
@@ -68,6 +68,12 @@
       transform: rotate(90deg);
       transition: all .05s cubic-bezier(0.54, 1.29, 0.54, 1.84);
     }
+
+    /* notransition class applies to second, minute and hour hands as they turn over at the top of the clock to avoid the animation blip caused by the hand resetting from 450deg to 90deg. */
+
+    .notransition {
+      transition: none !important;
+    }
   </style>
 
 
@@ -82,15 +88,55 @@
       const seconds = now.getSeconds();
       const minutes = now.getMinutes();
       const hour = now.getHours();
+
+      //IDs are applied to the hand divs specficially for the purpose of adding and removing the "notransition" class to avoid the skip.
+      const secondhandid = document.getElementById("second-hand-id");
+      const minutehandid = document.getElementById("minute-hand-id");
+      const hourhandid = document.getElementById("hour-hand-id");
+
+      //Calculates the number of degrees the hand should move around the clock each interval (second, minute, hour).  Adds 90 to account for the initial 90 degree rotation that puts the hands towards the top of the clock.
       const secondsDegrees = ((seconds / 60) * 360) + 90;
       const minutesDegrees = ((minutes / 60) * 360) + 90;
       const hourDegrees = ((hour / 12) * 360) + 90;
+
+      //Checks to see if the hand is at the top of the clock and if so, adds the class that removes the transition, just for that second, otherwise, removes the class that removes the transition. 
+      if (seconds == 59 || seconds == 0) {
+        secondhandid.classList.add('notransition');
+      } else {
+        secondhandid.classList.remove('notransition');
+      }
+
+      //Applies the transform that rotates the hand the appropriate number of degrees each second.
       secondhand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+
+      //Checks to see if the hand is at the top of the clock and if so, adds the class that removes the transition, just for that minute, otherwise, removes the class that removes the transition. 
+      if (minutes == 59 || minutes == 0) {
+        minutehandid.classList.add('notransition');
+      } else {
+        minutehandid.classList.remove('notransition');
+      }
+
+      //Applies the transform that rotates the hand the appropriate number of degrees each minute.
       minutehand.style.transform = `rotate(${minutesDegrees}deg)`;
+
+
+      //Checks to see if the hand is at the top of the clock and if so, adds the class that removes the transition, just for that hour, otherwise, removes the class that removes the transition. 
+      if (hour == 11 || hour == 0) {
+        hourhandid.classList.add('notransition');
+      } else {
+        hourhandid.classList.remove('notransition');
+      }
+
+      //Applies the transform that rotates the hand the appropriate number of degrees each hour.
       hourhand.style.transform = `rotate(${hourDegrees}deg)`;
+
     }
 
+    //Runs the function every second.
     setInterval(setDate, 1000);
+
+    setDate();
 
 
 
