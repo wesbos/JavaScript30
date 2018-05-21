@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  ctx.strokeStyle = '#BADA55';
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.lineWidth = 0;
+  // ctx.globalCompositeOperation = 'multiply';
+
+  // when you click down sets to true, but mouse moving otherwise is false
+  let isDrawing = false;
+
+  // You need a starting X, Y and and ending X and Y when you draw a line
+  let lastX = 0;
+  let lastY = 0;
+  let hue = 0;
+
+  // line size is increasing (true)
+  let direction = true;
+
+  function draw(e) {
+    if (!isDrawing) return; // stop function from running when mouse is NOT down
+    console.log(e);
+
+    ctx.strokeStyle = `hsl(${hue++}, 100%, 50%)`;
+
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    // variables set by function
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+
+    // lastX = e.offsetX;
+    // lastY = e.offsetY;
+    // Destructure the above (two variable at sametime)
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+
+    if ( ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+      // direction is false
+      direction = !direction
+    }
+
+    direction ? ctx.lineWidth++ : ctx.lineWidth--;
+    // if (direction) {
+    //   ctx.lineWidth++;
+    // } else {
+    //   ctx.lineWidth--;
+    // }
+  }
+
+  // Add event listener to the canvas
+  canvas.addEventListener('mousemove', draw);
+  // Long Version same as below functions but need to pass additional variables
+  canvas.addEventListener('mousedown', (e) => {
+    // mouse is down, flag drawing is true
+    isDrawing = true;
+    // See line 38 for detail
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+  });
+  
+  // Single line function
+  // canvas.addEventListener('mousedown', () => isDrawing = true);
+  canvas.addEventListener('mouseup', () => isDrawing = false);
+  // If mouse leaves screen whilst down it needs to go to false
+  canvas.addEventListener('mouseout', () => isDrawing = false);
+
+</script>
+ 
+<style>
+  html, body {
+    margin:0;
+  }
+</style>
+
+</body>
+</html>

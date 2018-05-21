@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+  const cities = [];
+
+  // fetch THEN (use them because we don't know what will becoming back, not neccessarily json!)
+  fetch(endpoint)
+    .then(information => information.json())
+    // ...data is known as spreading
+    .then(data => cities.push(...data));
+
+  // Word to match from cities
+  function findMatches(wordToMatch, cities) {
+    return cities.filter(place => {
+      // figure out if the city or state matches what was searched
+
+      // RegExp gi = global and insensitive
+      const regex = new RegExp(wordToMatch, 'gi');
+      return place.city.match(regex) || place.state.match(regex);
+    })
+  }
+
+  // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  function displayMatches() {
+    const matchArray = findMatches(this.value, cities);
+    console.log(matchArray);
+    const listItem = matchArray.map(place => {
+      const regex = new RegExp(this.value, 'gi');
+      const cityName = place.city.replace(regex, `<span class='hl'>${this.value}</span>`)
+      const stateName = place.state.replace(regex, `<span class='hl'>${this.value}</span>`)
+      return `
+        <li>
+          <span class='name'>${cityName}, ${stateName}</span>
+          <span class='name'>${numberWithCommas(place.population)}</span>
+        </li>
+      `;
+    }).join('');
+    suggestions.innerHTML = listItem;
+  }
+
+  const searchInput = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions');
+
+  searchInput.addEventListener('change', displayMatches);
+  searchInput.addEventListener('keyup', displayMatches);
+</script>
+  </body>
+</html>

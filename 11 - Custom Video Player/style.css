@@ -28,14 +28,13 @@ body {
 }
 
 /* This css is only applied when fullscreen is active. */
-.player:fullscreen {
+.player:fullscreen, .player:-webkit-full-screen {
   max-width: none;
   width: 100%;
 }
 
-.player:-webkit-full-screen {
-  max-width: none;
-  width: 100%;
+.player__video::-webkit-media-controls {
+  display: none;
 }
 
 .player__video {
@@ -101,7 +100,7 @@ body {
   width:50%;
   background:#ffc600;
   flex:0;
-  flex-basis:50%;
+  flex-basis:0%;
 }
 
 /* unholy css to style input type="range" */
