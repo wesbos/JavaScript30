@@ -1,0 +1,1 @@
+This is a journel of my JS journey 
