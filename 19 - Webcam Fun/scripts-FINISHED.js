@@ -8,7 +8,11 @@ function getVideo() {
   navigator.mediaDevices.getUserMedia({ video: true, audio: false })
     .then(localMediaStream => {
       console.log(localMediaStream);
-      video.src = window.URL.createObjectURL(localMediaStream);
+      /*
+        [Deprecation] URL.createObjectURL with media streams is deprecated and will be removed in M68, around July 2018. Please use HTMLMediaElement.srcObject instead.
+        video.src = window.URL.createObjectURL(localMediaStream);
+      */ 
+      video.srcObject = localMediaStream;
       video.play();
     })
     .catch(err => {
