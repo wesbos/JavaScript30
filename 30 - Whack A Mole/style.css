@@ -10,30 +10,30 @@ html {
 
 body {
   padding: 0;
-  margin:0;
+  margin: 0;
   font-family: 'Amatic SC', cursive;
 }
 
 h1 {
   text-align: center;
   font-size: 10rem;
-  line-height:1;
+  line-height: 1;
   margin-bottom: 0;
 }
 
 .score {
-  background:rgba(255,255,255,0.2);
-  padding:0 3rem;
-  line-height:1;
-  border-radius:1rem;
+  background: rgba(255,255,255,0.2);
+  padding: 0 3rem;
+  line-height: 1;
+  border-radius: 1rem;
 }
 
 .game {
-  width:600px;
-  height:400px;
-  display:flex;
-  flex-wrap:wrap;
-  margin:0 auto;
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 .hole {
@@ -45,18 +45,18 @@ h1 {
 .hole:after {
   display: block;
   background: url(dirt.svg) bottom center no-repeat;
-  background-size:contain;
-  content:'';
+  background-size: contain;
+  content: '';
   width: 100%;
   height:70px;
   position: absolute;
   z-index: 2;
-  bottom:-30px;
+  bottom: -30px;
 }
 
 .mole {
-  background:url('mole.svg') bottom center no-repeat;
-  background-size:60%;
+  background: url('mole.svg') bottom center no-repeat;
+  background-size: 60%;
   position: absolute;
   top: 100%;
   width: 100%;
@@ -65,5 +65,5 @@ h1 {
 }
 
 .hole.up .mole {
-  top:0;
+  top: 0;
 }
