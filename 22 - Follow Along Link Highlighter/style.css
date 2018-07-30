@@ -1,9 +1,11 @@
 html {
   box-sizing: border-box;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
 body {
   min-height: 100vh;
   margin: 0; /* Important! */
@@ -16,8 +18,8 @@ body {
 }
 
 .wrapper {
-  margin:0 auto;
-  max-width:500px;
+  margin: 0 auto;
+  max-width: 500px;
   font-size: 20px;
   line-height: 2;
   position: relative;
@@ -25,22 +27,22 @@ body {
 
 a {
   text-decoration: none;
-  color:black;
-  background:rgba(0,0,0,0.05);
-  border-radius: 20px
+  color: black;
+  background: rgba(0,0,0,0.05);
+  border-radius: 20px;
 }
 
 .highlight {
   transition: all 0.2s;
-  border-bottom:2px solid white;
+  border-bottom: 2px solid white;
   position: absolute;
-  top:0;
-  background:white;
-  left:0;
+  top: 0;
+  background: white;
+  left: 0;
   z-index: -1;
-  border-radius:20px;
+  border-radius: 20px;
   display: block;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2)
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .menu {
@@ -53,7 +55,7 @@ a {
 
 .menu a {
   display: inline-block;
-  padding:5px;
-  margin:0 20px;
-  color:black;
+  padding: 5px;
+  margin: 0 20px;
+  color: black;
 }
