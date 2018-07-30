@@ -19,10 +19,10 @@ body {
 }
 
 .items {
-  height:800px;
+  height: 800px;
   padding: 100px;
-  width:100%;
-  border:1px solid white;
+  width: 100%;
+  border: 1px solid white;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -45,14 +45,14 @@ body {
 }
 
 .item {
-  width:200px;
+  width: 200px;
   height: calc(100% - 40px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 80px;
   font-weight: 100;
-  color:rgba(0,0,0,0.15);
+  color: rgba(0,0,0,0.15);
   box-shadow: inset 0 0 0 10px rgba(0,0,0,0.15);
 }
 
