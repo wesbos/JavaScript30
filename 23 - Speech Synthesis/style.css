@@ -11,8 +11,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color:#3BC1AC;
-  display:flex;
+  background-color: #3BC1AC;
+  display: flex;
   min-height: 100vh;
   align-items: center;
 
@@ -25,31 +25,29 @@ body {
   background-size:100px 50px;
 }
 
-
 .voiceinator {
-  padding:2rem;
-  width:50rem;
-  margin:0 auto;
-  border-radius:1rem;
+  padding: 2rem;
+  width: 50rem;
+  margin: 0 auto;
+  border-radius: 1rem;
   position: relative;
-  background:white;
+  background: white;
   overflow: hidden;
   z-index: 1;
-  box-shadow:0 0 5px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
 }
 
 h1 {
-  width:calc(100% + 4rem);
+  width: calc(100% + 4rem);
   margin: -2rem 0 2rem -2rem;
-  padding:.5rem;
+  padding: .5rem;
   background: #ffc600;
   border-bottom: 5px solid #F3C010;
   text-align: center;
   font-size: 5rem;
   font-weight: 100;
   font-family: 'Pacifico', cursive;
-  text-shadow:3px 3px 0 #F3C010;
-
+  text-shadow: 3px 3px 0 #F3C010;
 }
 
 .voiceinator input,
@@ -58,12 +56,12 @@ h1 {
 .voiceinator textarea {
   width: 100%;
   display: block;
-  margin:10px 0;
-  padding:10px;
-  border:0;
+  margin: 10px 0;
+  padding: 10px;
+  border: 0;
   font-size: 2rem;
-  background:#F7F7F7;
-  outline:0;
+  background: #F7F7F7;
+  outline: 0;
 }
 
 textarea {
@@ -75,20 +73,20 @@ input[type="select"] {
 }
 
 .voiceinator button {
-  background:#ffc600;
-  border:0;
+  background: #ffc600;
+  border: 0;
   width: 49%;
-  float:left;
+  float: left;
   font-family: 'Pacifico', cursive;
   margin-bottom: 0;
   font-size: 2rem;
   border-bottom: 5px solid #F3C010;
-  cursor:pointer;
+  cursor: pointer;
   position: relative;
 }
 
 .voiceinator button:active {
-  top:2px;
+  top: 2px;
 }
 
 .voiceinator button:nth-of-type(1) {
