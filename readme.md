@@ -39,6 +39,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Abid Hasan's](https://github.com/sabidhasan/javascript-30) completion of all challenges. This was awesome!! Learned so much! :+1:
 * [Yusong Notes](https://sky172839465.github.io/course/js30) Records Yusong JS 30 days note and demo :star2:
 * [Herminio Torres](https://github.com/herminiotorres/JavaScript30) lessons and tricks learned, and a [gh-page](https://herminiotorres.github.io/JavaScript30/) to see working all the mini-projects.
+* [Dave Follett's](https://github.com/davefollett) blog series, [A New Vue on #JavaScript30](https://davefollett.io/categories/a-new-vue-on-javascript30/), where he explores re-implementing #JavaScript30 projects using [Vue](https://vuejs.org).
 
 ## A note on Pull Requests
 
