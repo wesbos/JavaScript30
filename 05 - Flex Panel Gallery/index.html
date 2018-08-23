@@ -24,6 +24,9 @@
     .panels {
       min-height:100vh;
       overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     .panel {
@@ -41,6 +44,10 @@
       font-size: 20px;
       background-size:cover;
       background-position:center;
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
     }
 
 
@@ -67,6 +74,7 @@
     }
 
     .panel.open {
+      flex: 5 1 0; 
       font-size:40px;
     }
 
@@ -74,7 +82,7 @@
 
 
   <div class="panels">
-    <div class="panel panel1">
+    <div class="panel panel1 open">
       <p>Hey</p>
       <p>Let's</p>
       <p>Dance</p>
