@@ -50,6 +50,11 @@
       justify-content: space-around;
     }
 
+    .panel--open {
+      flex: 5 1 0; 
+      font-size:40px;
+    }
+
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
     .panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
@@ -63,19 +68,23 @@
       transition:transform 0.5s;
     }
 
-    .panel p {
+    .text {
       text-transform: uppercase;
       font-family: 'Amatic SC', cursive;
       text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
       font-size: 2em;
     }
-    .panel p:nth-child(2) {
-      font-size: 4em;
+
+    .panel--open .panel__text-top {
+        opacity: 0;
     }
 
-    .panel.open {
-      flex: 5 1 0; 
-      font-size:40px;
+    .panel--open .panel__text-bottom {
+        opacity: 0;
+    }
+
+    .panel__title {
+      font-size: 4em;
     }
 
   </style>
@@ -83,29 +92,29 @@
 
   <div class="panels">
     <div class="panel panel1">
-      <p>Hey</p>
-      <p>Let's</p>
-      <p>Dance</p>
+      <p class="panel__text-top text">Hey</p>
+      <p class="panel__title text">Let's</p>
+      <p class="panel__text-bottom text">Dance</p>
     </div>
     <div class="panel panel2">
-      <p>Give</p>
-      <p>Take</p>
-      <p>Receive</p>
+      <p class="panel__text-top text">Give</p>
+      <p class="panel__title text">Take</p>
+      <p class="panel__text-bottom text">Receive</p>
     </div>
     <div class="panel panel3">
-      <p>Experience</p>
-      <p>It</p>
-      <p>Today</p>
+      <p class="panel__text-top text">Experience</p>
+      <p class="panel__title text">It</p>
+      <p class="panel__text-bottom text">Today</p>
     </div>
     <div class="panel panel4">
-      <p>Give</p>
-      <p>All</p>
-      <p>You can</p>
+      <p class="panel__text-top text">Give</p>
+      <p class="panel__title text">All</p>
+      <p class="panel__text-bottom text">You can</p>
     </div>
     <div class="panel panel5">
-      <p>Life</p>
-      <p>In</p>
-      <p>Motion</p>
+      <p class="panel__text-top text">Life</p>
+      <p class="panel__title text">In</p>
+      <p class="panel__text-bottom text">Motion</p>
     </div>
   </div>
 
