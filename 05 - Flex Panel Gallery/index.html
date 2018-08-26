@@ -65,15 +65,25 @@
     .panel > * {
       margin:0;
       width: 100%;
-      transition:transform 0.5s;
+      transition: transform 0.5s;
+    }
+
+    .panel__text-top {
+        transform: translate3d(0, -300px, 0);
     }
 
     .panel--open .panel__text-top {
-        opacity: 0;
+        transition-delay: 0.7s;
+        transform: translate3d(0,0,0);
+    }
+
+    .panel__text-bottom {
+        transform: translate3d(0, 300px, 0);
     }
 
     .panel--open .panel__text-bottom {
-        opacity: 0;
+        transition-delay: 0.7s;
+        transform: translate3d(0,0,0);
     }
 
     .panel__title {
