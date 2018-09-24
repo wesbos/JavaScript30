@@ -8,14 +8,14 @@ html {
 
 html {
   font-size: 10px;
-  background:#ffc600;
+  background: #ffc600;
 }
 
 .photobooth {
-  background:white;
-  max-width:150rem;
+  background: white;
+  max-width: 150rem;
   margin: 2rem auto;
-  border-radius:2px;
+  border-radius: 2px;
 }
 
 /*clearfix*/
@@ -26,13 +26,13 @@ html {
 }
 
 .photo {
-  width:100%;
-  float:left;
+  width: 100%;
+  float: left;
 }
 
 .player {
   position: absolute;
-  top:20px;
+  top: 20px;
   right: 20px;
   width:200px;
 }
@@ -42,14 +42,15 @@ html {
 */
 
 .strip {
-  padding:2rem;
+  padding: 2rem;
 }
+
 .strip img {
-  width:100px;
+  width: 100px;
   overflow-x: scroll;
-  padding:0.8rem 0.8rem 2.5rem 0.8rem;
-  box-shadow:0 0 3px rgba(0,0,0,0.2);
-  background:white;
+  padding: 0.8rem 0.8rem 2.5rem 0.8rem;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  background: white;
 }
 
 .strip a:nth-child(5n+1) img { transform: rotate(10deg); }
