@@ -1,46 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const dogs = [{ name: "Snickers", age: 2 }, { name: "hugo", age: 8 }];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      // Regular
 
-    // Regular
+      console.log("hello");
 
-    // Interpolated
+      // Interpolated
 
-    // Styled
+      console.log("Hello I am a %s string!", "interpolated");
+      // console.log(`hello another ${variable} string`)
 
-    // warning!
+      // Styled
 
-    // Error :|
+      console.log(
+        "%c I am some great text",
+        "font-size: 25px; background: red; text-shadow: 5px 5px 0 blue"
+      );
 
-    // Info
+      // warning!
+      console.warn("Oh Nooo!");
 
-    // Testing
+      // Error :|
+      console.error("Error!");
 
-    // clearing
+      // Info
+      console.info("fun fact, info, etc");
 
-    // Viewing DOM Elements
+      // Testing
 
-    // Grouping together
+      console.assert(1 === 1, "nothing shows up because it is correct");
+      const p = document.querySelector("p");
+      console.assert(p.classList.contains("ouch"), "That is wrong");
 
-    // counting
+      // clearing
 
-    // timing
+      console.clear();
 
-  </script>
-</body>
+      // Viewing DOM Elements
+      console.log(p);
+      console.dir(p);
+
+      // Grouping together
+
+      dogs.forEach(dog => {
+        // console.groupCollapsed(`${dog.name}`);
+        console.group(`${dog.name}`);
+        console.log(`This is ${dog.name}`);
+        console.log(`${dog.name} is ${dog.age} years old`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years old`);
+        console.groupEnd(`${dog.name}`);
+      });
+      // counting
+
+      console.count("count");
+      console.count("count");
+      console.count("count");
+      console.count("count");
+      console.count("count");
+      console.count("count");
+      // timing
+
+      console.time("fetching data");
+      fetch("https://api.github.com/users/wesbos")
+        .then(data => data.json())
+        .then(data => {
+          console.timeEnd("fetching data");
+          console.log(data);
+        });
+      // table
+      console.table(dogs);
+      //
+    </script>
+  </body>
 </html>
