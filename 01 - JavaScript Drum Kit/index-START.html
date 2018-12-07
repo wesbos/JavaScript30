@@ -7,6 +7,7 @@
 </head>
 <body>
 
+  <!-- Each keys value in numerical form -->
 
   <div class="keys">
     <div data-key="65" class="key">
@@ -47,6 +48,8 @@
     </div>
   </div>
 
+<!-- source audio -->
+
   <audio data-key="65" src="sounds/clap.wav"></audio>
   <audio data-key="83" src="sounds/hihat.wav"></audio>
   <audio data-key="68" src="sounds/kick.wav"></audio>
@@ -58,7 +61,22 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+window.addEventListener('keydown', function (e) {
+  const audio = document.querySelector(`audio[data-key= "${e.keyCode}"]`);
+  const key =  document.querySelector(`.key[data-key= "${e.keyCode}"]`);
+  if(!audio) return; // stops the function from playing
+  audio.currentTime = 0; // rewinds to the start for no delay 
+  audio.play();
+  key.classList.add('playing');
+});
 
+function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  this.classList.remove('playing');
+   };
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
