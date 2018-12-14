@@ -3,19 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>JS + CSS Clock</title>
-</head>
-<body>
-
-
-    <div class="clock">
-      <div class="clock-face">
-        <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
-      </div>
-    </div>
-
-
   <style>
     html {
       background: #018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
@@ -68,6 +55,16 @@
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 </style>
+</head>
+<body>
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
 
 <script>
   const secondHand = document.querySelector('.second-hand');
