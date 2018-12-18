@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Detection</title>
+</head>
+<body>
+
+  <div class="words" contenteditable>
+  </div>
+
+<script>
+
+  // Has to run on a server so cd '20 - Speech Detection' and npm install
+
+  // Set standard window.SppechRecognition so that Firefox (webkit) is also accepted
+  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  // set a variable
+  const recognition = new SpeechRecognition();
+  // interim results means that the speech recognition spells out words as you speak rather than waiting for a gap
+  recognition.interimResults = true;
+
+  // set it up so that each time you speak it creates a paragraph tag and breaks up the text
+  let p = document.createElement('p');
+  // add the words to the paragraph below .words class
+  const words = document.querySelector('.words');
+  words.appendChild(p);
+
+  recognition.addEventListener('result', event => {
+    //console.log(event.results);
+    // create an array from the results (currently not so we can't map over it)
+    const transcript = Array.from(event.results)
+      // get the first result
+      .map(result => result[0])
+      // map results onto the array 
+      .map(result => result.transcript)
+      // join the text together in the array
+      .join('')
+
+    // add transcript to the paragraph tag
+    p.textContent = transcript;
+
+    // so that it doesn't replace the existing p tag check if the event if final *console.log(event) to check*
+    if (event.results[0].isFinal){
+      // we already have a let variable above so using this we can create a p tag
+      p = document.createElement('p');
+      // and then append another p tag to it once results isFinal
+      words.appendChild(p)
+    }
+
+    console.log(transcript);
+  });
+
+  // run the speech listener again when the results are gathered and the event ends
+  recognition.addEventListener('end', recognition.start);
+
+  // run this function to make it work (in reality probably want to give user a prompt before running it on page load)
+  recognition.start();
+
+</script>
+
+
+  <style>
+    html {
+      font-size: 10px;
+    }
+
+    body {
+      background:#ffc600;
+      font-family: 'helvetica neue';
+      font-weight: 200;
+      font-size: 20px;
+    }
+
+    .words {
+      max-width:500px;
+      margin:50px auto;
+      background:white;
+      border-radius:5px;
+      box-shadow:10px 10px 0 rgba(0,0,0,0.1);
+      padding:1rem 2rem 1rem 5rem;
+      background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+      background-size: 100% 3rem;
+      position: relative;
+      line-height:3rem;
+    }
+    p {
+      margin: 0 0 3rem;
+    }
+
+    .words:before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      top: 0;
+      left: 30px;
+      bottom: 0;
+      border: 1px solid;
+      border-color: transparent #efe4e4;
+    }
+  </style>
+
+</body>
+</html>
