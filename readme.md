@@ -2,6 +2,20 @@
 
 # JavaScript30
 
+### Index
+
+#### Fetch
+#### Filter
+#### Map
+#### Sort
+#### reduce
+#### Some
+#### Every
+#### Find
+#### Find Index
+#### Slice
+
+
 Starter Files + Completed solutions for the JavaScript 30 Day Challenge.
 
 Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
