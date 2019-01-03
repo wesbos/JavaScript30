@@ -57,7 +57,7 @@ function takePhoto() {
   link.href = data;
   link.setAttribute('download', 'handsome');
   link.innerHTML = `<img src="${data}" alt="Handsome Man" />`;
-  strip.insertBefore(link, strip.firsChild);
+  strip.insertBefore(link, strip.firstChild);
 }
 
 function redEffect(pixels) {
