@@ -31,29 +31,169 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    
+ 
+    const fifteenA = inventors.filter(function(inventor) {
+      if(inventor.year >= 1500 && inventor.year < 1600) {
+        return true; // Keep it!
+      }
+    });
+    //console.table(fifteenA);
+
+    // Reduced above function 
+    const fifteenB = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600))
+    //console.table(fifteenB);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+    const fullNameA = inventors.map(inventor => inventor.first + ' ' + inventor.last);
+    //console.log(fullNameA);
 
+    const fullNameB = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    //console.log(fullNameB);
+    
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const orderedA = inventors.sort(function(personA, personB) {
+      if (personA.year > personB.year) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    //console.table(orderedA);
+
+    // Better way to do the abover with an arrow function and ternary operator. Much cleaner code.
+    const orderedB = inventors.sort((firstPerson, secondPerson) => firstPerson.year > secondPerson.year ? 1 : -1);
+
+    //console.table(orderedB);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
 
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0)
+    console.log(totalYears);
+
     // 5. Sort the inventors by years lived
+
+    const oldest = inventors.sort(function(a, b) {
+      const lastGuy = a.passed - a.year;
+      const nextGuy = b.passed - b.year;
+      /*
+      if(lastGuy > nextGuy) {
+        return -1;
+      } else {
+        return 1;
+      }
+      */
+      return lastGuy > nextGuy ? -1 : 1;
+    });
+    //console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    const catagory = document.querySelector('.mw-category');
+    /*
+    Query selector all returns a node list. There are two ways to convert that into an array
+    1st Array.from will convert it into an array
+    2nd Use ES6 spread which spreads every single item into the array. Spreads take every single item out 
+    of something (an iterable aka Node list in this case) and put it into the containing array.
+    */
+    /*
+    const links = Array.from(catagory.querySelectorAll('a'));
+    const links2 = [...catagory.querySelectorAll('a')];
 
+    const de = links2
+                  .map(link => link.textContent)
+                  .filter(streetName => streetName.includes('de'));
+    */
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    const alpha = people.sort((lastOne, nextOne) => {
+      // destructure the array
+      const [aLast, aFirst] = lastOne.split(', ');
+      const [bLast, bFirst] = nextOne.split(', ');
+      // sort the list 
+      return aLast > bLast ? 1 : -1;
+    });
+    //console.log(alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transportation = data.reduce(function(obj, item) {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+
+      /* 
+      Start with a blank object {} and every time we loop over we see if there is an instance of that object there
+      in the if() statement. If there is not add the 0 instance of that object item. Then start to increment the object 
+      with the object item ++
+      */
+    }, {});
+
+    // console.log(transportation);
+
+
+    // HACKER RANK
+
+    'use strict';
+
+const fs = require('fs');
+
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
+
+let inputString = '';
+let currentLine = 0;
+
+process.stdin.on('data', inputStdin => {
+    inputString += inputStdin;
+});
+
+process.stdin.on('end', _ => {
+    inputString = inputString.trim().split('\n').map(str => str.trim());
+
+    main();
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+/*
+ * Complete the cookies function below.
+ */
+function cookies(k, A) {
+    return A;
+
+}
+
+function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const nk = readLine().split(' ');
+
+    const n = parseInt(nk[0], 10);
+
+    const k = parseInt(nk[1], 10);
+
+    const A = readLine().split(' ').map(ATemp => parseInt(ATemp, 10));
+
+    let result = cookies(k, A);
+
+    ws.write(result + "\n");
+
+    ws.end();
+}
   </script>
 </body>
 </html>
