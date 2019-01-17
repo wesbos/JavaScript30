@@ -58,24 +58,26 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  window.addEventListener('keydown', function(event){
-    const sound = document.querySelector(`audio[data-key="${event.keyCode}"`); //selects one event and captures the event key pressed via template literal or else it would be assigning.
-    const key = document.querySelector(`.key[data-key="${event.keyCode}"`); //selects the key class of the div being pressed.
-    if(!sound) return; //stops function if no audio element is attributed to data-key.
-    sound.currentTime = 0; //rewind to the start
-    sound.play();
-    key.classList.add('playing');
-    // key.classList.remove('playing');
-  });
 
-  function endTransition(e) {
-    console.log('transform');
-    
+  window.addEventListener('keydown', playSound);
+
+  function removeTransition(e){
+    if(e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
   }
-  const keys = document.querySelectorAll('.key');
-  // debugger;
-  keys.forEach(key => key.addEventListener('transitionend', endTransition));
 
+  function playSound(e){
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 </script>
 
 
