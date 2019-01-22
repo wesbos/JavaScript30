@@ -5,14 +5,25 @@
 ### Index
 
 #### Fetch
+
 #### Filter
+* 23, 24
+
 #### Map
+* 23
+
 #### Sort
-#### reduce
+
+#### Reduce
+
 #### Some
+
 #### Every
+
 #### Find
+
 #### Find Index
+
 #### Slice
 
 
