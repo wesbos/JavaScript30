@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speech Synthesis</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="voiceinator">
+
+      <h1>The Voiceinator 5000</h1>
+
+      <select name="voice" id="voices">
+        <option value="">Select A Voice</option>
+      </select>
+
+      <label for="rate">Rate:</label>
+      <input name="rate" type="range" min="0" max="3" value="1" step="0.1">
+
+      <label for="pitch">Pitch:</label>
+
+      <input name="pitch" type="range" min="0" max="2" step="0.1">
+      <textarea name="text">Hello! I love JavaScript 👍</textarea>
+      <button id="stop">Stop!</button>
+      <button id="speak">Speak</button>
+
+    </div>
+
+<script>
+  const msg = new SpeechSynthesisUtterance();
+  let voices = [];
+  const voicesDropdown = document.querySelector('[name="voice"]');
+  const options = document.querySelectorAll('[type="range"], [name="text"]');
+  const speakButton = document.querySelector('#speak');
+  const stopButton = document.querySelector('#stop');
+  msg.text = document.querySelector('[name="text"]').value;
+
+  function populateVoices() {
+    voices = this.getVoices();
+    // console.log(voices);
+
+    // Loop over and set each voice as a dropdown
+    voicesDropdown.innerHTML = voices
+      // Filter for english only voices (remove to see whole list)
+      .filter(voice => voice.lang.includes('en'))
+      .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+      .join('');
+  }
+
+  function setVoice() {
+    // console.log(this.value);
+    // Loop over the list of voices and find the one that matches
+    msg.voice = voices.find(voice => voice.name === this.value);
+
+    toggleVoice();
+  }
+
+  function toggleVoice(startOver = true) {
+    // cancel the current speaking (in old voice)
+    speechSynthesis.cancel();
+
+    // Only if passover is true (default value) speak the message
+    if (startOver) {
+      speechSynthesis.speak(msg);
+    }
+  }
+
+  function setOption() {
+    console.log(this.name, this.value);
+    
+    // Not needed but read below
+    const name = this.name;
+    const value = this.value;
+
+    // As pitch, rate and text are methods of the SpeechSynthesisUtterance we can set these parameters directly without variables. If they change just set the variable again!
+
+    msg[this.name] = this.value;
+
+    toggleVoice();
+  }
+
+
+  // Variable for the speechSynthesis API that must be called. Can't be done on page load as it needs to load first
+  speechSynthesis.addEventListener('voiceschanged', populateVoices);
+
+  // When you select a voice change
+  voicesDropdown.addEventListener('change', setVoice);
+
+  // Loop through options and 'setOption'
+  options.forEach(option => option.addEventListener('change', setOption))
+
+  // When you click speak run toggle voice
+  speakButton.addEventListener('click', toggleVoice);
+
+  // // When you click stop - stop the voice
+  // stopButton.addEventListener('click', toggleVoice(false)); Can't pass false parameter as it would run on page load...
+  // // Another option using bind
+  // stopButton.addEventListener('click', toggleVoice.bind(null, false));
+  // // Another option - Nice way which is used in react (both options just create another function)
+  stopButton.addEventListener('click', () => toggleVoice(false));
+</script>
+
+</body>
+</html>
