@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  *, *:before, *:after { box-sizing: inherit; }
+
+  div {
+    width:100%;
+    padding:100px;
+  }
+
+  .one {
+    background: thistle;
+  }
+
+  .two {
+    background:mistyrose;
+  }
+
+  .three {
+    background:coral;
+  }
+</style>
+
+<button></button>
+<script>
+
+  const divs = document.querySelectorAll('div');
+
+  function logText(e){
+    // stopPropagation() = Stop prevents further propagation of the current event in the capturing and bubbling phases... just returns the first value that you click on!
+    e.stopPropagation();
+
+    // CAPTURE listens to html, body, divs etc from top down then events bubble up
+    // BUBBLING when clicking on inner div, it logs all as we click on all parents too (e.g. body and html)
+    console.log(this.classList.value);
+
+
+  }
+
+  // // BUBBLING OPTION (inner most value first then parents)
+  // divs.forEach(div => div.addEventListener('click', logText));
+
+  // // CAPTURE (pass options to the function) now runs in reverse from top down so html, then body, then divs (Capture default is false)
+  // divs.forEach(div => div.addEventListener('click', logText, {
+  //   capture: true
+  // }));
+
+  // ONCE (pass options to the function) now runs in reverse from top down so html, then body, then divs (Capture default is false)
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: true,
+    once: true
+  }));
+  
+</script>
+</body>
+</html>
