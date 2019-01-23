@@ -1,7 +1,8 @@
 html {
   font-size: 10px;
-  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+  background: url(https://images.unsplash.com/photo-1509335919466-c196457ea95a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 body,html {
@@ -13,11 +14,12 @@ body,html {
 .keys {
   display: flex;
   flex: 1;
-  min-height: 100vh;
   align-items: center;
   justify-content: center;
 }
-
+.drop {
+  margin-top: 30vh;
+}
 .key {
   border: .4rem solid black;
   border-radius: .5rem;
@@ -34,8 +36,8 @@ body,html {
 
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: #5c051a;
+  box-shadow: 0 0 1rem #333;
 }
 
 kbd {

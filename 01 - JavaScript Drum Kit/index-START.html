@@ -6,6 +6,50 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class='drop'>
+  <div><h1>Piano</h1></div>
+    <div class="keys">
+        <div data-key="81" class="key">
+          <kbd>Q</kbd>
+          <span class="sound">Snare 8</span>
+        </div>
+        <div data-key="87" class="key">
+          <kbd>W</kbd>
+          <span class="sound">snare 12 </span>
+        </div>
+        <div data-key="69" class="key">
+          <kbd>E</kbd>
+          <span class="sound">Sq loop</span>
+        </div>
+        <div data-key="82" class="key">
+          <kbd>R</kbd>
+          <span class="sound">ex</span>
+        </div>
+        <div data-key="84" class="key">
+          <kbd>T</kbd>
+          <span class="sound">cymbal</span>
+        </div>
+        <div data-key="89" class="key">
+          <kbd>Y</kbd>
+          <span class="sound">Hitback</span>
+        </div>
+        <div data-key="85" class="key">
+          <kbd>U</kbd>
+          <span class="sound">Synth</span>
+        </div>
+        <div data-key="73" class="key">
+          <kbd>I</kbd>
+          <span class="sound">Moz</span>
+        </div>
+        <div data-key="79" class="key">
+          <kbd>O</kbd>
+          <span class="sound">Moz</span>
+        </div>
+        <div data-key="80" class="key">
+            <kbd>P</kbd>
+            <span class="sound">Loop</span>
+          </div>
+      </div>
 
 
   <div class="keys">
@@ -47,6 +91,19 @@
     </div>
   </div>
 
+</div>
+  
+  <audio data-key="81" src="sounds/snare_08.wav"></audio>
+  <audio data-key="87" src="sounds/snare_12.wav"></audio>
+  <audio data-key="69" src="sounds/square_loop.wav"></audio>
+  <audio data-key="82" src="sounds/c3.wav"></audio>
+  <audio data-key="84" src="sounds/cymbal.wav"></audio>
+  <audio data-key="89" src="sounds/HB.wav"></audio>
+  <audio data-key="85" src="sounds/bass_synth.wav"></audio>
+  <audio data-key="73" src="sounds/e.wav"></audio>
+  <audio data-key="79" src="sounds/mozart_6.wav"></audio>
+  <audio data-key="80" src="sounds/loop.wav"></audio>
+
   <audio data-key="65" src="sounds/clap.wav"></audio>
   <audio data-key="83" src="sounds/hihat.wav"></audio>
   <audio data-key="68" src="sounds/kick.wav"></audio>
@@ -57,9 +114,7 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-
-</script>
+<script type='text/javascript' src='main.js'></script>
 
 
 </body>
