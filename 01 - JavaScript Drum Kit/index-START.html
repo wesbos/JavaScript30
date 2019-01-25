@@ -1,10 +1,9 @@
-<!--jp-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
-  <link rel="stylesheet" href="style.css">
+  <link type="text" rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -59,6 +58,24 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+
+	function playSound(e) {
+		const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+		const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+		if(!audio) return; //stop the function from running
+		audio.currentTime = 0; // rewind to the start
+		audio.play();
+		key.classList.add('playing');
+	}
+
+	function removeTransform(e) {
+		if(e.propertyName !== 'transform') return; //skip if it's not a transform
+		this.classList.remove('playing');
+	}
+
+	const keys = document.querySelectorAll(`.key`);
+	keys.forEach(key => key.addEventListener('transitionend', removeTransform));
+	window.addEventListener('keydown', playSound);
 
 </script>
 
