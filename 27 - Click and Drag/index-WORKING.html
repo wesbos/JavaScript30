@@ -35,6 +35,58 @@
   </div>
 
 <script>
+
+    const slider = document.querySelector('.items');
+    // Mouse Functionality
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slider.classList.add('active');
+      // This shows in relation to page and not in relation to the slider
+      // console.log(e.pageX);
+      startX = e.pageX - slider.offsetLeft;
+
+      // How far left is the slider currently?
+      scrollLeft = slider.scrollLeft;
+      // console.log(scrollLeft);
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.classList.remove('active');
+    });
+
+    // Where the magic happens
+    slider.addEventListener('mousemove', (e) => {
+      // Lots of event action here!
+      // console.log(event); // This runs as it runs before !isDown return on false 
+      
+      // if the mouse is not down then ignore!
+      if (!isDown) return // stop the funcition from running
+      // console.count(isDown);
+
+      // Stops text being highlighted or somethign
+      e.preventDefault();
+
+      // Where is initial click?
+      const x = e.pageX - slider.offsetLeft;
+      // console.log({x, startX});
+
+      // How far has the mouse deviated from its initial space?
+      const deviation = (x - startX) * 2;
+
+      // Set the slider value from JS e.g. slider.scrollLeft = 1000;
+      slider.scrollLeft = scrollLeft - deviation; // Using scrollleft updated from mousedown function at top
+    });
+
 </script>
 
   </body>
