@@ -19,11 +19,11 @@
   const bar = speed.querySelector('.speed-bar');
   const video = document.querySelector('.flex');
 
-  speed.addEventListener('mousemove', (e) => {
+  speed.addEventListener('mousemove', function() {
     // get where user clicks initially
-    console.log(speed.offsetTop);
-    const y = (e.pageY - speed.offsetTop); // had to use speed rather than this
-    const percent = y / speed.offsetHeight;
+    console.log(this.offsetTop);
+    const y = (e.pageY - this.offsetTop); // had to use speed rather than this
+    const percent = y / this.offsetHeight;
     const min = 0.4;
     const max = 4;
 
