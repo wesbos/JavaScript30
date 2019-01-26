@@ -43,6 +43,8 @@
   </div>
 
   <script>
+
+    // debounce function already created for user
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -57,6 +59,42 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+    // Selector
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e){
+      // console.count(e);
+
+      // Loop through each element and do some maths
+      sliderImages.forEach(sliderImage => {
+        // Get the coordiates for the bottom of the view port (scroll from top number plus height of window!)
+        const windowBottom = (window.scrollY + window.innerHeight);
+        const imageHalfWay = (sliderImage.height / 2);
+
+        // Slide in halfway through the scroll down each image!
+        const slideInAt = windowBottom + imageHalfWay;
+
+        // Get image positions (bottom value) and do maths to know when to slide in
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+
+        // Check to see if we should slide in yet?
+          // When slideInAt is greater user has scrolled enough down the page
+          const isHalfOnScreen = slideInAt > sliderImage.offsetTop;
+          // Image is still above the scroll mark - if we are then image needs to hide again
+          const isNotScrolledPast = window.scrollY < imageBottom;
+
+        if (isHalfOnScreen && isNotScrolledPast){
+          sliderImage.classList.add('active');
+        } else {
+          sliderImage.classList.remove('active');
+        }
+      })
+    }
+
+    // // see what happens without debounce!
+    // window.addEventListener('scroll', checkSlide);
+    window.addEventListener('scroll', debounce(checkSlide))
 
   </script>
 

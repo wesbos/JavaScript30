@@ -1,10 +1,13 @@
-![](https://javascript30.com/images/JS3-social-share.png)
-
 # JavaScript30
+
+## Array Functions
 
 ### Index
 
 #### Fetch
+
+#### For Each
+* 13
 
 #### Filter
 * 23, 24
@@ -13,6 +16,9 @@
 * 23
 
 #### Sort
+
+#### Splice
+* 12
 
 #### Reduce
 
@@ -25,6 +31,3 @@
 #### Find Index
 
 #### Slice
-
-
-Starter Files + Completed solutions for the JavaScript 30 Day Challenge.
