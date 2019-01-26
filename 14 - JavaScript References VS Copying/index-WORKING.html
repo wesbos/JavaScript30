@@ -7,32 +7,46 @@
 <body>
 
   <script>
-    // start with strings, numbers and booleans
+    // // start with strings, numbers and booleans   
+    // let age = 100;
+    // let age2 = age;
+    // console.log(age, age2);
+    // age = 200;
+    // console.log(age, age2);
+
+    // let name = 'Wes';
+    // let name2 = name;
+    // console.log(name, name2);
+    // name = 'wesley';
+    // console.log(name, name2);
+
+    // // Both cases above we will have Original then Updated as the variable is set in order and then the first is updated
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
     // and we want to make a copy of it.
+    const team = players;
 
+    // console.log(players, team);
     // You might think we can just do something like this:
+    team[3] = 'Lux';
 
-    // however what happens when we update that array?
+    // however what happens when we update that array - both original and copy arrays have been updated, not just team! Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    
+    console.log(players, team); 
 
-    // now here is the problem!
+    // So, how do we fix this? We take a copy instead! With slice if we pass nothing to the function it will just take a copy
+    const team2 = players.slice();
 
-    // oh no - we have edited the original array too!
+    // or using concatinate you can add existing array to an new blank array
+    const team3 = [].concat(players);
 
-    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    // or use the new ES6 Spread - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+    const team4 = [...players];
 
-    // So, how do we fix this? We take a copy instead!
-
-    // one way
-
-    // or create a new array and concat the old one in
-
-    // or use the new ES6 Spread
-
-    // now when we update it, the original one isn't changed
+    // BEST according to Wes Bos - or ES6 from - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from
+    const team5 = Array.from(players)
 
     // The same thing goes for objects, let's say we have a person object
 
@@ -42,13 +56,42 @@
       age: 80
     };
 
-    // and think we make a copy:
+    // Object.assign. 1 Start with a blank object. 2 Pass it the object you want to pass the properties from. 3 OPTIONAL Add in the new properties.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+    //const captain = Object.assign({}, person);
+    const captain = Object.assign({}, person, { number: 99, age: 12 });
 
-    // how do we take a copy instead?
-
-    // We will hopefully soon see the object ...spread
+    // We will hopefully soon see the object ...spread (26/01/19 - seems to be added!)
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#Spread_in_object_literals
+    const captain2 = {...person};
+    captain2.age = 99;
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    // https://lodash.com/docs/4.17.11#cloneDeep
+
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+
+    console.clear();
+    console.log(wes);
+
+    // take a copy of wes object
+    const developer = Object.assign({}, wes);
+
+    // BUT! if we change a nested object like social, it STILL updates for both
+    developer.name = 'Domg';
+    developer.social.twitter = '@DomG';
+    console.clear();
+    console.log(developer, wes);
+
+    // Pretty hacky - Creates a string and then parses it back to JSON. 'Poor Mans Deep Clone'!
+    const developer2 = JSON.parse(JSON.stringify(wes));
 
   </script>
 

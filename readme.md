@@ -4,7 +4,16 @@
 
 ### Index
 
+#### Concat
+* 14
+
+#### Copy
+* 14
+
 #### Fetch
+
+#### From
+* 14
 
 #### For Each
 * 13
@@ -22,6 +31,12 @@
 
 #### Reduce
 
+#### Reference
+* 14
+
+#### Spread (...)
+* 14
+
 #### Some
 
 #### Every
@@ -31,3 +46,4 @@
 #### Find Index
 
 #### Slice
+* 14
