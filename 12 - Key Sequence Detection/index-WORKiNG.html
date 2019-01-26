@@ -7,6 +7,27 @@
 </head>
 <body>
 <script>
+  // Pressed is blank array to begin with
+  const pressed = [];
+  // Set the code
+  const secretCode = 'wesbos';
+
+  // Each key up trigger
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key);
+    pressed.push(e.key);
+
+    // Trim to maximum of secretcode length using - Splice. Start from end of array using minus at start. So; - means from the back! Then trim it (pressed.length - secretCode.length).
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice#Remove_1_element_from_index_3
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    // Join pressed array and check for match of the secretCode
+    if (pressed.join('').includes(secretCode)) {
+      console.log('DING DING!');
+      // Cornify.js above
+      cornify_add();
+    }
+    console.log(pressed);
+  });
 </script>
 </body>
 </html>
