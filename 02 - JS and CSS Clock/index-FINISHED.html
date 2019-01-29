@@ -85,8 +85,8 @@
     const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
     minsHand.style.transform = `rotate(${minsDegrees}deg)`;
 
-    const hour = now.getHours();
-    const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90;
+    const hour = now.getHours(); //Video accidentally uses getMinutes()
+    const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90; //Video accidentally uses mins instead of hour
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
   }
 
