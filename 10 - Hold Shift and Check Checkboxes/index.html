@@ -9,7 +9,7 @@
 
     html {
       font-family: sans-serif;
-      background: #ffc600;
+      background: #bada99;
     }
 
     .inbox {
@@ -96,6 +96,34 @@
   </div>
 
 <script>
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+
+let lastChecked;
+
+function handleCheck(e) {
+  //check if the Shift key is down
+  // AND check that they are checking it done
+  let inBetween = false;
+  if (e.shiftKey && this.checked) {
+    
+    checkboxes.forEach(checkbox => {
+      console.log('checkbox clicked');
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+        console.log('in between');
+      }
+      if (inBetween) {
+        checkbox.checked = true;
+      }
+    });
+  }
+  
+  lastChecked = this;
+}
+
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+
 </script>
 </body>
 </html>

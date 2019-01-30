@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
@@ -43,6 +44,7 @@
   </div>
 
   <script>
+    //debounce - pass it a function, it will only run once every x miliseconds
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -56,23 +58,29 @@
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
       };
-    };
+    }
 
     const sliderImages = document.querySelectorAll('.slide-in');
 
     function checkSlide() {
+      
       sliderImages.forEach(sliderImage => {
-        // half way through the image
-        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
-        // bottom of the image
+        //pixel level halfway through the image
+        const slideInAt = (window.scrollY + window.innerHeight - sliderImage.height / 2);
+        console.log(slideInAt);
+        //bottom of the image
         const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        //offsetTop where the image starts counting from the top of the page
+
         const isHalfShown = slideInAt > sliderImage.offsetTop;
         const isNotScrolledPast = window.scrollY < imageBottom;
         if (isHalfShown && isNotScrolledPast) {
           sliderImage.classList.add('active');
         } else {
-          sliderImage.classList.remove('active');
+            sliderImage.classList.remove('active');
         }
+      
+       
       });
     }
 
@@ -80,64 +88,7 @@
 
   </script>
 
-  <style>
-    html {
-      box-sizing: border-box;
-      background: #ffc600;
-      font-family: 'helvetica neue';
-      font-size: 20px;
-      font-weight: 200;
-    }
-    
-    body {
-      margin: 0;
-    }
-    
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-
-    h1 {
-      margin-top: 0;
-    }
-
-    .site-wrap {
-      max-width: 700px;
-      margin: 100px auto;
-      background: white;
-      padding: 40px;
-      text-align: justify;
-    }
-
-    .align-left {
-      float: left;
-      margin-right: 20px;
-    }
-
-    .align-right {
-      float: right;
-      margin-left: 20px;
-    }
-
-    .slide-in {
-      opacity: 0;
-      transition: all .5s;
-    }
-
-    .align-left.slide-in {
-      transform: translateX(-30%) scale(0.95);
-    }
-    
-    .align-right.slide-in {
-      transform: translateX(30%) scale(0.95);
-    }
-
-    .slide-in.active {
-      opacity: 1;
-      transform: translateX(0%) scale(1);
-    }
-
-  </style>
+  
 
 </body>
 </html>

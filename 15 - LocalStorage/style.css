@@ -77,3 +77,7 @@ h2 {
   outline: 0;
   border: 1px solid rgba(0,0,0,0.1);
 }
+
+.delete-button {
+  margin-top: 7px;
+}
