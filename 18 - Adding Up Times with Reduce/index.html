@@ -181,26 +181,31 @@
       Video 58
     </li>
   </ul>
+
 <script>
+  const timeNodes = document.querySelectorAll('[data-time]');
+  //NodeList - needs converting to an Array:
+  const timeArray = [...timeNodes];
 
-  const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
+  const timeInSeconds = timeArray
+  .map(node => node.dataset.time)
+  .map(time => {
+    const [mins, secs] = time.split(':').map(parseFloat); //shorter version
+    return (mins * 60) + secs;
+   
+  })
+  .reduce((total, videosSeconds) =>  total + videosSeconds);
 
-  const seconds = timeNodes
-    .map(node => node.dataset.time)
-    .map(timeCode => {
-      const [mins, secs] = timeCode.split(':').map(parseFloat);
-      return (mins * 60) + secs;
-    })
-    .reduce((total, vidSeconds) => total + vidSeconds);
+  console.log(timeInSeconds);
 
-    let secondsLeft = seconds;
-    const hours = Math.floor(secondsLeft / 3600);
-    secondsLeft = secondsLeft % 3600;
+  let secondsLeft = timeInSeconds;
+  const hours = Math.floor(secondsLeft / 3600);
+  secondsLeft = secondsLeft % 3600;
+  const minutes = Math.floor(secondsLeft / 60);
+  const seconds = secondsLeft % 60;
 
-    const mins = Math.floor(secondsLeft / 60);
-    secondsLeft = secondsLeft % 60;
+  console.log(hours, minutes, seconds);
 
-    console.log(hours, mins, secondsLeft);
 
 </script>
 </body>

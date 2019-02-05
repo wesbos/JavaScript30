@@ -12,6 +12,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Amatic SC', cursive;
+  position: relative;
 }
 
 h1 {
@@ -66,4 +67,17 @@ h1 {
 
 .hole.up .mole {
   top: 0;
+}
+
+.startButton {
+  background-color: #2356ae;
+  padding: 10px;
+  border: none;
+  color: white;
+  font-family: 'Amatic SC', cursive;
+  font-size: 30px;
+  position: absolute;
+  left: 45%;
+  bottom: -25%;
+  margin-top: 10px;
 }
