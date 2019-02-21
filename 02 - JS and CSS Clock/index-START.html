@@ -72,6 +72,12 @@
     const minuteHand = document.querySelector(".min-hand");
     const hourHand = document.querySelector(".hour-hand");
 
+    function degreeReset(time, degree) {
+      if (degree === 90) {
+        time.style.transition = "all 0.0s"
+      }
+    }
+
     function setDate() {
       const now = new Date();
       const seconds = now.getSeconds();
@@ -87,8 +93,14 @@
       const hoursDegrees = ((hours / 12) * 360) + 90;
       hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
       console.log(hours);
+
+      //reset transition by degree
+      degreeReset(secondHand, secondsDegrees);
+      degreeReset(minuteHand, minutesDegrees);
+      degreeReset(hourHand, hoursDegrees);
     }
     setInterval(setDate, 1000);
+    setDate();
   </script>
 </body>
 
