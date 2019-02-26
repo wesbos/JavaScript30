@@ -62,11 +62,39 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%; /* makes hand pivot from end of the div */
+      transform: rotate(90deg); /* sets hands to 12 o'clock position */
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.82, 3.3, 0.58, 1);
     }
 
   </style>
 
   <script>
+  const secondHand = document.querySelector('.second-hand');
+  const minuteHand = document.querySelector('.min-hand');
+  const hrHand = document.querySelector('.hour-hand');
+
+  function setDate() {
+    const now = new Date();
+
+    const seconds = now.getSeconds();
+    const secDegrees = ((seconds / 60) * 360) + 90; // seconds divided by total number of seconds in a minute multiply by total degrees plus 90 to offset the initial rotation
+    const minutes = now.getMinutes();
+    const minDegrees = ((minutes / 60) * 360) + 90; // same idea to secDegrees
+    const hours = now.getHours();
+    const hrDegrees = ((hours / 12) * 360) + 90;
+    
+    secondHand.style.transform = `rotate(${secDegrees}deg)`;
+    minuteHand.style.transform = `rotate(${minDegrees}deg)`;
+    hrHand.style.transform = `rotate(${hrDegrees}deg)`;
+  }
+
+  setInterval(setDate, 1000);
+
+  setDate();
+
+
 
 
   </script>
