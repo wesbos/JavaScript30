@@ -58,7 +58,8 @@ video.addEventListener("play", updateButton);
 video.addEventListener("pause", updateButton);
 
 //updates volume & speed
-video.addEventListener("timeupdate", handleProgress); //'progress' works too
+video.addEventListener("timeupdate", handleProgress);
+//'progress' works too
 
 toggle.addEventListener("click", togglePlay);
 skipButtons.forEach(button => button.addEventListener("click", skip));
@@ -79,3 +80,17 @@ progress.addEventListener('mousemove, () => {
 progress.addEventListener('mousemove', () => mousedown && scrub(e));
 progress.addEventListener('mousedown', () => mousedown = true);
 progress.addEventListener('mousedup', () => mousedown = false);
+
+/* fullscreen
+css
+.player:fullscreen {
+  max-width: none;
+  width: 100%
+}
+.player:-webkit-full-screen {
+  max-width: none;
+  width: 100%
+}
+function
+player.webkitRequestFullScreen()
+*/
