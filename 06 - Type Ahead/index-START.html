@@ -8,7 +8,7 @@
 <body>
 
   <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
+    <input type="text" class="search" placeholder="City or State" value="">
     <ul class="suggestions">
       <li>Filter for a city</li>
       <li>or a state</li>
@@ -16,6 +16,69 @@
   </form>
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+let items = null;
+const input = document.querySelector('.search');
+const state = {
+  value: []
+};
+
+fetch(endpoint)
+.then(res => {
+  if(res.ok){
+    res.json().then(data => {
+      items = [...data];
+      console.log(items);
+    })
+  } else {
+    console.log("... ", res.status);
+  }
+});
+
+input.addEventListener("keydown",e => {
+  if(e.keyCode === 8) {
+    console.log("keydown event > ",e.keyCode);
+    console.log("e.target.value >>",e.target.value);
+    state.value.pop();
+    console.log(state.value);
+    renderItems(filterItems(items, state.value.join('')), '.suggestions');
+  }
+});
+input.addEventListener("keypress",e => {
+  console.log("keypress event > ",e.keyCode);
+  console.log("e.target.value >>",e.target.value);
+  
+  state.value.push(e.key);
+  console.log("state.value.join('') > ",state.value.join(''));
+
+  renderItems(filterItems(items, state.value.join('')), '.suggestions');
+});
+
+const filterItems = (items, value) => {
+  const lowerValue = value.toLowerCase();
+
+  return items
+  .filter(item => 
+    item.city.toLowerCase().includes(lowerValue) || item.state.toLowerCase().includes(lowerValue)
+  )
+  .map(({city, state, population}) => {
+    const cityStr = city.toLowerCase().split(lowerValue).join(`<span class="hl">${value}</span>`);
+    const stateStr = state.toLowerCase().split(lowerValue).join(`<span class="hl">${value}</span>`);
+
+    return {
+      name: `${cityStr[0].toUpperCase()}${cityStr.slice(1)}, ${stateStr[0].toUpperCase()}${stateStr.slice(1)}`,
+      population
+    };
+  })
+};
+
+const renderItems = (items, selector) => {
+  const suggestions = document.querySelector(selector);
+  suggestions.innerText = '';
+  for( const {name, population} of items){
+    console.log(name, population);
+    suggestions.insertAdjacentHTML('beforeend',`<li><span class="name">${name}</span><span class="population">${population}</span></li>`);
+  }
+};
 
 </script>
 </body>
