@@ -25,16 +25,32 @@
     ];
 
     // Some and Every Checks
-    // Array.prototype.some() // is at least one person 19 or older?
+    // Array.prototype.some() // is at least one person 19 or older? 
+    // 어떤 배열 요소라도 대해 참인(truthy) 값을 반환하는 경우 true, 그 외엔 false.
+    const isAdult = people.some(person => {
+      return (new Date()).getFullYear() - person.year >= 19
+    });
     // Array.prototype.every() // is everyone 19 or older?
-
+    // 모든 배열 요소에 대해 참(truthy)인 값을 반환하는 경우 true, 그 외엔 false.
+    const allAdult = people.every(person => {
+      return (new Date()).getFullYear() - person.year >= 19
+    })
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    // 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환.
+    const comment = comments.find(comment => comment.id === 823423);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+    // 주어진 판별 함수를 만족하는 배열의 첫 번째 요소에 대한 인덱스를 반환합니다. 만족하는 요소가 없으면 -1을 반환합니다.
+    const commentIndex = comments.findIndex(comment => comment.id === 823423);
+
+    const newComments = [
+      ...comments.slice(0, commentIndex),
+      ...comments.slice(commentIndex + 1)
+    ];
 
   </script>
 </body>
