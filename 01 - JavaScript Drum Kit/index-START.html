@@ -57,9 +57,29 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-  <h1>Sample. Hello</h1>
-
 <script>
+
+window.addEventListener('keydown', function(keypress) {
+  const key = document.querySelector(`.key[data-key='${keypress.keyCode}']`);
+  const audio = document.querySelector(`audio[data-key='${keypress.keyCode}']`);
+  if (!audio) {
+    // console.log('false');
+    return false;
+  } else {
+    // console.log('true');
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+    return true;
+  }
+});
+
+const keys = document.querySelectorAll('.key[data-key]');
+keys.forEach(function(key) {
+  key.addEventListener('transitionend', function() {
+    key.classList.remove('playing');
+  });
+});
 
 </script>
 
