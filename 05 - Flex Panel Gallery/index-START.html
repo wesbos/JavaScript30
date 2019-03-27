@@ -26,6 +26,7 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -43,7 +44,13 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
     }
+    
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
     .panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
@@ -56,7 +63,14 @@
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    .panel > *:first-child { transform: translateY(-100%);}
+    .panel > *:last-child { transform: translateY(100%);}
 
     .panel p {
       text-transform: uppercase;
@@ -71,6 +85,11 @@
 
     .panel.open {
       font-size: 40px;
+      flex-grow: 5;
+    }
+
+    .panel.open-active * {
+      transform: none;
     }
 
   </style>
@@ -105,10 +124,23 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll('.panel');
 
+    panels.forEach(panel => panel.addEventListener('click', function() {
+      this.classList.toggle('open');
+      console.log(this);
+      for(let i = 0; i < panels.length; i++) {
+        if (panels[i] !== this) {
+          panels[i].classList.remove('open');
+        }
+      }
+    }));
+
+    panels.forEach(panel => panel.addEventListener('transitionend', function(e) {
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }));
   </script>
-
-
-
 </body>
 </html>
