@@ -17,29 +17,61 @@
       p.style.fontSize = '50px';
     }
 
+    // clearing
+    console.clear();
+
     // Regular
+    console.log('test');
 
     // Interpolated
+    console.log(`I am a %s string`, 'sample');
 
     // Styled
+    console.log('%c This is customized.', 'font-size: 24px;');
 
     // warning!
+    console.warn('%c WARNING!', 'color: yellow;');
 
     // Error :|
+    console.error('%c ERROR!', 'color: red;');
 
     // Info
+    console.info('INFO');
 
     // Testing
-
-    // clearing
-
+    console.assert(document.querySelector('p').textContent === '×BREAK×UP×',  'FALSE');
+    
     // Viewing DOM Elements
+    console.log(document.querySelector('p'));
+    console.dir(document.querySelector('p'));
+
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}.`);
+      console.log(`He is ${dog.age} dog years old.`);
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
+    console.count('count');
+    console.count('count');
+    console.count('count');
+    console.count('count');
+    console.count('count'); 
 
     // timing
+    console.time('fetching data');
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+    const cities = [];
+    fetch(endpoint)
+      .then(blob => blob.json())
+      .then(data => {
+        cities.push(...data);
+        console.timeEnd('fetching data');
+      });
 
   </script>
 </body>
