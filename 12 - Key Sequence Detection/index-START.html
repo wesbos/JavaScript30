@@ -7,6 +7,22 @@
 </head>
 <body>
 <script>
+(function(){
+  const arr = [];
+  let secretCode = 'yuri';
+  window.addEventListener('keyup',(e)=>{
+    console.log(e.key);
+    arr.push(e.key);
+    console.log(arr);
+    arr.splice(-secretCode.length -1, arr.length - secretCode.length);
+    console.log(-secretCode.length -1, arr.length - secretCode.length);
+
+    if(arr.join('').includes(secretCode)){
+      console.log("ding! ding!");
+      cornify_add();
+    }
+  })
+})();
 </script>
 </body>
 </html>
