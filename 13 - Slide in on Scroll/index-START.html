@@ -57,7 +57,36 @@
         if (callNow) func.apply(context, args);
       };
     }
+    
+    window.onload = () => {
+      const images = document.querySelectorAll('img');
+      const newImages = [...images].map(img => ({
+          elem: img,
+          middle: img.offsetTop + img.height / 2,
+          top: img.offsetTop,
+          bottom: img.offsetTop + img.height
+        })
+      );
 
+      const slideImgs = () => {
+        const activeClassName = 'active';
+        const winTop = window.scrollY;
+        const winBottom = winTop + window.innerHeight;
+
+        newImages.forEach(img => {
+          if(winBottom > img.middle || winTop < img.middle){
+            img.elem.classList.add(activeClassName);
+          } 
+          if (winTop > img.bottom || winBottom < img.top) {
+            img.elem.classList.remove(activeClassName);
+          }
+        });
+      }
+
+      window.addEventListener('scroll', debounce(slideImgs));
+    };
+    
+   
   </script>
 
   <style>
