@@ -15,16 +15,16 @@
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
     <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#FFFF03">
+    <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
     :root {
-      --base: #FFFF03;
-      --spacing: 12px;
-      --blur: 12px;
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
     }
 
     img {
@@ -69,8 +69,8 @@
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
-
   </script>
+
 
 </body>
 </html>
