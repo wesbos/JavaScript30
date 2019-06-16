@@ -58,6 +58,37 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  function playAndAnimate(syntax) {
+    const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`)
+    const button = document.querySelector(`div[data-key="${event.keyCode}"]`)
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
+      }
+    if (button) {
+      button.classList.add('playing')
+    }
+  };
+
+  function removePlaying(syntax) {
+    this.classList.remove('playing');
+  }
+
+  window.addEventListener('keydown', playAndAnimate)
+
+  const keys = document.querySelectorAll('.key')
+  if (keys) {
+    keys.forEach(key => {
+      key.addEventListener('transitionend', removePlaying)
+    });
+  };
+
+  // window.addEventListener('keyup', (event) => {
+  //   const button = document.querySelector(`div[data-key="${event.keyCode}"]`)
+  //   if (button) {
+  //     button.classList.remove('playing')
+  //   }
+  // });  -------------> Alternate way of doing it before knowing the transition end thing.
 
 </script>
 
