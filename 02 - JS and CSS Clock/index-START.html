@@ -62,12 +62,41 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transition: rotate, 0.5s;
     }
+
 
   </style>
 
   <script>
+  const secondHand = document.querySelector('.second-hand');
+  const minuteHand = document.querySelector('.min-hand');
+  const hourHand   = document.querySelector('.hour-hand');
+  // -----------> Out the method so that the date stays fixed and the incrementation can be infinite
+  const firstLoadTime = new Date()
+  var seconds = firstLoadTime.getSeconds();
+  var minutes = firstLoadTime.getMinutes();
+  var hours   = firstLoadTime.getHours();
+  // <---------------------------------
 
+  const setDate = () => {
+    const secondToDegrees  = ((seconds/60) * 360) + 90 ;
+    const minutesToDegrees = ((minutes/60) * 360) + 90 ;
+    const hoursToDegrees   = ((hours/12) * 360) + 90 ;
+
+    secondHand.style = `transform: rotate(${secondToDegrees}deg)`
+    minuteHand.style = `transform: rotate(${minutesToDegrees}deg)`
+    hourHand.style = `transform: rotate(${hoursToDegrees}deg)`
+
+    // ----> incrementation acording to seconds, so that the other two hands are always moving real slow like a real clock
+    seconds = seconds + 1 ;
+    minutes = minutes + (1/60) ;
+    hours   = hours + (1/3600)
+    // <--------
+  };
+
+  setInterval(setDate, 1000);
 
   </script>
 </body>
