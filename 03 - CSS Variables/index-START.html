@@ -61,18 +61,15 @@
   </style>
 
   <script>
+    const changeParameters = () => {
+        const suffix = event.currentTarget.dataset.sizing || '';
+        document.documentElement.style.setProperty(`--${event.currentTarget.name}`, event.currentTarget.value + suffix)
+    };
+
     const controls = document.querySelectorAll('.controls input');
     controls.forEach((control) => {
-      control.addEventListener('change', event => {
-        const suffix = event.currentTarget.dataset.sizing || '';
-        console.log(suffix);
-        document.documentElement.style.setProperty(`--${event.currentTarget.name}`, event.currentTarget.value + suffix)
-      });
-      control.addEventListener('mousemove', event => {
-        const suffix = event.currentTarget.dataset.sizing || '';
-        console.log(suffix);
-        document.documentElement.style.setProperty(`--${event.currentTarget.name}`, event.currentTarget.value + suffix)
-      });
+      control.addEventListener('change', changeParameters);
+      control.addEventListener('mousemove', changeParameters);
     });
   </script>
 
