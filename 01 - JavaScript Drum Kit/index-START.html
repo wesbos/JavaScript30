@@ -65,7 +65,7 @@
     if (audio) {
       audio.currentTime = 0;
       audio.play();
-      }
+    }
     if (button) {
       button.classList.add('playing')
     }
@@ -73,7 +73,7 @@
 
   function removePlaying(syntax) {
     this.classList.remove('playing');
-  }
+  };
 
   window.addEventListener('keydown', playAndAnimate)
 
@@ -84,12 +84,15 @@
     });
   };
 
+
+ // -------------> Alternate way of doing it before knowing the transition end thing.
+
   // window.addEventListener('keyup', (event) => {
   //   const button = document.querySelector(`div[data-key="${event.keyCode}"]`)
   //   if (button) {
   //     button.classList.remove('playing')
   //   }
-  // });  -------------> Alternate way of doing it before knowing the transition end thing.
+  // });
 
 </script>
 
