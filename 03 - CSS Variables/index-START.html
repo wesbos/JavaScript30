@@ -11,8 +11,8 @@
     <label for="spacing">Spacing:</label>
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
-    <label for="blur">Blur:</label>
-    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+    <label for="blur">Height:</label>
+    <input id="blur" type="range" name="height" min="0" max="250" value="100" data-sizing="px">
 
     <label for="base">Base Color</label>
     <input id="base" type="color" name="base" value="#ffc600">
@@ -21,6 +21,18 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+
+    :root{
+      --base: red;
+      --spacing: 10px;
+      --height: 40px;
+    }
+
+    img{
+      padding: var(--spacing);
+      background: var(--base);
+      height: var(--height);
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -35,6 +47,10 @@
       font-size: 50px;
     }
 
+    .hl {
+      color: var(--base);
+    }
+
     .controls {
       margin-bottom: 50px;
     }
@@ -45,6 +61,19 @@
   </style>
 
   <script>
+    const controls = document.querySelectorAll('.controls input');
+    controls.forEach((control) => {
+      control.addEventListener('change', event => {
+        const suffix = event.currentTarget.dataset.sizing || '';
+        console.log(suffix);
+        document.documentElement.style.setProperty(`--${event.currentTarget.name}`, event.currentTarget.value + suffix)
+      });
+      control.addEventListener('mousemove', event => {
+        const suffix = event.currentTarget.dataset.sizing || '';
+        console.log(suffix);
+        document.documentElement.style.setProperty(`--${event.currentTarget.name}`, event.currentTarget.value + suffix)
+      });
+    });
   </script>
 
 </body>
