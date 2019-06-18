@@ -8,14 +8,49 @@
 <body>
 
   <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
+    <input type="text" class="search" placeholder="City or State" value="">
     <ul class="suggestions">
       <li>Filter for a city</li>
       <li>or a state</li>
     </ul>
   </form>
 <script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const searchBox = document.querySelector('.search-form .search')
+  const results   = document.querySelector('.suggestions')
+  const endpoint  = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  let cities = []
+
+  fetch(endpoint)
+    .then(response => response.json())
+    .then(data => data.forEach(object => {
+      cities.push(object.city)
+    }));
+
+  const getCities = (event) => {
+    const query = event.currentTarget.value
+    console.log(query);
+    results.innerHTML = ""
+    const filteredCities = findMatches(query)
+    filteredCities.forEach(city => {
+      results.insertAdjacentHTML('beforeend', `<li>${city}</li>`);
+    });
+  };
+
+
+
+  const findMatches = (query) => {
+    return cities.filter(city => {
+      const regex = new RegExp(query, 'gi')
+      return city.match(regex)
+    });
+  }
+
+  const resetPlaceholder = (event) => {
+    event.currentTarget.placeholder = "" ;
+  };
+
+  searchBox.addEventListener('keyup', getCities)
+  searchBox.addEventListener('click', resetPlaceholder)
 
 </script>
 </body>
