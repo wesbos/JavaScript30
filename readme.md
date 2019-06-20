@@ -43,7 +43,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Kizito](https://github.com/akhilome/)'s follow along [repo](https://github.com/akhilome/js30) with [completed challenges](https://akhilome.github.io/js30) and [notes](https://akhilome.github.io/js30/notes).
 * [VannTile](https://github.com/vanntile)'s [repository](https://github.com/vanntile/JavaScript30) and [GitHub Pages showcase](https://vanntile.github.io/JavaScript30/). Thank you for a great ⌨️ experience.
 * [Alex Kim](https://github.com/Alex-K1m/js30-challenge) completed all the challenges. You can check them out at [github pages](https://alex-k1m.github.io/js30-challenge/).
-
+*[Ousmane Sylla Solution](https://github.com/kitague/JavaScript-Array-Cardio-Practice---Day-1)
 
 ## Alternative Implementations
 Here are some links of people who have done the tutorials, but in a different language or framework:
@@ -53,6 +53,7 @@ Here are some links of people who have done the tutorials, but in a different la
 * [Akinjide Bankole](https://github.com/akinjide/JS30days) used Node.js with [Jade](http://jadelang.net) to solve the exercises
 * [Adrien Poly](https://github.com/adrienpoly/javascript30-stimulus) a modest attempt to convert Drum Kit, Video Player, Local Tapas, TypeHead to [Stimulus JS](https://stimulusjs.org/) framework in a Rails App.
 * [Bogdan Lazar](https://github.com/tricinel/TypeScript30) all the JavaScript 30 written in [TypeScript](https://www.typescriptlang.org/)
+ 
 
 ## A note on Pull Requests
 
