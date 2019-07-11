@@ -59,6 +59,11 @@
 
 <script>
   function animateKeyPress(button) {
+    // debugger
+    button.classList.add('playing');
+    setTimeout(() => {
+      button.classList.remove('playing');
+    }, 500);
     return null;
   }
 
@@ -100,6 +105,7 @@
   // https://developer.mozilla.org/en-US/docs/Web/API/Window
   // https://stackoverflow.com/questions/9895202/what-is-the-difference-between-window-screen-and-document-in-javascript?lq=1
   // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+  // adding a class to an element: https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/add
 
   // Notes:
   // * It looks at a quick glance(?) like KeyboardEvent.key is well-supported for
@@ -139,7 +145,6 @@
 // view: Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
 // which: 65
 </script>
-
 
 </body>
 </html>
