@@ -58,7 +58,31 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  function animateKeyPress(button) {
+    return null;
+  }
 
+  function playSound(sound) {
+    return null;
+  }
+
+  function handleKeyPress(e) {
+    const keyButton = null;
+    const sound = null;
+    if (keyButton) {
+      animateKeyPress(keyButton);
+    }
+    if (sound) {
+      playSound(sound);
+    }
+  }
+
+  // When someone presses a certain keycode, we'd like to
+  // A) add a class to the visual element to create an animation feedback effect
+  // B) play the corresponding sound associated via the data-key attribute.
+  // Resources:
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
+  window.addEventListener("keydown", handleKeyPress);
 </script>
 
 
