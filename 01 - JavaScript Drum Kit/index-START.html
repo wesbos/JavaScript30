@@ -66,9 +66,19 @@
     return null;
   }
 
+  function getKeyForCode(keyCode) {
+    return document.querySelector(`.key[data-key='${keyCode}']`)
+  }
+
+  function getSoundForCode(keyCode) {
+    return document.querySelector(`audio[data-key='${keyCode}']`)
+  }
+
   function handleKeyPress(e) {
-    const keyButton = null;
-    const sound = null;
+    // debugger;
+    const keyButton = getKeyForCode(e.keyCode);
+    const sound = getSoundForCode(e.keyCode);
+    // debugger;
     if (keyButton) {
       animateKeyPress(keyButton);
     }
@@ -80,9 +90,54 @@
   // When someone presses a certain keycode, we'd like to
   // A) add a class to the visual element to create an animation feedback effect
   // B) play the corresponding sound associated via the data-key attribute.
+
   // Resources:
   // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
-  window.addEventListener("keydown", handleKeyPress);
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window
+  // https://stackoverflow.com/questions/9895202/what-is-the-difference-between-window-screen-and-document-in-javascript?lq=1
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+
+  // Notes:
+  // * It looks at a quick glance(?) like KeyboardEvent.key is well-supported for
+  // what we'll need, so I will use that instead of the keyCode that I believe Wes uses.
+  // Or I would, but the starter code uses the keyCode already, so to be expedient
+  // I'll use that instead.
+  document.addEventListener("keydown", handleKeyPress);
+
+// KeyboardEvent {isTrusted: true, key: "a", code: "KeyA", location: 0, ctrlKey: false, …}
+// altKey: false
+// bubbles: true
+// cancelBubble: false
+// cancelable: true
+// charCode: 0
+// code: "KeyA"
+// composed: true
+// ctrlKey: false
+// currentTarget: document
+// defaultPrevented: false
+// detail: 0
+// eventPhase: 3
+// isComposing: false
+// isTrusted: true
+// key: "a"
+// keyCode: 65
+// location: 0
+// metaKey: false
+// path: (4) [body, html, document, Window]
+// repeat: false
+// returnValue: true
+// shiftKey: false
+// sourceCapabilities: InputDeviceCapabilities {firesTouchEvents: false}
+// srcElement: body
+// target: body
+// timeStamp: 11498.325000051409
+// type: "keydown"
+// view: Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+// which: 65
 </script>
 
 
