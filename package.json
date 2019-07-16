@@ -1,0 +1,19 @@
+{
+    "name": "javascript30",
+    "version": "1.0.0",
+    "description": "![](https://javascript30.com/images/JS3-social-share.png)",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/davidalagoa/JavaScript30.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/davidalagoa/JavaScript30/issues"
+    },
+    "homepage": "https://github.com/davidalagoa/JavaScript30#readme"
+}
