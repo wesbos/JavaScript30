@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+
+<script>
+// When someone presses a certain keycode, we'd like to
+// A) add a class to the visual element to create an animation feedback effect
+// B) play the corresponding sound associated via the data-key attribute.
+
+  function animateKeyPress(button) {
+    button.classList.add('playing');
+    setTimeout(() => {
+      button.classList.remove('playing');
+    }, 500);
+    return null;
+  }
+
+  function playSound(sound) {
+    sound.play();
+    return null;
+  }
+
+  function getKeyForCode(keyCode) {
+    return document.querySelector(`.key[data-key='${keyCode}']`)
+  }
+
+  function getSoundForCode(keyCode) {
+    return document.querySelector(`audio[data-key='${keyCode}']`)
+  }
+
+  function handleKeyPress(e) {
+    const keyButton = getKeyForCode(e.keyCode);
+    const sound = getSoundForCode(e.keyCode);
+    if (keyButton) {
+      animateKeyPress(keyButton);
+    }
+    if (sound) {
+      playSound(sound);
+    }
+  }
+
+  document.addEventListener("keydown", handleKeyPress);
+
+  // Resources:
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/keydown_event
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document
+  // https://developer.mozilla.org/en-US/docs/Web/API/Window
+  // https://stackoverflow.com/questions/9895202/what-is-the-difference-between-window-screen-and-document-in-javascript?lq=1
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector
+  // adding a class to an element: https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/add
+  // audio element inherits api: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement
+
+  // Notes:
+  // * It looks at a quick glance(?) like KeyboardEvent.key is well-supported for
+  // what we'll need, so I will use that instead of the keyCode that I believe Wes uses.
+  // Or I would, but the starter code uses the keyCode already, so to be expedient
+  // I'll use that instead.
+
+  // KeyboardEvent {isTrusted: true, key: "a", code: "KeyA", location: 0, ctrlKey: false, …}
+  // altKey: false
+  // bubbles: true
+  // cancelBubble: false
+  // cancelable: true
+  // charCode: 0
+  // code: "KeyA"
+  // composed: true
+  // ctrlKey: false
+  // currentTarget: document
+  // defaultPrevented: false
+  // detail: 0
+  // eventPhase: 3
+  // isComposing: false
+  // isTrusted: true
+  // key: "a"
+  // keyCode: 65
+  // location: 0
+  // metaKey: false
+  // path: (4) [body, html, document, Window]
+  // repeat: false
+  // returnValue: true
+  // shiftKey: false
+  // sourceCapabilities: InputDeviceCapabilities {firesTouchEvents: false}
+  // srcElement: body
+  // target: body
+  // timeStamp: 11498.325000051409
+  // type: "keydown"
+  // view: Window {postMessage: ƒ, blur: ƒ, focus: ƒ, close: ƒ, parent: Window, …}
+  // which: 65
+</script>
+
+</body>
+</html>
