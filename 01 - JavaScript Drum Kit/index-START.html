@@ -64,7 +64,7 @@
     if(!audio) return; // stop the function running all together
     audio.currentTime = 0; //rewind to the start
     audio.play();
-    console.log(key);
+    key.classList.add('playing');
   });
 </script>
 
