@@ -38,6 +38,10 @@
       filter: blur(var(--blur));
     }
 
+  .h1 {
+    color: var(--base);
+  }
+
     body {
       text-align: center;
       background: #193549;
@@ -57,6 +61,14 @@
   </style>
 
   <script>
+    const inputs = document.querySelectorAll('.controls input'); 
+
+    function handleUpdate() {
+      console.log(this.value);
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 
 </body>
