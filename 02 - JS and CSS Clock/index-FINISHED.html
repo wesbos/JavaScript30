@@ -67,6 +67,11 @@
       transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
+
+    .no-transition {
+      transition: none !important;
+    }
+
 </style>
 
 <script>
@@ -79,7 +84,11 @@
 
     const seconds = now.getSeconds();
     const secondsDegrees = ((seconds / 60) * 360) + 90;
-    // secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+    if (secondsDegrees == 444) { secondHand.classList.add('no-transition');
+    } else if (secondsDegrees == 96) { secondHand.classList.remove('no-transition');
+    };
 
     const mins = now.getMinutes();
     const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90;
