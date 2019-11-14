@@ -43,4 +43,5 @@ body {
     background: black;
     position: absolute;
     top: 50%;
+    transform-origin: 100%;
 }
