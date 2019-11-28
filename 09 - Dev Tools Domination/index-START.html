@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }, { name: 'firulais', age: 5 }];
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -17,30 +19,91 @@
       p.style.fontSize = '50px';
     }
 
+    console.table(dogs);
+
     // Regular
+
+    console.log('hi =) ');
 
     // Interpolated
 
+    console.log('Hello I am an %s string', 'interpolated');
+
+    var i = 'hello'
+
+    console.log(`${i} I'm an interpolated string`);
+
     // Styled
+
+    console.log('%c Hi, I am some gigant text', 'font-size:50px; background:red; text-shadow: 10px 10px 0 blue');
 
     // warning!
 
+    console.warn('this is a warning');
+
     // Error :|
+
+    console.error('this is some random error');
 
     // Info
 
+    console.info('Crocodiles eat 3-4 people per year');
+
     // Testing
+
+    var sum = (a, b) => a - b;
+
+    console.assert(sum(1, 3) === 4, 'test failed');
+
 
     // clearing
 
+    //console.clear();
+
     // Viewing DOM Elements
+    const p = document.querySelector('p');
+
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`this is ${dog.name}`);
+      console.log(`he is ${dog.age} years old`);
+      console.log(`he is ${dog.age * 7} dog years old`);
+      console.group('hehe');
+      console.log('something new');
+      console.groupEnd('hehe');
+      console.groupEnd(`${dog.name}`);
+    });
 
     // counting
 
+    console.count('ricardo ');
+    console.count('ricardo');
+    console.count('ricardo');
+    console.count('Ricardo');
+    console.count('rIcardo');
+    console.count('ricardo');
+    console.count('ricardo');
+    console.count('rIcardo');
+    console.count('ricardo');
+    console.count('rIcardo');
+
     // timing
+
+    console.time('githubFetch');
+    fetch('https://api.github.com/users/wesbos')
+      .then(blob => blob.json)
+      .then(data => {
+        console.timeEnd('githubFetch');
+        console.log(data);
+      })
+
+
 
   </script>
 </body>
+
 </html>
