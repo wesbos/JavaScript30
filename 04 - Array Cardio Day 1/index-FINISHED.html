@@ -50,7 +50,7 @@
     //   }
     // });
 
-    const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+    const ordered = inventors.sort((a, b) => a.year - b.year);
     console.table(ordered);
 
     // Array.prototype.reduce()
