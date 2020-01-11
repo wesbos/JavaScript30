@@ -58,6 +58,6 @@ Here are some links of people who have done the tutorials, but in a different la
 
 ## Note
 
-This repo is a copy and i am using this to keep track of my progress, you can find the original repo at https://github.com/wesbos/JavaScript30 and you can take the course at https://javascript30.com/.
+This repo is a copy and I am using this to keep track of my progress, you can find the original repo at https://github.com/wesbos/JavaScript30 and you can take the course at https://javascript30.com/.
 
 Thanks!
