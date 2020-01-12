@@ -65,7 +65,10 @@
             .querySelectorAll(`div[data-key="${event.keyCode}"]`)[0]
             .classList.remove("playing");
         };
-        window.setTimeout(next, 700);
+        document
+          .querySelectorAll(`audio[data-key="${event.keyCode}"]`)[0]
+          .play();
+        window.setTimeout(next, 70);
       });
     </script>
   </body>
