@@ -58,15 +58,15 @@
     <script>
       window.addEventListener("keydown", event => {
         document
-          .querySelectorAll(`div[data-key="${event.keyCode}"]`)[0]
+          .querySelector(`div[data-key="${event.keyCode}"]`)
           .classList.add("playing");
         const next = () => {
           document
-            .querySelectorAll(`div[data-key="${event.keyCode}"]`)[0]
+            .querySelector(`div[data-key="${event.keyCode}"]`)
             .classList.remove("playing");
         };
         document
-          .querySelectorAll(`audio[data-key="${event.keyCode}"]`)[0]
+          .querySelector(`audio[data-key="${event.keyCode}"]`)[0]
           .play();
         window.setTimeout(next, 70);
       });
