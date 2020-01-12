@@ -57,18 +57,19 @@
 
     <script>
       window.addEventListener("keydown", event => {
-        document
-          .querySelector(`div[data-key="${event.keyCode}"]`)
-          .classList.add("playing");
-        const next = () => {
-          document
-            .querySelector(`div[data-key="${event.keyCode}"]`)
-            .classList.remove("playing");
-        };
-        document
-          .querySelector(`audio[data-key="${event.keyCode}"]`)[0]
-          .play();
-        window.setTimeout(next, 70);
+        const key = document.querySelector(`div[data-key="${event.keyCode}"]`);
+        if (key) {
+          key.classList.add("playing");
+          const next = () => {
+            key.classList.remove("playing");
+          };
+          const audio = document.querySelector(
+            `audio[data-key="${event.keyCode}"]`
+          );
+          audio.currentTime = 0; //Rewind audio when key is pressed multiple times
+          audio.play();
+          window.setTimeout(next, 70);
+        }
       });
     </script>
   </body>
