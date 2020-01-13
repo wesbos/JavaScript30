@@ -60,6 +60,8 @@
         top: 50%;
         transform-origin: 100%;
         transform: rotate(90deg);
+        transition: all 0.05s;
+        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
       }
     </style>
 
@@ -74,7 +76,7 @@
         const hours = now.getHours();
         const secondsDegrees = (seconds / 60) * 360 + 90;
         const minutesDegrees = (minutes / 60) * 360 + 90;
-        const hoursDegrees = (hours / 24) * 360 + 90;
+        const hoursDegrees = (hours / 12) * 360 + 90;
         secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
         minutesHand.style.transform = `rotate(${minutesDegrees}deg)`;
         hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
