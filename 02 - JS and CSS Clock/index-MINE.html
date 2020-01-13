@@ -64,10 +64,14 @@
     </style>
 
     <script>
-      const secondsHand = document.getElementsByClassName("second-hand");
+      const secondsHand = document.querySelector(".second-hand");
       function setDate() {
-        
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const secondsDegrees = (seconds / 60) * 360 + 90;
+        secondsHand.
       }
+      setInterval(setDate, 1000);
     </script>
   </body>
 </html>
