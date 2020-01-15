@@ -143,7 +143,14 @@
         "car",
         "truck"
       ];
-      const instances = data.reduce(obj, )
+      const instances = data.reduce((obj, item) => {
+        if(!obj[item]){
+          obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+      }, {});
+      console.log(instances);
     </script>
   </body>
 </html>
