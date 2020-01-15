@@ -73,9 +73,17 @@
     </style>
 
     <script>
+      
+      const inputs = document.querySelectorAll(".controls input");
+      
       function updateProperties() {
-        
+        const suffix = this.dataset.sizing || "";
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
       }
+      
+      inputs.forEach(input => input.addEventListner("change", updateProperties));
+      inputs.forEach(input => input.addEventListner("mousemove", updateProperties));
+      
     </script>
   </body>
 </html>
