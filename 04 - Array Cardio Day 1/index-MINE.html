@@ -117,13 +117,13 @@
       // 7. sort Exercise
       // Sort the people alphabetically by last name
       const sorted_people = people.sort((a, b) => {
-        if (a.split(", ")[1] > b.split(", ")[1]) {
-          return -1;
-        } else {
+        if (a.split(", ")[0] > b.split(", ")[0]) {
           return 1;
+        } else {
+          return -1;
         }
       });
-      console.table(sorted_people);
+      console.log(sorted_people);
 
       // 8. Reduce Exercise
       // Sum up the instances of each of these
@@ -143,6 +143,7 @@
         "car",
         "truck"
       ];
+      const instances = data.reduce(obj, )
     </script>
   </body>
 </html>
