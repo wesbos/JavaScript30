@@ -1,4 +1,4 @@
- ,a<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -115,9 +115,17 @@
       // console.log(names);
 
       // 7. sort Exercise
-      // Sort the people alphabetically by last n
-      l
-      // console.log(sorted_people);()     // 8. Reduce Exercise
+      // Sort the people alphabetically by last name
+      const sorted_people = people.sort((a, b) => {
+        if (a.split(", ")[1] > b.split(", ")[1]) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+      console.table(sorted_people);
+
+      // 8. Reduce Exercise
       // Sum up the instances of each of these
       const data = [
         "car",
@@ -138,4 +146,3 @@
     </script>
   </body>
 </html>
-p
