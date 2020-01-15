@@ -81,8 +81,8 @@
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
       }
       
-      inputs.forEach(input => input.addEventListner("change", updateProperties));
-      inputs.forEach(input => input.addEventListner("mousemove", updateProperties));
+      inputs.forEach(input => input.addEventListener("change", updateProperties));
+      inputs.forEach(input => input.addEventListener("mousemove", updateProperties));
       
     </script>
   </body>
