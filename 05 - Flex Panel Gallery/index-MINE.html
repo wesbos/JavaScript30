@@ -49,6 +49,9 @@
         background-size: cover;
         background-position: center;
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .panel1 {
@@ -72,6 +75,10 @@
         margin: 0;
         width: 100%;
         transition: transform 0.5s;
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .panel p {
@@ -86,6 +93,7 @@
       }
 
       .panel.open {
+        flex: 5;
         font-size: 40px;
       }
     </style>
