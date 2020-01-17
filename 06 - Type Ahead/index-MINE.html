@@ -19,35 +19,39 @@
 
       const places = [];
 
+      const suggestions = document.querySelector(".suggestions");
+
+      console.log("Please wait, fetching data from server!");
+
       fetch(endpoint)
         .then(response => response.json())
         .then(data => {
           places.push(...data);
-          console.log("Done fetching data ")
+          console.log("Done fetching data from server!");
         });
 
       function displayResult(results) {
-        // console.log(results);
-        // const html = results.forEach(result => {
-        //   return `<li><span class="name">${result.city}</span><span class="population">${result.population}</span></li>`
-        // }).join('');
-        // suggestions.innerHTML = html;
+        const html = results.map(result => {
+          return `<li><span class="name">${result.city}</span><span class="population">${result.population}</span></li>`;
+        });
+        suggestions.innerHTML = html;
       }
-      
+
       function searchInput(input, places) {
         const regex = new RegExp(input, "gi");
-        const results = places.filter(place => regex.test(place.city) || regex.test(place.state));
+        const results = places.filter(
+          place => regex.test(place.city) || regex.test(place.state)
+        );
         return results;
       }
 
       function handleSearch() {
         const output = searchInput(this.value, places);
-        console.log(output);
+        displayResult(output);
       }
 
       const searchBar = document.querySelector(".search");
       searchBar.addEventListener("keyup", handleSearch);
-      const suggestions = document.querySelector(".suggestions");
     </script>
   </body>
 </html>
