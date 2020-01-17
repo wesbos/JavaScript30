@@ -30,10 +30,23 @@
           console.log("Done fetching data from server!");
         });
 
-      function displayResult(results) {
+      function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      }
+
+      function displayResult(results, input) {
+        const regex = new RegExp(input, "gi");
         const html = results
           .map(result => {
-            return `<li><span class="name">${result.city},${result.state}</span><span class="population">${result.population}</span></li>`;
+            const cityName = result.city.replace(
+              regex,
+              `<span class="hl">${input}</span>`
+            );
+            const stateName = result.state.replace(
+              regex,
+              `<span class="hl">${input}</span>`
+            );
+            return `<li><span class="name">${cityName},${stateName}</span><span class="population">${numberWithCommas(result.population)}</span></li>`;
           })
           .join("");
         suggestions.innerHTML = html;
@@ -46,10 +59,10 @@
         );
         return results;
       }
-      
+
       function handleSearch() {
         const output = searchInput(this.value, places);
-        displayResult(output);
+        displayResult(output, this.value);
       }
 
       const searchBar = document.querySelector(".search");
