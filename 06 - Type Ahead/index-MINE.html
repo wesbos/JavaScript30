@@ -31,9 +31,11 @@
         });
 
       function displayResult(results) {
-        const html = results.map(result => {
-          return `<li><span class="name">${result.city}</span><span class="population">${result.population}</span></li>`;
-        });
+        const html = results
+          .map(result => {
+            return `<li><span class="name">${result.city},${result.state}</span><span class="population">${result.population}</span></li>`;
+          })
+          .join("");
         suggestions.innerHTML = html;
       }
 
@@ -44,7 +46,7 @@
         );
         return results;
       }
-
+      
       function handleSearch() {
         const output = searchInput(this.value, places);
         displayResult(output);
