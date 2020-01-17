@@ -23,20 +23,31 @@
         .then(response => response.json())
         .then(data => {
           places.push(...data);
+          console.log("Done fetching data ")
         });
 
+      function displayResult(results) {
+        // console.log(results);
+        // const html = results.forEach(result => {
+        //   return `<li><span class="name">${result.city}</span><span class="population">${result.population}</span></li>`
+        // }).join('');
+        // suggestions.innerHTML = html;
+      }
+      
       function searchInput(input, places) {
         const regex = new RegExp(input, "gi");
-        const result = places.filter(place => regex.test(place.city));
-        console.log(result);
+        const results = places.filter(place => regex.test(place.city) || regex.test(place.state));
+        return results;
       }
 
       function handleSearch() {
         const output = searchInput(this.value, places);
+        console.log(output);
       }
 
       const searchBar = document.querySelector(".search");
       searchBar.addEventListener("keyup", handleSearch);
+      const suggestions = document.querySelector(".suggestions");
     </script>
   </body>
 </html>
