@@ -15,7 +15,7 @@
 
       ctx.lineJoin = "round";
       ctx.lineCap = "round";
-      ctx.lineWidth = 100;
+      ctx.lineWidth = 1;
       ctx.strokeStyle = "#BADASS";
       
       let isDrawing = false;
@@ -39,7 +39,7 @@
         if(hue >= 360){
           hue = 0;
         }
-        if(ctx.lineWidth >= 100 || ctx.lineWidth <= 0){
+        if(ctx.lineWidth >= 100 || ctx.lineWidth <= 1){
           direction = !direction;
         }
         if(direction){
