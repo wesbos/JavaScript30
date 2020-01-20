@@ -17,28 +17,60 @@
       }
 
       // Regular
+      console.log("Hello!");
 
       // Interpolated
+      let name = "Akash";
+      console.log(`My name is ${name}`);
 
       // Styled
+      console.log("%cI love Web Dev.","color: green;");
 
       // warning!
+      console.warn("Oops!");
 
       // Error :|
+      console.error("This is messed up!");
 
       // Info
+      console.info("What's this?");
 
       // Testing
+      console.assert(1===2, "Guess I'm wrong!");
 
       // clearing
+      console.clear();
 
       // Viewing DOM Elements
+      p = document.querySelector("p");
+      console.log(p);
+      console.dir(p);
+      console.clear();
 
       // Grouping together
+      console.group("Akash");
+      console.log("My name is akash");
+      console.log("My age is 22");
+      console.groupEnd("Akash");
 
       // counting
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
+      console.count("Okay!");
 
       // timing
+      console.time("Fetching my github profile");
+      fetch("https://api.github.com/users/akashrajum7").then(response => response.json()).then(data => {
+        console.log(data);
+        console.timeEnd("Fetching my github profile");
+      });
     </script>
   </body>
 </html>
