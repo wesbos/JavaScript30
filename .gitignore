@@ -4,3 +4,4 @@ node_modules/
 haters/
 .idea/
 watch.json
+.torc-update
