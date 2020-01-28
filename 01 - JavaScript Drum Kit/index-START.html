@@ -60,14 +60,15 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
   <script>
-    window.addEventListener('keydown', function (e) {
+    function playSound(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
       if (!audio) return; //function wont run
       audio.currentTime = 0; //allows time to restart when you hit play
       audio.play();
       key.classList.add('playing');
-    });
+    };
+    window.addEventListener('keydown', playSound)
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return // skip if no transform
       this.classList.remove('playing')
