@@ -17,6 +17,50 @@
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
+const cities = [];
+
+fetch(endpoint)
+  .then( resp => resp.json() )
+  .then( data => cities.push(...data) ) // Note: we need the spread operator otherwise all the cities would be at the index of the array - it would just be an array of ONE item 
+          // ES6 spread operator to make the cities into individual items
+  
+  function findMatches(wordToMatch, cities){ // wordToMatch is literally whatever word gets typed
+
+    return cities.filter( place => { //RegExp is an object used for matching text with a pattern
+      const regex = new RegExp(wordToMatch, 'gi') // g means that its going to be global and i means insensetive meaning itll look for the city/state when when lowercase
+      return place.city.match(regex) || place.state.match(regex)
+    })
+  }
+
+  function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+  function displayMatches(){ 
+      const matchArray = findMatches(this.value, cities);
+      const html = matchArray.map( place => {
+        const regex = new RegExp(this.value, 'gi');
+        const cityName = place.city.replace(regex, // replace is going to take regex and replace it with the next argument
+        `<span class='hl'>${this.value}</span>`);  // its going to find whatever is in the regex and replace it with a span with a class of highlight and the value the person searched for
+        const stateName = place.state.replace(regex, 
+        `<span class='hl'>${this.value}</span>`);
+        return `
+          <li>
+            <span class='name'> ${cityName}, ${stateName} </span>
+            <span class='population'> ${numberWithCommas(place.population)} </span>
+          </li>
+        `;
+      }).join('') // because the map function will return an array when we want a string
+      suggestions.innerHTML = html
+         }
+
+  const searchInput = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions');
+
+  searchInput.addEventListener('change',displayMatches)
+  searchInput.addEventListener('keyup',displayMatches) // because change only happens when you click off of the search bar
+
+
 </script>
 </body>
 </html>
