@@ -56,9 +56,50 @@
   <audio data-key="74" src="sounds/snare.wav"></audio>
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
+   
+  <script>
+    // ^^^ There's no class for the above audios
+    // So we'll use an attribute selector which is the same as the one in CSS
+    //  example audio[data-key=65]
+    //  the way we are setting it up is so that its a variable that lives inside the event (e)
+    //  for line #72 if there is no audio we are just going to return
+  </script>
 
 <script>
+  // How it was originally but the JS teacher doesnt like (below)
 
+  // window.addEventListener('keydown', function(e){ // when you key down - do this
+  //   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  //   const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  //   audio.currentTime = 0; // rewinds to the start - no wait time
+  //   if(!audio) return; // stops the function from running all together
+  //   audio.play();
+  //   key.classList.add('playing');
+  
+  //   // console.log(key)
+  // });
+
+  function playSound(e){
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    audio.currentTime = 0; // rewinds to the start - no wait time
+    if(!audio) return; // stops the function from running all together
+    audio.play();
+    key.classList.add('playing');
+  };
+
+  function removeTransition(e){
+    if(e.propertyName !== 'transform') return; //skip if it's not transform
+    this.classList.remove('playing');
+    
+  }
+
+  const keys = document.querySelectorAll('.key');
+
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  
+  window.addEventListener('keydown',playSound);
+  
 </script>
 
 
