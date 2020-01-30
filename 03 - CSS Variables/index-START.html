@@ -9,7 +9,7 @@
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px" data-name='Israel' data-cool='kingdom hearts'>
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -21,6 +21,25 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+
+    }
+    /* we have defined our variables and now we can use them in other places */
+    /* we can pass variables using var()*/
+    /* the dash dash -- is the standard in CSS instead of the dollar sign */
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur)); /* we gave it a filter which is a blur then gave the variable blur */
+    }
+
+    .hl {
+      color: var(--base);
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -45,6 +64,40 @@
   </style>
 
   <script>
+      // Here we are going to write some JavaScript so that 
+      // it updates with whatever the user does
+      // incase it hasnt dawned yet - UPDATE CSS Variables with JavaScript
+
+      const inputs = document.querySelectorAll('.controls input') //this is going to select all the inputs on the page
+      // we need something to loop over all the inputs
+      // forEach method THO !! lines # 94-99
+
+      function handleUpdate(){
+
+        // console.log(this.dataset);
+        // dataset is an object that will contain all the data attributes from the specific element
+        // you dont have to select dataset
+        // you dont have to use any attribute selectors from it
+        // it will take everything that has a data-(dash) on that element and put it into an object
+
+       const suffix = this.dataset.sizing || ''; // <-- basically means or nothing || ''
+       console.log(suffix)
+      //  console.log(this.name)
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix); // usually it would be (in this case) base, blur, spacing 
+                                                        //- note: this.name is getting set to this.value
+                                                        //, but we need it to be all of them so backtics!
+       // this only gets us half was as there is no px at the end of both spacing and blur which is why we created the suffix variable
+
+
+      }
+
+      inputs.forEach(input => 
+      input.addEventListener('change', handleUpdate)
+      );
+      inputs.forEach(input => 
+      input.addEventListener('mousemove', handleUpdate)
+      );
+
   </script>
 
 </body>
