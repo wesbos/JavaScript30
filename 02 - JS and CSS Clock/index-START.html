@@ -62,13 +62,41 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1)
     }
 
   </style>
 
   <script>
 
+    const secondHand = document.querySelector('.second-hand')
+    const minHand = document.querySelector('.min-hand')
+    const hourHand = document.querySelector('.hour-hand')
 
+    function setDate(){
+      const now = new Date();
+
+      const seconds = now.getSeconds(); // right here it counts the seconds in a minute but it doesnt move the clock itself
+      const secondsDegrees = ((seconds/60) * 360) + 90// seconds/60 will give us the percentage that we have and multiply by 360(degrees) to give us our full
+      // we add 90 to offset the 90 degree default line #66
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+      const mins =  now.getMinutes();
+      const minsDegrees = ((mins/60) * 360) + 90;
+      minHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+      const hours = now.getHours();
+      const hoursDegrees = ((hours/12) *30) + 90; 
+      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+
+      console.log(seconds)
+      // console.log('whats good?');
+    }
+    setInterval(setDate, 1000); // the number is in miliseconds - now our program says what's good by the second
   </script>
 </body>
 </html>
