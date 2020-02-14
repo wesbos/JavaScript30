@@ -9,7 +9,8 @@
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
   <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    const dogs = [{ name: 'Snickers', age: 2 },
+     { name: 'hugo', age: 8 }];
 
     function makeGreen() {
       const p = document.querySelector('p');
@@ -18,28 +19,68 @@
     }
 
     // Regular
+        console.log( 'hello' );
 
     // Interpolated
+        console.log( 'hello i am a %s string', 'ducking awesome'); // i didnt know you can use this!
+        // console.log( `Hello I am ${var}`); // Now this looks familiar!
 
     // Styled
+        console.log( '%c I am some great text', 
+        'font-size: 50px; background: red; text-shadow: 10px 10px 0 blue' ) // make sure that the styling are all inside one big string!!
+        // percent c then afterward the text you want styled followed by the actual styling
 
     // warning!
+        console.warn('OH NOOOO'); // yellow exclamation triangle sign in console
 
     // Error :|
+        console.error('Oh fawk bro'); // red x circle sign in console
+
 
     // Info
+        console.info('Fun fact: Kingdom Hearts is never going to end!'); // THIS IS A FACT also theres supposed to be a blue circle with an i
 
     // Testing
+        const p = document.querySelector('p');
+        console.assert( p.classList.contains('Ouch'), 'That is wrong!')
+        // console.assert( 1 === 2, 'That is wrong!'); // note assert will only fire when it is wrong
 
     // clearing
+        console.clear(); // great way to prank: leave a console.clear at the bottom of your file!
 
     // Viewing DOM Elements
+        console.log(p);
+        console.dir(p); // allows you to open it up and take a look at the classList as well as all the methods and elements inside of it
 
     // Grouping together
+        dogs.forEach( dog => {
+          console.groupCollapsed(`${dog.name}`);
+          console.log(`this is ${dog.name}`);
+          console.log(`${dog.name} is ${dog.age * 7} years old`);
+          console.groupEnd(`${dog.name}`);
+        })
 
     // counting
+        console.count('Wes')
+        console.count('Wes')
+        console.count('Steve')
+        console.count('Wes')
+        console.count('Wes')
+        console.count('Steve')
+        console.count('Steve')
+        console.count('Wes')
+        console.count('Steve')
+        console.count('Wes')
+        console.count('Steve')
 
     // timing
+        console.time('fetching data'); // reveals how long this function took to complete!
+        fetch('http://api.github.com/users/wesbos')
+        .then( resp => resp.json())
+        .then( data => {
+          console.timeEnd('fetching data'); // make sure it is the same thing you wrote at the begining
+          console.log(data);
+        })
 
   </script>
 </body>
