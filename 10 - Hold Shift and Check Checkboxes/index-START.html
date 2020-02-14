@@ -96,6 +96,36 @@
   </div>
 
 <script>
+
+const checkboxes = document.querySelectorAll('.inbox input[type = "checkbox"]'); // because you also want the input types
+
+let lastChecked ;
+function handleCheck(e){
+
+  // check if they had the shift key down
+  // AND check if they are checking it .. as in x marked the box
+
+  let inBetween = false;
+  if(e.shiftKey && this.checked){
+    // loop over every single checkbox
+    checkboxes.forEach( checkbox => {
+      console.log(checkbox);
+      if(checkbox === this || checkbox === lastChecked){
+        inBetween = !inBetween;
+        console.log('checking the inBetween');
+      }
+      if(inBetween){
+        checkbox.checked = true;
+      }
+    })
+  }
+  lastChecked = this;
+}
+
+checkboxes.forEach( checkbox => checkbox.addEventListener( 'click', handleCheck));
+
+// gotta be honest this was pretty confusing even with the video telling me how it works
+
 </script>
 </body>
 </html>
