@@ -1,9 +1,10 @@
 html {
   font-size: 10px;
-  background: url(https://i.imgur.com/b9r5sEL.jpg) bottom center;
+  /* background: linear-gradient(to right, black, pink); */
+  background: url(https://i.pinimg.com/originals/d0/d7/af/d0d7af8f0cb558e72c50e74dce8e3869.jpg) center;
   background-size: cover;
-}
 
+}
 body,html {
   margin: 0;
   padding: 0;
@@ -18,8 +19,9 @@ body,html {
   justify-content: center;
 }
 
+
 .key {
-  border: .4rem solid black;
+  border: .5rem solid rgb(0, 0, 0);
   border-radius: .5rem;
   margin: 1rem;
   font-size: 1.5rem;
@@ -28,16 +30,14 @@ body,html {
   width: 10rem;
   text-align: center;
   color: white;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.575);
   text-shadow: 0 0 .5rem black;
 }
-
 .playing {
-  transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  transform: scale(1.2);
+  border-color: #ffd61f;
+  box-shadow: 0 2 1rem #ffb835;
 }
-
 kbd {
   display: block;
   font-size: 4rem;
@@ -49,3 +49,4 @@ kbd {
   letter-spacing: .1rem;
   color: #ffc600;
 }
+

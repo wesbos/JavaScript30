@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Js Drum Kit</title>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="keys">
+	<div data-key="65" class= "key">
+		<kbd>A</kbd>
+		<span class="sound">Clap</span>
+	</div>
+	<div data-key="83" class= "key">
+		<kbd>S</kbd>
+		<span class="sound">Tink</span>
+	</div>
+	<div data-key="68" class= "key">
+		<kbd>D</kbd>
+		<span class="sound">Tom</span>
+	</div>
+	<div data-key="70" class= "key">
+		<kbd>F</kbd>
+		<span class="sound">Snare</span>
+	</div>
+	<div data-key="71" class= "key">
+		<kbd>G</kbd>
+		<span class="sound">Ride</span>
+	</div>
+	<div data-key="72" class= "key">
+		<kbd>H</kbd>
+		<span class="sound">Boom</span>
+	</div>
+	<div data-key="74" class= "key">
+		<kbd>J</kbd>
+		<span class="sound">Openhat</span>
+	</div>
+	<div data-key="75" class= "key">
+		<kbd>K</kbd>
+		<span class="sound">Kick</span>
+	</div>
+	<div data-key="76" class= "key">
+		<kbd>L</kbd>
+		<span class="sound">Hithat</span>
+	</div>
+</div>
+  <audio data-key="65" src="./sounds/clap.wav"></audio>
+  <audio data-key="83" src="./sounds/tink.wav"></audio>
+  <audio data-key="68" src="./sounds/tom.wav"></audio>
+  <audio data-key="70" src="./sounds/snare.wav"></audio>
+  <audio data-key="71" src="./sounds/ride.wav"></audio>
+  <audio data-key="72" src="./sounds/boom.wav"></audio>
+  <audio data-key="74" src="./sounds/openhat.wav"></audio>
+  <audio data-key="75" src="./sounds/kick.wav"></audio>
+  <audio data-key="76" src="./sounds/hihat.wav"></audio>
+
+
+  <script>
+	function removeTransition(e) {
+	  if (e.propertyName !== 'transform') return;
+	  e.target.classList.remove('playing');
+	}
+  
+	function playSound(e) {
+	  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+	  const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+	  if (!audio) return;
+		
+	  key.classList.add('playing');
+	  audio.currentTime = 0;
+	  animateCSS('.keys', 'bounce')
+	  audio.play();
+	  
+	}
+  
+	const keys = Array.from(document.querySelectorAll('.key'));
+	keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+	window.addEventListener('keydown', playSound);
+
+
+
+
+	function animateCSS(element, animationName, callback) {
+    const node = document.querySelector('.keys')
+    node.classList.add('animated', animationName)
+
+    function handleAnimationEnd() {
+        node.classList.remove('animated', animationName)
+        node.removeEventListener('animationend', handleAnimationEnd)
+
+        if (typeof callback === 'function') callback()
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd)
+}
+
+
+  </script>
+</body>
+</html>
