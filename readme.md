@@ -10,6 +10,7 @@ Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
 Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 
+* [ Van Ribeiro's ](https://vanribeiro-30daysofjavascript.netlify.app/) about demos and recaps. On [GitHub Repo] there's a summary about what was learned and researched.
 * [Arjun Khode’s blog](http://thesagittariusme.blogspot.com/search/label/JS30) about summaries for each day, including fixed glitches, bugs and extra features
 * [Nitish Dayal's Text Guides](https://github.com/nitishdayal/JavaScript30) are great for those who like reading over watching
 * [Meredith Underell's](http://meredithunderell.com/tag/javascript30/) Quick Lessons Learned
