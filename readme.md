@@ -10,7 +10,6 @@ Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
 Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 
-* [ Van Ribeiro's ](https://vanribeiro-30daysofjavascript.netlify.app/) about demos and recaps. On [GitHub Repo] there's a summary about what was learned and researched.
 * [Arjun Khode’s blog](http://thesagittariusme.blogspot.com/search/label/JS30) about summaries for each day, including fixed glitches, bugs and extra features
 * [Nitish Dayal's Text Guides](https://github.com/nitishdayal/JavaScript30) are great for those who like reading over watching
 * [Meredith Underell's](http://meredithunderell.com/tag/javascript30/) Quick Lessons Learned
@@ -48,6 +47,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Ramon Morcillo](https://github.com/reymon359/JavaScript30) finished this awesome challenge!. You can see the showcase of his implementations on [this link](https://reymon359.github.io/JavaScript30/).
 * [Harry Xie](https://github.com/a90100/JavaScript30) 紀錄 30 天的練習筆記在 [此連結](https://github.com/a90100/JavaScript30).
 * [Santiago Escobar](https://github.com/sescobar99)'s [repository](https://github.com/sescobar99/javascript30-challenge) and [GitHub Pages showcase](https://sescobar99.github.io/javascript30-challenge/).
+* [ Van Ribeiro's ](https://vanribeiro-30daysofjavascript.netlify.app/) about demos and recaps. On [GitHub Repo](https://github.com/vanribeiro/30days-Of-JavaScript) there's a summary about what was learned and researched.
 
 ## Alternative Implementations
 Here are some links of people who have done the tutorials, but in a different language or framework:
