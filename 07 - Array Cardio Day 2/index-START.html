@@ -37,11 +37,7 @@
     console.log({ allAdults })
 
     // Array.prototype.find()
-    const comment = comments.find((comment) => {
-      if (comment.id === 823423) {
-        return true;
-      }
-    })
+    const comment = comments.find((comment) => comment.id === 823423);
 
     console.log(comment)
     // Find is like filter, but instead returns just the one you are looking for
@@ -50,6 +46,16 @@
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+
+    const index = comments.findIndex(comment => comment.id === 823423);
+
+    console.log(index);
+
+
+    const newXomments = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ]
 
   </script>
 </body>
