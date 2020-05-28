@@ -43,7 +43,7 @@
   slider.addEventListener('mousedown', (e) => {
     isDown = true;
     slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
+    startX = e.pageX - slider.offsetLeft - slider.offsetWidth * 0.02 / 2;
     scrollLeft = slider.scrollLeft;
   });
 
