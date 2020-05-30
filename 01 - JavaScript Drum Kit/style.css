@@ -1,13 +1,18 @@
 html {
   font-size: 10px;
-  background: url(https://i.imgur.com/b9r5sEL.jpg) bottom center;
-  background-size: cover;
 }
 
 body,html {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../01 - JavaScript Drum Kit/Finished Drum Kit/images/fractal-brownblackgold.jpg');
+  background-size: cover;
 }
 
 .keys {
@@ -28,13 +33,14 @@ body,html {
   width: 10rem;
   text-align: center;
   color: white;
-  background: rgba(0,0,0,0.4);
+  /*background-color: gainsboro;*/
+  background: rgba(56, 55, 55, 0.4);
   text-shadow: 0 0 .5rem black;
 }
 
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
+  border-color: #f1e2aa;
   box-shadow: 0 0 1rem #ffc600;
 }
 
@@ -47,5 +53,5 @@ kbd {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: #ffc600;
+  color: #f7f6f2;
 }
