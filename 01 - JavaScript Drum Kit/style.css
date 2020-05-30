@@ -11,7 +11,7 @@ body,html {
 .container {
   width: 100vw;
   height: 100vh;
-  background-image: url('../01 - JavaScript Drum Kit/Finished Drum Kit/fractal-brownblackgold.jpg');
+  background-image: url('../01 - JavaScript Drum Kit/Finished Drum Kit/images/fractal-brownblackgold.jpg');
   background-size: cover;
 }
 
