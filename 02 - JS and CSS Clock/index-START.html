@@ -84,8 +84,8 @@
         const now = new Date();
 
         const second = now.getSeconds();
-        const secondDeg = ((second / 60) * 360 + 90) / 360;
-        secondHand.style.transform = `rotate(${secondDeg}turn)`;
+        const secondDeg = (second / 60) * 360 + 90;
+        secondHand.style.transform = `rotate(${secondDeg}deg)`;
 
         const min = now.getMinutes();
         const minDeg = (min / 60) * 360 + 90;
