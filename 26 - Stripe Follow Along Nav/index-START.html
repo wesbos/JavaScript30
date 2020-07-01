@@ -270,7 +270,12 @@
         const index = [...triggers].findIndex((trigger) => trigger === this);
         const dropdown = navItems[index].querySelector(".dropdown");
         navItems[index].classList.add("trigger-enter");
-        navItems[index].classList.add("trigger-enter-active");
+        setTimeout(
+          () =>
+            navItems[index].classList.contains("trigger-enter") &&
+            navItems[index].classList.add("trigger-enter-active"),
+          150
+        );
 
         const { width, height, top, left } = dropdown.getBoundingClientRect();
         const { top: navTop } = nav.getBoundingClientRect();
