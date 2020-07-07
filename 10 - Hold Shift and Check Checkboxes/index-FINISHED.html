@@ -103,11 +103,12 @@ let lastChecked;
 
 function handleCheck(e) {
   // Check if they had the shift key down
-  // AND check that they are checking it
+  // check that they are checking it
+  //and check if there's a lastChecked
   let inBetween = false;
-  if (e.shiftKey && this.checked) {
+  if (e.shiftKey && this.checked && lastChecked) {
     // go ahead and do what we please
-    // loop over every single checkbox
+    //loop over every single checkbox
     checkboxes.forEach(checkbox => {
       console.log(checkbox);
       if (checkbox === this || checkbox === lastChecked) {
@@ -120,8 +121,9 @@ function handleCheck(e) {
       }
     });
   }
-
-  lastChecked = this;
+  
+  //check if lastChecked is being unchecked
+  lastChecked = this === lastChecked ? undefined : this;
 }
 
 checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
