@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CSS + JS CLOCK</title>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+    <div class="digital-clock">
+        <span id="hr"></span>
+        <span id="min"></span>
+        <span id="sec"></span>
+    </div>
+    <style>
+        html {
+            background-size: cover;
+            font-family: 'helvetica neue';
+            text-align: center;
+            font-size: 10px;
+        }
+        
+        body {
+            margin: 0;
+            font-size: 2rem;
+            display: flex;
+            flex: 1;
+            min-height: 100vh;
+            align-items: center;
+        }
+        
+        .clock {
+            width: 30rem;
+            height: 30rem;
+            margin: 50px auto;
+            position: relative;
+            padding: 2rem;
+            background-image: url(clock.svg);
+            background-repeat: no-repeat;
+        }
+        
+        .clock-face {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform: translateY(-3px);
+            /* account for the height of the clock hands */
+        }
+        
+        .digital-clock {
+            width: 20%;
+            position: absolute;
+            margin: 0 0 0 15%;
+            display: inline-block;
+        }
+        
+        .digital-clock>#hr,
+        #min,
+        #sec {
+            color: white;
+            background-color: red;
+            padding: 0 2% 0;
+            font-size: 50px;
+            text-align: center;
+        }
+        
+        .hand {
+            width: 50%;
+            height: 6px;
+            background: black;
+            position: absolute;
+            top: 50%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            transition: all 0.05s;
+            transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+        }
+    </style>
+    <script>
+        const secondHand = document.querySelector('.second-hand');
+        const minsHand = document.querySelector('.min-hand');
+        const hourHand = document.querySelector('.hour-hand');
+
+        const hr = document.querySelector('.hr')
+        const min = document.querySelector('.min')
+        const sec = document.querySelector('.sec')
+
+
+
+        function setDate() {
+            const now = new Date();
+
+            const seconds = now.getSeconds();
+            const secondDegrees = ((seconds / 60) * 360) + 90;
+            secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+
+            const mins = now.getMinutes();
+            const minsDegrees = ((mins / 60) * 360) + ((seconds / 60) * 6) + 90
+            minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+            const hour = now.getHours();
+            const hourDegrees = ((hour / 12) * 360) + ((mins / 60) * 30) + 90
+            hourHand.style.transform = `rotate(${hourDegrees}deg`;
+
+
+            if (hour < 10) {
+                hrf = "0" + hour
+            } else {
+                hrf = hour
+            }
+
+            if (mins < 10) {
+                minf = "0" + mins
+            } else {
+                minf = mins
+            }
+
+            if (seconds < 10) {
+                secf = "0" + seconds
+            } else {
+                secf = seconds
+            }
+            document.getElementById("hr").innerHTML = hrf
+            document.getElementById("min").innerHTML = minf;
+            document.getElementById("sec").innerHTML = secf
+        }
+
+        setInterval(setDate, 1000);
+
+        setDate();
+    </script>
+</body>
+
+</html>
