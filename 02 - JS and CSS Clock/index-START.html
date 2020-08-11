@@ -65,28 +65,11 @@
       background: black;
       position: absolute;
       top: 50%;
-      transform: rotate(90deg);
-      transform-origin: 100%;
     }
   </style>
 
   <script>
-    const setDate = () => {
-      const hour = document.querySelector('.hour-hand');
-      const minute = document.querySelector('.min-hand');
-      const second = document.querySelector('.second-hand');
 
-      const D = new Date();
-      const curHour = D.getHours();
-      const curMin = D.getMinutes();
-      const curSec = D.getSeconds();
-
-      hour.style.transform = `rotate(${curHour * 15 + 90}deg)`;
-      minute.style.transform = `rotate(${curMin * 6 + 90}deg)`;
-      second.style.transform = `rotate(${curSec * 6 + 90}deg)`;
-    }
-
-    setInterval(setDate, 1000);
 
   </script>
 </body>
