@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Type Ahead 👀</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <form class="search-form">
@@ -14,9 +16,42 @@
       <li>or a state</li>
     </ul>
   </form>
-<script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  <script>
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
 
-</script>
+    let cityData = [];
+    fetch(endpoint)
+      .then((res) => res.json())
+      .then((data) => cityData = data)
+
+    const handleInput = () => {
+      suggestions.innerHTML = `<li><span class="name"><b>Nothing can find!</b></span></li>`;
+      const userInput = document.querySelector('.search').value;
+      const reg = new RegExp(userInput, 'gi');
+      const filterData = cityData.filter((contents) =>
+        contents.city.match(reg) || contents.state.match(reg)
+      )
+      if (filterData.length === 0) return;
+
+      suggestions.innerHTML = '';
+      const html = filterData.map((data) => {
+        const hlCity = data.city.toUpperCase().replace(userInput.toUpperCase(), `<span class='hl'>${userInput}</span>`);
+        const hlState = data.state.toUpperCase().replace(userInput.toUpperCase(), `<span class='hl'>${userInput}</span>`);
+        return `
+        <li>
+          <span class="name">${hlCity}, ${hlState}</span>
+          <span class="population">${data.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+        </li>
+        `
+      }).join('');
+      suggestions.innerHTML += html;
+    }
+
+    const suggestions = document.querySelector('.suggestions');
+
+    document.querySelector('.search').addEventListener('keyup', handleInput);
+
+  </script>
 </body>
+
 </html>
