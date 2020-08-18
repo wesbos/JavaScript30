@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
@@ -40,7 +42,24 @@
     // counting
 
     // timing
+    console.time('fetch time')
+    fetch('https://api.github.com/users/minsung1129')
+      .then((data) => data.json())
+      .then(data => {
+        console.timeEnd('fetch time');
+        console.log(data);
+      })
+
+    //   console.time('fetching data');
+    // fetch('https://api.github.com/users/wesbos')
+    //   .then(data => data.json())
+    //   .then(data => {
+    //     console.timeEnd('fetching data');
+    //     console.log(data);
+    //   });
+
 
   </script>
 </body>
+
 </html>
