@@ -55,11 +55,15 @@
     console.log(seconds);
 
     // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest
+    // 3. Sort the inventors by birthdate, oldest to younges
 
-    const thrid = inventors.sort((a, b) => a.year - b.year);
-    console.table(thrid);
+    console.clear();
 
+    const thrid1 = inventors.sort((a, b) => a.year - b.year)
+    console.table(thrid1);
+    const thrid2 = Array.from(inventors.sort((a, b) => b.year - a.year))
+    console.table(thrid2);
+    console.log(thrid1, thrid2)
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
 

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Reference VS Copy</title>
 </head>
+
 <body>
 
   <script>
@@ -50,7 +52,26 @@
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
 
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+
+    console.clear();
+    console.log(wes);
+
+    const dev = Object.assign({}, wes); // 1 레벨 깊이만큼만 클론된다. 2레벨 깊이인 social의 twitter같은 경우
+    // dev.social.twitter = '@minsung'으로 수정하면 wes도 바뀜
+
+    const dev2 = JSON.parse(JSON.stringify(wes)); // 이렇게하면 모든 레벨이 모두 clone된다. string으로 바꾼뒤 클론해서~
+    console.log(wes);
+    console.log(dev2)
   </script>
 
 </body>
+
 </html>
