@@ -10,7 +10,6 @@ Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
 Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 
-* [Ayush Gupta's](https://javascript30.ayushgupta.tech/) implementation of JavaScript30 challenge with some add-ons & updated design.
 * [Arjun Khode’s blog](http://thesagittariusme.blogspot.com/search/label/JS30) about summaries for each day, including fixed glitches, bugs and extra features
 * [Nitish Dayal's Text Guides](https://github.com/nitishdayal/JavaScript30) are great for those who like reading over watching
 * [Meredith Underell's](http://meredithunderell.com/tag/javascript30/) Quick Lessons Learned
@@ -52,6 +51,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Mugilan](https://github.com/Mugilan-Codes) is currently doing this challenge. Check out his [Repo](https://github.com/Mugilan-Codes/javascript-30) and the [Live Demo](https://mugilan-codes.github.io/javascript-30/).
 * [Eshan Vohra](https://github.com/eshanvohra) is currently doing this challenge. Check out my repo [here](https://github.com/eshanvohra/JavaScript30).
 * [RegusAl](https://github.com/RegusAl) is currently doing this challenge. Check out my repo [here](https://github.com/RegusAl/JavaScript30).
+* [Ayush Gupta's](https://javascript30.ayushgupta.tech/) implementation of JavaScript30 challenge with some add-ons & updated design.
 
 
 ## Alternative Implementations
