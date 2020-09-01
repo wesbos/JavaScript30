@@ -52,6 +52,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Eshan Vohra](https://github.com/eshanvohra) is currently doing this challenge. Check out my repo [here](https://github.com/eshanvohra/JavaScript30).
 * [RegusAl](https://github.com/RegusAl) is currently doing this challenge. Check out my repo [here](https://github.com/RegusAl/JavaScript30).
 * [Ayush Gupta's](https://javascript30.ayushgupta.tech/) implementation of JavaScript30 challenge with some add-ons & updated design.
+* [Rohan Gupta](https://github.com/DemonDaddy22) has finished this fun & informative challenge. Check out my repo [here](https://github.com/DemonDaddy22/30DaysOfJS). I'll carry forward this momentum and start working on 40DaysOfReactJS.
 
 
 ## Alternative Implementations
