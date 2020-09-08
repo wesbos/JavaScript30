@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  <link rel="shortcut icon" href="#">
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
@@ -58,9 +60,27 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+window.addEventListener('keydown', function(e){
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  
+    if(!audio) return; //stop the function from playing all together
+    audio.currentTime = 0; //rewind to the start
+    audio.play();
+    key.classList.add('playing');
 
+  });
+
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+      this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  
 </script>
-
+  
 
 </body>
 </html>
