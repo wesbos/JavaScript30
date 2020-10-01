@@ -47,6 +47,7 @@
         inset 0 0 0 3px #EFEFEF,
         inset 0 0 10px black,
         0 0 10px rgba(0,0,0,0.2);
+        transform: rotate(90deg);
     }
 
     .clock-face {
@@ -62,12 +63,35 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100% ;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0, 3.15, 0.54, 0.9);
     }
 
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand');
+    const minHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');
 
+    const setDate = () => {
+      const now = new Date();
+      const seconds = now.getSeconds();
+      const secondsDegrees = (seconds / 60) * 360;
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+      const mins = now.getMinutes();
+      const minDegrees = (mins / 60) * 360; 
+      minHand.style.transform = `rotate(${minDegrees}deg)`;
+
+      const hours = now.getHours();
+      const hourDegrees = (hours / 24) * 360;
+      hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    }
+
+    setInterval(setDate, 1000);
 
   </script>
 </body>
