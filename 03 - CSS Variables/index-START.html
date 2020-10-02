@@ -10,7 +10,7 @@
   <div class="controls">
     <label for="spacing">Spacing:</label>
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
-
+        <!-- DATA ATTRIBUTES are attributes you made up, in this case he used it to keep track of the units of measurements for our different variables such as px -->
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
@@ -21,7 +21,24 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    /* root is the highest level element you can get, so declaring variables here will allow us to apply this everywhere. Similar to applying styles to the html element */
+      :root {
+        /* this is us setting default values for our variables */
+        /* the -- is the standard for declaring variables in CSS. It's the equivalent of $ in sass */
+        --base: #ffc600;
+        --spacing: 10px;
+        --blur: 10px;
+      }
 
+      .hl {
+        color: var(--base);
+      }
+
+      img {
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+      }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -45,6 +62,24 @@
   </style>
 
   <script>
+    // .controls is referring to the class of the container and it is looking for any input elements inside it.
+    // querySelectorAll returns to use a NodeList which looks like an array, but its NOT. Difference is arrays have a lot of built in methods available for us to use like map, filter, reduce
+    // NodeList only has a couple.
+    const inputs = document.querySelectorAll('.controls input');
+
+    // interesting note, the console log does NOT work with the fat arrow syntax.
+    function handleUpdate(){
+    console.log(this.value);
+      // dataset gives us an object that contains all the data attributes from that specific element. We put || '' b/c the hexvalues don't have a suffix so we need to catch that edge case.
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+
+    }
+
+    // for each instance of an input element, we are adding an event listener, waiting for a change. Once it catches this event it calls our handleUpdate function.
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+
   </script>
 
 </body>
