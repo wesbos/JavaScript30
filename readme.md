@@ -54,7 +54,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Ayush Gupta's](https://javascript30.ayushgupta.tech/) implementation of JavaScript30 challenge with some add-ons & updated design.
 
 
-## Alternative Implementations
+## Alternative Implementations read this carefully 
 Here are some links of people who have done the tutorials, but in a different language or framework:
 
 * [Thomas Mattacchione](https://github.com/tkjone/clojurescript-30) JavaScript 30 written in ClojureScript
@@ -67,6 +67,7 @@ Here are some links of people who have done the tutorials, but in a different la
 * [ALMaclaine](https://github.com/almaclaine) Javascript 30 written in [Dart 2.0](https://github.com/ALMaclaine/Dart30).
 
 ## A note on Pull Requests
+## 
 
 These are meant to be 1:1 copies of what is done in the video. If you found a better / different way to do things, great, but I will be keeping them the same as the videos.
 
