@@ -57,6 +57,10 @@
       const commentIndex = comments.findIndex((comment) => comment.id === 823423);
 
       console.log(commentIndex);
+
+      comments.splice(commentIndex, 1);
+      console.table(comments);
+      // console.dir(comments);
     </script>
   </body>
 </html>
