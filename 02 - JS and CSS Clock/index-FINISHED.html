@@ -73,8 +73,12 @@
   const secondHand = document.querySelector('.second-hand');
   const minsHand = document.querySelector('.min-hand');
   const hourHand = document.querySelector('.hour-hand');
-
+  const audio=new Audio('Clock.mp3');
+  
   function setDate() {
+   audio.currentTime=0;
+   audio.play(); 
+    
     const now = new Date();
 
     const seconds = now.getSeconds();
