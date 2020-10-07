@@ -31,29 +31,73 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    const inventorFilter = (array) => {
+      return inventors.filter(value => value.year > 1499 && value.year < 1600);
+    }
+    console.table(inventorFilter(inventors));
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const inventorNames = (array) => {
+      return inventors.map(value => `${value.first} ${value.last}`)
+    }
+    console.log(inventorNames(inventors));
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+    console.table(ordered);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    // reduce((accumulator, index))
+    const totalYears = inventors.reduce((total, inventor) => {
+      return total + (inventor.passed - inventor.year);
+    }, 0);
+    console.log(totalYears);
 
     // 5. Sort the inventors by years lived
+    const byAge = inventors.sort((a, b) => (a.passed - a.year) > (b.passed - b.year) ? 1 : -1);
+    console.table(byAge);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // selects the div that contains all of the boulevards on the page.
+    const category = document.querySelector('.mw-category');
+    // selects all the anchor tags that are in the category we selected
+    const links = [...category.querySelectorAll('a')];
+      // spread operator "spreads" every single item into the array. spread operators will take every item out of something ( an iterable ) and put it into the containing array.
+      // an alternative is links = Array.from(category.querySelectorAll('a'));
+    // returns the text content of the link b/c that's all we want.
+    const de = links
+                .map(link => link.textContent)
+                .filter(streetName => streetName.includes('de'));
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alphabetical = people.sort((a, b) => {
+      const [aLast, aFirst] = a.split(', ');
+      const [bLast, bFirst] = b.split(', ');
+      return aLast > bLast ? 1 : -1;
+    });
+    console.log(alphabetical);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transport = data.reduce(function(obj, item) {
+      // If the object doesn't have the item in it (on every first instance it shouldn't b/c its empty it will add it and set it to zero)
+      if(!obj[item]) {
+        obj[item] = 0;
+      }
+      // then we add an instance of that item to the counter
+      obj[item]++;
+      return obj;
+      // empty object where we store our items as we reduce.
+    }, {});
+    console.log(transport);
   </script>
 </body>
 </html>
