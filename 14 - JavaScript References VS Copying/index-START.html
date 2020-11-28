@@ -67,6 +67,8 @@
     // and think we make a copy:
 
     // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(cap2);
 
     // We will hopefully soon see the object ...spread
 
