@@ -10,72 +10,107 @@
 
   <div class="keys">
     <div data-key="65" class="key">
-      <kbd>A</kbd>
+      <kbd id="A">A</kbd>
       <span class="sound">clap</span>
     </div>
     <div data-key="83" class="key">
-      <kbd>S</kbd>
+      <kbd id="S">S</kbd>
       <span class="sound">hihat</span>
     </div>
     <div data-key="68" class="key">
-      <kbd>D</kbd>
+      <kbd id="D">D</kbd>
       <span class="sound">kick</span>
     </div>
     <div data-key="70" class="key">
-      <kbd>F</kbd>
-      <span class="sound">openhat</span>
+      <kbd id="F">F</kbd>
+      <span class="sound">808</span>
     </div>
     <div data-key="71" class="key">
-      <kbd>G</kbd>
-      <span class="sound">boom</span>
+      <kbd id="G">G</kbd>
+      <span class="sound">cymbal</span>
     </div>
     <div data-key="72" class="key">
-      <kbd>H</kbd>
-      <span class="sound">ride</span>
+      <kbd id="H">H</kbd>
+      <span class="sound">openhat</span>
     </div>
     <div data-key="74" class="key">
-      <kbd>J</kbd>
+      <kbd id="J">J</kbd>
       <span class="sound">snare</span>
     </div>
     <div data-key="75" class="key">
-      <kbd>K</kbd>
-      <span class="sound">tom</span>
+      <kbd id="K">K</kbd>
+      <span class="sound">fx</span>
     </div>
     <div data-key="76" class="key">
-      <kbd>L</kbd>
-      <span class="sound">tink</span>
+      <kbd id="L">L</kbd>
+      <span class="sound">percussion</span>
     </div>
   </div>
 
-  <audio data-key="65" src="sounds/clap.wav"></audio>
-  <audio data-key="83" src="sounds/hihat.wav"></audio>
-  <audio data-key="68" src="sounds/kick.wav"></audio>
-  <audio data-key="70" src="sounds/openhat.wav"></audio>
-  <audio data-key="71" src="sounds/boom.wav"></audio>
-  <audio data-key="72" src="sounds/ride.wav"></audio>
-  <audio data-key="74" src="sounds/snare.wav"></audio>
-  <audio data-key="75" src="sounds/tom.wav"></audio>
-  <audio data-key="76" src="sounds/tink.wav"></audio>
+  <audio data-key="65" src="Sounds/SUBSTANCE - CLAP - 001.wav"></audio>
+  <audio id="A" src="Sounds/SUBSTANCE - CLAP - 001.wav"></audio>
+
+  <audio data-key="83" src="Sounds/SUBSTANCE - HH - 001.wav"></audio>
+  <audio id="S" src="Sounds/SUBSTANCE - HH - 001.wav"></audio>
+
+  <audio data-key="68" src="Sounds/SUBSTANCE - KICK - 001.wav"></audio>
+  <audio id="D" src="Sounds/SUBSTANCE - KICK - 001.wav"></audio>
+
+  <audio data-key="70" src="Sounds/SUBSTANCE - 808 - 002.wav"></audio>
+  <audio id="F" src="Sounds/SUBSTANCE - 808 - 002.wav"></audio>
+
+  <audio data-key="71" src="Sounds/SUBSTANCE - CYM - 001.wav"></audio>
+  <audio id="G" src="Sounds/SUBSTANCE - CYM - 001.wav"></audio>
+
+  <audio data-key="72" src="Sounds/SUBSTANCE - OH - 002.wav"></audio>
+  <audio id="H" src="Sounds/SUBSTANCE - OH - 002.wav"></audio>
+
+  <audio data-key="74" src="Sounds/SUBSTANCE - SNARE - 001.wav"></audio>
+  <audio id="J" src="Sounds/SUBSTANCE - SNARE - 001.wav"></audio>
+
+  <audio data-key="75" src="Sounds/SUBSTANCE - FX - 002.wav"></audio>
+  <audio id="K" src="Sounds/SUBSTANCE - FX - 002.wav"></audio>
+
+  <audio data-key="76" src="Sounds/SUBSTANCE - PERC - 002.wav"></audio>
+  <audio id="L" src="Sounds/SUBSTANCE - PERC - 002.wav"></audio>
+
 
 <script>
-  function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
-  }
+ function keyPressSound (e){
+    // console.log(e);//this gives us the entire keypress object
+    //console.log(e.keyCode);//this gives us just the ascii character of the key that was pressed
+    const audio = document.querySelector(`audio[data-key = "${e.keyCode}"]`)
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
 
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
-
-    key.classList.add('playing');
-    audio.currentTime = 0;
+    if(!audio) return;//this stops the function from running
+    audio.currentTime = 0;//this rewinds the playback to the start every time we hit the key
     audio.play();
-  }
+    key.classList.add('playing');
+}
 
-  const keys = Array.from(document.querySelectorAll('.key'));
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound);
+function clickPlaySound (e){
+   const audio_2 = document.querySelector(`audio[id = "${e.target.innerText}"]`)
+   const key_2 = document.querySelector(`#${e.target.innerText}`)
+   if(!audio_2) return;
+   audio_2.currentTime = 0;
+   audio_2.play();
+   key_2.parentNode.classList.add('playing');
+}
+
+window.addEventListener('keydown', keyPressSound);
+window.addEventListener('click', clickPlaySound);
+
+
+//the removeTransition function takes an event as parameter
+function removeTransition (e){
+    if (e.propertyName !== 'transform') return;//this skips the event if it's not a transform event
+    this.classList.remove('playing');
+}
+
+const keys = document.querySelectorAll('.key');
+
+//we use for =Each to listen for an event on each key press
+keys.forEach(key => key.addEventListener('transitionend', removeTransition))//the function removeTransition is run when the transition ends
 </script>
 
 
