@@ -61,12 +61,22 @@
       height: 6px;
       background: black;
       position: absolute;
+      transform-origin: 100%;
+      transform: rotate(90deg);
       top: 50%;
+      transition: all 0.5sec;
     }
 
   </style>
 
   <script>
+  function setDate() {
+    const now = new Date();
+    const seconds = now.getSeconds();
+    console.log(seconds);
+  }
+  
+  setInterval(setDate, 1000);
 
 
   </script>
