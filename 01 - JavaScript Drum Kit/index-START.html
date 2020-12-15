@@ -13,54 +13,70 @@
       <kbd>A</kbd>
       <span class="sound">clap</span>
     </div>
-    <div data-key="83" class="key">
-      <kbd>S</kbd>
+    <div data-key="90" class="key">
+      <kbd>Z</kbd>
       <span class="sound">hihat</span>
     </div>
-    <div data-key="68" class="key">
-      <kbd>D</kbd>
+    <div data-key="69" class="key">
+      <kbd>E</kbd>
       <span class="sound">kick</span>
     </div>
-    <div data-key="70" class="key">
-      <kbd>F</kbd>
+    <div data-key="82" class="key">
+      <kbd>R</kbd>
       <span class="sound">openhat</span>
     </div>
-    <div data-key="71" class="key">
-      <kbd>G</kbd>
+    <div data-key="84" class="key">
+      <kbd>T</kbd>
       <span class="sound">boom</span>
     </div>
-    <div data-key="72" class="key">
-      <kbd>H</kbd>
+    <div data-key="89" class="key">
+      <kbd>Y</kbd>
       <span class="sound">ride</span>
     </div>
-    <div data-key="74" class="key">
-      <kbd>J</kbd>
+    <div data-key="85" class="key">
+      <kbd>U</kbd>
       <span class="sound">snare</span>
     </div>
-    <div data-key="75" class="key">
-      <kbd>K</kbd>
+    <div data-key="73" class="key">
+      <kbd>I</kbd>
       <span class="sound">tom</span>
     </div>
-    <div data-key="76" class="key">
-      <kbd>L</kbd>
+    <div data-key="79" class="key">
+      <kbd>O</kbd>
       <span class="sound">tink</span>
     </div>
   </div>
 
   <audio data-key="65" src="sounds/clap.wav"></audio>
-  <audio data-key="83" src="sounds/hihat.wav"></audio>
-  <audio data-key="68" src="sounds/kick.wav"></audio>
-  <audio data-key="70" src="sounds/openhat.wav"></audio>
-  <audio data-key="71" src="sounds/boom.wav"></audio>
-  <audio data-key="72" src="sounds/ride.wav"></audio>
-  <audio data-key="74" src="sounds/snare.wav"></audio>
-  <audio data-key="75" src="sounds/tom.wav"></audio>
-  <audio data-key="76" src="sounds/tink.wav"></audio>
+  <audio data-key="90" src="sounds/hihat.wav"></audio>
+  <audio data-key="69" src="sounds/kick.wav"></audio>
+  <audio data-key="82" src="sounds/openhat.wav"></audio>
+  <audio data-key="84" src="sounds/boom.wav"></audio>
+  <audio data-key="89" src="sounds/ride.wav"></audio>
+  <audio data-key="85" src="sounds/snare.wav"></audio>
+  <audio data-key="73" src="sounds/tom.wav"></audio>
+  <audio data-key="79" src="sounds/tink.wav"></audio>
 
 <script>
+  window.addEventListener("keydown", (event) => {
+    const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
 
+    if (!audio) return; // end the program if the key is not set
+    audio.currentTime = 0; // rewind to the start
+    audio.play(); // play the file sound
+
+    key.classList.add("playing");
+  });
+
+  const keys = document.querySelectorAll(".key");
+  keys.forEach(key => {
+    key.addEventListener("transitionend", (event) => {
+      if (event.propertyName !== "transform") return;
+      key.classList.remove("playing");
+    });
+  });
 </script>
-
 
 </body>
 </html>
