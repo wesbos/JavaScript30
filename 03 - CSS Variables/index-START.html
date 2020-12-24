@@ -21,6 +21,21 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: #36a4b3;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+
+    img{
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+      background: var(--base);
+    }
+
+    .h1{
+      color: var(--base);
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -45,6 +60,17 @@
   </style>
 
   <script>
+
+    // Arrow function -ES6- doesn't handle the this keyword the same way as the function -ES5- does.
+
+    function handleUpdate() {
+      const suffix  = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    };
+
+    const inputs = document.querySelectorAll('.controls input');
+    inputs.forEach(input => input.addEventListener('change',handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove',handleUpdate))
   </script>
 
 </body>
