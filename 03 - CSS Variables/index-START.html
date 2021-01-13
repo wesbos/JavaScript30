@@ -62,15 +62,16 @@
   <script>
     const inputs = document.querySelectorAll('.controls input');
     
-    function handleUpdate() {
-      const suffix = this.dataset.sizing || '';
-      document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${suffix}`);
-    }
-
-    // const handleUpdate = () => {
+    // function handleUpdate() {
     //   const suffix = this.dataset.sizing || '';
     //   document.documentElement.style.setProperty(`--${this.name}`, `${this.value}${suffix}`);
     // }
+
+    const handleUpdate = (event) => {
+      const suffix = document.getElementById('blur').dataset.sizing || '';
+      console.log(event.currentTarget.name);
+      document.documentElement.style.setProperty(`--${event.currentTarget.name}`, `${event.currentTarget.value}${suffix}`);
+    }
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
