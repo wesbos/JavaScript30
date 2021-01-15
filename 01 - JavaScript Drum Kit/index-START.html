@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>JS Drum Kit</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 
@@ -57,10 +59,36 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
+  <script>
+    let divsList = document.querySelectorAll('.key');
+    let audioList = Array.from( document.querySelectorAll('audio'));
+    divsList = Array.from(divsList);
+    let keyCodeList = [];
+    divsList.forEach((item) => {
+      keyCodeList.push(item.childNodes[1].innerText)
+    })
 
-</script>
+    document.onkeydown = (event) => {
+      let keyCode = event.key.toUpperCase();
+      const index = keyCodeList.findIndex((item) => {
+        return item == keyCode
+      })
+      if(index != -1){
+        press(divsList[index],audioList[index])
+      }
+    }
+
+    function press(event,audioObj) {
+      let targetObj = event;
+      targetObj.classList.add('playing');
+      audioObj.play()
+      setTimeout(() => {
+        targetObj.classList.remove('playing');
+      }, 200)
+    }
+  </script>
 
 
 </body>
+
 </html>
