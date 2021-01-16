@@ -69,25 +69,17 @@
         const divsList = Array.from(document.querySelectorAll('.hand'));
 
         const [hour, min, second] = divsList;
-        initTime();
 
         function initTime() {
             let hours_time = new Date().getHours();
             let min_time = new Date().getMinutes();
             let second_time = new Date().getSeconds();
-            hour.style.transform = `rotate(${360 / 12 * hours_time+90+(min_time/60)*30}deg)`
-            min.style.transform = `rotate(${6 * min_time+90+(second_time/60)*6}deg)`
-            second.style.transform = `rotate(${6 * second_time+90}deg)`
-            secondTime(6 * second_time + 90);
+            hour.style.transform = `rotate(${360 / 12 * hours_time+90+(min_time/60)*30}deg)`;
+            min.style.transform = `rotate(${6 * min_time+90+(second_time/60)*6}deg)`;
+            second.style.transform = `rotate(${6 * second_time+90}deg)`;
         }
-
-        function secondTime(angle) {
-            setInterval(() => {
-                angle += 6;
-                second.style.transform = `rotate(${angle}deg)`;
-                second.classList.add('second-hand')
-            }, 1000)
-        }
+        initTime();
+        setInterval(initTime, 1000);
     </script>
 </body>
 
