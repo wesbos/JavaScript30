@@ -63,46 +63,28 @@
             top: 50%;
             transform-origin: right;
         }
-        
-        .hour-hand {
-            width: 40%;
-            height: 10px;
-            margin-top: -5px;
-            border-bottom-left-radius: 5px;
-            border-top-left-radius: 5px;
-            margin-left: 34px;
-        }
-        
-        .second-hand {
-            height: 2px;
-            margin-top: -1px;
-            border-bottom-left-radius: 100%;
-            border-top-left-radius: 100%;
-            background-color: red;
-        }
     </style>
 
     <script>
-        //demoText
         const divsList = Array.from(document.querySelectorAll('.hand'));
 
         const [hour, min, second] = divsList;
         initTime();
-        secondTime();
 
         function initTime() {
             let hours_time = new Date().getHours();
             let min_time = new Date().getMinutes();
             let second_time = new Date().getSeconds();
-            hour.style.transform = `rotate(${360 / 12 * hours_time+90}deg)`
-
+            hour.style.transform = `rotate(${360 / 12 * hours_time+90+(min_time/60)*30}deg)`
+            min.style.transform = `rotate(${6 * min_time+90+(second_time/60)*6}deg)`
+            second.style.transform = `rotate(${6 * second_time+90}deg)`
+            secondTime(6 * second_time + 90);
         }
 
-        function secondTime() {
-            let second_angle = 0
+        function secondTime(angle) {
             setInterval(() => {
-                second_angle += 6;
-                second.style.transform = `rotate(${second_angle}deg)`;
+                angle += 6;
+                second.style.transform = `rotate(${angle}deg)`;
                 second.classList.add('second-hand')
             }, 1000)
         }
