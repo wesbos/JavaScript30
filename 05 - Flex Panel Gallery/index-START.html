@@ -86,16 +86,23 @@
       justify-content: center;
       align-items: center;
     }
-    .panel>*:first-child{
+
+    .panel>*:first-child {
       transform: translateY(-100%);
     }
-    .panel>*:last-child{
+
+    .panel>*:last-child {
       transform: translateY(100%);
     }
-    .active{
-      transform: translateY(0) !important;
-      font-size: 2em !important;
+
+    .panel.active>*:first-child {
+      transform: translateY(0);
     }
+
+    .panel.active>*:last-child {
+      transform: translateY(0);
+    }
+
     .panel p {
       text-transform: uppercase;
       font-family: 'Amatic SC', cursive;
@@ -109,6 +116,7 @@
 
     .panel.open {
       font-size: 40px;
+      flex: 5;
     }
   </style>
 
@@ -144,28 +152,25 @@
   <script>
     let divsList = Array.from(document.getElementsByClassName('panel'));
     divsList.forEach((item) => {
-      console.log(item)
       item.style.show = true;
       item.onclick = changeFlex
     })
 
-    function changeFlex(){
-      if(this.style.show){
+    function changeFlex() {
+      if (this.style.show) {
         this.style.show = false;
-        this.style.flex = 5;
-        this.childNodes[1].classList.add('active');
-        this.childNodes[5].classList.add('active');
         this.classList.add('open');
-      }else{
+      } else {
         this.style.show = true;
-        this.style.flex = 1;
-        this.childNodes[1].classList.remove('active');
-        this.childNodes[5].classList.remove('active');
         this.classList.remove('open');
-
       }
     }
-    console.log(divsList)
+    function activeCss(e) {
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('active');
+      }
+    }
+    divsList.forEach((item) => item.addEventListener('transitionend', activeCss))
 
   </script>
 
