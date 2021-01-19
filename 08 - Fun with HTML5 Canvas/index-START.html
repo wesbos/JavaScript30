@@ -1,19 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
 </head>
-<body>
-<canvas id="draw" width="800" height="800"></canvas>
-<script>
-</script>
 
-<style>
-  html, body {
-    margin: 0;
-  }
-</style>
+<body>
+  <canvas id="draw" width="800" height="800"></canvas>
+  <script>
+    const draw = document.getElementById('draw');
+    draw.width = window.innerWidth;
+    draw.height = window.innerHeight;
+    let lineWidth = 10;
+    let isLarge = true;
+    let ctx = draw.getContext('2d');
+    let isDraw = false;
+    let startX = 0;
+    let startY = 0;
+    let hue = 0;
+    function drawCanvas(x, y) {
+      ctx.beginPath();
+      ctx.moveTo(startX, startY);
+      ctx.lineTo(x, y);
+      ctx.fill();
+      ctx.lineWidth = `${lineWidth}`;
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+      ctx.stroke();
+      //这是一个易错点,每次都得更新起点坐标
+      startX = x;
+      startY = y;
+      hue++
+      if (lineWidth >= 100 || lineWidth <= 1) {
+        isLarge = !isLarge
+      }
+
+      if (isLarge) {
+        lineWidth++
+      } else {
+        lineWidth--
+      }
+    }
+
+
+
+    function getMousePos(e) {
+      const { clientX, clientY } = e;
+      if (isDraw) {
+        drawCanvas(clientX, clientY)
+ 
+      }
+    }
+
+    function startDraw(e) {
+      isDraw = true;
+      const { clientX, clientY } = e;
+      startX = clientX;
+      startY = clientY;
+   
+    }
+    function endDraw() {
+      isDraw = false;
+    }
+    window.addEventListener('mousedown', startDraw)
+    window.addEventListener('mousemove', getMousePos)
+    window.addEventListener('mouseup', endDraw)
+  </script>
+
+  <style>
+    html,
+    body {
+      margin: 0;
+    }
+  </style>
 
 </body>
+
 </html>
