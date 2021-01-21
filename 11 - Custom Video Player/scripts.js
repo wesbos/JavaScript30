@@ -2,14 +2,13 @@ const BtnGroup = document.querySelectorAll(".player__button");
 const video = document.querySelector('.viewer');
 const volume = document.querySelector('input[name="volume"]');
 const playbackRate = document.querySelector('input[name="playbackRate"]')
-// const progress = document.querySelector('.progress__filled');
-const progress = document.querySelector('.progress');
+const progress = document.querySelector('.progress__filled');
+const progressCtn = document.querySelector('.progress');
 const player = document.querySelector('.player');
 let isPlay = false;
 let isProgress = false;
 let totalTime;
 let time;
-// let progressWidth = progressCtn.offsetWidth;
 [playBtn, backBtn, fowwardBtn] = BtnGroup;
 
 
@@ -50,14 +49,21 @@ backBtn.addEventListener('click', () => {
 //控制进度条
 progress.addEventListener('mousedown', (e) => {
     isProgress = true;
-    // console.log(progress.style.flexBasis)
 })
 
-progress.addEventListener('mousemove', (e) => {
+//拖动进度条
+progressCtn.addEventListener('mousemove', (e) => {
+    //根据鼠标占process容器的百分比算出时间
+    //因为currentTime是个实时的会影响到flex-basis的变化
     if (isProgress) {
-        const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+        const scrubTime = (e.offsetX / progressCtn.offsetWidth) * video.duration;
         video.currentTime = scrubTime;
     }
+
+})
+
+progressCtn.addEventListener('mouseleave',()=>{
+    isProgress = false;
 
 })
 progress.addEventListener('mouseup', (e) => {
