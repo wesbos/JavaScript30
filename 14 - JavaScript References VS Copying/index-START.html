@@ -8,9 +8,30 @@
 
   <script>
     // start with strings, numbers and booleans
-
+    //基本类型,赋的是值
+    let age1 = 123;
+    let age2 = age1;
+    age1 = 300;
+    console.log(age1,age2)
+    
     // Let's say we have an array
+    //引用类型赋的是地址
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+    const team = players;
+    team[3] = 'hello';
+   
+    //浅拷贝方式
+    //1.ES6扩展运算符
+    const team1 = [...players];
+    team1[0] = 'hello';
+    console.log(players)
+    console.log(team1)
+
+    //2.Array.form
+    const team2 = Array.from(players);
+    team2[0] = 'hello';
+    // console.log(players)
+
 
     // and we want to make a copy of it.
 
@@ -42,9 +63,15 @@
       age: 80
     };
 
+    const person1 = person;
+    person1.name = 'demo';
     // and think we make a copy:
 
     // how do we take a copy instead?
+    let person2 = JSON.parse(JSON.stringify(person));
+    person2.name = 'hello';
+    console.log(person,person2)
+
 
     // We will hopefully soon see the object ...spread
 
