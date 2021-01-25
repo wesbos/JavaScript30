@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Sort Without Articles</title>
 </head>
+
 <body>
 
   <style>
     body {
       margin: 0;
       font-family: sans-serif;
-      background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000");
+      /* background: url("https://source.unsplash.com/nDqA4d5NL0k/2000x2000"); */
       background-size: cover;
       display: flex;
       align-items: center;
@@ -26,12 +28,12 @@
       padding: 0;
       box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
     }
-    
+
     #bands li {
       border-bottom: 1px solid #efefef;
       padding: 20px;
     }
-    
+
     #bands li:last-child {
       border-bottom: 0;
     }
@@ -40,16 +42,35 @@
       color: #ffc600;
       text-decoration: none;
     }
-
   </style>
 
-  <ul id="bands"></ul>
+  <ul id="bands">
+  </ul>
 
-<script>
-const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
+  <script>
+    const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
+    const ul = document.querySelector('#bands');
 
-</script>
+    //正则后面加空格也是有效符号
+    function strip(bandName){
+      return bandName.replace(/^(a |the |an )/i,'').trim();
+    }
+
+    const sortBand = bands.sort((a,b)=>strip(a)>strip(b)?1:-1);
+    console.log(sortBand)
+    //DOM插入
+    function appendDom(list) {
+      let html = '';
+      list.forEach((item) => {
+        html += `<li>${item}</li>`
+      })
+      ul.innerHTML = html;
+    }
+
+    appendDom(sortBand)
+  </script>
 
 </body>
+
 </html>
