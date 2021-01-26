@@ -59,6 +59,14 @@
 
 <script>
 
+window.addEventListener("keyup", (event) => {
+      const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+      if (audio === null) {
+        return;
+      }
+      audio.play();
+})
+
 </script>
 
 
