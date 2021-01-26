@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Videos</title>
 </head>
+
 <body>
   <ul class="videos">
     <li data-time="5:43">
@@ -181,7 +183,26 @@
       Video 58
     </li>
   </ul>
-<script>
-</script>
+  <script>
+    const li = Array.from(document.querySelectorAll('li'));
+
+    function getTime(timeIndex) {
+      const res = li.reduce((acount, item) => {
+        let time = item.getAttribute('data-time');
+        let min = time.split(':')[timeIndex] * 1;
+        return acount + min
+      }, 0)
+      return res
+    }
+    const min = getTime(0);
+    const second = getTime(1);
+
+    const totalTime = min*60+second;
+    const hoursTime = Math.floor(totalTime/3600);
+    const minTime = Math.floor(totalTime%3600/60);
+    const secondTime = Math.floor(totalTime%60);
+    console.log(`${hoursTime}时,${minTime}分,${secondTime}秒`)
+  </script>
 </body>
+
 </html>
