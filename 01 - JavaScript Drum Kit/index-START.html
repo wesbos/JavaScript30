@@ -59,29 +59,30 @@
 
 <script>
 
+// Listen when key pressed and identify couple key-audio
 window.addEventListener("keydown", (event) => {
       const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
-      console.log(audio);
       const key = document.querySelector(`div .key[data-key="${event.keyCode}"]`);
-      console.log(key);
+      // if audio not identified > null > out
       if (audio === null) {
         return;
       }
+      // else play audio
       audio.play();
+      // add style / class list to the identified key
       key.classList.add("playing");
 })
 
-const keys = document.querySelectorAll('.key');
-console.log(keys)
-
-keys.forEach((key) => {
-  key.addEventListener("transitionend", (event) => {
-    event.removeTransition();
-  })
+// listen when key up & identify
+window.addEventListener("keyup", (event) => {
+      const key = document.querySelector(`div .key[data-key="${event.keyCode}"]`);
+      // if key > null > out
+      if (key === null) {
+        return;
+      }
+      // else remove the style / class list
+      key.classList.remove("playing");
 })
-// transition.addEventListener('transitionend', () => {
-//   console.log('Transition ended');
-// });
 
 </script>
 
