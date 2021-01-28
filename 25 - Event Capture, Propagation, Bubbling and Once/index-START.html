@@ -44,7 +44,7 @@
 <script>
     const divs = document.querySelectorAll('div');
     divs.forEach((item)=>{
-      item.addEventListener('click',getTarget,{capture:true})
+      item.addEventListener('click',getTarget,{capture:false,once:false})
     })
 
     function getTarget(){
