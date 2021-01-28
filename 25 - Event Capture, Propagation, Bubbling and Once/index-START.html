@@ -42,7 +42,15 @@
 
 <button></button>
 <script>
+    const divs = document.querySelectorAll('div');
+    divs.forEach((item)=>{
+      item.addEventListener('click',getTarget,{capture:true})
+    })
 
+    function getTarget(){
+      
+      console.log(this.classList.value)
+    }
 </script>
 </body>
 </html>

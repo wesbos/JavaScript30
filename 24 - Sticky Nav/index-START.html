@@ -54,7 +54,24 @@
   </div>
 
 <script>
-
+  const header = document.querySelector('header');
+  const headerHeight = header.offsetHeight;
+  const nav = document.querySelector('nav');
+  const logo = document.querySelector('.logo');
+  function changePos(){
+    let scrollTop = document.documentElement.scrollTop;
+    if(scrollTop>headerHeight){
+      //之所以加上paddingTop是为了让导航切换的时候更加的流畅自然,去掉这行代码会发现特别不流畅
+      document.body.style.paddingTop = nav.offsetHeight + 'px';
+      nav.style.position = 'fixed';
+      logo.style.maxWidth = '540px';
+    }else{
+      nav.style.position = 'relative';
+      document.body.style.paddingTop = 0;
+      logo.style.maxWidth = 0;
+    }
+  }
+  window.addEventListener('scroll',changePos)
 </script>
 
 </body>
