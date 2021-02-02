@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 html {
   font-size: 10px;
   background: url('./captain-holt.jpg') bottom center;
@@ -7,7 +9,7 @@ html {
 body,html {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
 
 .keys {
@@ -34,13 +36,14 @@ body,html {
 
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: grey;
+  box-shadow: 0 0 1rem grey;
 }
 
 kbd {
   display: block;
   font-size: 4rem;
+  font-family: 'Rubik', sans-serif;
 }
 
 .sound {
