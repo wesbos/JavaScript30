@@ -17,29 +17,75 @@
       p.style.fontSize = '50px';
     }
 
+    const poopie = 'p00pie <3';
+
     // Regular
+
+    console.log('hello!');
 
     // Interpolated
 
+    console.log(`hello ${poopie}`);
+
     // Styled
+
+    console.log('%c Welcome to Pawnee Indiana', 'font-size:50px; background-color:purple; color:white;');
 
     // warning!
 
+    console.warn('BE CAREFUL');
     // Error :|
+
+    console.error('OH NOOOO');
 
     // Info
 
+    console.info('I am hungry rn');
+
     // Testing
+
+    console.assert(1 === 2, 'That is wrong!');
 
     // clearing
 
+    // console.clear();
+
     // Viewing DOM Elements
+
+    const p = document.querySelector('p');
+
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
 
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)
+      console.log(`This is ${dog.name}`)
+      console.log(`This is ${dog.name}, he is ${dog.age}`)
+      console.log(`This is ${dog.name}, he is ${dog.age * 7} in dog years`)
+      console.groupEnd(`${dog.name}`);
+    });
+
     // counting
 
+    console.count('Wes')
+    console.count('Wes')
+    console.count('Wes')
+    console.count('Wes')
+
     // timing
+
+    console.time('fetching data');
+    fetch('https://api.nasa.gov/planetary/apod?api_key=xXO2hiFlxhuWJTf2pRMqsgsS9ecQtebItfGumZud')
+      .then(data => data.json())
+      . then(data => {
+        console.timeEnd('fetching data');
+      });
+
+      //table
+
+      console.table(dogs);
 
   </script>
 </body>
