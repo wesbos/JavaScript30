@@ -61,11 +61,10 @@
 
   };
 
-  function deleteList(plates = [], platesList) {
-    platesList.innerHTML = plates.map((plate, i) => {
-      return ` `
-    }).join('');
-
+  function deleteList(){
+    localStorage.clear()
+    localStorage.setItem('items', JSON.stringify(items))
+    populateList([], itemsList);
   };
 
   function toggleDone(e){
@@ -96,6 +95,7 @@
     addItems.addEventListener('submit', addItem);
 
     populateList(items, itemsList);
+
 
     itemsList.addEventListener('click', toggleDone);
 
