@@ -35,6 +35,34 @@
   </style>
 
 <script>
+  const logo = document.querySelector('.hero');
+  const text = logo.querySelector('h1');
+  const walk = 100; //100px
+
+  function shadow(e) {
+    const width = logo.offsetWidth;
+    const height = logo.offsetHeight;
+    // or const { offsetWidth: width, offsetHeight: height } = hero;
+    let x = e.offsetX;
+    let y = e.offsetY;
+    // or let { offsetX: x, offsetY: y } = e;
+    if (this !== e.target) {
+       x = x + e.target.offsetLeft;
+       y = y + e.offsetTop;
+    }
+
+    const xWalk = Math.round((x / width * walk ) - (walk / 2));
+    const yWalk = Math.round((y / width * walk ) - (walk / 2));
+
+    text.style.textShadow = `
+    ${xWalk}px ${yWalk}px 0 #ffcbf2,
+    ${xWalk * -1}px ${yWalk}px 0 #ecbcfd,
+    ${xWalk}px ${yWalk * - 1}px 0 #c8e7ff,
+    ${yWalk * -1}px ${xWalk}px 0 #c0fdff
+    `;
+  };
+
+  logo.addEventListener('mousemove', shadow);
 </script>
 </body>
 </html>
