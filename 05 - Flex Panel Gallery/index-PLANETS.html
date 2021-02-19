@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <style>
+    html {
+      box-sizing: border-box;
+      background: black;
+      font-family: 'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .panels {
+      min-height: 100vh;
+      overflow: hidden;
+      display:flex;
+    }
+
+    .panel {
+      background: #6B0F9C;
+      box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
+      color: white;
+      text-align: center;
+      align-items: center;
+      /* Safari transitionend event.propertyName === flex */
+      /* Chrome + FF transitionend event.propertyName === flex-grow */
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+      font-size: 5px;
+      background-size: cover;
+      background-position: center;
+      flex: 1;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .panel1 { background-image:url(https://solarsystem.nasa.gov/system/downloadable_items/1068_oct_1_2015_flare.jpg); }
+    .panel2 { background-image:url(https://apod.nasa.gov/apod/image/1303/PIA16853mercury.jpg); }
+    .panel3 { background-image:url(http://www.nasa.gov/sites/default/files/thumbnails/image/venus20191211-16.jpg); }
+    .panel4 { background-image:url(http://www.nasa.gov/centers/goddard/images/content/638831main_globe_east_2048.jpg); }
+    .panel5 { background-image:url(https://scx2.b-cdn.net/gfx/news/hires/2019/4-mars.jpg); }
+    .panel6 { background-image:url(https://upload.wikimedia.org/wikipedia/commons/7/71/PIA22946-Jupiter-RedSpot-JunoSpacecraft-20190212.jpg); }
+    .panel7 { background-image:url(https://solarsystem.nasa.gov/system/stellar_items/image_files/38_saturn_1600x900.jpg); }
+    .panel8 { background-image:url(https://solarsystem.nasa.gov/system/feature_items/images/89_uranus_carousel_1.jpg); }
+    .panel9 { background-image:url(https://solarsystem.nasa.gov/system/feature_items/images/82_carousel_neptune_1.jpg); }
+
+    /* Flex Children */
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-self: center;
+    }
+
+    .panel > *:first-child { transform: translateY(-100%);}
+    .panel.open-active > *:first-child { transform: translateY(0);}
+    .panel > *:last-child { transform: translateY(100%);}
+    .panel.open-active > *:last-child { transform: translateY(0);}
+
+
+    .panel p {
+
+      font-family: 'helvetica';
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+
+    .panel.open {
+      font-size: 20px;
+      flex: 9;
+    }
+
+  </style>
+  <div class="panels">
+      <div class="panel panel1">
+        <p>km 0</p>
+        <p>SUN</p>
+        <p>3500-5900°C</p>
+      </div>
+      <div class="panel panel2">
+        <p>57 millions of km</p>
+        <p>MERCURY</p>
+        <p>167°C</p>
+      </div>
+      <div class="panel panel3">
+        <p>108 millions of km</p>
+        <p>VENUS</p>
+        <p>464°C</p>
+      </div>
+      <div class="panel panel4">
+        <p>149 millions of km</p>
+        <p>EARTH</p>
+        <p>15°C</p>
+      </div>
+      <div class="panel panel5">
+        <p>228 millions of km</p>
+        <p>MARS</p>
+        <p>-63°C</p>
+      </div>
+      <div class="panel panel6">
+        <p>780 millions of km</p>
+        <p>JUPITER</p>
+        <p>-161°C</p>
+      </div>
+      <div class="panel panel7">
+        <p>1437 millions of km</p>
+        <p>SATURN</p>
+        <p>-189°C</p>
+      </div>
+      <div class="panel panel8">
+        <p>2871 millions of km</p>
+        <p>URANUS</p>
+        <p>-220°C</p>
+      </div>
+      <div class="panel panel9">
+        <p>4530 millions of km</p>
+        <p>NEPTUNE</p>
+        <p>-218°C</p>
+      </div>
+    </div>
+<script>
+
+const panels = document.querySelectorAll('.panel');
+
+function toggleOpen(){
+  this.classList.toggle('open');
+};
+
+function toggleActive(e){
+  if (e.propertyName.includes('flex')) {
+    this.classList.toggle('open-active');
+  }
+};
+  panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+  panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+
+</script>
+
+</body>
+</html>
