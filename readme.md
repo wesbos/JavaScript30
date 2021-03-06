@@ -1,4 +1,6 @@
-﻿![](https://javascript30.com/images/JS3-social-share.png)
+## This is me completing JavaScript30 challenges.
+
+![](https://javascript30.com/images/JS3-social-share.png)
 
 # JavaScript30
 
