@@ -51,6 +51,8 @@
     }
 
     .clock-face {
+      background-image: url('./ios_clock.svg');
+      background-repeat: no-repeat;
       position: relative;
       width: 100%;
       height: 100%;
@@ -90,9 +92,10 @@
       minHand.style.transform = `rotate(${minsDegrees}deg)`;
      
       // hours hand
+      const houradjust = Math.floor(mins / 10) * 6;
       const hours = now.getHours();
       const hoursDegrees = ((hours / 12) * 360) + 90;
-      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+      hourHand.style.transform = `rotate(${hoursDegrees + houradjust}deg)`;
 
       const hands = document.querySelectorAll('.hand');
       if (secondsDegrees === 90) {
