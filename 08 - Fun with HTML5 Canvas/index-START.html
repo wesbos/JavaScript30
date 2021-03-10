@@ -7,6 +7,58 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+  const canvas = document.querySelector('#draw');
+  const ctx = canvas.getContext('2d')
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  // ctx.fillStyle = "#FF0000"
+  ctx.lineWidth = 1;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  let lineX = 0;
+  let lineY = 0;  
+  let hue = 0;
+  let drawing = false;
+  let direction = true;
+
+  const drawLine = (e) => {
+    if (!drawing) return;
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.beginPath();
+    ctx.moveTo(lineX, lineY);
+    console.log(e)
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke()
+    lineX = e.offsetX;
+    lineY = e.offsetY;
+    if (hue > 360 ) {
+      hue = 0
+    }
+    hue++;
+
+    if (ctx.lineWidth > 100 || ctx.lineWidth <= 1) {
+      direction = !direction;
+    } 
+    if (direction) {
+      ctx.lineWidth++;
+    } else {
+      ctx.lineWidth--;
+    }
+  } 
+
+  canvas.addEventListener('mousemove', drawLine)
+  canvas.addEventListener('mousedown', (e) => {
+    drawing = true;
+    lineX = e.offsetX;
+    lineY = e.offsetY;
+
+  })
+  canvas.addEventListener('mouseup', () => drawing = false)
+  canvas.addEventListener('mouseout', () => drawing = false)
+
+
+  // canvas.addEventListener('mouseup', drawLine)
+  // canvas.addEventListener('mouseout', drawLine)
 </script>
 
 <style>
