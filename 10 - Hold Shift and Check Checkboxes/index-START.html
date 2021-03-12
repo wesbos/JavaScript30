@@ -95,13 +95,12 @@
     </div>
   </div>
 
-<script>
+<!-- <script>
   const itemsChecked = document.querySelectorAll('.inbox input[type="checkbox"]');
-
   let lastChecked;
 
   const handleChecked = (e) => {
-    // lastChecked = e.target;
+
     console.log('hi');
     let inBetween = false;
     if (e.shiftKey && e.target.checked) {
@@ -109,11 +108,9 @@
       itemsChecked.forEach(item => {
         if (item === lastChecked || item === e.target) {
           inBetween = !inBetween;
-
         }
         if (inBetween) {
           item.checked = true;
-
         }
       })
     }
@@ -122,7 +119,39 @@
 
   itemsChecked.forEach(item => item.addEventListener('click', handleChecked));
 
-
+</script> -->
+<script>
+  const itemChecked = document.querySelectorAll('.inbox input[type="checkbox"]');
+  let lastChecked;
+  const handleChecked = (e) => {
+      let inBetween = false;
+      if(e.shiftKey && e.target.checked) {
+          itemChecked.forEach(item => {
+              if(item === e.target || item === lastChecked) {
+                  inBetween = !inBetween;
+              } else if (e.target === lastChecked) {
+                  inBetween = false;
+              }
+              if (inBetween) {
+                  item.checked = true;
+              }
+          });
+      } else if (e.shiftKey && !e.target.checked) {
+          itemChecked.forEach(item => {
+              if(item === e.target || item === lastChecked) {
+                  inBetween = !inBetween;
+              } 
+              if (inBetween) {
+                  item.checked = false;
+              }
+          });
+      } 
+      lastChecked = e.target;
+  }
+  itemChecked.forEach(item => {
+      item.addEventListener('click', handleChecked);
+  })
+  console.log(itemChecked);
 </script>
 </body>
 </html>
