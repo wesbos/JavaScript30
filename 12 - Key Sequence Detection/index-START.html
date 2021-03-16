@@ -7,6 +7,25 @@
 </head>
 <body>
 <script>
+  const arr = [];
+  const secretCode = 'wesbos';
+window.addEventListener('keyup', (e) => {
+  console.log(e.key);
+  arr.push(e.key);
+  console.log(arr);
+  console.log(arr.length);
+  // if (arr.length > secretCode.length) {
+  //     arr.shift();
+  //   }
+  //   console.log(arr);
+  arr.splice(-secretCode.length-1, arr.length - secretCode.length )
+  console.log(arr);
+  if (arr.join("").includes(secretCode)) {
+    console.log('yay');
+    cornify_add();
+    arr.length = 0;
+  }
+})
 </script>
 </body>
 </html>
