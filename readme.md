@@ -1,4 +1,7 @@
-﻿![](https://javascript30.com/images/JS3-social-share.png)
+# ⚠️ This is me taking the Javascript30 course
+
+
+![](https://javascript30.com/images/JS3-social-share.png)
 
 # JavaScript30
 
