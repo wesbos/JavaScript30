@@ -59,11 +59,8 @@
     }
 
     const sliderImages = document.querySelectorAll('img');
-    // console.log(sliderImages)
 
     const slide = (e) => {
-      // console.log(e);
-      // console.count(e);
       sliderImages.forEach(sliderImage => {
         const slideInAt = (window.scrollY + window.innerHeight) - (sliderImage.height / 2);
         const slideFromBottom = sliderImage.offsetTop + sliderImage.height;
@@ -75,8 +72,6 @@
           sliderImage.classList.remove('active');
         };
       })
-
-
     } 
 
     window.addEventListener('scroll', debounce(slide));
