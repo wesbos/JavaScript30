@@ -14,9 +14,15 @@
 
     // and we want to make a copy of it.
 
-    // You might think we can just do something like this:
 
+    // You might think we can just do something like this:
+    const players1 = players;
+    console.log(players1);
+    console.log(players);
     // however what happens when we update that array?
+    // players1[3] = "Tom";
+    // console.log(players1);
+    // console.log(players);
 
     // now here is the problem!
 
@@ -27,12 +33,20 @@
     // So, how do we fix this? We take a copy instead!
 
     // one way
-
+    const players2 = Array.from(players);
+    console.log(players2);
+    players2[3] = "Tom";
+    console.log(players2);
+    console.log(players);
     // or create a new array and concat the old one in
-
+    const players3 = [].concat(players);
     // or use the new ES6 Spread
-
+    const players4 = [...players, "Willy", "Manami"];
+    console.log(players4);
     // now when we update it, the original one isn't changed
+    players4[3] = "Zac";
+    console.log(players4);
+    console.log(players); 
 
     // The same thing goes for objects, let's say we have a person object
 
@@ -43,13 +57,36 @@
     };
 
     // and think we make a copy:
-
+    const person1 = person;
+    console.log(person1);
     // how do we take a copy instead?
+    const person2 = Object.assign({}, person);
+    console.log(person2);
 
     // We will hopefully soon see the object ...spread
-
+    const person3 = {...person, country: "America"};
+    console.log(person3);
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
 
+    console.clear();
+    console.table(wes);
+
+    const dev = Object.assign({}, wes);
+    dev.social.facebook = "wes.dev";
+    console.table(dev);
+
+    const dev2 = JSON.parse(JSON.stringify(wes));
+    dev2.social.twitter = "@cool";
+    console.table(wes);
+    console.table(dev2)
   </script>
 
 </body>
