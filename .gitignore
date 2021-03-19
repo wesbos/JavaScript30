@@ -3,3 +3,5 @@ node_modules/
 *.log
 haters/
 .idea/
+.gitignore
+workspace.code-workspace
