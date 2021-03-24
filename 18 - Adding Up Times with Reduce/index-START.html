@@ -182,6 +182,22 @@
     </li>
   </ul>
 <script>
+  const timeOfVideo = [...document.querySelectorAll('[data-time]')]
+  
+  const totalSeconds = timeOfVideo.map(node => node.dataset.time.split(":"))
+    .map(timeCode => {
+      const [min, sec] = timeCode.map(parseFloat);
+      return min * 60 + sec;
+    })
+    .reduce((total, seconds) => {
+      return total + seconds;
+    })
+  
+  const hours = Math.trunc(totalSeconds / 3600);
+  const mins = Math.trunc((totalSeconds % 3600) / 60);
+  const seconds = Math.trunc((totalSeconds % 3600) % 60)
+    
+  console.log(`total hours: ${hours}:${mins}:${seconds}`);
 </script>
 </body>
 </html>
