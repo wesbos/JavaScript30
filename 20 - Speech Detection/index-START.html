@@ -11,7 +11,33 @@
 
 <script>
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  // recognition.lang ='id-ID'
+  let div = document.querySelector('.words');
+  let p = document.createElement('p');
+  div.appendChild(p)
+  recognition.start();
 
+  recognition.addEventListener('result', (e) => {
+    const recording = [...e.results]
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join('');
+      console.log(recording);
+
+    p.textContent = recording;
+    console.log(e.results[0].isFinal)
+    if(e.results[0].isFinal) {
+      p = document.createElement('p');
+      div.appendChild(p)
+    }
+    if(recording.includes('unicorn')) {
+      console.log('🦄');
+    }
+  })
+  
+  recognition.addEventListener('end', recognition.start);
 
 </script>
 
