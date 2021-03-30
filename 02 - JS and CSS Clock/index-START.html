@@ -7,13 +7,13 @@
 <body>
 
 
-    <div class="clock">
-      <div class="clock-face">
-        <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
-      </div>
+  <div class="clock">
+    <div class="clock-face">
+      <div class="hand hand-second"></div>
+      <div class="hand hand-minute"></div>
+      <div class="hand hand-hour"></div>
     </div>
+  </div>
 
 
   <style>
@@ -33,7 +33,7 @@
       min-height: 100vh;
       align-items: center;
     }
-
+    
     .clock {
       width: 30rem;
       height: 30rem;
@@ -55,19 +55,54 @@
       height: 100%;
       transform: translateY(-3px); /* account for the height of the clock hands */
     }
-
-    .hand {
+    .hand-second {
       width: 50%;
       height: 6px;
-      background: black;
+      background: red;
       position: absolute;
       top: 50%;
+      transform:rotate(90deg);
+      transform-origin:100%  50%;
+    }
+    .hand-minute {
+      width: 50%;
+      height: 6px;
+      background: yellow;
+      position: absolute;
+      top: 50%;
+      transform:rotate(90deg);
+      transform-origin:100%  50%;
+    }
+    .hand-hour {
+      width: 50%;
+      height: 6px;
+      background: green;
+      position: absolute;
+      top: 50%;
+      transform:rotate(90deg);
+      transform-origin:100%  50%;
     }
 
   </style>
 
   <script>
+    let second = document.querySelector('.hand-second')
+    let minute = document.querySelector('.hand-minute')
+    let hour = document.querySelector('.hand-hour')
 
+    function setDate() {
+      let now = new Date();
+      let seconds = now.getSeconds();
+      let minutes = now.getMinutes();
+      let hours = now.getHours();
+      let secondsDegree = seconds*(360/60);
+      let minutesDegree = minutes*(360/60); 
+      let hoursDegree = hours*(360/60);
+      second.style.transform = `rotate(${secondsDegree+90}deg)`
+      minute.style.transform = `rotate(${minutesDegree+90}deg)`
+      hour.style.transform = `rotate(${hoursDegree+90}deg)`
+    }
+    setInterval(setDate,1000)
 
   </script>
 </body>
