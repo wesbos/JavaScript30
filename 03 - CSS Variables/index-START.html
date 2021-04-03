@@ -15,16 +15,25 @@
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
     <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#ffc600">
+    <input id="base" type="color" name="base" value="--base">
   </div>
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
 
-    /*
-      misc styles, nothing to do with CSS variables
-    */
+   :root {
+     --base:#000000;
+     --spacing:10px;
+     --blur:10px;
+   }
+
+   img {
+     padding:var(--spacing);
+     background-color:var(--base);
+     filter:blur(var(--blur));
+
+   }
 
     body {
       text-align: center;
@@ -45,6 +54,19 @@
   </style>
 
   <script>
+    let control = document.querySelectorAll('.controls input')
+
+    function changeAttribute() {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix )
+    }
+
+    control.forEach( function (item) {
+      item.addEventListener('mousemove', changeAttribute)
+    })
+    control.forEach( function (item) {
+      item.addEventListener('change', changeAttribute)
+    })
   </script>
 
 </body>
