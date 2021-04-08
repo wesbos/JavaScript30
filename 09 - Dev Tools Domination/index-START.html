@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
@@ -18,27 +20,52 @@
     }
 
     // Regular
-
+    console.log('hello');
     // Interpolated
-
+    // console.log(`hello ${var}`);
     // Styled
-
+    console.log('%c hello there', 'background:red;');
     // warning!
-
+    console.warn('caution');
     // Error :|
-
+    console.error('this displays an error');
     // Info
-
+    console.info('I like burgers');
     // Testing
-
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('ouch'), 'You did not select the right Elements');
     // clearing
-
+    console.log(p);
+    console.dir(p);
+    console.clear();
     // Viewing DOM Elements
-
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}!`);
+      console.log(`This is ${dog.name}, they are ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} years old in human years`);
+      console.groupEnd(`${dog.name}`);
+    });
     // Grouping together
-
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Wes');
+    console.count('Alyssa');
+    console.count('Alyssa');
+    console.count('Alyssa');
+    console.count('Alyssa');
     // counting
+    console.time('fetching data');
+     fetch('https://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
 
+    console.table(dogs);
     // timing
 
   </script>
