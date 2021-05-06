@@ -1,0 +1,26 @@
+{
+  "name": "javascript30",
+  "version": "1.0.0",
+  "description": "JS 30 Days Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon node-hot ./src/server/index.js -e html,css,js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fre-ben/JavaScript30.git"
+  },
+  "author": "fre-ben",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fre-ben/JavaScript30/issues"
+  },
+  "homepage": "https://github.com/fre-ben/JavaScript30#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
