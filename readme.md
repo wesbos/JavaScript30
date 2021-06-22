@@ -52,6 +52,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Eshan Vohra](https://github.com/eshanvohra) is currently doing this challenge. Check out my repo [here](https://github.com/eshanvohra/JavaScript30).
 * [RegusAl](https://github.com/RegusAl) is currently doing this challenge. Check out my repo [here](https://github.com/RegusAl/JavaScript30).
 * [Ayush Gupta's](https://javascript30.ayushgupta.tech/) implementation of JavaScript30 challenge with some add-ons & updated design.
+* [filipkowal](https://github.com/filipkowal/JS30-05-Flex-Panels-Deactivate) Fix to flex panels (5th  day) so the panels deactivate when clicked on another one.
 * [Mo. Saif's](https://github.com/MoSaif00)note on lessons learned and a [gh-pages showcase](https://mosaif00.github.io/30-Days-JavaScript-Challenge/) for the projects.
 * [Stiaannel's](https://stiaannel.co.za/my-projects/javascript30) implementation of the Javascript30 challenge, with small design changes and a couple of extra features.
 
