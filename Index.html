@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JavaScript 30 — Build 30 things with vanilla JS in 30 days with 30 tutorials</title>
+    <link rel="stylesheet" href="/stylesheets/build/style-JS3.css?v=5">
+    <link rel="shortcut icon" type="image/png" href="/images/favion-JS3.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="https://javascript30.com/images/JS3-social-share.png" property="og:image">
+    <meta content="JavaScript 30" property="og:title">
+    <meta content="website" property="og:type">
+    <meta content="https://javascript30.com" property="og:url">
+    <meta content="JavaScript 30" property="og:site_name">
+    <meta content="Build 30 things with vanilla JS in 30 days with 30 tutorials" property="og:description">
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:site" content="@wesbos">
+    <meta name="twitter:creator" content="@wesbos">
+    <meta name="twitter:title" content="JavaScript 30">
+    <meta name="twitter:description" content="Build 30 things with vanilla JS in 30 days with 30 tutorials">
+    <meta name="twitter:image" content="https://javascript30.com/images/JS3-social-share.png">
+    <meta name="twitter:url" content="https://javascript30.com">
+  </head>
+  <body>
+    <header class="hero">
+      <h1><a href="https://JavaScript30.com" class="hero__title"><span class="hashtag">#</span><span class="word">JavaScript</span><span class="num">30</span></a></h1>
+      <p class="hero__text"><span class="hl">30</span> Day Vanilla <span class="hl">JS</span> Coding Challenge</p>
+      <p class="hero__text hero__text--small">Build <span class="hl">30</span> things in <span class="hl">30</span> days with <span class="hl">30</span> tutorials</p>
+      <p class="hero__text hero__text--small"><span class="hl">No</span> Frameworks<span class="x-up-or-get-out">×</span><span class="hl">No</span> Compilers<span class="x-up-or-get-out">×</span><span class="hl">No</span> Libraries<span class="x-up-or-get-out">×</span><span class="hl">No</span> Boilerplate</p><a href="/account" class="button button__login">My Account →</a>
+    </header>
+    <div class="topographic">
+      <section class="section">
+        <div class="section__inner">
+          <div class="signup">
+            <div class="signup__step signup__step--1">
+              <div class="signup__section signup__section--price">
+                <div class="price"><span class="price__value--currency">$</span><span class="price__value--dollars">0</span><span class="price__value--cents">00</span></div><strong>FREE</strong>
+              </div>
+              <div class="signup__section signup__section--email">
+                <h3>Start The Challenge Today!</h3>
+                <p style="display:none;" class="error-display"></p>
+                <form name="capture" method="post" action="/api/customer/" class="capture">
+                  <input type="email" name="email" id="email" required placeholder="Email Address" class="capture__input">
+                  <input type="hidden" name="product" value="JS31">
+                  <input type="submit" value="Join 424,083 Others" class="capture__input capture__input--submit">
+                </form>
+                <p>Sign up to get immediate access to the course dashboard</p>
+                <p>You'll get all 30 days at once so you can binge watch <span class="highlight">Netflix style</span>.</p>
+              </div>
+              <div class="signup__section signup__section--info">
+                <ul class="list">
+                  <li class="list__item--bold">What You'll Get</li>
+                  <li class="list__item">Instant Access to all 30 videos</li>
+                  <li class="list__item">30 days of Starter Files</li>
+                  <li class="list__item">Completed HTML, CSS and JS Solutions for each day</li>
+                </ul>
+              </div>
+            </div>
+            <div class="signup__step signup__step--2">
+              <div>
+                <p>👌 Almost Done — you'll get a confirmation email any minute now.</p>
+                <h3>Make it happen - commit to #JavaScript30 publicly</h3>
+                <p>This isn't going to be another course you sign up for and never do.<br>Let's see this one through. Commit to it publicly and invite some friends to join you.</p>
+              </div>
+              <div class="share">
+                <div class="share__option"><a href="https://twitter.com/share" data-size="large" data-text="I'm taking the 30 day JavaScript Challenge with @WesBos. Join me →" data-url="https://JavaScript30.com" data-hashtags="JavaScript30" data-related="wesbos" class="twitter-share-button">Tweet</a></div>
+                <div class="share__option">
+                  <div data-href="https://JavaScript30.com" data-layout="button_count" data-size="large" data-mobile-iframe="true" class="fb-share-button"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FJavaScript30.com%2F&amp;src=sdkpreparse">Share</a></div>
+                </div>
+                <div class="share__option">
+                  <div data-href="https://facebook.com/wesbos.developer" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true" class="fb-like">Like Wes Bos</div>
+                </div>
+                <div class="share__option"><a href="https://twitter.com/wesbos" data-size="large" class="twitter-follow-button">Follow @WesBos</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section--formation">
+        <div class="section__inner">
+          <h2>There is no formation without repetition.</h2>
+          <div class="side-by-side">
+            <div class="side-by-side__block side-by-side__block--1 promo">
+              <video preload="metadata" poster="/images/JS3/poster.jpg" src="https://player.vimeo.com/external/194837783.hd.mp4?s=0ae0319c2cbb5240dc33f2a49325c63f2751dc96&amp;profile_id=119" onClick="this.paused ? this.play() : this.pause();" class="promo__video"></video>
+            </div>
+            <div class="notebook">
+              <p>So, you've done a few courses and read a few books but still don't feel great about your relationship with JavaScript.</p>
+              <p>How do you get better?</p>
+              <p>Build things. Lots of things. Build 1,000 things. Keep it up and don't stop. Seriously.</p>
+              <p>This has always been my advice. Just put in the work and you will get better.</p>
+              <p>But Wes, what should I build? I have no ideas! Please don't make me do another todo app.</p>
+              <p>Ideas, Eh? I've got lots! This is JavaScript30 — let's build 30 things together.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section class="section section--who">
+      <div class="section__inner descriptions">
+        <div class="description description--who">
+          <div class="description__box">
+            <h3 class="description__title">Who is this For?</h3>
+            <p>Beginner to Intermediate developers and designers who want to become comfortable with both JavaScript fundamentals and working in the DOM without a library.</p>
+            <p><em>You should already know some JavaScript to start</em> - This isn't a JavaScript 101 course. If you are new to JavaScript, or want to just get comfortable with the fundamentals, I'd recommend toy take my <a href="https://BeginnerJavaScript.com">BeginnerJavaScript.com</a> course - use the code <strong>JAVASCRIPT30</strong> for an extra $10 off.</p>
+            <p>We learn by application - encountering many new situations while talking about the hows, the whys and the whats that we use to solve them.</p>
+            <p>We steer clear of opinionated design patterns, frameworks, libraries and any type of abstraction. These things are great and often needed, but can obstruct learning and constrain initial understanding.</p>
+            <p>These tutorials rely heavily upon browser APIs, most of which involve interaction with the page. If you are stuck in <code>console.log()</code> land, these videos are your next step. Oh, the stuff we build is really fun!</p>
+          </div>
+        </div>
+        <div class="description description--free">
+          <div class="description__box">
+            <h3 class="description__title">Wes, How is this Free?</h3>
+            <p>These videos are free as a thank-you to everyone who has supported my premium courses as well as because I believe in giving back to the community. I see a huge need for these videos and I really think it will help many of you become comfortable creating with JavaScript.</p>
+            <p>While I've spent over 300 hours on JavaScript30, enough people find they really click with my teaching style and continue their learning with one of my <a href="https://wesbos.com/courses">premium courses</a>. It all works out!</p>
+          </div>
+        </div>
+        <div class="description description--wes">
+          <div class="description__box">
+            <h3 class="description__title">Hey, I'm Wes Bos</h3><img src="/images/wes.jpg" width="150" class="👨">
+            <p>Hey — I'm <a href="http://Wesbos.com">Wes Bos</a>. I'm a Full Stack Developer, Speaker and Teacher from Canada. I have taught over 500 students in 200+ classes and spoken at dozens of conferences around the world.</p>
+            <p>I'm the guy behind <a target="_blank" href="https://ReactForBeginners.com">React For Beginners</a>, <a target="_blank" href="https://ES6.io">ES6 for Everyone</a>, <a href="https://LearnNode.com">Learn Node</a> and <a target="_blank" href="https://sublimetextbook.com">Sublime Text Power User</a> which together have sold over 40,000 copies. I'm also the author of <a href="https://JavaScript30.com">JavaScript30</a>, <a target="_blank" href="http://LearnRedux.com">LearnRedux.com</a>, <a target="_blank" href="http://flexbox.io">Flexbox.io</a> and <a target="_blank" href="http://CommandLinePowerUser.com">Command Line Power User</a>, a set of free video series. Over 120,000 people have taken at least one of my free video courses!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section__videos">
+      <div class="section__inner">
+        <h2 class="title title__center">30 Days<span class="hl">×</span>30 Videos</h2>
+        <div class="captions">
+          <p><strong>Accessible and ESL friendly!</strong> Closed Captions are provided for every video. Captions done by <a href="https://www.speechpad.com/?affiliate_id=58">Speechpad</a>.</p>
+        </div>
+        <ul class="video-list">
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small0.jpg" alt="JavaScript Drum Kit">
+            </div>
+            <h3 class="video-list__title">JavaScript Drum Kit</h3><span class="video-list__number">Day 1</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+              <li class="tags__item tags__item--5">Audio + Video</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small1.jpg" alt="CSS + JS Clock">
+            </div>
+            <h3 class="video-list__title">CSS + JS Clock</h3><span class="video-list__number">Day 2</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small2.jpg" alt="Playing with CSS Variables and JS">
+            </div>
+            <h3 class="video-list__title">Playing with CSS Variables and JS</h3><span class="video-list__number">Day 3</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small3.jpg" alt="Array Cardio Day 1">
+            </div>
+            <h3 class="video-list__title">Array Cardio Day 1</h3><span class="video-list__number">Day 4</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small4.jpg" alt="Flex Panels Image Gallery">
+            </div>
+            <h3 class="video-list__title">Flex Panels Image Gallery</h3><span class="video-list__number">Day 5</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small5.jpg" alt="Ajax Type Ahead">
+            </div>
+            <h3 class="video-list__title">Ajax Type Ahead</h3><span class="video-list__number">Day 6</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small6.jpg" alt="Array Cardio Day 2">
+            </div>
+            <h3 class="video-list__title">Array Cardio Day 2</h3><span class="video-list__number">Day 7</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small7.jpg" alt="Fun with HTML5 Canvas">
+            </div>
+            <h3 class="video-list__title">Fun with HTML5 Canvas</h3><span class="video-list__number">Day 8</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small8.jpg" alt="14 Must Know Dev Tools Tricks">
+            </div>
+            <h3 class="video-list__title">14 Must Know Dev Tools Tricks</h3><span class="video-list__number">Day 9</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small9.jpg" alt="Hold Shift to Check Multiple Checkboxes">
+            </div>
+            <h3 class="video-list__title">Hold Shift to Check Multiple Checkboxes</h3><span class="video-list__number">Day 10</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small10.jpg" alt="Custom HTML5 Video Player">
+            </div>
+            <h3 class="video-list__title">Custom HTML5 Video Player</h3><span class="video-list__number">Day 11</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--5">Audio + Video</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small11.jpg" alt="Key Sequence Detection (KONAMI CODE)">
+            </div>
+            <h3 class="video-list__title">Key Sequence Detection (KONAMI CODE)</h3><span class="video-list__number">Day 12</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small12.jpg" alt="Slide In on Scroll">
+            </div>
+            <h3 class="video-list__title">Slide In on Scroll</h3><span class="video-list__number">Day 13</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small13.jpg" alt="Object and Arrays - Reference VS Copy">
+            </div>
+            <h3 class="video-list__title">Object and Arrays - Reference VS Copy</h3><span class="video-list__number">Day 14</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small14.jpg" alt="LocalStorage and Event Delegation">
+            </div>
+            <h3 class="video-list__title">LocalStorage and Event Delegation</h3><span class="video-list__number">Day 15</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small15.jpg" alt="CSS Text Shadow Mouse Move Effect">
+            </div>
+            <h3 class="video-list__title">CSS Text Shadow Mouse Move Effect</h3><span class="video-list__number">Day 16</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small16.jpg" alt="Sorting Band Names without articles">
+            </div>
+            <h3 class="video-list__title">Sorting Band Names without articles</h3><span class="video-list__number">Day 17</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small17.jpg" alt="Tally String Times with Reduce">
+            </div>
+            <h3 class="video-list__title">Tally String Times with Reduce</h3><span class="video-list__number">Day 18</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small18.jpg" alt="Unreal Webcam Fun">
+            </div>
+            <h3 class="video-list__title">Unreal Webcam Fun</h3><span class="video-list__number">Day 19</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--4">Hardware Access</li>
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+              <li class="tags__item tags__item--5">Audio + Video</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small19.jpg" alt="Native Speech Recognition">
+            </div>
+            <h3 class="video-list__title">Native Speech Recognition</h3><span class="video-list__number">Day 20</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--5">Audio + Video</li>
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small20.jpg" alt="Geolocation based Speedometer and Compass">
+            </div>
+            <h3 class="video-list__title">Geolocation based Speedometer and Compass</h3><span class="video-list__number">Day 21</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--4">Hardware Access</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small21.jpg" alt="Follow Along Links">
+            </div>
+            <h3 class="video-list__title">Follow Along Links</h3><span class="video-list__number">Day 22</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small22.jpg" alt="Speech Synthesis">
+            </div>
+            <h3 class="video-list__title">Speech Synthesis</h3><span class="video-list__number">Day 23</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+              <li class="tags__item tags__item--5">Audio + Video</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small23.jpg" alt="Sticky Nav">
+            </div>
+            <h3 class="video-list__title">Sticky Nav</h3><span class="video-list__number">Day 24</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+              <li class="tags__item tags__item--2">Fundamentals</li>
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small24.jpg" alt="Event Capture, Propagation, Bubbling and Once">
+            </div>
+            <h3 class="video-list__title">Event Capture, Propagation, Bubbling and Once</h3><span class="video-list__number">Day 25</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small25.jpg" alt="Stripe Follow Along Dropdown">
+            </div>
+            <h3 class="video-list__title">Stripe Follow Along Dropdown</h3><span class="video-list__number">Day 26</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small26.jpg" alt="Click and Drag to Scroll">
+            </div>
+            <h3 class="video-list__title">Click and Drag to Scroll</h3><span class="video-list__number">Day 27</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+              <li class="tags__item tags__item--2">Fundamentals</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small27.jpg" alt="Video Speed Controller UI">
+            </div>
+            <h3 class="video-list__title">Video Speed Controller UI</h3><span class="video-list__number">Day 28</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--5">Audio + Video</li>
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small28.jpg" alt="Countdown Clock">
+            </div>
+            <h3 class="video-list__title">Countdown Clock</h3><span class="video-list__number">Day 29</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--2">Fundamentals</li>
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+            </ul>
+          </li>
+          <li class="video-list__item">
+            <div class="video-list__image"><img src="https://res.cloudinary.com/wesbos/image/fetch/q_auto,f_auto/https://s3.amazonaws.com/js30-cdn/small29.jpg" alt="Whack A Mole Game">
+            </div>
+            <h3 class="video-list__title">Whack A Mole Game</h3><span class="video-list__number">Day 30</span>
+            <ul class="tags">
+              <li class="tags__item tags__item--1">DOM &amp; Interface</li>
+              <li class="tags__item tags__item--3">Friends with CSS</li>
+              <li class="tags__item tags__item--6">Fun + Experimental</li>
+            </ul>
+          </li>
+          <li class="video-list__item 💩💩💩"></li>
+          <li class="video-list__item 💩💩💩"></li>
+        </ul>
+      </div>
+    </section>
+    <section class="section section__faq">
+      <div class="section__inner">
+        <div class="faqs">
+          <h2 class="title title--faq">FAQ</h2>
+          <div class="faq">
+            <h3>What font / color scheme / editor / terminal is that?</h3>
+            <p>I answer everything over at <a href="https://wesbos.com/uses">wesbos.com/uses</a>. Feel free to <a href="https://twitter.com/wesbos">tweet me</a> any more questions!</p>
+          </div>
+          <div class="faq">
+            <h3>I have a question, can I email you?</h3>
+            <p>While I'd absolutely love to help everyone out, there are 424,083 people taking this course. I hope to get a forum setup sometime soon. If you are a member of one of my premium classes, you can jump into the #JavaScript30 room in our Slack channel.</p>
+          </div>
+          <div class="faq">
+            <h3>I found another way! Could it be?!</h3>
+            <p>Yes! There are probably 100 different ways to solve each of these exercises, if your answer doesn't line up with mine, it means you did a really good job at trying to figure it out yourself. My answers are by no means the best answers - just a single way of doing it. Instead of emailing me - write a blog post about how you did it. Share what you know!</p>
+          </div>
+          <div class="faq">
+            <h3>I lost, deleted or never got my welcome email! What do I do?</h3>
+            <p>Log into <a href="/account">your account</a>, or create an account with the same email you used to get the series.</p>
+          </div>
+          <div class="faq">
+            <h3>Can I host a meetup / study group? Can I stream these in my classroom? Can I arrange a playing?</h3>
+            <p>Yep yep yep - as long as you do not redistribute the videos you are welcome and encouraged to do this.</p>
+          </div>
+          <div class="faq">
+            <h3>Can I re-distribute these and then charge money for them?</h3>
+            <p>I can't believe I have to make this a FAQ. No, you silly goose.</p>
+          </div>
+          <div class="faq">
+            <h3>I found a typo or errata</h3>
+            <p>If it's a typo on the site, please shoot me an email <a href="/cdn-cgi/l/email-protection#b5c2d0c6f5c2d0c6d7dac69bd6dad8">here</a>. If it's a correction in the code, you can submit those via GitHub! Please see the above FAQ if you found a better way.</p>
+          </div>
+          <div class="faq">
+            <h3>What is that GNARLY AF tune at the start? ⛓🎸🤘</h3>
+            <p>So good! <a href="https://www.youtube.com/watch?v=v9zFF5aBR84">The Divided - For Tonight We're Strangers</a>. Used with permission of course.</p>
+          </div>
+          <div class="faq">
+            <h3>You say JavaScript funny</h3>
+            <p>um, I think you mean I say it the correct way! eh?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section__footer">
+      <div class="section__inner">
+        <div class="share">
+          <div class="share__option"><a href="https://twitter.com/share" data-size="large" data-text="I'm taking the 30 day JavaScript Challenge with @WesBos. Join me →" data-url="https://JavaScript30.com" data-hashtags="JavaScript30" data-related="wesbos" class="twitter-share-button">Tweet</a></div>
+          <div class="share__option">
+            <div data-href="https://JavaScript30.com" data-layout="button_count" data-size="large" data-mobile-iframe="true" class="fb-share-button"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FJavaScript30.com%2F&amp;src=sdkpreparse">Share</a></div>
+          </div>
+          <div class="share__option">
+            <div data-href="https://facebook.com/wesbos.developer" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true" class="fb-like">Like Wes Bos</div>
+          </div>
+          <div class="share__option"><a href="https://twitter.com/wesbos" data-size="large" class="twitter-follow-button">Follow @WesBos</a></div>
+        </div>
+      </div>
+    </section>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,fetch"></script>
+    <script>window.country = 'IN';</script>
+    <script src="/javascripts/dist/main.js?v=19"></script>
+    <script src="https://platform.twitter.com/oct.js"></script>
+    <script src="https://cdn.ravenjs.com/3.9.1/raven.min.js"></script>
+    <script>
+      // check this custom ass google analytics 👌
+      (function(w,e,s,_,b,o,$){w['GoogleAnalyticsObject']=b;w[b]=w[b]||function(){
+      (w[b].q=w[b].q||[]).push(arguments)},w[b].l=1*new Date();o=e.createElement(s),
+      $=e.getElementsByTagName(s)[0];o.async=1;o.src=_;$.parentNode.insertBefore(o,$)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      ga('create', 'UA-69447947-3', 'auto');
+      ga('send', 'pageview');
+      ga(window.removeUtms);
+      Raven.config('https://9b1055a49cce467eadae790e4ae99ccf@sentry.io/129065') .install()
+    </script>
+  </body>
+</html>
