@@ -1,12 +1,12 @@
-# JS and CSS Clock
+# JS and CSS Clock :alarm_clock:
 
 The challenge is to create a JavaScript and CSS Clock, updating time by using the `setInterval()` method and the CSS `rotate()` function.
 
 ## Lessons Learned
 
-I created the structure and functionalities of the challenge following Wes video, but creating HTML elements with JavaScript.
+I created the structure and functionalities of the challenge following Wes video, but I created the HTML elements using JavaScript.
 
-I added some features in order to make the clock look more realistic and classy :wink:, such as roman numerals as hour indicators, and notches as seconds indicators.
+I added some features in order to make the clock look more realistic, such as roman numerals as hour indicators, and notches as seconds indicators.
 
 I searched in Stack Overflow for a solution to convert numbers to roman numerals and I found this blog post about it: [JavaScript Roman Numeral Converter].
 
