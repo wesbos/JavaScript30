@@ -1,0 +1,61 @@
+/* Variables */
+:root {
+  --base: transparent;
+  --blur: 0;
+  --sans-serif:
+    -apple-system,
+    blinkmacsystemfont,
+    avenir next,
+    avenir,
+    segoe ui,
+    helvetica neue,
+    helvetica,
+    ubuntu,
+    roboto,
+    noto,
+    arial,
+    sans-serif;
+  --spacing: 0;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans-serif);
+}
+
+/* Main */
+h2 {
+  text-align: center;
+}
+
+h2 > .hl {
+  color: var(--base);
+}
+
+.controls {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  margin: 0 0 1rem 0;
+}
+
+img {
+  background-color: var(--base);
+  display: block;
+  filter: blur(var(--blur));
+  height: auto;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: var(--spacing);
+}
