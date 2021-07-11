@@ -1,4 +1,4 @@
-# CSS Variables
+# CSS Variables :framed_picture:
 
 The challenge is to control and update CSS Variables using the `addEventListener()` method and set values as CSS Variables with the `CSSStyleDeclaration.setProperty()` method.
 
