@@ -1,4 +1,4 @@
-# JavaScript Drum Kit
+# JavaScript Drum Kit :drum:
 
 The challenge is to create a JavaScript Drum Kit, controlling it by using the EventTarget method `addEventListener()`.
 
