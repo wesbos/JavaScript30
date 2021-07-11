@@ -1,0 +1,159 @@
+/* Variables */
+:root {
+  --sans-serif:
+    -apple-system,
+    blinkmacsystemfont,
+    avenir next,
+    avenir,
+    segoe ui,
+    helvetica neue,
+    helvetica,
+    ubuntu,
+    roboto,
+    noto,
+    arial,
+    sans-serif;
+  --dark: #121212;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans-serif);
+}
+
+/* Main */
+.clock {
+  border-radius: 100%;
+  box-shadow: 0 0 0 0.5rem var(--dark);
+  height: 16rem;
+  margin: 2rem auto;
+  position: relative;
+  width: 16rem;
+}
+
+.clockFace,
+.notches {
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+}
+
+.hours,
+.dot,
+.hands {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.dot {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.dot > span {
+  background-color: var(--dark);
+  border-radius: 100%;
+  height: 1rem;
+  width: 1rem;
+}
+
+.hours {
+  transform: translateY(-1rem);
+}
+
+.hours > .hour {
+  align-items: center;
+  display: flex;
+  height: 2rem;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: rotate(90deg);
+  transform-origin: right;
+  width: 50%;
+}
+
+.hour span {
+  margin-left: 1.5rem;
+}
+
+.notches {
+  transform: translateY(-0.125rem);
+}
+
+.notches > .notch {
+  align-items: center;
+  display: flex;
+  height: 0.25rem;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform: rotate(90deg);
+  transform-origin: right;
+  width: 50%;
+}
+
+.notch span {
+  background-color: var(--dark);
+  height: 0.0625rem;
+  margin-left: 0.125rem;
+  width: 5%;
+}
+
+.notch:nth-child(1) span {
+  width: 10%;
+}
+
+.notch:nth-child(5n+1) span {
+  height: 0.125rem;
+  width: 10%;
+}
+
+.hands {
+  transform: translateY(-0.125rem);
+}
+
+.hands > .hand {
+  align-items: center;
+  display: flex;
+  height: 0.25rem;
+  justify-content: flex-end;
+  left: 0;
+  position: absolute;
+  top: 50%;
+  transform-origin: right;
+  width: 50%;
+}
+
+.hand span {
+  background-color: var(--dark);
+  height: 0.25rem;
+  width: 80%;
+}
+
+.hand.hrsHand span {
+  height: 0.25rem;
+  width: 50%;
+}
+
+.hand.secHand  span{
+  height: 0.125rem;
+  width: 90%;
+}
+
+
