@@ -19,6 +19,10 @@ function playSound({ keyCode }) {
 function togglePlayingClass({ keyCode }) {
   const key = document.querySelector(`.key[data-key="${keyCode}"]`);
 
+  if (!key) {
+    return;
+  }
+
   key.classList.add("playing");
 }
 
