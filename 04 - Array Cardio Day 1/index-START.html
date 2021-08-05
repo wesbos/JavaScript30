@@ -159,13 +159,7 @@
       // 7. sort Exercise
       // Sort the people alphabetically by last name
       const peopleSortedByLastName = people.sort(function (p1, p2) {
-        if (p1 < p2) {
-          return -1;
-        } else {
-          return 1;
-        }
-
-        return 0;
+        return p1 < p2 ? -1 : 1;
       });
 
       peopleSortedByLastName.forEach((person) => {
@@ -192,9 +186,15 @@
         "truck",
       ];
 
-      // const wordCount = data.sort().reduce();
+      const transportation = data.reduce((obj, item) => {
+        if (!obj[item]) {
+          obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+      }, {});
 
-      // console.log(wordCount);
+      console.table(transportation);
     </script>
   </body>
 </html>
