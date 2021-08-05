@@ -74,42 +74,31 @@
       // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
       console.log("Inventors Born in the 1500s");
-      const bornInThe1500s = inventors.filter(({ year }) => {
-        if (year >= 1500 && year < 1600) {
-          return this;
-        }
-      });
 
-      bornInThe1500s.forEach(({ first, last }) => {
-        console.log(`${first} ${last} was born in the 1500s`);
-      });
+      const bornInThe1500s = inventors.filter(
+        ({ year }) => year >= 1500 && year < 1600
+      );
+
+      console.table(bornInThe1500s);
 
       // Array.prototype.map()
       // 2. Give us an array of the inventors first and last names
 
       console.log("\n\nInventor Names");
-      const inventorNames = inventors.map(({ first, last }) => {
-        return `${first} ${last}`;
-      });
+      const inventorNames = inventors.map(
+        ({ first, last }) => `${first} ${last}`
+      );
 
       inventorNames.forEach((inventor) => console.log(inventor));
 
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
       console.log("\n\nInventors Sorted By Birth Year (Oldest to Youngest)");
-      const sortedInventorsByBirthDate = inventors.sort(function (i1, i2) {
-        if (i1.year > i2.year) {
-          return -1;
-        } else {
-          return 1;
-        }
+      const sortedInventorsByBirthDate = inventors.sort((i1, i2) =>
+        i1.year > i2.year ? 1 : -1
+      );
 
-        return 0;
-      });
-
-      sortedInventorsByBirthDate.forEach(({ first, last, year }) => {
-        console.log(`${first} ${last}, ${year}`);
-      });
+      console.table(sortedInventorsByBirthDate);
 
       console.log("\n\nTotal years that all the inventors lived all together");
       // Array.prototype.reduce()
@@ -123,21 +112,48 @@
       console.log("\n\nInventors sorted by years lived");
       // 5. Sort the inventors by years lived
       const inventorsSortedByYearsLived = inventors.sort(function (i1, i2) {
-        if (i1.passed - i1.year < i2.passed - i2.year) {
-          return -1;
-        } else {
-          return 1;
-        }
-
-        return 0;
+        return i1.passed - i1.year > i2.passed - i2.year ? -1 : 1;
       });
 
-      inventorsSortedByYearsLived.forEach(({ first, last, year, passed }) => {
-        console.log(`${first} ${last} lived for ${passed - year} years.`);
-      });
+      console.table(inventorsSortedByYearsLived);
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+      // Using MediaWiki API
+
+      let de = [];
+      let wikiAPI = "https://en.wikipedia.org/w/api.php";
+
+      const params = {
+        action: "query",
+        format: "json",
+        list: "categorymembers",
+        cmtitle: "Category:Boulevards_in_Paris",
+        cmlimit: "39",
+      };
+
+      wikiAPI += "?origin=*";
+
+      Object.keys(params).forEach(function (key) {
+        wikiAPI += "&" + key + "=" + params[key];
+      });
+
+      fetch(wikiAPI)
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => {
+          let titles = response.query.categorymembers;
+
+          for (i in titles) {
+            de.push(titles[i].title);
+          }
+        });
+
+      setTimeout(() => {
+        console.log(de.filter((title) => title.includes("de")));
+      }, 3000);
 
       console.log("\n\nPeople sorted by last name");
       // 7. sort Exercise
