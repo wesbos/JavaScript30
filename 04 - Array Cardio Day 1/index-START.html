@@ -122,7 +122,7 @@
 
       // Using MediaWiki API
 
-      let de = [];
+      const de = [];
       let wikiAPI = "https://en.wikipedia.org/w/api.php";
 
       const params = {
@@ -139,21 +139,23 @@
         wikiAPI += "&" + key + "=" + params[key];
       });
 
-      fetch(wikiAPI)
-        .then((response) => {
-          return response.json();
-        })
-        .then((response) => {
-          let titles = response.query.categorymembers;
+      async function executeFetch(url) {
+        await fetch(url)
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            let titles = response.query.categorymembers;
 
-          for (i in titles) {
-            de.push(titles[i].title);
-          }
-        });
+            for (i in titles) {
+              de.push(titles[i].title);
+            }
+          });
 
-      setTimeout(() => {
         console.log(de.filter((title) => title.includes("de")));
-      }, 3000);
+      }
+
+      executeFetch(wikiAPI);
 
       console.log("\n\nPeople sorted by last name");
       // 7. sort Exercise
