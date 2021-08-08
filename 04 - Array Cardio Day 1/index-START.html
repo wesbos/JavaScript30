@@ -139,23 +139,27 @@
         wikiAPI += "&" + key + "=" + params[key];
       });
 
+      async function getTitles(categories) {
+        return categories.map((category) => category.title);
+      }
+
+      async function filterTitles(titles) {
+        return titles.filter((title) => title.includes("de"));
+      }
+
       async function executeFetch(url) {
-        await fetch(url)
-          .then((response) => {
-            return response.json();
-          })
-          .then((response) => {
-            let titles = response.query.categorymembers;
+        const response = await fetch(url);
+        const json = await response.json();
+        const categories = json.query.categorymembers;
+        const titles = await getTitles(categories);
+        const filteredTitles = await filterTitles(titles);
 
-            for (i in titles) {
-              de.push(titles[i].title);
-            }
-          });
-
-        console.log(de.filter((title) => title.includes("de")));
+        de.push(...filteredTitles);
       }
 
       executeFetch(wikiAPI);
+
+      console.log(de);
 
       console.log("\n\nPeople sorted by last name");
       // 7. sort Exercise
