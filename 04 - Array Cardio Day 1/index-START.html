@@ -139,12 +139,6 @@
         wikiURL.searchParams.set(k, params[k]);
       }
 
-      // wikiAPI += "?origin=*";
-
-      // Object.keys(params).forEach(function (key) {
-      //   wikiAPI += "&" + key + "=" + params[key];
-      // });
-
       function getTitles(categories) {
         return categories.map((category) => category.title);
       }
