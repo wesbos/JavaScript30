@@ -131,35 +131,55 @@
         list: "categorymembers",
         cmtitle: "Category:Boulevards_in_Paris",
         cmlimit: "39",
+        origin: "*",
       };
 
-      wikiAPI += "?origin=*";
+      let wikiURL = new URL(wikiAPI);
+      for (const k in params) {
+        wikiURL.searchParams.set(k, params[k]);
+      }
 
-      Object.keys(params).forEach(function (key) {
-        wikiAPI += "&" + key + "=" + params[key];
-      });
+      // wikiAPI += "?origin=*";
 
-      async function getTitles(categories) {
+      // Object.keys(params).forEach(function (key) {
+      //   wikiAPI += "&" + key + "=" + params[key];
+      // });
+
+      function getTitles(categories) {
         return categories.map((category) => category.title);
       }
 
-      async function filterTitles(titles) {
+      function filterTitles(titles) {
         return titles.filter((title) => title.includes("de"));
       }
 
-      async function executeFetch(url) {
-        const response = await fetch(url);
-        const json = await response.json();
+      async function loadData() {
+        const data = await fetch(wikiURL);
+        const json = await data.json();
         const categories = json.query.categorymembers;
-        const titles = await getTitles(categories);
-        const filteredTitles = await filterTitles(titles);
+        const titles = getTitles(categories);
 
-        de.push(...filteredTitles);
+        return titles;
       }
 
-      executeFetch(wikiAPI);
+      (async () => {
+        let allTitles;
+        try {
+          allTitles = await loadData();
+        } catch (err) {
+          console.log("There was an error when fetching the data");
+          console.error(err);
+          return; // there was an error, so bail out to avoid trying to continue execution
+        }
 
-      console.log(de);
+        if (allTitles) {
+          const de = filterTitles(allTitles);
+
+          console.log(de);
+        } else {
+          console.log(`Invalid data value received: ${allTitles}`);
+        }
+      })();
 
       console.log("\n\nPeople sorted by last name");
       // 7. sort Exercise
