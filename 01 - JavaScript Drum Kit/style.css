@@ -1,7 +1,9 @@
 html {
   font-size: 10px;
-  background: url('./background.jpg') bottom center;
+  background: url('./british-drum-co-14-x-6-5-big-softy-snare.jpg') bottom center;
   background-size: cover;
+  width: 135rem;
+  height: 130rem;
 }
 
 body,html {
