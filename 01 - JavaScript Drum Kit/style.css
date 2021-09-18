@@ -13,6 +13,7 @@ body,html {
 .keys {
   display: flex;
   flex: 1;
+  flex-wrap: wrap;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
@@ -48,4 +49,10 @@ kbd {
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #ffc600;
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
