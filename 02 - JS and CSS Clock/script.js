@@ -18,3 +18,5 @@ function setDate() {
 }
 
 setInterval(setDate, 1000);
+
+// 練習 setInterval、JS 抓時間、transform

@@ -12,7 +12,8 @@ function removeTransition(e){
   this.classList.remove('playing');
 }
 
-
 const keys = document.querySelectorAll(".key");
 keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 window.addEventListener('keydown', playSound);
+
+// 練習 addEventListener、add and remove class
