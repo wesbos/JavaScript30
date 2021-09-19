@@ -1,0 +1,35 @@
+/* css variable: css 的變數名前面要加 -- */
+:root {
+  --base: ##ffc600;
+  --spacing: 10px;
+  --blur: 10px;
+}
+/* variable 要包在 :root 裡面 */
+
+img {
+  padding: var(--spacing);
+  background: var(--base);
+  filter: blur(var(--blur));
+  /* 用 var() 可以抓 css variable */
+}
+
+.h1 {
+  color: var(--base);
+}
+
+body {
+    text-align: center;
+    background: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.controls {
+    margin-bottom: 50px;
+}
+
+input {
+    width: 100px;
+}

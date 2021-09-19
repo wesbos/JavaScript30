@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
   <title>Scoped CSS Variables and JS</title>
 </head>
 <body>
@@ -9,7 +10,8 @@
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+    <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px"
+     data-name="test" data-cool="poop">
 
     <label for="blur">Blur:</label>
     <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
@@ -20,32 +22,7 @@
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
-  <style>
-
-    /*
-      misc styles, nothing to do with CSS variables
-    */
-
-    body {
-      text-align: center;
-      background: #193549;
-      color: white;
-      font-family: 'helvetica neue', sans-serif;
-      font-weight: 100;
-      font-size: 50px;
-    }
-
-    .controls {
-      margin-bottom: 50px;
-    }
-
-    input {
-      width: 100px;
-    }
-  </style>
-
-  <script>
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
