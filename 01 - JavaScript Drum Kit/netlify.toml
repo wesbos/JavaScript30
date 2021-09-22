@@ -1,3 +1,0 @@
-[build]
-  base    = "JavaScript30/01 - JavaScript Drum Kit"
-  publish = "01 - JavaScript Drum Kit /dist/"
