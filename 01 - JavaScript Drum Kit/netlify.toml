@@ -1,4 +1,3 @@
 [build]
-  base    = "subdirectory"
-  publish = "subdirectory/dist/"
-  command = "your build command"
+  base    = "JavaScript30/01 - JavaScript Drum Kit"
+  publish = "01 - JavaScript Drum Kit /dist/"
