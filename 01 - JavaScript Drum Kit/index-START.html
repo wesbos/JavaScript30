@@ -56,12 +56,35 @@
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
     <script>
-      window.addEventListener('keydown', function (e) {
+      function playSound(e) {
         const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
         if (!audio) return; // stops function from running
-        console.log(audio);
+        // console.log(audio);
+        audio.currentTime = 0; //start to current time.
         audio.play();
-      });
+        key.classList.add('playing');
+      }
+
+      // removes the yellow border after the sound clip has finished playing.
+      function removeTransition(e) {
+        if (e.propertyName !== 'transform') return;
+        // console.log(e.propertyName);
+        this.classList.remove('playing');
+      }
+
+      // grabs all the keys and stores them in a NodeList
+      const keys = document.querySelectorAll('.key');
+
+      // Loops through each key in the array and adds an event listener transitioned to listen when the time has ended.
+      // The second argument is a function that removes the yellow border.
+      // Combined the eventListener listens to the key to be hit and removes the classlist.
+      keys.forEach((key) =>
+        key.addEventListener('transitionend', removeTransition)
+      );
+
+      // Listens for an event listener to play one of the keys in the function
+      window.addEventListener('keydown', playSound);
     </script>
   </body>
 </html>
