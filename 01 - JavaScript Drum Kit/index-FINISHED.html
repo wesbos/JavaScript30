@@ -59,7 +59,7 @@
 
 <script>
   function removeTransition(e) {
-    if (e.target.classList[1] !== 'playing') return;
+    if ( ! e.target.classList.contains('playing')) return;
     e.target.classList.remove('playing');
   }
 
