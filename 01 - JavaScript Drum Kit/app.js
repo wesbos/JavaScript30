@@ -1,21 +1,22 @@
-const keys = document.querySelector(".keys");
-keys.addEventListener("click", (e) => {
-  const keybtn = e.target.dataset.key;
-  console.log(keybtn);
-  if (keybtn) {
-    const audioSoundBtn = document.querySelectorAll("audio");
-    const keycontainer = document.querySelectorAll(".key");
-    keycontainer.forEach((key1) => {
-      key1.classList.remove("playing");
-      if (key1.dataset.key == keybtn) {
-        key1.classList.add("playing");
-      }
-    });
-    audioSoundBtn.forEach((audioMy) => {
-      const btnSource = audioMy.dataset.key;
-      if (btnSource == keybtn) {
-        audioMy.play();
-      }
-    });
+const removeTransition = (e) => {
+  if (e.propertyName == "transform") {
+    e.target.classList.remove("playing");
   }
+};
+
+const playSound = (e) => {
+  const audioSoundBtn = document.querySelector(
+    `audio[data-key="${e.key.toUpperCase()}"]`
+  );
+  const key = document.querySelector(`div[data-key="${e.key.toUpperCase()}"]`);
+  if (audioSoundBtn) {
+    key.classList.add("playing");
+    audioSoundBtn.currentTime = 0;
+    audioSoundBtn.play();
+  }
+};
+const keys = document.querySelectorAll(".key");
+keys.forEach((key) => {
+  key.addEventListener("transitionend", removeTransition);
 });
+window.addEventListener("keydown", playSound);
