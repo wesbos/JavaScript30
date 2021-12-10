@@ -5,8 +5,6 @@
   <title>JS + CSS Clock</title>
 </head>
 <body>
-
-
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
@@ -43,9 +41,9 @@
       position: relative;
       padding: 2rem;
       box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
+      0 0 0 4px rgba(0,0,0,0.1),
+      inset 0 0 0 3px #EFEFEF,
+      inset 0 0 10px black,
         0 0 10px rgba(0,0,0,0.2);
     }
 
@@ -61,14 +59,16 @@
       height: 6px;
       background: black;
       position: absolute;
+      transition: all 0.1s;
+      transition-timing-function:cubic-bezier(0.5, 2.7, 0.58, 1);
+      transform: rotate(90deg);
+      transform-origin: 100%;
       top: 50%;
     }
 
-  </style>
+    </style>
 
-  <script src="app.js">
-
-
-  </script>
+    <script src="app.js">
+    </script>
 </body>
 </html>
