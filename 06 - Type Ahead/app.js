@@ -21,6 +21,10 @@ const findMatches = (wordToMatch, cities) => {
   });
 };
 
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 const displayMatches = (e) => {
   const matchArray = findMatches(e.target.value, cities);
   console.log(matchArray);
@@ -37,7 +41,9 @@ const displayMatches = (e) => {
         `<span class="hl">${e.target.value}</span>
       `
       );
-      return `<li><span class="name">${cityName}, ${stateName}</span><span class="population">${place.population}</span></li>`;
+      return `<li><span class="name">${cityName}, ${stateName}</span><span class="population">${numberWithCommas(
+        place.population
+      )}</span></li>`;
     })
     .join("");
   suggestions.innerHTML = html;
