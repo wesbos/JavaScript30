@@ -21,12 +21,29 @@ const findMatches = (wordToMatch, cities) => {
   });
 };
 
+const numberWithCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 const displayMatches = (e) => {
   const matchArray = findMatches(e.target.value, cities);
   console.log(matchArray);
   const html = matchArray
     .map((place) => {
-      return `<li><span class="name">${place.city}, ${place.state}</span><span class="population">${place.population}</span></li>`;
+      const regx = new RegExp(e.target.value, "gi");
+      const cityName = place.city.replace(
+        regx,
+        `<span class="hl">${e.target.value}</span>
+      `
+      );
+      const stateName = place.state.replace(
+        regx,
+        `<span class="hl">${e.target.value}</span>
+      `
+      );
+      return `<li><span class="name">${cityName}, ${stateName}</span><span class="population">${numberWithCommas(
+        place.population
+      )}</span></li>`;
     })
     .join("");
   suggestions.innerHTML = html;
