@@ -62,13 +62,45 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all .5s ease-in-out;
     }
 
   </style>
 
   <script>
+    let second = minute = hour = 0;
+    let initialRotate = 90;
+    setInterval( timeTick, 1000 );
 
+    function timeTick() {
+      second += 1;
+      setElementRotation( "second-hand", second - 1, 60 );
 
+      if( second == 60 ) {
+        second = 0;
+        minute += 1;
+        setElementRotation( "min-hand", minute, 60 );
+      }
+
+      if( minute == 60 ) {
+        minute = 0;
+        hour += 1;
+        setElementRotation( "hour-hand", hour, 24 );
+      }
+
+      if(hour == 24) {
+        hour = 0;
+      }
+
+    }
+
+    function setElementRotation( elementClass, currentTimeValue, maxTimeValue ) {
+      let element = document.querySelector(`.hand.${elementClass}`);
+      elementRotation = ( currentTimeValue / maxTimeValue ) * 360;
+      element.style.transform = `rotate(${elementRotation + initialRotate}deg)`;
+    }
   </script>
 </body>
 </html>
