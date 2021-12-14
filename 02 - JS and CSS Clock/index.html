@@ -87,10 +87,10 @@
       if( minute == 60 ) {
         minute = 0;
         hour += 1;
-        setElementRotation( "hour-hand", hour, 24 );
+        setElementRotation( "hour-hand", hour, 12 );
       }
 
-      if(hour == 24) {
+      if(hour == 12) {
         hour = 0;
       }
 
