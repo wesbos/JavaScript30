@@ -60,7 +60,6 @@
 <script>
   let key = document.querySelector( ".key" );
   window.addEventListener( "keydown", function( key ) {
-    console.log( `Pressed ${key.keyCode}` );
     let audioElement = document.querySelector( `audio[data-key='${key.keyCode}']` );
     let keyElement = document.querySelector( `.keys div[data-key='${key.keyCode}']` );
 
