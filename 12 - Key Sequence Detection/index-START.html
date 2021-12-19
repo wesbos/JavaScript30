@@ -7,6 +7,20 @@
 </head>
 <body>
 <script>
+const pressed = [];
+const secretCode = "falafel";
+  window.addEventListener("keyup", (e) =>{
+    console.log(e.key)
+    pressed.push(e.key);
+    pressed.splice(secretCode.length -1, pressed.length - secretCode.length - 1);
+    console.log(pressed)
+    if (e.key === "Enter"){
+      pressed.splice(0, pressed.length)
+    }
+    if(pressed.join('').includes(secretCode)){
+      console.log("hip hip hurra")
+    }
+  })
 </script>
 </body>
 </html>
