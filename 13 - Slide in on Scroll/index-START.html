@@ -43,6 +43,7 @@
   </div>
 
   <script>
+// open source function used to prevent running an event on scroll all the time
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -58,6 +59,33 @@
       };
     }
 
+    const sliderImages = document.querySelectorAll(".slide-in")
+      console.log(sliderImages);
+
+    const slidingIn = (e) => {
+      console.log(e);
+      console.log("scrollY");
+      console.log(window.scrollY);
+      console.log("innerHeight");
+      console.log(window.innerHeight);
+      sliderImages.forEach(sliderImage => {
+        // finding image bottom on the page
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        // finding out whetehr something was scrolled passed (first find where does it finish)
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if(isHalfShown && isNotScrolledPast){
+          sliderImage.classList.add("active")
+        }else {
+          sliderImage.classList.remove("active")
+        }
+        console.dir(sliderImage)
+      })
+    }
+
+    window.addEventListener("scroll", debounce(slidingIn))
+
   </script>
 
   <style>
@@ -68,11 +96,11 @@
       font-size: 20px;
       font-weight: 200;
     }
-    
+
     body {
       margin: 0;
     }
-    
+
     *, *:before, *:after {
       box-sizing: inherit;
     }
@@ -107,7 +135,7 @@
     .align-left.slide-in {
       transform: translateX(-30%) scale(0.95);
     }
-    
+
     .align-right.slide-in {
       transform: translateX(30%) scale(0.95);
     }
