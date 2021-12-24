@@ -38,7 +38,7 @@
 
   const hero = document.querySelector('.hero');
   const text = document.querySelector('h1');
-  const walk = 1000; // 100px
+  const walk = 100; // 100px
 
 
   function shadow(e){
@@ -54,10 +54,10 @@
     const yWalk = Math.round((y / height * walk) - (walk / 2));
     
     text.style.textShadow = `
-    ${xWalk}px ${yWalk}px 0 rgba(255, 0, 255, 0.7),
-    ${xWalk * -1}px ${yWalk}px 0 rgba(0, 255, 255, 0.7),
-    ${yWalk}px ${xWalk*-1}px 0 rgba(0, 255, 0, 0.7),
-    ${yWalk * -1}px ${xWalk*-1}px 0 rgba(0, 0, 255, 0.7)
+    ${xWalk}px ${yWalk}px 0 #FAD591,
+    ${xWalk * -1}px ${yWalk}px 0 #F2DF44,
+    ${yWalk}px ${xWalk*-1}px 0 #9F81D4,
+    ${yWalk * -1}px ${xWalk*-1}px 0 #F7A097
     `;
   }
 
