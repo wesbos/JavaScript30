@@ -32,13 +32,11 @@
 
   function addItem(e) {
     e.preventDefault();
-    console.log(e);
-    const text = (this.querySelector('[name="item"]')).value
-    console.log(text);
+    const text = (this.querySelector('[name="item"]')).value;
     const item = {
       text,
       done: false,
-    }
+    };
     items.push(item);
     populateList(items, itemsList);
     localStorage.setItem("items", JSON.stringify(items));
@@ -47,8 +45,8 @@
 
   function toggleDone(e){
     if(!e.target.matches("input")) return;
-    const el = e.target;
-    const index = el.dataset.index;
+    const element = e.target;
+    const index = element.dataset.index;
     items[index].done = !items[index].done;
     localStorage.setItem("items", JSON.stringify(items));
     populateList(items, itemsList);
