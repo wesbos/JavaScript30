@@ -58,7 +58,29 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  const get = el => document.querySelectorAll(el).length > 1 ? document.querySelectorAll(el) : document.querySelector(el)
 
+  const key_boxes = get('.key[data-key]'),
+        data_keys = []
+
+  for(let kb of key_boxes)
+    data_keys.push(kb.dataset.key)
+
+  const make_sound = key => {
+    const keyCap = get(`.key[data-key="${key}"]`)
+    const audio = get(`audio[data-key="${key}"]`)
+    keyCap.classList.add('playing')
+    audio.play()
+
+    setTimeout(() => {
+      keyCap.classList.remove('playing')
+    }, 100)
+  }
+
+  document.addEventListener('keydown', e => {
+    if(data_keys.includes(e.which.toString()))
+      make_sound(e.which)
+  }) 
 </script>
 
 
