@@ -58,7 +58,31 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+    //눌린 키가 무엇인지 e.keyCode를 통해 찾아 div의 classList에서 playing을 제거해준다.
+    const stopSound=(e)=>{
+    const key=document.querySelector(`div[data-key="${e.keyCode}"]`);
 
+    if(!key) return;
+    key.classList.remove('playing');
+    } 
+  
+    //키가 눌리면 그 키가 무엇인지를 e.keyCode를 통해 찾은다음 그 키의 div를 찾아서 
+    //classList에 plying을 추가해 테두리가 노란색으로 변하게하고, audio.play를 하여 소리를 실행한다. 
+    const playSound=(e)=>{
+      const audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key=document.querySelector(`div[data-key="${e.keyCode}"]`);
+
+      if(!key) return; //예외처리
+
+      console.log(key.classList);
+      key.classList.add('playing');
+      audio.currentTime = 0; 
+      //이걸 설정하지 않으면 음원이 중간에서 끊길경우가 있어 소리가 씹힐 수 있음
+      audio.play();
+    }
+
+    window.addEventListener('keydown',playSound); //EventListener추가
+    window.addEventListener('keyup',stopSound);
 </script>
 
 
