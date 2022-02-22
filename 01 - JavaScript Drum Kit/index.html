@@ -72,6 +72,7 @@
       let audioNum = parentbutton.getAttribute("data-key");
       let sound = document.querySelector(`audio[data-key='${audioNum}']`);
       parentbutton.classList.add("playing");
+      sound.currentTime = 0;
       sound.play();
       setTimeout( () => parentbutton.classList.remove("playing"), 400);
     }
