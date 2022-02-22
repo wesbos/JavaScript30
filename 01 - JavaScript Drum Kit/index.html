@@ -9,43 +9,43 @@
 
 
   <div class="keys">
-    <div data-key="65" class="key">
+    <button data-key="65" class="key">
       <kbd>A</kbd>
       <span class="sound">clap</span>
-    </div>
-    <div data-key="83" class="key">
+    </button>
+    <button data-key="83" class="key">
       <kbd>S</kbd>
       <span class="sound">hihat</span>
-    </div>
-    <div data-key="68" class="key">
+    </button>
+    <button data-key="68" class="key">
       <kbd>D</kbd>
       <span class="sound">kick</span>
-    </div>
-    <div data-key="70" class="key">
+    </button>
+    <button data-key="70" class="key">
       <kbd>F</kbd>
       <span class="sound">openhat</span>
-    </div>
-    <div data-key="71" class="key">
+    </button>
+    <button data-key="71" class="key">
       <kbd>G</kbd>
       <span class="sound">boom</span>
-    </div>
-    <div data-key="72" class="key">
+    </button>
+    <button data-key="72" class="key">
       <kbd>H</kbd>
       <span class="sound">ride</span>
-    </div>
-    <div data-key="74" class="key">
+    </button>
+    <button data-key="74" class="key">
       <kbd>J</kbd>
       <span class="sound">snare</span>
-    </div>
-    <div data-key="75" class="key">
+    </button>
+    <button data-key="75" class="key">
       <kbd>K</kbd>
       <span class="sound">tom</span>
-    </div>
-    <div data-key="76" class="key">
+    </button>
+    <button data-key="76" class="key">
       <kbd>L</kbd>
       <span class="sound">tink</span>
-    </div>
-  </div>
+    </button>
+  </div> 
 
   <audio data-key="65" src="sounds/clap.wav"></audio>
   <audio data-key="83" src="sounds/hihat.wav"></audio>
@@ -59,6 +59,37 @@
 
 <script>
 
+  function drumButtonClickedHandler(event)
+  {
+    if (event.target.matches("kbd"))
+    {
+      event.target.closest(".key").click();  
+    }
+    if (event.target.matches("button"))
+    {
+      let btnPressed = event.target;
+      let parentbutton = btnPressed.closest(".key");
+      let audioNum = parentbutton.getAttribute("data-key");
+      let sound = document.querySelector(`audio[data-key='${audioNum}']`);
+      parentbutton.classList.add("playing");
+      sound.currentTime = 0;
+      sound.play();
+      setTimeout( () => parentbutton.classList.remove("playing"), 400);
+    }
+  }
+  
+  function kbdHandler(event)
+  {
+    console.log(event.key.toUpperCase().charCodeAt(0));
+    let btn = document.querySelector(`button[data-key="${event.key.toUpperCase().charCodeAt(0)}"]`);
+    if (btn)
+    {
+      btn.click();
+    }
+  }
+
+  document.addEventListener('click', drumButtonClickedHandler);
+  document.addEventListener('keydown', kbdHandler);
 </script>
 
 
