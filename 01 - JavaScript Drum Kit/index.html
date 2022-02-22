@@ -77,8 +77,18 @@
     }
   }
   
-  
+  function kbdHandler(event)
+  {
+    console.log(event.key.toUpperCase().charCodeAt(0));
+    let btn = document.querySelector(`button[data-key="${event.key.toUpperCase().charCodeAt(0)}"]`);
+    if (btn)
+    {
+      btn.click();
+    }
+  }
+
   document.addEventListener('click', drumButtonClickedHandler);
+  document.addEventListener('keydown', kbdHandler);
 </script>
 
 
