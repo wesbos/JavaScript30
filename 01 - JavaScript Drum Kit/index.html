@@ -74,22 +74,26 @@
       parentbutton.classList.add("playing");
       sound.currentTime = 0;
       sound.play();
-      setTimeout( () => parentbutton.classList.remove("playing"), 400);
     }
   }
   
   function kbdHandler(event)
   {
-    console.log(event.key.toUpperCase().charCodeAt(0));
-    let btn = document.querySelector(`button[data-key="${event.key.toUpperCase().charCodeAt(0)}"]`);
-    if (btn)
+    let btn = document.querySelector(`button[data-key="${event.keyCode}"]`);
+    if (btn) btn.click();
+  }
+
+  function removeHighlight(event)
+  {
+    if (event.target.matches(".playing") && event.propertyName === "transform")
     {
-      btn.click();
+      event.target.classList.remove("playing");
     }
   }
 
   document.addEventListener('click', drumButtonClickedHandler);
   document.addEventListener('keydown', kbdHandler);
+  document.addEventListener('transitionend', removeHighlight);
 </script>
 
 
