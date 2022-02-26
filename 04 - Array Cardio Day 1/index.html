@@ -37,28 +37,55 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-
+    console.table(inventors.filter( inventor => (inventor.year > 1499 && inventor.year < 1600)));
+    
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    console.log(inventors.map(inventor => `${inventor.first} ${inventor.last}`));
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    console.table(inventors.sort((inventor1, inventor2) => (inventor1.year - inventor2.year)));
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    console.log(inventors.reduce( (sum, inventor) => ( sum += ( inventor.passed - inventor.year ) ), 0 ) );
 
     // 5. Sort the inventors by years lived
+    console.table(inventors.sort( ( inventor1, inventor2 ) => ( (inventor1.passed - inventor1.year) - (inventor2.passed - inventor2.year) )));
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+    console.log(["Boulevard Auguste-Blanqui", "Boulevard Barbès", "Boulevard Beaumarchais", "Boulevard de l'Amiral-Bruix", "Boulevard Mortier", "Boulevard Poniatowski", "Boulevard Soult", "Boulevard des Capucines", "Boulevard de la Chapelle", "Boulevard de Clichy", "Boulevard du Crime", "Boulevard du Général-d'Armée-Jean-Simon", "Boulevard Haussmann", "Boulevard de l'Hôpital", "Boulevard des Italiens", "Boulevard Lefebvre", "Boulevard de la Madeleine", "Boulevard de Magenta", "Boulevard Malesherbes", "Boulevard Marguerite-de-Rochechouart", "Boulevard Montmartre", "Boulevard du Montparnasse", "Boulevard Raspail", "Boulevard Richard-Lenoir", "Boulevard Saint-Germain", "Boulevard Saint-Michel", "Boulevard de Sébastopol", "Boulevard de Strasbourg", "Boulevard du Temple", "Boulevard Voltaire", "Boulevard de la Zone" ].filter( b => b.includes( "de") ));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    console.log(people.sort( (p1, p2) => {
+      const name1 = p1.split(",")[0].toUpperCase();
+      const name2 = p2.split(",")[0].toUpperCase();
+      if ( name1 < name2 ) {
+        return -1;
+      } else if ( name1 > name2 ) {
+        return 1;
+      } else {
+        return 0;
+      }
+    })
+    );
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    console.log(data.reduce( (hist, cur) => {
+      if (hist[cur]) {
+        hist[cur]++;
+      } else {
+        hist[cur] = 1;
+      }
+      return hist;
+    },
+    {}
+    ));
 
   </script>
 </body>
