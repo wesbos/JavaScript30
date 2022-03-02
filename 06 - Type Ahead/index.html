@@ -15,7 +15,60 @@
     </ul>
   </form>
 <script>
+  
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+let cities = [];
+let list = document.querySelector(".suggestions");
+
+const req = new Request('https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json');
+fetch(req)
+  .then(response => {
+    if ( !response.ok ) {
+      throw new Error('HTTP error! status: ${response.status}');
+    }
+    return response.json();
+  })
+  .then( response => {
+    cities = [...response];
+    console.log(cities);
+    console.log(list);
+    setList(cities);
+  });
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function setList(cityList, regex) {
+    let list_html = cityList.map(
+        city => `<li><span class="span.list">${city.city}, ${city.state}</span> ${numberWithCommas(city.population)}</li>`
+      ).join(' ');
+      if (regex) {
+        const highlighted = list_html.replace(regex, "<span class='hl' >$&</span>");
+        if (highlighted) {
+          list_html = highlighted;
+        }
+      }
+    list.innerHTML = list_html;
+  }
+
+  function filterList() {
+    if (this.value) {
+      const regex = new RegExp(`${this.value}`, 'gi');
+      let filteredCities = cities.filter( city => {
+        const cityMatch = city.city.match(regex);
+        const stateMatch = city.state.match(regex);
+        return (cityMatch || stateMatch);
+      } );
+      setList(filteredCities, regex);
+    } else {
+      setList(cities);
+    }
+  }
+
+  const searchField = document.querySelector(".search");
+  searchField.addEventListener('change', filterList);
+  searchField.addEventListener('keyup', filterList);
 
 </script>
 </body>
