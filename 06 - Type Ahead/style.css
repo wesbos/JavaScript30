@@ -69,6 +69,10 @@ span.population {
   font-size: 15px;
 }
 
+.span.list {
+  display: inline-block;
+}
+
 .hl {
   background: #ffc600;
 }
