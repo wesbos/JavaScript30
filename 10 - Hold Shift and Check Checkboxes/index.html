@@ -94,8 +94,35 @@
       <p>Don't forget to tweet your result!</p>
     </div>
   </div>
-
+  
 <script>
+  const inbox = document.querySelector(".inbox");
+
+  inbox.addEventListener('click', e => {
+    console.log(e.target);
+    if (!e.target.matches("input")) return;
+    const check = e.target;
+    const checkBegin = document.querySelector(".checkBegin");
+    if (checkBegin) {
+      if (e.shiftKey) {
+        check.parentNode.classList.add("checkEnd");  
+        let nodes = document.querySelectorAll(".checkBegin ~ .item:not(.checkEnd ~ .item");
+        nodes.forEach(n => {
+          n.querySelector("input").checked = true;
+        });
+      } else {
+        const checkEnd = document.querySelector(".checkEnd");
+        if (checkEnd) {
+          checkEnd.classList.remove("checkEnd");
+        }
+      } 
+      checkBegin.classList.remove("checkBegin");
+    } else {
+      check.parentNode.classList.add("checkBegin");
+    }
+
+  });
+
 </script>
 </body>
 </html>
