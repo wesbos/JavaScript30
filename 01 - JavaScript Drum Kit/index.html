@@ -58,26 +58,36 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-  const $key = document.querySelectorAll('.key');
-  const $audio = document.querySelectorAll('audio');
+  const $keys = document.querySelectorAll('.key');
 
-  // 마우스 클릭 시 오디오 실행
-  $key.forEach(key => {
-    key.addEventListener('click', a => {
-      const keyNum = key.getAttribute('data-key');
-      const $target = document.querySelector(`audio[data-key="${keyNum}"]`);
+  $keys.forEach(key => {
+    const keyNum = key.getAttribute('data-key');
+    const $target = document.querySelector(`audio[data-key="${keyNum}"]`);
+    const $key = document.querySelector(`.key[data-key="${keyNum}"]`);
+
+    // 마우스 클릭 시 오디오 실행
+    key.addEventListener('click', e => {
+      $target.currentTime = 0;
+      $key.classList.add('playing');
       $target.play();
+    });
+
+    // 클래스 추가 후 삭제
+    key.addEventListener('transitionend', e => {
+      $key.classList.remove('playing');
     })
   });
 
   // 키보드 입력 시 오디오 실행
-  window.addEventListener('keydown', (e) => {
+  window.addEventListener('keydown', e => {
     const keyCode = e.keyCode;
     const $target = document.querySelector(`audio[data-key="${keyCode}"]`);
-      $target.play();
-  })
+    const $key = document.querySelector(`.key[data-key="${keyCode}"]`);
 
-  
+    $target.currentTime = 0;
+    $key.classList.add('playing');
+    $target.play();
+  });
 </script>
 
 
