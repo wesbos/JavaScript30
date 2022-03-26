@@ -60,34 +60,35 @@
 <script>
   const $keys = document.querySelectorAll('.key');
 
-  $keys.forEach(key => {
-    const keyNum = key.getAttribute('data-key');
+  $keys.forEach(key => key.addEventListener('click', clickSound));
+  window.addEventListener('keydown', keydownSound);
+  $keys.forEach(key => key.addEventListener('transitionend', transtionendRemoveClass));
+
+  // 마우스 클릭 시 오디오 실행
+  function clickSound() {
+    const keyNum = this.getAttribute('data-key');
     const $target = document.querySelector(`audio[data-key="${keyNum}"]`);
     const $key = document.querySelector(`.key[data-key="${keyNum}"]`);
-
-    // 마우스 클릭 시 오디오 실행
-    key.addEventListener('click', e => {
-      $target.currentTime = 0;
-      $key.classList.add('playing');
-      $target.play();
-    });
-
-    // 클래스 추가 후 삭제
-    key.addEventListener('transitionend', e => {
-      $key.classList.remove('playing');
-    })
-  });
-
-  // 키보드 입력 시 오디오 실행
-  window.addEventListener('keydown', e => {
-    const keyCode = e.keyCode;
-    const $target = document.querySelector(`audio[data-key="${keyCode}"]`);
-    const $key = document.querySelector(`.key[data-key="${keyCode}"]`);
 
     $target.currentTime = 0;
     $key.classList.add('playing');
     $target.play();
-  });
+  }
+
+  // 키보드 입력 시 오디오 실행
+  function keydownSound(e) {
+    const $target = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const $key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+    $target.currentTime = 0;
+    $key.classList.add('playing');
+    $target.play();
+  }
+
+  // 트렌지션이 끝나면 트렌지션 삭제
+  function transtionendRemoveClass(e) {
+    e.target.classList.remove('playing');
+  }
 </script>
 
 
