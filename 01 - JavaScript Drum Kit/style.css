@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background: url('./background.jpg') bottom center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.09), rgba(0, 0, 0, 0.3)), url('./img/background_img.png');
   background-size: cover;
 }
 
