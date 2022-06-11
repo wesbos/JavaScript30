@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>JS Drum Kit</title>
+  <title>Funky 808</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1>Give Mozart a run for his money!</h1>
   <!-- using custom data attributes to store keyboard key codes -->
   <div class="keys">
+    <div class="column-1">
     <div data-key="KeyA" class="key">
       <kbd>A</kbd>
       <span class="sound">clap</span>
@@ -20,6 +22,8 @@
       <kbd>D</kbd>
       <span class="sound">kick</span>
       </div>
+  </div>
+  <div class="column-2">
     <div data-key="KeyF" class="key">
       <kbd>F</kbd>
       <span class="sound">openhat</span>
@@ -31,7 +35,9 @@
     <div data-key="KeyH" class="key">
       <kbd>H</kbd>
       <span class="sound">ride</span>
-      </div>
+    </div>
+    </div>
+    <div class="column-3">
     <div data-key="KeyJ" class="key">
       <kbd>J</kbd>
       <span class="sound">snare</span>
@@ -43,6 +49,7 @@
     <div data-key="KeyL" class="key">
       <kbd>L</kbd>
       <span class="sound">tink</span>
+    </div>
     </div>
   </div>
   

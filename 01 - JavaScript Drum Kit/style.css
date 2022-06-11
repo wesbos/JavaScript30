@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Smythe&display=swap');
+
 html {
   font-size: 10px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.09), rgba(0, 0, 0, 0.3)), url('./img/background_img.png');
@@ -7,7 +9,18 @@ html {
 body,html {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden;
   font-family: sans-serif;
+}
+
+h1 {
+  font-family: 'Smythe', sans-serif;
+  text-transform: capitalize;
+  font-size: 4rem;
+  padding-top: 6rem;
+  text-align: center;
+  color: white;
 }
 
 .keys {
@@ -15,7 +28,8 @@ body,html {
   flex: 1;
   min-height: 100vh;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  
 }
 
 .key {
@@ -23,13 +37,18 @@ body,html {
   border-radius: .5rem;
   margin: 1rem;
   font-size: 1.5rem;
-  padding: 1rem .5rem;
+  padding: 2rem .5rem 3rem;
+  
   transition: all .07s ease;
   width: 10rem;
   text-align: center;
   color: white;
   background: rgba(0,0,0,0.4);
   text-shadow: 0 0 .5rem black;
+}
+
+[data-key] {
+  padding: 3rem;
 }
 
 [data-key="KeyA"] {
