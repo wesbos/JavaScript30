@@ -13,6 +13,6 @@ function toggleTransition(e) {
   this.classList.remove('playing');
 }
 
-const keys = document.querySelectorAll('.key');
+const keys = document.querySelectorAll('.key[data-key]');
 keys.forEach(key => key.addEventListener('transitionend', toggleTransition));
 window.addEventListener('keydown', playSound);

@@ -32,54 +32,39 @@ body,html {
   text-shadow: 0 0 .5rem black;
 }
 
-.playing {
-  transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
-}
-
 [data-key="KeyA"] {
-  transform: scale(1.1);
   border-color: #ff0000;
   box-shadow: 0 0 1rem #ff0000;
 }
 [data-key="KeyS"] {
-  transform: scale(1.1);
   border-color: #ff7b00;
   box-shadow: 0 0 1rem #ff7b00;
 }
 [data-key="KeyD"] {
-  transform: scale(1.1);
   border-color: #ffff00;
   box-shadow: 0 0 1rem #ffff00;
 }
 [data-key="KeyF"] {
-  transform: scale(1.1);
   border-color: #5eff00;
   box-shadow: 0 0 1rem #5eff00;
 }
 [data-key="KeyG"] {
-  transform: scale(1.1);
   border-color: #00ffc8;
   box-shadow: 0 0 1rem #00ffc8;
 }
 [data-key="KeyH"] {
-  transform: scale(1.1);
   border-color: #009dff;
   box-shadow: 0 0 1rem #009dff;
 }
 [data-key="KeyJ"] {
-  transform: scale(1.1);
   border-color: #4800ff;
   box-shadow: 0 0 1rem #4800ff;
 }
 [data-key="KeyK"] {
-  transform: scale(1.1);
   border-color: #bf00ff;
   box-shadow: 0 0 1rem #bf00ff;
 }
 [data-key="KeyL"] {
-  transform: scale(1.1);
   border-color: #ff00bb;
   box-shadow: 0 0 1rem #f0b;
 }
@@ -87,6 +72,12 @@ body,html {
 kbd {
   display: block;
   font-size: 4rem;
+}
+
+.playing {
+  transform: scale(1.35);
+  border-color: white;
+  box-shadow: 0 0 1rem white;
 }
 
 .sound {
