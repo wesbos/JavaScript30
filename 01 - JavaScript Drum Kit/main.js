@@ -7,7 +7,7 @@ window.addEventListener('keydown', playSound);
   function playSound(e) {
     console.log(e)
 
-    //create a variable key// why? 
+    create a variable key// why? 
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
 
     //each key has a specific keyCode
