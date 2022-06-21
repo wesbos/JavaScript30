@@ -5,7 +5,7 @@
   <title>Scoped CSS Variables and JS</title>
 </head>
 <body>
-  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+  <h2>Update CSS Variables with <span class='my'>JS</span></h2>
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
@@ -25,6 +25,21 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+        :root{
+        --spacing:10px;
+        --base: #ffc600;
+        --blur:10px;
+        font-style: normal;
+          }
+    img{
+        padding: var(--spacing);
+        background: var(--base);
+        filter:blur(var(--blur));
+    }
+    .my{
+      color: var(--base);
+    }
+
 
     body {
       text-align: center;
@@ -45,6 +60,20 @@
   </style>
 
   <script>
+          const iref=document.querySelectorAll('.controls input');
+          
+          function effect()
+          {
+          
+           const sz=this.dataset.sizing || '';
+           document.documentElement.style.setProperty(`--${this.name}`,`${this.value}`+sz);
+
+
+
+          }
+          iref.forEach(element=>element.addEventListener('change',effect)); /* Since foreach() method execute provided fxn in its 
+                                                                              input for each input */
+          iref.forEach(element=>element.addEventListener('mousemove',effect));
   </script>
 
 </body>

@@ -8,14 +8,56 @@
 <body>
 
   <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
+    <input type="text" class="search" placeholder="City or State" id="iid" />
     <ul class="suggestions">
       <li>Filter for a city</li>
       <li>or a state</li>
     </ul>
   </form>
 <script>
+
+const searchInput = document.querySelector('.search');
+const suggestions=document.querySelector('.suggestions');
+const cities=[]
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+
+fetch(endpoint).then(res=>res.json()).then(rs=>cities.push(...rs));
+
+function findMatches(wordToMatch,cities){
+  return cities.filter(city=>{
+    const regx=RegExp(wordToMatch,'gi');
+    if(city.city.match(regx)!=null)
+    return true;
+    else if(city.state.match(regx)!=null)
+    return true;
+    else
+    return false;
+  });
+}
+function frmtfxn(population)
+{
+  return population.toString().replace(/\B(?=(\d{3})+(?!\d))/, ',')
+}
+
+function displaySuggestion()             // /\B(?=(\d{3})+(?!\d))/g, ','
+{
+ const result=findMatches(this.value,cities);
+ const regex=RegExp(this.value,'gi');
+ const html=result.map(place=>{
+   
+  const ncity= place.city.replace(regex,`<span class='h1'><b>${this.value}</b></span>`);
+  const nstate= place.state.replace(regex,`<span class='h1'><b>${this.value}</b></span>`);
+   return `<li><span class='name'>${ncity},${nstate}</span>
+           <span class='population'>${frmtfxn(place.population)}</span></li>`; 
+           
+
+
+ }).join(' ');
+ suggestions.innerHTML=html; 
+}
+searchInput.addEventListener('keyup',displaySuggestion);
+searchInput.addEventListener('change',displaySuggestion);
 
 </script>
 </body>

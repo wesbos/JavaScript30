@@ -26,6 +26,9 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
+      justify-content:space-around;
+      
     }
 
     .panel {
@@ -33,7 +36,7 @@
       box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
       color: white;
       text-align: center;
-      align-items: center;
+      
       /* Safari transitionend event.propertyName === flex */
       /* Chrome + FF transitionend event.propertyName === flex-grow */
       transition:
@@ -43,6 +46,11 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      flex:1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -54,8 +62,26 @@
     /* Flex Children */
     .panel > * {
       margin: 0;
-      width: 100%;
+      width:100%;
       transition: transform 0.5s;
+      flex: 1 0 auto;
+     /* border: 2px solid red; */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .panel>*:first-child{
+      transform:translateY(-100%);
+      
+    }
+    .panel>*:last-child{
+      transform:translateY(100%);
+    }
+    .panel.open-active >*:first-child{
+      transform:translateY(0%);
+    }
+    .panel.panel.open-active > *:last-child{
+      transform:translateY(0%);
     }
 
     .panel p {
@@ -71,13 +97,14 @@
 
     .panel.open {
       font-size: 40px;
+      flex:4;
     }
 
   </style>
 
 
   <div class="panels">
-    <div class="panel panel1">
+    <div class="panel panel1 ">
       <p>Hey</p>
       <p>Let's</p>
       <p>Dance</p>
@@ -105,6 +132,25 @@
   </div>
 
   <script>
+         
+    let pnl=document.querySelectorAll(".panel");
+    function myFunction(e)
+    {
+      let cl=this.classList;
+      console.log('rishabh');
+      cl.toggle('open');
+      
+    }
+    function toggleActive(e)
+    {  console.log(e.propertyName);
+      if(e.propertyName=='flex-grow')
+      {
+        this.classList.toggle('open-active');
+      }
+    }
+   pnl.forEach(pnl=>pnl.addEventListener('click',myFunction));
+   pnl.forEach(pnl=>pnl.addEventListener('transitionend',toggleActive));
+
 
   </script>
 
