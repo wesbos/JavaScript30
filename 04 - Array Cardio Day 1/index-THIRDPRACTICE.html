@@ -74,58 +74,22 @@
       // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
 
-      const fifteen = inventors.filter(
-        (inventor) => inventor.year >= 1500 && inventor.year <= 1600
-      );
-      console.table(fifteen);
-
       // Array.prototype.map()
       // 2. Give us an array of the inventors first and last names
-
-      const fullName = inventors.map(
-        (inventor) => inventor.first + " " + inventor.last
-      );
-      console.table(fullName);
 
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
 
-      const oldToYoung = inventors.sort((a, b) => a.year > b.year);
-      console.table(oldToYoung);
-
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live all together?
 
-      const together = inventors.reduce((total, inventor) => {
-        return total + (inventor.passed - inventor.year);
-      }, 0);
-      console.log(together);
-
       // 5. Sort the inventors by years lived
-
-      const yearsLived = inventors.sort((a, b) => {
-        return a.passed - a.year < b.passed - b.year ? 1 : -1;
-      });
-      console.table(yearsLived);
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-      // const boulevards = document.querySelector(".mw-category");
-      // const all = [...document.querySelectorAll("a")];
-      // const nameDe = all
-      //   .map((link) => link.textContent)
-      //   .filter((streetname) => streetname.includes("de"));
-
       // 7. sort Exercise
       // Sort the people alphabetically by last name
-
-      const lastName = people.sort((a, b) => {
-        const [aLast, aFirst] = a.split(", ");
-        const [bLast, bFirst] = b.split(", ");
-        return aLast > bLast ? 1 : -1;
-      });
-      console.table(lastName);
 
       // 8. Reduce Exercise
       // Sum up the instances of each of these
@@ -146,16 +110,6 @@
         "truck",
         "pogo stick",
       ];
-
-      const sum = data.reduce(function (obj, item) {
-        if (!obj[item]) {
-          obj[item] = 0;
-        }
-        obj[item]++;
-        return obj;
-      }, {});
-
-      console.log(sum);
     </script>
   </body>
 </html>
