@@ -79,7 +79,7 @@
           inFiftiesArr.push(x);
         }
       });
-      console.log(inFiftiesArr);
+      console.table(inFiftiesArr);
 
       // Array.prototype.map()
       // 2. Give us an array of the inventors first and last names
@@ -89,20 +89,34 @@
       inventors.map((y) => {
         firstAndLastNames.push(`${y.first} ${y.last}`);
       });
-      console.log(firstAndLastNames);
+      console.table(firstAndLastNames);
 
       // Array.prototype.sort()
       // 3. Sort the inventors by birthdate, oldest to youngest
 
-      inventors.sort((a, b) => {
+      const sortedOldestToYoungest = inventors.sort((a, b) => {
         return a.year - b.year;
       });
-      console.log(inventors);
+      console.table(sortedOldestToYoungest);
 
       // Array.prototype.reduce()
       // 4. How many years did all the inventors live all together?
 
+      const totalYears = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year);
+      }, 0);
+
+      console.table(totalYears);
+
       // 5. Sort the inventors by years lived
+
+      inventors.sort((a, b) => {
+        const previousInventor = a.passed - a.year;
+        const nextInventor = b.passed - b.year;
+        return previousInventor > nextInventor ? -1 : 1;
+      });
+
+      console.table(inventors);
 
       // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
       // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -128,6 +142,35 @@
         "car",
         "truck",
       ];
+
+      let vehicleData = {
+        car: 0,
+        truck: 0,
+        bike: 0,
+        walk: 0,
+        van: 0,
+      };
+
+      const summedUp = data.reduce((total, iterator) => {
+        switch (iterator) {
+          case "car":
+            vehicleData.car++;
+            break;
+          case "truck":
+            vehicleData.truck++;
+            break;
+          case "bike":
+            vehicleData.bike++;
+            break;
+          case "walk":
+            vehicleData.walk++;
+            break;
+          case "van":
+            vehicleData.van++;
+            break;
+        }
+      });
+      console.table(vehicleData);
     </script>
   </body>
 </html>
