@@ -7,44 +7,80 @@
 </head>
 <body>
 
-
   <div class="keys">
-    <div data-key="65" class="key">
-      <kbd>A</kbd>
-      <span class="sound">clap</span>
-    </div>
-    <div data-key="83" class="key">
-      <kbd>S</kbd>
-      <span class="sound">hihat</span>
-    </div>
-    <div data-key="68" class="key">
-      <kbd>D</kbd>
-      <span class="sound">kick</span>
-    </div>
-    <div data-key="70" class="key">
-      <kbd>F</kbd>
-      <span class="sound">openhat</span>
-    </div>
-    <div data-key="71" class="key">
-      <kbd>G</kbd>
-      <span class="sound">boom</span>
-    </div>
-    <div data-key="72" class="key">
-      <kbd>H</kbd>
-      <span class="sound">ride</span>
-    </div>
-    <div data-key="74" class="key">
-      <kbd>J</kbd>
-      <span class="sound">snare</span>
-    </div>
-    <div data-key="75" class="key">
-      <kbd>K</kbd>
-      <span class="sound">tom</span>
-    </div>
-    <div data-key="76" class="key">
-      <kbd>L</kbd>
-      <span class="sound">tink</span>
-    </div>
+      <div data-key="81" class="key">
+        <kbd>Q</kbd>
+        <span class="sound">Boom^3</span>
+      </div>
+      <div data-key="87" class="key">
+        <kbd>W</kbd>
+        <span class="sound">Ooh</span>
+      </div>
+      <div data-key="69" class="key">
+        <kbd>E</kbd>
+        <span class="sound">Work</span>
+      </div>
+      <div data-key="82" class="key">
+        <kbd>R</kbd>
+        <span class="sound">Done</span>
+      </div>
+      <div data-key="84" class="key">
+        <kbd>T</kbd>
+        <span class="sound">Whenever</span>
+      </div>
+      <div data-key="89" class="key">
+        <kbd>Y</kbd>
+        <span class="sound">It's Gonna</span>
+      </div>
+      <div data-key="85" class="key">
+        <kbd>U</kbd>
+        <span class="sound">Be Alright</span>
+      </div>
+      <div data-key="73" class="key">
+        <kbd>I</kbd>
+        <span class="sound">Yeah, man</span>
+      </div>
+      <div data-key="79" class="key">
+        <kbd>O</kbd>
+        <span class="sound">Yeah!</span>
+      </div>
+
+      <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">clap</span>
+      </div>
+      <div data-key="83" class="key">
+        <kbd>S</kbd>
+        <span class="sound">hihat</span>
+      </div>
+      <div data-key="68" class="key">
+        <kbd>D</kbd>
+        <span class="sound">kick</span>
+      </div>
+      <div data-key="70" class="key">
+        <kbd>F</kbd>
+        <span class="sound">openhat</span>
+      </div>
+      <div data-key="71" class="key">
+        <kbd>G</kbd>
+        <span class="sound">boom</span>
+      </div>
+      <div data-key="72" class="key">
+        <kbd>H</kbd>
+        <span class="sound">ride</span>
+      </div>
+      <div data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">snare</span>
+      </div>
+      <div data-key="75" class="key">
+        <kbd>K</kbd>
+        <span class="sound">tom</span>
+      </div>
+      <div data-key="76" class="key">
+        <kbd>L</kbd>
+        <span class="sound">tink</span>
+      </div>
   </div>
 
   <audio data-key="65" src="sounds/clap.wav"></audio>
@@ -57,7 +93,39 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
+  <audio data-key="81" src="sounds/custom/BEP_BoomBoomPow.wav"></audio>
+  <audio data-key="87" src="sounds/custom/Coldplay_ASkyFullofStars.wav"></audio>
+  <audio data-key="69" src="sounds/custom/RihannaFtDrake_Work.wav"></audio>
+  <audio data-key="82" src="sounds/custom/RihannaFtDrake_Work02.wav"></audio>
+  <audio data-key="84" src="sounds/custom/Shakira_WheneverWherever.wav"></audio>
+  <audio data-key="89" src="sounds/custom/TaylorSwift_ShakeItOff.wav"></audio>
+  <audio data-key="85" src="sounds/custom/TaylorSwift_ShakeItOff_02.wav"></audio>
+  <audio data-key="73" src="sounds/custom/Usher_DJGotUsFallinInLove.wav"></audio>
+  <audio data-key="79" src="sounds/custom/Usher_Yeah.wav"></audio>
+
 <script>
+
+  
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"`);
+    if (!audio) return; //stop the function from running altogether
+    audio.currentTime = 0; //rewind to the start
+    audio.play();
+    key.classList.add('playing');
+    // key.classList.remove('playing');
+  };  
+
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('playing');
+  };
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound);
+  window.addEventListener('click', playSound);
+
 
 </script>
 

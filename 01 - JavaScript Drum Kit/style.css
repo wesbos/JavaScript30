@@ -1,7 +1,9 @@
 html {
   font-size: 10px;
-  background: url('./background.jpg') bottom center;
+  background-image:
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(148, 91, 232, 0.562)), url('./2022_waterfall_optimized.jpg');
   background-size: cover;
+  background: ;
 }
 
 body,html {
@@ -13,9 +15,11 @@ body,html {
 .keys {
   display: flex;
   flex: 1;
+  min-width: 50vh;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .key {
@@ -34,8 +38,8 @@ body,html {
 
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: #00ff26;
+  box-shadow: 0 0 1rem #a7a7a7;
 }
 
 kbd {
