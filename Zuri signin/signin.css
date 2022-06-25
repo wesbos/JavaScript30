@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    font-size: 16px;
+}
+main{
+    background-image: url(form/bg-intro-desktop.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    background-color: hsl(0, 100%, 74%);
+}
+
+.page_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2vw;
+    width: 86vw;
+    padding-top: 5vh;
+    margin-left: 5vw;
+    align-content: center;
+    align-items: center;
+}
+
+
+.intro_txt h1{
+    font-size: 8vh;
+    color: white;
+}
+.intro_txt p{
+    font-size: 3.2vh;
+    margin-top: 3vh;
+    color: white;
+}
+
+.free_trial{
+    text-align: center;
+    width: 100%;
+    background-color: hsl(248, 32%, 49%);
+    padding: 4vh 0;
+    border-radius: 0.5em;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    color: white;
+}
+.main_form{
+    background-color: white;
+    padding: 5vh 2vw;
+    border-radius: 1em;
+}
+.all_input{
+    width: 90%;
+    height: 6vh;
+    /* margin: 1vh 0; */
+    padding: 1vh 0;
+    border: none;
+    outline: none;
+}
+.submit_form{
+    /* display: block; */
+    width: 100%;
+    padding: 3vh 0;
+    background-color: hsl(154, 59%, 51%);
+    color: white;
+    text-transform: uppercase;
+    border: 0;
+    font-weight: 700;
+    border-radius: 0.3em;
+    margin-top: 1vh;
+    font-size: 2.5vh;
+}
+.submit_form:hover{
+    background-color: hsla(154, 59%, 51%, 0.774);
+}
+.terms{
+    text-align: center;
+    margin-top: 2vh;
+}
+.input_wrapper{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border: 1px solid hsl(246, 25%, 77%);
+    padding: 0 1vw;
+    grid-gap: 1vw;
+    margin-bottom: 2vh;
+    border-radius: 0.3em;
+}
+.error_icon{
+    display: none;
+    align-self: center;
+}
+input{
+}
+
+@media (max-width: 550px) {
+    main{
+        background-image: url(images/bg-intro-mobile.png);
+        height: 100%;
+        padding-bottom: 10vh;
+    }
+    .page_grid{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2vw;
+        width: 80vw;
+        padding-top: 5vh;
+        margin-left: 10vw;
+        align-content: center;
+        align-items: center;
+    }
+    .free_trial{
+        padding: 4vh 2vw;
+        box-sizing: border-box;
+    }
+    .main_form{
+        padding: 4vh 3vw;
+    }
+}
+
+
+/* main answer */
+@media (max-width: 375px) {
+    main{
+        background-image: url(images/bg-intro-mobile.png);
+        height: 100%;
+        padding-bottom: 10vh;
+    }
+    .page_grid{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 2vw;
+        width: 80vw;
+        padding-top: 5vh;
+        margin-left: 10vw;
+        align-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+    <main>
+       <div class="page_grid">
+            <div class="intro_txt">
+                <h1>Learn to code by watching others</h1>
+                <p>
+                    see how experienced developers solve problems in  real-time. Whatching scripted tutorials is great, but understanding how developers think is invaluable
+                </p>
+            </div>     
+            <section class="input_field">
+                <div class="free_trial">Try it free 7 days than $20/mo. thereafter</div>
+                <div class="main_form">
+                    <div class="input_wrapper" id="input_wrapper1">
+                        <input type="text" placeholder="Firstname" spellcheck="true" required id="input1" class="all_input">
+                        <img src="images/icon-error.svg" class="error_icon" alt="">
+                    </div>
+                    <small id="error_message1" style="color: red; text-align: right; margin-bottom: 2vh;">input field cannot be empty</small>
+                    <div class="input_wrapper" id="input_wrapper2">
+                        <input type="text" placeholder="Lastname" spellcheck="true" id="input2" required class="all_input">
+                        <img src="images/icon-error.svg" class="error_icon" alt="">
+                    </div>
+                    <small id="error_message2" style="color: red; text-align: right; margin-bottom: 2vh;">input field cannot be empty</small>
+                    <div class="input_wrapper" id="input_wrapper3">
+                        <input type="email" placeholder="Email Address" spellcheck="true" id="input3" required class="all_input">
+                        <img src="images/icon-error.svg" class="error_icon" alt="">
+                    </div>
+                    <small id="error_message3" style="color: red; text-align: right; margin-bottom: 2vh;">input field cannot be empty</small>
+                    <div class="input_wrapper" id="input_wrapper4">
+                        <input type="password" placeholder="password" spellcheck="true" required id="input4" class="all_input">
+                        <img src="images/icon-error.svg" class="error_icon" alt="">
+                    </div>
+                    <small id="error_message4" style="color: red; text-align: right; margin-bottom: 2vh;">input field cannot be empty</small>
+                    <button id="form_submitting" class="submit_form">Claim your free trial</button>
+                    <p class="terms"><small>my clicking the button you agree to our <span style="color: red;">Terms and Services</span></small></p>
+                </div>
+            </section>
+       </div>
+    </main>
+
+
+
+    <script>
+        let error_icon = document.getElementsByClassName('error_icon'); console.log(error_icon);
+        let error_message1 = document.getElementById('error_message1');
+        let error_message2 = document.getElementById('error_message2');
+        let error_message3 = document.getElementById('error_message3');
+        let error_message4 = document.getElementById('error_message4');
+        error_message1.style.display="none";
+        error_message2.style.display="none";
+        error_message3.style.display="none";
+        error_message4.style.display="none";
+
+        let input_field1 = document.getElementById("input1");
+        let input_field2 = document.getElementById("input2");
+        let input_field3 = document.getElementById("input3");
+        let input_field4 = document.getElementById("input4");
+
+        let input_wrapper1 = document.getElementById("input_wrapper1");
+        let input_wrapper2 = document.getElementById("input_wrapper2");
+        let input_wrapper3 = document.getElementById("input_wrapper3");
+        let input_wrapper4 = document.getElementById("input_wrapper4");
+
+        let submit_form = document.getElementById('form_submitting');
+        submit_form.addEventListener('click', 
+            () => {
+                if (input_field1.value == "" && input_field2.value == "" && input_field3.value == "" && input_field4.value == "") {
+                    error_message1.style.display = "block";
+                    error_message2.style.display="block";
+                    error_message3.style.display="block";
+                    error_message4.style.display="block";
+                    input_wrapper1.setAttribute('style', 'border: 2px solid red; margin-bottom: 0;');
+                    input_wrapper2.setAttribute('style', 'border: 2px solid red; margin-bottom: 0;');
+                    input_wrapper3.setAttribute('style', 'border: 2px solid red; margin-bottom: 0;');
+                    input_wrapper4.setAttribute('style', 'border: 2px solid red; margin-bottom: 0;');
+                    let form_submitting = document.getElementById('form_submitting');
+                    form_submitting.setAttribute('style', 'margin-top: 0;');
+                    const errorArray = Array.from(error_icon); console.log(errorArray);
+                    errorArray.forEach(element => {
+                        element.style.display="block";
+                    });
+                    console.log(error_icon);
+                }else{
+                    window.location.href = "signin.html";
+                }
+
+            }
+        );
+    </script>
+</body>
+</html>
