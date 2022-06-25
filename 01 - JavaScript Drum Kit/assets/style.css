@@ -1,7 +1,7 @@
 html {
   font-size: 10px;
   background-image:
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(148, 91, 232, 0.562)), url('./2022_waterfall_optimized.jpg');
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(148, 91, 232, 0.562)), url('../images/2022_waterfall_optimized.jpg');
   background-size: cover;
   background: ;
 }
