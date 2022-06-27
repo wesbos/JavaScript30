@@ -16,31 +16,35 @@ body,html {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
+  margin: 15px;
 }
 
 .key {
   border: .4rem solid black;
-  border-radius: .5rem;
   margin: 1rem;
   font-size: 1.5rem;
-  padding: 1rem .5rem;
   transition: all .07s ease;
-  width: 10rem;
+  width: 150px;
+  height: 100px;
+  transform: skew(8deg);
   text-align: center;
   color: white;
   background: rgba(0,0,0,0.4);
   text-shadow: 0 0 .5rem black;
+  display: table-column;
 }
 
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: yellow;
+  box-shadow: 0 0 1rem yellow;
 }
 
 kbd {
   display: block;
   font-size: 4rem;
+  text-align: center;
+  font-family: 'Finger Paint', cursive;
 }
 
 .sound {
@@ -48,4 +52,5 @@ kbd {
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #ffc600;
+  text-align: center;
 }
