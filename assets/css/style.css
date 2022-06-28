@@ -1,0 +1,173 @@
+@import url(fontawesome-all.min.css);
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+ 
+ :root {
+  --background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+  --text-color: #000; 
+ }
+
+ body:not(.dark-mode) #theme-switcher .fa-sun {
+  display: none;
+ }
+
+ body:not(.dark-mode) #theme-switcher .fa-moon {
+   color: black;
+ }
+
+ body:is(.dark-mode) #theme-switcher .fa-moon {
+  color: #ff6600;
+ }
+
+body:is(.dark-mode) #theme-switcher.button {
+  background-color: #000;
+}
+
+ body:is(.dark-mode) #theme-switcher .fa-moon {
+  display: none;
+ }
+ 
+ html {
+   background: var(--background);
+   color: var(--text-color);
+   background-size: cover;
+   font-family: 'helvetica neue';
+   text-align: center;
+   font-size: 10px;
+ }
+
+ .dark-mode {
+  background-color: #000000;
+  color:rgb(6, 254, 10);
+ }
+
+ body {
+   margin: 0;
+   font-size: 2rem;
+   display: flex;
+   flex: 1;
+   min-height: 100vh;
+   align-items: center;
+ }
+
+ header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  left: 0;
+ }
+
+ h2 {
+  font-size: 1.2em;
+  padding: 0.5em;
+  margin: 0;
+  font-family: 'Righteous', cursive;
+ }
+
+ .info {
+  padding: 2rem;
+ }
+
+.container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 3vh;
+}
+
+.toggle {
+  margin: 0;
+  padding: 1px;
+  display: flex;
+  flex: 1;
+  background: var(--background);
+  background-size: cover;
+  border-bottom: 0.5px solid white;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.toggle.dark-mode {
+  background-color: #000000;
+  background-image: none;
+  color: white;
+}
+
+ .clock {
+   width: 30rem;
+   height: 30rem;
+   border: 20px  #ff6600;
+   border-radius: 20%;
+   margin: 50px auto;
+   position: relative;
+   padding: 2rem;
+   box-shadow:
+     0 0 0 4px rgba(0, 0, 0, 0.1),
+     inset 0 0 0 3px #ff6600f7,
+     inset 0 0 10px black,
+     0 0 10px rgba(0, 0, 0, 0.2);
+ }
+
+ .clock-face {
+   position: relative;
+   width: 100%;
+   height: 100%;
+   transform: translateY(-3px);
+   /* account for the height of the clock hands */
+ }
+
+ .hand {
+   width: 50%;
+   height: 6px;
+   background: rgb(255, 255, 255);
+   position: absolute;
+   top: 50%;
+   transform-origin: 100%;
+   transform: rotate(90deg);
+   transition: all 0.5s;
+ }
+
+ .button {
+   background-color: #ffffff;
+   border: 0.5px solid white;
+   color: #ff6600;
+   padding: 5px 12px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 14px;
+   border-radius: 12px;
+   height: 50%;
+   margin-right: 6px;
+ }
+
+ .toggle .dark-toggle {
+  align-self: flex-end;
+ }
+
+ .button:hover {
+   background-color: #4CAF50;
+   color: white;
+ }
+
+  .icon {
+    text-decoration: none;
+    border-bottom: none;
+    position: relative;
+  }
+
+  .icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    text-transform: none !important;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 400;
+  }

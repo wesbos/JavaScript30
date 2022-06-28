@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+  <div class="container">
+    <div class="container">
+      <header>
+        <nav id="top-nav" class="toggle">
+          <button type="button" id="theme-switcher" class="button dark-toggle">
+            <i 
+              aria-hidden="true"
+              class="icon fa-solid fa-sun"
+              title= "Toggle Dark Mode"
+            ></i>
+            <i 
+              aria-hidden="true" 
+              class="icon fa-solid fa-moon" 
+              title="Toggle Dark Mode"
+            ></i>
+          </button>
+        </nav>
+      </header>
+      <div class="info">
+        <h2>JS Clock Practice</h2>
+      </div>
+    </div>
+
+
+      <div class="clock">
+        <div class="clock-face">
+          <div class="hand hour-hand"></div>
+          <div class="hand min-hand"></div>
+          <div class="hand second-hand"></div>
+        </div>
+      </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+      document.documentElement.setAttribute("data-theme", "light");
+    });
+    
+    const darkToggle = document.getElementById('theme-switcher');
+    const navToggle = document.getElementById('top-nav');
+
+    function toggleDarkMode() {
+      if (!darkToggle) return;
+      else {
+        console.log(darkToggle);
+        document.body.classList.toggle('dark-mode');
+        navToggle.classList.toggle('dark-mode');
+      }
+    };
+
+    darkToggle.addEventListener('click', toggleDarkMode)
+
+    const secondHand = document.querySelector('.second-hand');
+    const minuteHand = document.querySelector('.min-hand');
+    const hourHand = document.querySelector('.hour-hand');        
+
+    function setDate() {
+      const now = new Date();
+      const seconds = now.getSeconds();
+      const secondsDegrees = ((seconds / 60) * 360) + 90;
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+      const mins = now.getMinutes();
+      const minsDegrees = ((mins / 60) * 360) + 90;
+      minuteHand.style.transform = `rotate(${minsDegrees}deg)`;
+      
+      const hours = now.getHours();
+      const hoursDegrees = ((hours / 12) * 360) + 90;
+      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+      console.log(seconds);
+    }
+    
+    setInterval(setDate, 1000)
+
+    setDate();
+
+  </script>
+</body>
+</html>
