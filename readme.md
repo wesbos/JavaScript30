@@ -55,6 +55,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [filipkowal](https://github.com/filipkowal/JS30-05-Flex-Panels-Deactivate) Fix to flex panels (5th  day) so the panels deactivate when clicked on another one.
 * [Mo. Saif's](https://github.com/MoSaif00)note on lessons learned and a [gh-pages showcase](https://mosaif00.github.io/30-Days-JavaScript-Challenge/) for the projects.
 * [Stiaannel's](https://stiaannel.co.za/my-projects/javascript30) implementation of the Javascript30 challenge, with small design changes and a couple of extra features.
+* [Hanzala's](https://github.com/wesbos/JavaScript30/compare/master...hz-tyfoon:JavaScript30:improve-array-filter) minor improvement -> inside 'array filter' of 'findMatches()' in 'lesson 06 - type ahead': used 'regex.test(string)'(which returns boolean) rather than 'string.match(regex)'. Because, javascript array filter's callback function expects it's returned value to be boolean(true/false).
 
 ## Alternative Implementations
 Here are some links of people who have done the tutorials, but in a different language or framework:
