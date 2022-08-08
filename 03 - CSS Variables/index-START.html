@@ -7,8 +7,11 @@
 <body>
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
+
+  <!-- this area is where the controls are: spacing, blur and base color -->
   <div class="controls">
     <label for="spacing">Spacing:</label>
+    <!-- we have an input here, type range "range" -->
     <input id="spacing" type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
 
     <label for="blur">Blur:</label>
@@ -68,6 +71,18 @@
   <script>
     // select all inputs
     const inputs = document.querySelectorAll('.controls input')
+
+    // create a function to update
+    function handleUpdate () {
+      //what's this dataset? is an object that will contain all data attributs from the data elements above in html
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    }
+    //listen to a change event in each input
+    //in our console log, every time the event lister is triggered, we'd see the input of the value
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
+    //here we can track the input changes as our MOUSE moves on the scale
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate))
   </script>
 
 </body>
