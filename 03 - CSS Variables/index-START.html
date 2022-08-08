@@ -35,10 +35,16 @@
       --blur: 10px;
     }
 
+    /* changing the style of the page */
     img {
+      /* the var here is a CSS function, used to insert the value of a custom property(CSS Variable) instead of any part of a value of another property */
       padding: var(--spacing);
       background: var(--base);
       filter: blur(var(--blur))
+    }
+
+    .hl {
+      color: var(--base);
     }
 
     body {
@@ -60,6 +66,8 @@
   </style>
 
   <script>
+    // select all inputs
+    const inputs = document.querySelectorAll('.controls input')
   </script>
 
 </body>
