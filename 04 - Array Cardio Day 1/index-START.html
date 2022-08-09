@@ -61,13 +61,18 @@
     //     return 1
     //   } return -1
     //   })
-    let sortedArr = inventors.sort((a,b) => a.first > b.first ? 1 : -1)
+    // let sortedArr = inventors.sort((a,b) => a.first > b.first ? 1 : -1)
 
-      console.table(sortedArr)
+    //   console.table(sortedArr)
 
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    let accumYear = inventors.reduce((total, inventor) => {
+    return inventor.passed - inventor.year + total, 0
+    }) 
+    
+    console.log(accumYear)
 
     // 5. Sort the inventors by years lived
 
