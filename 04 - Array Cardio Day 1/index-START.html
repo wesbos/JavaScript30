@@ -46,13 +46,16 @@
 
    let fifteen = inventors.filter(n => n.year >=1500 && n.year<1600)
 
-  console.table(fifteen)
+   console.table(fifteen)
     
     
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
 
+    let firstLast = inventors.map(n=> n.first && n.last)
+
+    console.log(firstLast)
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
