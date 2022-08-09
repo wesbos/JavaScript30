@@ -44,20 +44,27 @@
     //take tha info and add it in a new array?
     
 
-   let fifteen = inventors.filter(n => n.year >=1500 && n.year<1600)
+  //  let fifteen = inventors.filter(n => n.year >=1500 && n.year<1600)
 
-   console.table(fifteen)
+  //  console.table(fifteen)
     
     
 
     // Array.prototype.map()
-    // 2. Give us an array of the inventors first and last names
-
-    let firstLast = inventors.map(n=> n.first && n.last)
-
-    console.log(firstLast)
+    // 2. Give us an array of the inventors first and last name
+    // let firstLast = inventors.map(n=> `${n.first} ${n.last}`)
+    // console.log(firstLast)
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    // let sortedArr = inventors.sort((a,b) => {
+    //   if (a.year > b.year) {
+    //     return 1
+    //   } return -1
+    //   })
+    let sortedArr = inventors.sort((a,b) => a.first > b.first ? 1 : -1)
+
+      console.table(sortedArr)
+
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
