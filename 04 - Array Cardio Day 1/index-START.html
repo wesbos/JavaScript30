@@ -27,13 +27,7 @@
       { first: 'Hanna', last: 'Hammarström', year: 1829, passed: 1909 }
     ];
 
-    const people = [
-      'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
-      'Belloc, Hilaire', 'Begin, Menachem', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
-      'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
-      'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
-      'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
-    ];
+
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
@@ -76,23 +70,55 @@
 
     // 5. Sort the inventors by years lived
 
-    let sortedList = inventors.sort((a, b) => {
-      let firstPerson = (a.passed - a.year) 
-      let nextPerson = (b.passed - b.year)
-      return firstPerson > nextPerson ? -1 : 1
-    })
+    // let sortedList = inventors.sort((a, b) => {
+    //   let firstPerson = (a.passed - a.year) 
+    //   let nextPerson = (b.passed - b.year)
+    //   return firstPerson > nextPerson ? -1 : 1
+    // })
 
-    console.log(sortedList)
+    // console.log(sortedList)
     //
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-    const category = document.querySelector('.mw-pages')
+    // //first we target the names of the blvds (dom elements) - get them through the links
+    // const category = document.querySelector('.mw-category')
+    // console.log(category)
+    // //because we can't use map on an node, we'd have to convert links into an array
+    // const links = [...category.querySelectorAll('a')]
+
+
+    // //check to see if "de" in included in the array
+
+    // const de = links
+    // .forEach(n=>n.textContent)
+    // .filter(n=> n.includes('de'))
+
+    
+    const people = [
+      'Bernhard, Sandra', 'Bethea, Erin', 'Becker, Carl', 'Bentsen, Lloyd', 'Beckett, Samuel', 'Blake, William', 'Berger, Ric', 'Beddoes, Mick', 'Beethoven, Ludwig',
+      'Belloc, Hilaire', 'Begin, Menachem', 'Bellow, Saul', 'Benchley, Robert', 'Blair, Robert', 'Benenson, Peter', 'Benjamin, Walter', 'Berlin, Irving',
+      'Benn, Tony', 'Benson, Leana', 'Bent, Silas', 'Berle, Milton', 'Berry, Halle', 'Biko, Steve', 'Beck, Glenn', 'Bergman, Ingmar', 'Black, Elk', 'Berio, Luciano',
+      'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
+      'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
+    ];
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let alpha = people.sort((first,last) => {
+    // const aFirst = first.split(', ') 
+    // const aLast = last.split(', ')  
+    
+    return first > last ? -1 : 1
+    }) 
+
+    console.log(alpha)
+    
+    
+    
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
