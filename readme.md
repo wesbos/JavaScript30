@@ -67,6 +67,7 @@ Here are some links of people who have done the tutorials, but in a different la
 * [Will Wager](https://github.com/wwags33/JavaScript30) another [TypeScript](https://www.typescriptlang.org/) implementation!
 * [marcoSven](https://github.com/marcoSven) solution suggestion for [10 - Hold Shift and Check Checkboxes](https://github.com/marcoSven/JavaScript30/blob/master/10%20-%20Hold%20Shift%20and%20Check%20Checkboxes/index-FINISHED.html)
 * [ALMaclaine](https://github.com/almaclaine) Javascript 30 written in [Dart 2.0](https://github.com/ALMaclaine/Dart30).
+* [Connie Leung](https://github.com/railsstudent) Javascript 30 written in [Angular and RxJS](https://github.com/railsstudent/ng-rxjs-30).
 
 ## A note on Pull Requests
 
