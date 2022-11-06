@@ -77,7 +77,7 @@
 
     function checkTime() {
       const date = new Date();
-      let hour = date.getHours();
+      const hour = date.getHours();
       const min = date.getMinutes();
       const sec = date.getSeconds();
 
@@ -91,9 +91,6 @@
       $min.style.transform = 'rotate('+ minDeg +'deg)'
       $second.style.transform = 'rotate('+ secDeg +'deg)'
     }
-
-
-
   </script>
 </body>
 </html>
