@@ -62,6 +62,13 @@
       background: black;
       position: absolute;
       top: 50%;
+      /* transform the origin */
+      /* 100% will put that pivot point on the very right-hand side */
+      transform-origin: 100%;
+      /* rotate by 90 degrees so it can start at 12 */
+      transform: rotate(90deg);
+      transition: 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
