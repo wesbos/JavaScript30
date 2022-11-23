@@ -58,7 +58,31 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  // 1. listen on a window(could be div/input/text area...)
+  // 2. the event we're listening => keydown
+  // 3. function give us the event
+  // 4. Conclusion: we're going to listen to the 'keydown' event, and when that happen,
+  //     we're going to run this function which will give us the event.
+  // e = object full of data describing what happened.
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);      // querySelector -> 1; querySelevtor -> All;
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if(!audio) return; //stop the function from running all together
+    audio.currentTime = 0; //rewind to the start
+    audio.play();
+    key.classList.add('playing');
+  }
 
+  function removeTransition(e) {
+    if(e.propertyName !== 'transform') return; // skip it if it's not a transform
+    this.classList.remove('playing');
+  }
+
+  const keys = document.querySelectorAll('.key');
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  // 1. each key get an EventListener 'transitinend' added to it,
+  // 2. when the transition is ending, we will remove it.
+  window.addEventListener('keydown', playSound);
 </script>
 
 
