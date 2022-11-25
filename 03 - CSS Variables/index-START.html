@@ -21,6 +21,24 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: #c0beb7;
+      --spacing: 50px;
+      --blur: 10px;
+    }
+
+    /* 1. grab image on the page and use variable */
+    /* 2. 'var' = variable, '--' = '$' in SCSS */
+
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
+
+    .hl {
+      color: var(--base);
+    }
 
     /*
       misc styles, nothing to do with CSS variables
@@ -45,6 +63,23 @@
   </style>
 
   <script>
+    // 1. select all inputs on the page.
+    // 2. document.querySelectorAll will return an array(NodeList).
+    // 3. create function handleUpdate.
+    // 4. listen for change event('change','mousemove') on each of the inputs.
+    // mosemove update = when you move over it will trigger every time.
+    // 5. get the value out of handleUpdate
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value
+      + suffix);
+
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 
 </body>
