@@ -1,4 +1,4 @@
-﻿# JavaScript30
+
 
 This is a JavaScript practice with JavaScript30 by Wes Bos without any frameworks, no compilers, no boilerplate, and no libraries.
 
@@ -33,3 +33,4 @@ This is a JavaScript practice with JavaScript30 by Wes Bos without any framework
 28. Video Speed Controller UI
 29. Countdown Clock
 30. Whack A Mole Game
+
