@@ -1,10 +1,10 @@
-# JavaScript30
+﻿# JavaScript30
 
 This is a JavaScript practice with JavaScript30 by Wes Bos without any frameworks, no compilers, no boilerplate, and no libraries.
 
 ## Table of Content
 1. [Javascript Drum Kit](https://github.com/Huiclaire/JavaScript30/tree/master/01%20-%20JavaScript%20Drum%20Kit)
-2. JS + CSS Clock
+2. [JS + CSS Clock](https://github.com/Huiclaire/JavaScript30/tree/master/02%20-%20JS%20and%20CSS%20Clock)
 3. CSS Variables and JS
 4. Array Cardio Day 1
 5. Flex Panels Image Gallery
@@ -33,4 +33,3 @@ This is a JavaScript practice with JavaScript30 by Wes Bos without any framework
 28. Video Speed Controller UI
 29. Countdown Clock
 30. Whack A Mole Game
-
