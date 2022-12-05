@@ -2,7 +2,7 @@
 
 This is an HTML page to display an analog clock.
 
-![App Screenshot](https://github.com/Huiclaire/JavaScript30/blob/master/01%20-%20JavaScript%20Drum%20Kit/images/js30-day1.png)
+![App Screenshot](https://github.com/Huiclaire/JavaScript30/blob/master/02%20-%20JS%20and%20CSS%20Clock/images/js30-day2.png)
 
 ## Lesson learned
 
