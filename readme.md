@@ -5,7 +5,7 @@ This is a JavaScript practice with JavaScript30 by Wes Bos without any framework
 ## Table of Content
 1. [Javascript Drum Kit](https://github.com/Huiclaire/JavaScript30/tree/master/01%20-%20JavaScript%20Drum%20Kit)
 2. [JS + CSS Clock](https://github.com/Huiclaire/JavaScript30/tree/master/02%20-%20JS%20and%20CSS%20Clock)
-3. CSS Variables and JS
+3. [CSS Variables and JS](https://github.com/Huiclaire/JavaScript30/tree/master/03%20-%20CSS%20Variables)
 4. Array Cardio Day 1
 5. Flex Panels Image Gallery
 6. Ajax Type Ahead
