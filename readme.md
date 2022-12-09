@@ -8,7 +8,7 @@ This is a JavaScript practice with JavaScript30 by Wes Bos without any framework
 3. [CSS Variables and JS](https://github.com/Huiclaire/JavaScript30/tree/master/03%20-%20CSS%20Variables)
 4. [Array Cardio Day 1](https://github.com/Huiclaire/JavaScript30/tree/master/04%20-%20Array%20Cardio%20Day%201)
 5. Flex Panels Image Gallery
-6. Ajax Type Ahead
+6. [Ajax Type Ahead](https://github.com/Huiclaire/JavaScript30/blob/master/06%20-%20Type%20Ahead/README.md)
 7. Array Cardio Day 2
 8. Fun with HTML5 Canvas
 9. 14 Must Know Dev Tools Tricks
