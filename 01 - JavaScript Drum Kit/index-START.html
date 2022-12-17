@@ -68,8 +68,18 @@
     audio.currentTime=0;
     audio.play();
     key.classList.add('playing');
-
   });
+
+  function removedtransition(e){
+  if (e.propertyname !== "transform") return;
+  }
+
+
+
+  const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitioned', removedtransition));
+
+
 </script>
 
 
