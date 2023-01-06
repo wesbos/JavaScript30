@@ -59,7 +59,29 @@
 
 <script>
 
-</script>
+  function playSound(e) {
+      const target = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+      const keyPress = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+      // console.log(keyPress)
+      if(!target) console.log("audio NA")
+      else{
+        target.currentTime = 0;
+        target.play()
+        keyPress.classList.add("playing")
+      }
+    }
+
+    function removeTransition(e) {
+      if (this.propertyName !== "box-shadow"){
+        this.classList.remove("playing")
+      }
+    }
+    const keys = document.querySelectorAll(".key")
+    keys.forEach(key => key.addEventListener("transitionend", removeTransition))
+
+    window.addEventListener("keydown", playSound)
+
+  </script>
 
 
 </body>
