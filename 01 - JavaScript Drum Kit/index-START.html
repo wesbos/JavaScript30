@@ -59,6 +59,28 @@
 
 <script>
 
+  const playHandler = (e) => {
+    const key = document.querySelector(`div[data-key = "${e.keyCode}"]`);
+    const audio = document.querySelector(`audio[data-key = "${e.keyCode}"]`);
+    if (key === null) return;
+
+    key.classList.add("playing");
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const transitionendListener = (key) => {
+    if (key.propertyName !== "transform") return;
+    key.target.classList.remove("playing");
+  }
+  
+  window.addEventListener("keydown", playHandler);
+  const keys = document.querySelectorAll(`.key`);
+  keys.forEach(key => key.addEventListener("transitionend", transitionendListener));
+
+
+
+
 </script>
 
 
