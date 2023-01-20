@@ -6,7 +6,6 @@
 </head>
 <body>
 
-
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
@@ -15,12 +14,11 @@
       </div>
     </div>
 
-
   <style>
     html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background: #213841;
       background-size: cover;
-      font-family: 'helvetica neue';
+      font-family: 'helvetica neue',serif;
       text-align: center;
       font-size: 10px;
     }
@@ -62,13 +60,14 @@
       background: black;
       position: absolute;
       top: 50%;
+      /* Rajout de : */
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
-
-  <script>
-
-
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>

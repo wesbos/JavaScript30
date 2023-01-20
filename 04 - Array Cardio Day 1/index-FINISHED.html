@@ -60,7 +60,7 @@
     console.table(ordered);
 
     // Array.prototype.reduce()
-    // 4. How many years did all the inventors live?
+    // 4. How many years did all the inventors live, all together ?
     const totalYears = inventors.reduce((total, inventor) => {
       return total + (inventor.passed - inventor.year);
     }, 0);
@@ -86,6 +86,7 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
     const alpha = people.sort((lastOne, nextOne) => {
       const [aLast, aFirst] = lastOne.split(', ');
       const [bLast, bFirst] = nextOne.split(', ');
