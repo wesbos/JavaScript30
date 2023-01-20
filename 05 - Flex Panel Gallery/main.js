@@ -1,16 +1,21 @@
 /*----------------- Renaud Vmb -----------------*/
-const panels = document.querySelectorAll('.panel');
-
-panels.forEach(panel => panel.addEventListener('click', (e) => {
-    e.currentTarget.classList.toggle('open');
-}));
-
-panels.forEach(panel => panel.addEventListener('mousemove', (e) => {
-    e.currentTarget.classList.remove('open');
-}));
-
-panels.forEach(panel => panel.addEventListener('transitionend', (e) => {
-    if (e.propertyName.includes('flex')) {
-        e.currentTarget.classList.toggle('open-active');
-    }
-}));
+const panels = document.getElementsByClassName("panel");
+for (const panel of panels) {
+    panel.addEventListener("click", (e) => {
+        if (e.currentTarget.classList.contains('open') || e.currentTarget.classList.contains('open-active')){
+            e.currentTarget.classList.remove("open" , "open-active");
+        } else {
+            for (const panel1 of panels) {
+                panel1.classList.remove("open" , "open-active");
+            }
+            e.currentTarget.classList.add('open');
+        }
+    });
+    panel.addEventListener('transitionend', (e) => {
+        if (!e.currentTarget.classList.contains('open')){
+            e.currentTarget.classList.remove('open-active');
+        } else {
+            e.currentTarget.classList.add('open-active');
+        }
+    });
+}
