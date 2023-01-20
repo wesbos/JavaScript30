@@ -21,7 +21,17 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: blue;
+      --blur: 10px;
+      --spacing: 10px;
+    }
 
+    img{
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur))
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -44,8 +54,7 @@
     }
   </style>
 
-  <script>
-  </script>
+  <script src="app.js"></script>
 
 </body>
 </html>
