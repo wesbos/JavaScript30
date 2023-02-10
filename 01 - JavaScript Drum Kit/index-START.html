@@ -59,12 +59,17 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+// Function to play sound based on the key the user presses.
 window.addEventListener('keydown',function(e){
+  // variable that will retrieve the key they are pressing
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-  console.log(audio);
-  if(!audio)return;
+  // the return is used to stop the function since there is no data matching
+  if(!audio)return; 
+  // Used to reset the play action to lay continuously
+  audio.currentTime = 0;
   audio.play();
 });
+
 </script>
 </body>
 </html>
