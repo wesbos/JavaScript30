@@ -60,15 +60,27 @@
 
 <script>
 // Function to play sound based on the key the user presses.
-window.addEventListener('keydown',function(e){
+function playSound(e){
   // variable that will retrieve the key they are pressing
   const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  //
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
   // the return is used to stop the function since there is no data matching
   if(!audio)return; 
   // Used to reset the play action to lay continuously
   audio.currentTime = 0;
   audio.play();
-});
+  key.classList.add('playing');
+}
+
+function removeTransition(e){
+  if(e.propertyName != 'transform') return; //SKIP IT IF IT'S NOT A TRANSFORM
+  this.classList.remove('playing');
+}
+
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+window.addEventListener('keydown', playSound);
 
 </script>
 </body>
