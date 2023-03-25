@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JS + CSS Clock</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
-
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS + CSS Clock</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
     <div class="clock">
+      <!-- circle -->
       <div class="clock-face">
         <div class="hand hour-hand"></div>
         <div class="hand min-hand"></div>
@@ -16,60 +15,82 @@
       </div>
     </div>
 
+    <style>
+      html {
+        background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=5);
+        background-size: cover;
+        font-family: "helvetica neue";
+        text-align: center;
+        font-size: 10px;
+      }
 
-  <style>
-    html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
-      background-size: cover;
-      font-family: 'helvetica neue';
-      text-align: center;
-      font-size: 10px;
-    }
+      body {
+        margin: 0;
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
 
-    body {
-      margin: 0;
-      font-size: 2rem;
-      display: flex;
-      flex: 1;
-      min-height: 100vh;
-      align-items: center;
-    }
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+          inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-    .clock {
-      width: 30rem;
-      height: 30rem;
-      border: 20px solid white;
-      border-radius: 50%;
-      margin: 50px auto;
-      position: relative;
-      padding: 2rem;
-      box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
-    }
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(
+          -3px
+        ); /* account for the height of the clock hands */
+      }
 
-    .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
-    }
+      /* transform: rotate rotates element from the middle */
+      .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        /* origin is where the rotation happens */
+        /* 0% is left side, 100 for right */
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+        /* lets you establish an acceleration curve so that the 
+        speed of the transition can vary over its duration */
+        transition-timing-function: cubic-bezier(0, 2.93, 0.6, 0.99);
+      }
+    </style>
 
-    .hand {
-      width: 50%;
-      height: 6px;
-      background: black;
-      position: absolute;
-      top: 50%;
-    }
+    <script>
+      const secondHand = document.querySelector(".second-hand");
+      const hourHand = document.querySelector(".hour-hand");
+      const minHand = document.querySelector(".min-hand");
+      function setDate() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const hours = now.getHours();
+        const mins = now.getMinutes();
+        const secondDegrees = (seconds / 60) * 360 + 90;
+        const minDegrees = (mins / 60) * 360 + 90;
+        const hourDegrees = (hours / 24) * 360 + 90;
+        secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+        minHand.style.transform = `rotate(${minDegrees}deg)`;
+        // console.log(seconds);
+      }
 
-  </style>
-
-  <script>
-
-
-  </script>
-</body>
+      setInterval(setDate, 1000);
+    </script>
+  </body>
 </html>
