@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    background-color: rgb(250, 250, 69);
+    display: flex;
+    justify-content: center;
+}
+
+.formContainer{
+    background-color: white;
+    border: 1px solid black;
+    /* height: 500px; */
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    /* align-content: center; */
+    margin-top: 8rem;
+    /* justify-content: center; */
+    /* text-align: center; */
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+.check{
+    border-bottom: 2px dotted #b9aeae;
+    border-radius: 10px;
+    display: flex;
+}
+
+.check label{
+    margin: 15px;
+
+}
+
+.check input{
+    height: 20px;
+    width: 20px;
+    border-left: 10px;
+    margin: 15px;
+}
+
+.labelling{
+    border-left:  2px dotted #b9aeae;
+    padding-top: 7px;
+}
+
+.strikeThrough{
+    text-decoration: line-through;
+    text-decoration-style: dotted;
+    text-decoration-color: black;
+}
+
