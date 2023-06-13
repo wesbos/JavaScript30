@@ -1,0 +1,8 @@
+the background image url is relative to the CSS file
+
+attribute can only refer to the tag they are linked to
+
+<div><a data-key="ugly"></a></div>
+
+to use that in JS or CSS, in the case of JS
+document.querySelector('a[`data-key="ugly"]`) and not document.querySelector('div[`data-key="ugly"]`)

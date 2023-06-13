@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background: url('./background.jpg') bottom center;
+  background: url('newMir.png') bottom center;
   background-size: cover;
 }
 
@@ -31,11 +31,18 @@ body,html {
   background: rgba(0,0,0,0.4);
   text-shadow: 0 0 .5rem black;
 }
-
+.key:hover{
+  transform: scale(1.1);
+  border-color: #3f1136;
+  box-shadow: 0 0 1rem #300e2a;
+  background-color: beige;
+  color: black;
+  cursor: grab;
+}
 .playing {
   transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
+  border-color: #3f1136;
+  box-shadow: 0 0 1rem #300e2a;
 }
 
 kbd {
@@ -47,5 +54,5 @@ kbd {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .1rem;
-  color: #ffc600;
+  color: #ae4d8c;
 }
