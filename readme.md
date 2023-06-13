@@ -1,16 +1,13 @@
 # JS30 ++
 This is a group of added chalenges to [Wes Bos'](https://github.com/wesbos) challenge course [JS30](https://javascript30.com/).
 
-## Getting Started
-1. Go to https://javascript30.com/ and get yourself setup for the course
-2. Each course come back here to see if there are added challenges
-3. Profit 💰
-
 # Challenges
 
 ## Day 01 - JavaScript Drum Kit
 * Make each “key” have a click trigger as well.
-
+<h4>Status: completed✅</h4>
+<span></span>
+<hr></hr>
 ## Day 02 - JS and CSS Clock
 * Fix the skipping animation for when a new cycle starts
 
