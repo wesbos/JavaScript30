@@ -1,0 +1,74 @@
+html {
+    background-color: #161b22;
+    background-size: cover;
+    font-family: 'helvetica neue';
+    text-align: center;
+    font-size: 10px;
+  }
+
+  body {
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+  }
+
+  .clock {
+    display: block;
+    width: 30rem;
+    height: 30rem;
+    border: 20px solid white;
+    border-radius: 50%;
+    margin: 50px auto;
+    position: relative;
+    padding: 2rem;
+    border-color: #FFFFFF; 
+    box-shadow: 0px 0px 2px #FFFFFF, 
+    0px 0px 4px #FFFFFF, 
+    0px 0px 6px #FFFFFF;
+    
+  }
+
+  .clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-3px); /* account for the height of the clock hands */
+  }
+
+  .hand {
+    width: 50%;
+    height: 6px;
+    background: black;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+  }
+  .icon{
+   width: 4.5%;
+   height: 4.5%;
+  }
+  .icon:hover{
+    width: 5.5%;
+    height: 5.5%;
+   }
+   .foot{
+    
+    position: absolute;
+    bottom: 55px;
+   }
+   .copy{
+    color: #FFFFFF; 
+    text-shadow: 0px 0px 2px #FFFFFF, 
+    0px 0px 4px #FFFFFF, 
+    0px 0px 6px #FFFFFF;
+    margin-left: 6px;
+    margin-bottom: 4px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'IBM Plex Sans Devanagari', sans-serif;
+   }
