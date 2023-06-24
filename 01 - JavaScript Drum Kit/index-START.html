@@ -59,7 +59,18 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+    window.addEventListener ("keydown", function(e){
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+    audio.currentTime = 0; // Pouvoir rejouer instantanémment le son
+    audio.play();
+    key.classList.add("playing"); // Ajout de la classe "playing"
 
+      setTimeout(function() {
+      key.classList.remove("playing"); // Suppression de la classe "playing" après 0.05 secondes
+    }, 100);
+  });
 </script>
 
 
