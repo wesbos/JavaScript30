@@ -27,6 +27,7 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
     }
 
     .panel {
@@ -44,6 +45,11 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -57,7 +63,16 @@
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
+    .panel > *:first-child { transform: translateY(-100%); }
+    .panel.open-active > *:first-child { transform: translateY(0); }
+    .panel > *:last-child { transform: translateY(100%); }
+    .panel.open-active > *:last-child { transform: translateY(0); }
 
     .panel p {
       text-transform: uppercase;
@@ -72,6 +87,7 @@
 
     .panel.open {
       font-size: 40px;
+      flex: 5;
     }
 
   </style>
@@ -106,10 +122,23 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll(".panel");
 
+    function toggleOpen () {
+      this.classList.toggle("open");
+    }
+
+    function textAppearance (e) {
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle("open-active")
+      }
+    }
+
+    panels.forEach(panel => {
+      panel.addEventListener("click", toggleOpen);
+      panel.addEventListener("transitionend", textAppearance);
+    })
   </script>
-
-
 
 </body>
 </html>
