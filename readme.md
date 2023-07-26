@@ -8,7 +8,8 @@ Grab the course at [https://JavaScript30.com](https://JavaScript30.com)
 
 ## Community #JavaScript30 Content
 
-Feel free to submit a PR adding a link to your own recaps, guides or reviews!
+Feel free to submit a PR adding a link to your own recaps, guides or reviews!!!
+
 
 * [Arjun Khode’s blog](http://thesagittariusme.blogspot.com/search/label/JS30) about summaries for each day, including fixed glitches, bugs and extra features.
 * [Nitish Dayal's Text Guides](https://github.com/nitishdayal/JavaScript30) are great for those who like reading over watching.
@@ -56,6 +57,7 @@ Feel free to submit a PR adding a link to your own recaps, guides or reviews!
 * [Stiaannel's](https://stiaannel.co.za/my-projects/javascript30) implementation of the Javascript30 challenge, with small design changes and a couple of extra features.
 * [Kelly CHI's](https://kellychi22.github.io/JavaScript30/) complete JavaScript30 challenges! Click the links to check demos and notes of each challenge. 🇹🇼 🌟
 
+
 ## Alternative Implementations
 Here are some links of people who have done the tutorials, but in a different language or framework:
 
@@ -69,10 +71,10 @@ Here are some links of people who have done the tutorials, but in a different la
 * [ALMaclaine](https://github.com/almaclaine) Javascript 30 written in [Dart 2.0](https://github.com/ALMaclaine/Dart30).
 * [Connie Leung](https://github.com/railsstudent) Javascript 30 written in [Angular and RxJS](https://github.com/railsstudent/ng-rxjs-30).
 
-## A note on Pull Requests
+## A note on Pull Requests 
 
 These are meant to be 1:1 copies of what is done in the video. If you found a better / different way to do things, great, but I will be keeping them the same as the videos.
 
 The starter files + solutions will be updated if/when the videos are updated.
 
-Thanks!
+Thanks!!!
