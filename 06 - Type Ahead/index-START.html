@@ -17,7 +17,48 @@
   </form>
 <script>
 const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+ const cities = [];
+ fetch(endpoint).then(bot =>bot.json())
+  .then(data => cities.push(...data))  // reason to write this instead of res.json()
+  // directly to keep note that data tat we will fetc will be json type but methods
+  // such as JSON.parse(bot) will not work since fetched data will be have 
+  // .json() function that can be used.. 
+  
+  // i need a function that can match substrings for me
 
+  function matchStrings(wordToMatch, cities){
+    // filter the cities and return it
+    return cities.filter(places => {
+      // match them with worldsTomatch // by creating variable regex
+      const regex = new RegExp(wordToMatch, 'gi');// creted a variable rex
+      // now have to return the matched regex in cities that it contain city or
+      //state
+      return places.city.match(regex) || places.state.match(regex)
+    });
+  }
+  
+  function displaySearchedItem(){
+    
+    console.log(this.value)
+    const matchedArray = matchStrings(this.value, cities)
+    const html= matchedArray.map(place =>{
+      const regex = new RegExp(this.value, "gi");
+      const city = place.city.replace(regex, `<span class="hl"> ${this.value}</span>`)
+        const state = place.state.replace(regex, `<span class="hl"> ${this.value}</span>`)
+      return `<li>
+        <span class="name" >${city}, ${state}</span>
+        <span class="population"> ${place.population}</span>
+        </li>`
+    }).join('')
+    suggestions.innerHTML = html;   
+  }
+  // event listner
+ const input = document.querySelector('.search');
+ const suggestions = document.querySelector('.suggestions');
+ // adding event for input
+
+ input.addEventListener('change', displaySearchedItem);
+ input.addEventListener('keyup', displaySearchedItem)
 </script>
 </body>
 </html>

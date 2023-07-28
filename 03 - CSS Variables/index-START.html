@@ -26,6 +26,11 @@
     /*
       misc styles, nothing to do with CSS variables
     */
+    :root{
+      --base : #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
 
     body {
       text-align: center;
@@ -43,9 +48,26 @@
     input {
       width: 100px;
     }
+   img{
+    padding: var(--spacing);
+    background-color: var(--base);
+    filter: blur(var(--blur));
+
+   }
   </style>
 
   <script>
+    const input = document.querySelectorAll('.controls input')
+
+    function updating(){
+      const suffix = this.dataset.sizing || ""; 
+      console.log(suffix)
+        // this.value will give value of variables.. 
+      // here we want to upadte variables which are in the root at top so we have to manipulate document
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    }
+    input.forEach(input => input.addEventListener('change', updating ))
+    input.forEach(input => input.addEventListener('mousemove', updating))
   </script>
 
 </body>
