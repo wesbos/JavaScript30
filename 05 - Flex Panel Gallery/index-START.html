@@ -143,11 +143,13 @@
     <script>
       const panels = document.querySelectorAll('.panel');
       function toggleOpen() {
-        this.classList.toggle('open');
+        // create small function for each task
+        this.classList.toggle('open'); // no need to pass the element; `this` refers to whoever (panel) called the function
       }
       function toggleActive(event) {
         console.log('this', this, event);
         if (event.propertyName.includes('flex')) {
+          // use include to cover edge cases for browser that pass flex-grow
           this.classList.toggle('open-active');
         }
       }
