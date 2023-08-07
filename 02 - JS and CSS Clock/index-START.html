@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JS + CSS Clock</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
-
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS + CSS Clock</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
@@ -16,60 +14,113 @@
       </div>
     </div>
 
+    <style>
+      html {
+        background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=5);
+        background-size: cover;
+        font-family: 'helvetica neue';
+        text-align: center;
+        font-size: 10px;
+      }
 
-  <style>
-    html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
-      background-size: cover;
-      font-family: 'helvetica neue';
-      text-align: center;
-      font-size: 10px;
-    }
+      body {
+        margin: 0;
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
 
-    body {
-      margin: 0;
-      font-size: 2rem;
-      display: flex;
-      flex: 1;
-      min-height: 100vh;
-      align-items: center;
-    }
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+          inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-    .clock {
-      width: 30rem;
-      height: 30rem;
-      border: 20px solid white;
-      border-radius: 50%;
-      margin: 50px auto;
-      position: relative;
-      padding: 2rem;
-      box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
-    }
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(
+          -3px
+        ); /* account for the height of the clock hands */
+      }
 
-    .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
-    }
+      .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transition: all 0.05s;
+        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+      }
 
-    .hand {
-      width: 50%;
-      height: 6px;
-      background: black;
-      position: absolute;
-      top: 50%;
-    }
+      .hour-hand {
+        transform: rotate(90deg);
+        transform-origin: right;
+      }
+      .min-hand {
+        transform: rotate(90deg);
+        transform-origin: right;
+      }
+      .second-hand {
+        transform: rotate(90deg);
+        transform-origin: right;
+      }
+      .transition-none {
+        transition: all 0s;
+      }
+    </style>
 
-  </style>
+    <script>
+      const secondHand = document.querySelector('.second-hand');
+      const minuteHand = document.querySelector('.min-hand');
+      const hourHand = document.querySelector('.hour-hand');
 
-  <script>
+      setInterval(() => {
+        const now = new Date();
+        const secs = now.getSeconds();
+        const mins = now.getMinutes();
+        const hours = now.getHours();
 
+        console.log('🐬 ~ time:', hours, mins, secs);
 
-  </script>
-</body>
+        if (secs === 0) {
+          secondHand.classList.add('transition-none');
+        }
+        if (secs === 1) {
+          secondHand.classList.remove('transition-none');
+        }
+
+        const rotateSecHandBy = (secs / 60) * 360 + 90;
+        const rotateMinHandBy = (mins / 60) * 360 + (secs / 60) * 6 + 90; //* adjusting for the secs passed (base 100 by deg in 1 sec i.e. 6deg)
+        const rotateHourhandBy = (hours / 12) * 360 + (mins / 60) * 30 + 90; //* adjusting for the mins passed (base 100 by deg in 1 min i.e. 30deg)
+
+        secondHand.style.transform = `rotate(${rotateSecHandBy}deg)`;
+        minuteHand.style.transform = `rotate(${rotateMinHandBy}deg)`;
+        hourHand.style.transform = `rotate(${rotateHourhandBy}deg)`;
+      }, 1000);
+    </script>
+  </body>
 </html>
+
+<!-- * 
+  comment from: https://github.com/nitishdayal/JavaScript30/tree/master/exercises/02%20-%20JS%20+%20CSS%20Clock
+  In hour hand case it’s not enough to take an hour to calculate degrees, 
+  because hour hand moves also because of minute hand movement (in 10:01 and 10:59 the hour hand is not in the same place, right?) So I think it should be like that:
+  const hourDegrees = ((hour/12) * 360 + (minutes/60) * 360 / 12 + 90);
+-->
+
+<!-- Personal Notes
+1. Create smaller functions for each task;
+2. repeated css property (transform-origin) should be in one class 
+
+-->
