@@ -1,23 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Type Ahead 👀</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Type Ahead 👀</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <form class="search-form">
+      <input type="text" class="search" placeholder="City or State" />
+      <ul class="suggestions">
+        <li>Filter for a city</li>
+        <li>or a state</li>
+      </ul>
+    </form>
+    <script>
+      const SLASH_KEY_CODE = 191;
+      const endpoint =
+        "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+      const suggestionsContainer = document.querySelector(".suggestions");
+      const input = document.querySelector("input");
+      let cities = [];
 
-  <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
-    <ul class="suggestions">
-      <li>Filter for a city</li>
-      <li>or a state</li>
-    </ul>
-  </form>
-<script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+      const getCities = async () => {
+        const res = await fetch(endpoint);
+        cities = await res.json(); //* fetch returns raw data since it doesn't know the type
+        // the prototype of res container a method called 'json'.
+        // calling that we get out data in json format
+      };
+      getCities();
 
-</script>
-</body>
+      const createLiItem = (item, searchTerm) => {
+        const { city, state, population } = item;
+        const regex = new RegExp(searchTerm, "gi");
+        const cityName = city.replace(
+          regex,
+          `<span class='hl'>${searchTerm}</span>`
+        );
+        const stateName = state.replace(
+          regex,
+          `<span class='hl'>${searchTerm}</span>`
+        );
+
+        const liItem = document.createElement("li");
+        liItem.innerHTML = `<span class='name'>${cityName}, ${stateName}</span> <span class='population'>${population}</span>`;
+        suggestionsContainer.append(liItem);
+      };
+
+      const handleInputChange = () => {
+        const searchTerm = input.value.toLowerCase();
+        suggestionsContainer.innerHTML = "";
+        cities
+          ?.filter(({ city }) => city.toLowerCase().includes(searchTerm))
+          .forEach((city) => createLiItem(city, searchTerm));
+      };
+      input.addEventListener("input", handleInputChange);
+
+      //* YouTube like focus on search field on slash key press
+      document.onkeydown = function (e) {
+        if (e.keyCode !== SLASH_KEY_CODE) {
+          return;
+        }
+        if (document.activeElement !== input) {
+          e.preventDefault();
+        }
+        input.focus();
+      };
+    </script>
+  </body>
 </html>
