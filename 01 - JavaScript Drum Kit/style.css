@@ -18,24 +18,37 @@ body,html {
   justify-content: center;
 }
 
+@keyframes highlight {
+  0% {
+      border: .4rem solid black;
+      width: 10rem;
+  }
+  50% {
+      border: .6rem solid #ffc600;
+      box-shadow: 0 0 1rem #ffc600;
+      transform: scale(1.1);
+  }
+  100% {
+      border: .4rem solid black;
+      width: 10rem;
+  }
+}
+
 .key {
   border: .4rem solid black;
   border-radius: .5rem;
   margin: 1rem;
   font-size: 1.5rem;
   padding: 1rem .5rem;
-  transition: all .07s ease;
+  animation-name: highlight;
+  animation-duration: 0.07s;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
   width: 10rem;
   text-align: center;
   color: white;
   background: rgba(0,0,0,0.4);
   text-shadow: 0 0 .5rem black;
-}
-
-.playing {
-  transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
 }
 
 kbd {
