@@ -47,10 +47,14 @@
   <script>
     // Not a ton of code, but hard to
     const nav = document.querySelector('#main');
-    let topOfNav = nav.offsetTop;
+    const siteWrap = document.querySelector(.site-wrap);
 
+
+    // This solution fix the issue of the right place of the nav bar when we change the viewport height like open the dev tools or shrink the window
+    
     function fixNav() {
-      if (window.scrollY >= topOfNav) {
+      const startPoint = siteWrap.getBoundingClientRect().top + window.scrollY - nav.offsetHeight;
+      if (window.scrollY >= startPoint) {
         document.body.style.paddingTop = nav.offsetHeight + 'px';
         document.body.classList.add('fixed-nav');
       } else {
