@@ -30,6 +30,7 @@ a {
   color: black;
   background: rgba(0,0,0,0.05);
   border-radius: 20px;
+  padding: 5px;
 }
 
 .highlight {
@@ -55,7 +56,6 @@ a {
 
 .menu a {
   display: inline-block;
-  padding: 5px;
   margin: 0 20px;
   color: black;
 }
