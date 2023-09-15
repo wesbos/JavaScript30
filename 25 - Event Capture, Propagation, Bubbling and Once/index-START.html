@@ -41,9 +41,27 @@
   }
 </style>
 
-<button></button>
+<button>Click Me</button>
 <script>
+  const divs = document.querySelectorAll('div')
+  const button = document.querySelector('button') 
 
+  function logText(e) {
+    console.log(this.classList.value)
+    e.stopPropagation(); // stop bubbling/capturing
+    // if capture is true it stops propagation while capturing
+    // if false it stops propagation while bubbling
+  }
+
+  button.addEventListener('click', () => {
+    console.log('click')
+  }, {
+    once: true // only gets clicked once until page reload
+  })
+
+  divs.forEach((div) => {
+    div.addEventListener('click', logText, { capture: false })
+  })
 </script>
 </body>
 </html>
