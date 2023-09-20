@@ -12,13 +12,13 @@ body,html {
 
 .keys {
   display: flex;
-  flex: 1;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
 }
 
 .key {
+  flex: 1;
   border: .4rem solid black;
   border-radius: .5rem;
   margin: 1rem;
