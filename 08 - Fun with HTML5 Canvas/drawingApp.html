@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Drawing App</title>
+    <style>
+        /* Add some basic CSS for styling */
+        #drawing-canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Drawing App</h1>
+    <label for="color-picker">Select Color: </label>
+    <input type="color" id="color-picker">
+    <br>
+    <canvas id="drawing-canvas" width="800" height="400"></canvas>
+
+    <script>
+        // JavaScript for drawing
+        const canvas = document.getElementById('drawing-canvas');
+        const context = canvas.getContext('2d');
+        const colorPicker = document.getElementById('color-picker');
+        let isDrawing = false;
+
+        // Set the initial stroke color
+        context.strokeStyle = colorPicker.value;
+
+        colorPicker.addEventListener('input', () => {
+            context.strokeStyle = colorPicker.value;
+        });
+
+        canvas.addEventListener('mousedown', () => {
+            isDrawing = true;
+            context.beginPath();
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            draw(e);
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+            context.closePath();
+        });
+
+        function draw(e) {
+            context.lineWidth = 5;
+            context.lineCap = 'round';
+
+            context.lineTo(e.clientX - canvas.getBoundingClientRect().left, e.clientY - canvas.getBoundingClientRect().top);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
