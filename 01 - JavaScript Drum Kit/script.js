@@ -12,7 +12,9 @@ function playSound (event) {
 }
 
 function removeTransition (event) {
-  return event.propertyName !== 'transform' ? null : this.classList.remove('playing');
+  return event.propertyName === 'transform'
+    ? this.classList.remove('playing')
+    : null;
 }
 
 const keys = document.querySelectorAll('.key');
