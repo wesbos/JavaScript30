@@ -51,25 +51,64 @@
     }
 
     .clock-face {
-      position: relative;
-      width: 100%;
+      position: absolute;
+      width: 50%;
       height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
+      left: 0;
+      top: 0;
     }
 
     .hand {
-      width: 50%;
       height: 6px;
+      border-radius: 3px;
       background: black;
       position: absolute;
       top: 50%;
+      right: -1.5px;
+      transform: rotate(90deg);
+      transform-origin: calc(100% - 3px) 50%;
+      transition: transform .1s cubic-bezier(0.35, 1.88, 0.58, 1);
+    }
+
+    .second-hand {
+      width: 90%;
+    }
+
+    .min-hand {
+      width: 75%;
+    }
+
+    .hour-hand {
+      width: 50%;
     }
 
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand');
+    const minHand    = document.querySelector('.min-hand');
+    const hourHand   = document.querySelector('.hour-hand');
 
+    function setTime() {
+      const now = new Date();
 
+      const seconds = now.getSeconds();
+      var secondsDegree = 360 / 60;
+      var secondsDegrees = ((seconds / 60) * 360) + 90;
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+      const minutes = now.getMinutes();
+      var minutesDegree = 360 / (60*60);
+      var minutesDegrees = ((minutes / 60) * 360) + 90;
+      minHand.style.transform = `rotate(${minutesDegrees}deg)`;
+
+      const hours = now.getHours();
+      var hoursDegree = 360 / 12;
+      var hoursDegrees = ((hours / 60) * 360) + 90;
+      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+    }
+
+    setInterval(setTime, 1000);
   </script>
 </body>
 </html>
