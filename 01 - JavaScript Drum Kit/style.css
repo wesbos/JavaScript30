@@ -49,3 +49,12 @@ kbd {
   letter-spacing: .1rem;
   color: #ffc600;
 }
+
+/*.glow {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+  transition: all .2s ease;
+}  
+tryed 
+*/

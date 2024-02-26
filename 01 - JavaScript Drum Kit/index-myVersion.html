@@ -6,9 +6,8 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
+
 <body>
-
-
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
@@ -57,9 +56,32 @@
   <audio data-key="74" src="sounds/snare.wav"></audio>
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
+<body>
 
 <script>
+  const keys = Array.from(document.querySelectorAll('.key'));
+  const removeTransition = (e) => {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
 
+  const playSound = (e) =>{
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+
+    if (!audio) {
+      alert("Presse one of the keys below");  
+      keys.forEach(key => key.classList.add('playing'));
+      return;
+    } // display a pop-up message in case a wrong key is pressed and highlight the right ones 
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  keys.forEach(key => key.addEventListener('transitionend',removeTransition));
+  window.addEventListener('keydown', playSound);
 </script>
 
 
