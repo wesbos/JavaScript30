@@ -31,44 +31,60 @@
 
 <script>
   const msg = new SpeechSynthesisUtterance();
-  let voices = [];
-  const voicesDropdown = document.querySelector('[name="voice"]');
-  const options = document.querySelectorAll('[type="range"], [name="text"]');
-  const speakButton = document.querySelector('#speak');
-  const stopButton = document.querySelector('#stop');
-  msg.text = document.querySelector('[name="text"]').value;
+let voices = [];
+const voicesDropdown = document.querySelector('[name="voice"]');
+const options = document.querySelectorAll('[type="range"], [name="text"]');
+const speakButton = document.querySelector('#speak');
+const stopButton = document.querySelector('#stop');
 
-  function populateVoices() {
-    voices = this.getVoices();
-    voicesDropdown.innerHTML = voices
-      .filter(voice => voice.lang.includes('en'))
-      .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
-      .join('');
+// Function to initialize voices list and populate dropdown
+function populateVoices() {
+  voices = speechSynthesis.getVoices();
+  voicesDropdown.innerHTML = voices
+    .filter(voice => voice.lang.includes('en'))
+    .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+    .join('');
+
+  // Update the voice of the message if it's already set
+  if (msg.voice && voices.includes(msg.voice)) {
+    voicesDropdown.value = msg.voice.name;
   }
+}
 
-  function setVoice() {
-    msg.voice = voices.find(voice => voice.name === this.value);
-    toggle();
-  }
+// Function to set the voice of the message
+function setVoice() {
+  msg.voice = voices.find(voice => voice.name === this.value) || voices[0];
+  toggle();
+}
 
-  function toggle(startOver = true) {
+// Function to set options of the message
+function setOption() {
+  console.log(this.name, this.value);
+  msg[this.name] = this.value;
+  toggle();
+}
+
+// Function to start or stop speech synthesis
+function toggle(startOver = true) {
+  if (startOver) {
     speechSynthesis.cancel();
-    if (startOver) {
-      speechSynthesis.speak(msg);
-    }
+    speechSynthesis.speak(msg);
+  } else {
+    speechSynthesis.cancel();
   }
+}
 
-  function setOption() {
-    console.log(this.name, this.value);
-    msg[this.name] = this.value;
-    toggle();
-  }
+// Event listeners
+speechSynthesis.addEventListener('voiceschanged', populateVoices);
+voicesDropdown.addEventListener('change', setVoice);
+options.forEach(option => option.addEventListener('change', setOption));
+speakButton.addEventListener('click', toggle);
+stopButton.addEventListener('click', () => toggle(false));
 
-  speechSynthesis.addEventListener('voiceschanged', populateVoices);
-  voicesDropdown.addEventListener('change', setVoice);
-  options.forEach(option => option.addEventListener('change', setOption));
-  speakButton.addEventListener('click', toggle);
-  stopButton.addEventListener('click', () => toggle(false));
+// Update msg.text when the text input changes
+document.querySelector('[name="text"]').addEventListener('input', function() {
+  msg.text = this.value;
+});
 
 </script>
 
