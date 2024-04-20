@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+const cities = [];
+fetch(endpoint)
+  .then(blob => blob.json())
+  .then(response => {cities.push(...response); console.log(cities);})
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+function findMatchesAndUpdateSuggestions(searchTerm, cities){
+  if(!searchTerm){
+    suggestions.innerHTML = `<li>Filter for a city</li><li>or a state</li>`;
+    return;
+  }
+  const filtered = cities.filter(city => {
+    const regex = new RegExp(searchTerm, 'gi');
+    return city.city.match(regex) || city.state.match(regex);
+  })
+  const filteredCityList = filtered.map(matched => {
+    const regex = new RegExp(searchTerm, 'gi');
+    const styledCity = matched.city.replace(regex, `<span class="hl">${searchTerm}</span>`);
+    const styledState = matched.state.replace(regex, `<span class="hl">${searchTerm}</span>`);
+    const styledPopulation = numberWithCommas(matched.population);
+    return `
+    <li>
+        <span class="name">${styledCity}, ${styledState}</span>
+        <span class="population">${styledPopulation}</span>
+    </li>
+      `;
+  }).join('');
+  suggestions.innerHTML = filteredCityList;
+}  
+
+function displayInput(){
+  findMatchesAndUpdateSuggestions(this.value, cities);
+}
+
+const search = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+search.addEventListener('change', displayInput);
+search.addEventListener('keyup', displayInput);
+
+</script>
+</body>
+</html>
