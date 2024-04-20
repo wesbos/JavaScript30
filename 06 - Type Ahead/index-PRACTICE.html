@@ -47,6 +47,7 @@ function findMatchesAndUpdateSuggestions(searchTerm, cities){
     </li>
       `;
   }).join('');
+  console.log("filteredCityList "+filteredCityList);
   suggestions.innerHTML = filteredCityList;
 }  
 
