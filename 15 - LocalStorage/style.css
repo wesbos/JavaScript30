@@ -79,3 +79,13 @@ h2 {
   outline: 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+button {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  cursor: pointer;
+}
