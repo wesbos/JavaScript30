@@ -60,7 +60,7 @@
 
 <script>
   function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
+    if ( ! e.target.classList.contains('playing')) return;
     e.target.classList.remove('playing');
   }
 
