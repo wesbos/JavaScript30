@@ -67,3 +67,15 @@ h1 {
 .hole.up .mole {
   top: 0;
 }
+
+.start-button {
+  font-family: 'Amatic SC', cursive; 
+  font-size: 3rem; 
+  font-weight: bold;
+}
+
+.start-button-container {
+  display:flex;  
+  align-items: center; 
+  justify-content: center;  
+}

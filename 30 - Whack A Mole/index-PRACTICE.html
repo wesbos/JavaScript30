@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Whack A Mole!</title>
+  <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+
+<body>
+
+  <h1>Whack-a-mole! <span class="score">0</span></h1>
+  <div class="start-button-container">
+    <button class="start-button" onClick="startGame()">Start!</button>
+  </div>
+  <div class="game">
+    <div class="hole hole1">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole2">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole3">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole4">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole5">
+      <div class="mole"></div>
+    </div>
+    <div class="hole hole6">
+      <div class="mole"></div>
+    </div>
+  </div>
+
+  <script>
+    const holes = document.querySelectorAll('.hole');
+    const scoreBoard = document.querySelector('.score');
+    const moles = document.querySelectorAll('.mole');
+    let lastHole, timeUp = false, score = 0;
+    function randomTimeGenerator(min, max) {
+      return Math.round(Math.random() * (max - min) + min);
+    }
+
+    function randomHoleGenerator(holes) {
+      const idx = Math.floor(Math.random() * holes.length);
+      const hole = holes[idx];
+      if (hole === lastHole) return randomHoleGenerator(holes);
+      lastHole = hole;
+      return hole;
+    }
+
+    function peep() {
+      const time = randomTimeGenerator(200, 1000);
+      const hole = randomHoleGenerator(holes);
+      hole.classList.add('up');
+      setTimeout(() => {
+        hole.classList.remove('up');
+        if (!timeUp) peep();
+      }, time);
+    }
+
+    function startGame() {
+      scoreBoard.textContent = 0;
+      timeUp = false;
+      peep();
+      setTimeout(() => timeUp = true, 10000);
+    }
+
+    function bonk(e) {
+      console.log("Yay!");
+      if (!e.isTrusted) return;
+      score++;
+      this.classList.remove('up');
+      scoreBoard.textContent = score;
+    }
+
+    moles.forEach(mole => mole.addEventListener('click', bonk))
+  </script>
+</body>
+
+</html>
