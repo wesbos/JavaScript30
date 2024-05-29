@@ -7,11 +7,21 @@ const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 
+let currentVideoTime = localStorage.getItem('currentVideoTime') || 0;
+
 /* Build out functions */
 function togglePlay() {
   const method = video.paused ? 'play' : 'pause';
   video[method]();
+  currentVideoTime= video.currentTime;
+  localStorage.setItem('currentVideoTime', currentVideoTime);
 }
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  localStorage.setItem('currentVideoTime', currentVideoTime);
+  currentVideoTime = parseFloat(localStorage.getItem('currentVideoTime')) || 0;
+  video.currentTime = currentVideoTime;
+});
 
 function updateButton() {
   const icon = this.paused ? '►' : '❚ ❚';
@@ -34,7 +44,10 @@ function handleProgress() {
 
 function scrub(e) {
   const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
-  video.currentTime = scrubTime;
+  // video.currentTime = scrubTime;
+  localStorage.setItem('currentVideoTime', scrubTime);
+  currentVideoTime = parseFloat(localStorage.getItem('currentVideoTime')) || 0;
+  video.currentTime = currentVideoTime;
 }
 
 /* Hook up the event listeners */
