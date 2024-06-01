@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #f1f1f1;
+            background-color: #000000;
+        }
+
+        a {
+            color: #f1f1f1;
+            text-decoration: none;
+            text-decoration: underline;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 20px;
+            margin: 16px;
+        }
+
+        .project-container {
+            padding: 20px;
+            margin: 16px;
+            background-color: #fcc9c915;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 9px;
+        }
+
+        .grid-item {
+            padding: 20px;
+            background-color: #c6f9d63c;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://javascript30.com/images/JS3-social-share.png" alt="JavaScript30 Logo" style="width: 100%;">
+    <div class="project-container">
+        <h1>#JavaScript30 Challenge by Ivancho</h1>
+        <p>
+            Here you can find all the projects with my solutions of the #JavaScript30 Challenge. You can find the source code in the my <a href="https://github.com/Caivan/JavaScript30" target="_blank">GitHub Repository</a>
+        </p> 
+    </div>
+    <div class="grid-container">
+        <div class="grid-item">
+            <a href="/01 - JavaScript Drum Kit/index.html">
+                <h2>01 - Drum Kit</h2>
+            </a>
+            <p>Play the drums with your keyboard</p>
+            <a href="https://github.com/Caivan/JavaScript30/pull/1" target="_blank">Pull Request of the solution</a>                
+        </div>        
+        <div class="grid-item">
+            <a href="/02 - JS and CSS Clock/">
+                <h2>02 - Clock CSS and JS</h2>
+            </a>
+            <p>Simple clock using CSS and JS</p>
+            <a href="https://github.com/Caivan/JavaScript30/pull/2" target="_blank">Pull Request of the solution</a>                
+        </div>
+        
+    </div>
+</body>
+</html>
