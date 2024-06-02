@@ -1,0 +1,32 @@
+
+/*
+    misc styles, nothing to do with CSS variables
+*/
+:root{
+    --base: #ffc6ff;
+    --spacing: 10px;
+    --blur: 10px;
+}
+
+.image {
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur));
+}
+
+body {
+    text-align: center;
+    background: #193549;
+    color: white;
+    font-family: 'helvetica neue', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+.controls {
+    margin-bottom: 50px;
+}
+
+input {
+    width: 100px;
+}
