@@ -5,6 +5,7 @@
   <title>Flex Panels 💪</title>
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
   <link rel="icon" href="https://fav.farm/✅" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <style>
@@ -123,6 +124,51 @@
       <p>In</p>
       <p>Motion</p>
     </div>
+    <div class="panel panel6">
+      <div class="keys">
+        <div data-key="82" data-instance="1" class="key" data-letter="R" >
+            <kbd>R</kbd>
+            <span class="sound">clap</span>
+        </div>    
+        <div data-key="79" data-instance="1" class="key" data-letter="O" >
+            <kbd>O</kbd>
+            <span class="sound">hihat</span>
+        </div>
+        <div data-key="68" data-instance="1" class="key" data-letter="D">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+        </div>    
+        <div data-key="82" data-instance="2" class="key" data-letter="R" >
+            <kbd>R</kbd>
+            <span class="sound">clap</span>
+        </div>    
+        <div data-key="73" data-instance="1" class="key" data-letter="I">
+            <kbd>I</kbd>
+            <span class="sound">openhat</span>
+        </div>    
+        <div data-key="71" data-instance="1" class="key" data-letter="G">
+            <kbd>G</kbd>
+            <span class="sound">boom</span>
+        </div> 
+        <div data-key="79" data-instance="2" class="key" data-letter="O">
+            <kbd>O</kbd>
+            <span class="sound">hihat</span>
+        </div>
+
+    </div>
+    <div>
+        <p id="error"></p>
+    </div>
+
+
+    <audio data-key="82" data-instance="1" src="sounds/clap.wav"></audio>
+    <audio data-key="79" data-instance="1" src="sounds/hihat.wav"></audio>
+    <audio data-key="68" data-instance="1" src="sounds/kick.wav"></audio>
+    <audio data-key="82" data-instance="2" src="sounds/clap.wav"></audio>
+    <audio data-key="73" data-instance="1" src="sounds/openhat.wav"></audio>
+    <audio data-key="71" data-instance="1" src="sounds/boom.wav"></audio>
+    <audio data-key="79" data-instance="2" src="sounds/hihat.wav"></audio>
+
   </div>
 
   <script>
@@ -142,6 +188,74 @@
 
     panels.forEach(panel => panel.addEventListener('click', toggleOpen));
     panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+  
+  
+  
+    const keyState = {
+        82: 1, // R
+        79: 1  // O
+    };
+
+    const keyElements = document.querySelectorAll('.key');
+    console.log('keyElements', keyElements);
+    let currentIndex = 0;
+
+    function showCurrentLetter() {
+        keyElements.forEach((key, index) => {
+            key.style.display = index === currentIndex ? 'block' : 'none';
+        });
+    }
+    console.log('block', showCurrentLetter);
+
+
+    function cycleLetters() {
+        currentIndex = (currentIndex + 1) % keyElements.length;
+        showCurrentLetter();
+    }
+
+    console.log('cycle letters', cycleLetters);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showCurrentLetter(); // Show the first letter initially
+        setInterval(cycleLetters, 2000); // Change letter every second
+    });
+
+
+    function playSound(e) {
+        let keyNumber = keyState[e.keyCode] || 1;
+
+        if (e.keyCode === 82 || e.keyCode === 79) {
+            // Alternar entre as instâncias 1 e 2 para as teclas 'R' (82) e 'O' (79)
+            keyNumber = keyState[e.keyCode];
+            keyState[e.keyCode] = keyState[e.keyCode] === 1 ? 2 : 1;
+        }
+
+        const keyIdentifier = `${e.keyCode}-${keyNumber}`;
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"][data-instance="${keyNumber}"]`);
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"][data-instance="${keyNumber}"]`);
+
+        if (!audio || !key) {
+            wrongLetter();
+            return;
+        }
+
+        console.log('keyNumber', keyNumber);
+        console.log('keyIdentifier', keyIdentifier);
+
+        key.classList.add('playing');
+        audio.currentTime = 0;
+        audio.play();
+
+        setTimeout(() => key.classList.remove('playing'), 10000); // remove yellow color after 100ms
+    }
+    window.addEventListener('keydown', playSound);
+
+    function wrongLetter() {
+        const error = document.getElementById('error');
+        error.textContent = 'You pressed the wrong key! Je hebt op de verkeerde toets gedrukt! Tecla errada';
+        setTimeout(() => error.innerHTML = '', 1000);
+    }
+
   </script>
 
 </body>

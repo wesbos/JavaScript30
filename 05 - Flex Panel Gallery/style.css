@@ -1,0 +1,86 @@
+html {
+  font-size: 10px;
+  background: url('./rodrigo.jpg') bottom center;
+  background-size: contain;
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow keys to wrap in smaller screens */
+}
+
+
+
+.key {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+  background-color: yellow;
+  color: black; /* Ensure text is readable on yellow background */
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
+}
+
+@media (max-width: 600px) {
+  .key {
+      font-size: 1rem;
+      width: 6rem;
+  }
+
+  kbd {
+      font-size: 2rem;
+  }
+
+  .sound {
+      font-size: 1rem;
+  }
+}
+
+#error {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+  text-align: center;
+  z-index: 1000;
+  display: none; /* Initially hidden */
+}
