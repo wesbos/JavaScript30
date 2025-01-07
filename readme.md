@@ -14,6 +14,7 @@ Feel free to submit a PR by adding a link to your own recaps, guides, or reviews
 * [Nitish Dayal's Text Guides](https://github.com/nitishdayal/JavaScript30) are great for those who like reading over watching.
 * [Thorsten Frommen](https://tfrommen.de/tag/javascript-30/) shares how he solved the exercises before viewing the answers.
 * [Soyaine 写的中文指南](https://github.com/soyaine/JavaScript30)包含了过程记录和难点解释
+* [Aaron的语雀学习小组](https://github.com/A-aronYang/JavaScript30)包含中文文档，案例和相关资料
 * [乔木 录制的讲解视频](https://b23.tv/pSa7rdu) 看中文讲解视频一起学习 Javascript30 吧! Javascript30 中 CSS/JS/HTML 视频讲解
 * [Ayo Isaiah's](https://freshman.tech/archive/#javascript30) Recaps and Lessons Learned.
 * [Adriana Rios](https://stpcollabr8nlstn.github.io/JavaScript30/) shares her alternative solutions.
