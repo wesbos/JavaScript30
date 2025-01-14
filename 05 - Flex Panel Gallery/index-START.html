@@ -27,6 +27,8 @@
     .panels {
       min-height: 100vh;
       overflow: hidden;
+      display: flex;
+      flex-direction: row;
     }
 
     .panel {
@@ -38,12 +40,17 @@
       /* Safari transitionend event.propertyName === flex */
       /* Chrome + FF transitionend event.propertyName === flex-grow */
       transition:
-        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        background 0.2s;
+      font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+      flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+      background 0.2s;
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -57,6 +64,24 @@
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel > *:first-child {
+      transform: translateY(-100%);
+    }
+    .panel.open-active > *:first-child {
+      transform: translateY(0%);
+    }
+
+    .panel > *:last-child {
+      transform: translateY(100%);
+    }
+    .panel.open-active > *:last-child {
+      transform: translateY(0%);
     }
 
     .panel p {
@@ -71,6 +96,7 @@
     }
 
     .panel.open {
+      flex: 5;
       font-size: 40px;
     }
 
@@ -106,7 +132,18 @@
   </div>
 
   <script>
+    const allPanel = document.querySelectorAll('.panel')
 
+    function toggleOpen(e) {
+      this.classList.toggle("open")
+    }
+    function toggleActive(e) {
+      if (!e.propertyName.includes("flex")) return;
+      this.classList.toggle("open-active")
+    }
+    
+    allPanel.forEach(panel => panel.addEventListener("click", toggleOpen));
+    allPanel.forEach(panel => panel.addEventListener("transitionend", toggleActive));
   </script>
 
 
