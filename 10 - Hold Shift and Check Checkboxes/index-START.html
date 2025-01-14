@@ -4,10 +4,7 @@
   <meta charset="UTF-8">
   <title>Hold Shift to Check Multiple Checkboxes</title>
   <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
   <style>
-
     html {
       font-family: sans-serif;
       background: #ffc600;
@@ -51,6 +48,8 @@
       border-left: 1px solid #D1E2FF;
     }
   </style>
+</head>
+<body>
    <!--
    The following is a common layout you would see in an email client.
 
@@ -97,6 +96,30 @@
   </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+  let lastChecked;
+
+  function handleCheck(e) {
+    let inBetween = false;
+
+    if (e.shiftKey && this.checked) {
+      checkboxes.forEach(checkbox => {
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+        }
+
+        if (inBetween) {
+          checkbox.checked = true;
+        }
+      });
+    }
+
+    lastChecked = this;
+  }
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
+});
 </script>
 </body>
 </html>
