@@ -19,29 +19,65 @@
     }
 
     // Regular
+    console.log("Hello!");
 
     // Interpolated
+    console.log("I am %s", "sheraz");
 
     // Styled
+    console.log("%c I am working man!!!!!!", "color: #ffc600");
 
     // warning!
-
+    console.warn("Really ???");
+    
     // Error :|
-
+    console.error("Oh noOooOooOO!!!");
+    
     // Info
+    console.info("Ahhhh okay !!!");
 
     // Testing
+    const p = document.querySelector("p");
+    console.assert(p.classList.contains("heading"), "Nahhh man!!!")
 
     // clearing
+    console.clear()
 
     // Viewing DOM Elements
+    console.log(p)
+    console.dir(p)
 
     // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`%c${dog.name}`, "color: #ffc600; font-size:20px");
+        console.log(`This is %c${dog.name}`, "color: #ffc600");
+        console.log(`${dog.name} is %c${dog.age} years old.`, "color: firebrick");
+        console.log(`${dog.name} is %c${dog.age * 7} dogs years old.`, "color: firebrick");
+      console.groupEnd(dog.name);
+    });
 
     // counting
-
+    console.count("Alhamdulillah");
+    console.count("MashaAllah");
+    console.count("SubhanAllah");
+    console.count("SubhanAllah");
+    console.count("SubhanAllah");
+    console.count("SubhanAllah");
+    console.count("Alhamdulillah");
+    console.count("MashaAllah");
+    console.count("MashaAllah");
+    console.count("Alhamdulillah");
+    console.count("Alhamdulillah");
+    console.count("SubhanAllah");
+    console.count("MashaAllah");
+    
     // timing
+    console.time("Show Message")
+    setTimeout(() => {
+      console.timeEnd("Show Message")
+    }, 1000);
 
+    console.table(dogs);
   </script>
 </body>
 </html>
