@@ -61,12 +61,24 @@
       width: 50%;
       height: 6px;
       background: black;
+      border-radius: 50%;
       position: absolute;
       top: 50%;
       transform-origin: 100%;
       transform: rotate(90deg);
       transition: all 0.05s;
       transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    }
+    
+    /* Styling each hand differently */
+    .minute-hand {
+      height: 8px;
+    }
+
+    .hour-hand {
+      height: 8px;
+      width: 30%;
+      right: 50%;  
     }
 </style>
 
