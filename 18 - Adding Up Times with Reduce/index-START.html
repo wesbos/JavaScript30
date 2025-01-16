@@ -183,6 +183,19 @@
     </li>
   </ul>
 <script>
+  const listItems = Array.from(document.querySelectorAll(".videos li"));
+
+  let totalSeconds = listItems.reduce((liFir, liNext) => {
+    const [mins, secs] = liNext.dataset.time.split(":").map(parseFloat);
+    return liFir += (mins * 60) + secs;
+  }, 0);
+
+  const hours = Math.floor(totalSeconds / 3600);
+  totalSeconds %= 3600;
+  const mins = Math.floor(totalSeconds / 60);
+  totalSeconds %= 60;
+  console.log(hours, mins, totalSeconds);
+
 </script>
 </body>
 </html>
