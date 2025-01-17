@@ -58,6 +58,7 @@
 
   items.addEventListener("mousemove", function(e) {
     if(!isMouseDown) return;
+    e.preventDefault();
     const nowX = e.pageX - items.offsetLeft;
     const walk = nowX - startX;
     items.scrollLeft = scrollLeft - walk;
