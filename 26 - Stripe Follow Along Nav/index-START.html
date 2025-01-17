@@ -221,6 +221,35 @@
 </style>
 
 <script>
+
+  const listItems = document.querySelectorAll(".cool > li")
+  const dropdownBG = document.querySelector(".dropdownBackground")
+  const nav = document.querySelector("nav");
+
+  function showDropdown(e) {
+    this.classList.add("trigger-enter");
+    setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
+    dropdownBG.classList.add("open")
+    
+    const dropdown = this.querySelector(".dropdown");
+    console.log(dropdown);
+    const coordsOfThisLink = dropdown.getBoundingClientRect();
+    const navCoords = nav.getBoundingClientRect();
+
+    dropdownBG.style.setProperty("width", `${coordsOfThisLink.width}px`);
+    dropdownBG.style.setProperty("height", `${coordsOfThisLink.height}px`);
+    dropdownBG.style.setProperty("transform", `translate(${coordsOfThisLink.left - navCoords.left}px, ${coordsOfThisLink.top - navCoords.top}px)`);
+  }
+  
+  function hideDropdown(e) {
+    this.classList.remove("trigger-enter", "trigger-enter-active");
+    dropdownBG.classList.remove("open")
+  }
+
+  listItems.forEach(list => {
+    list.addEventListener("mouseenter", showDropdown)
+    list.addEventListener("mouseleave", hideDropdown)
+  });
 </script>
 
 </body>
