@@ -7,10 +7,10 @@
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
-
+    <!-- <p class="highlight"></p> -->
     <nav>
       <ul class="menu">
-        <li><a href="">Home</a></li>
+        <li><a href=""><span class="highlight"></span>Home</a></li>
         <li><a href="">Order Status</a></li>
         <li><a href="">Tweets</a></li>
         <li><a href="">Read Our History</a></li>
@@ -27,7 +27,21 @@
     </div>
 
   <script>
-    // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+    const links = document.querySelectorAll("a");
+    const span = document.createElement("span")
+    span.classList.add("highlight")
+    document.body.appendChild(span);
+
+    function highlightTheLink() {
+      const coords = this.getBoundingClientRect();
+     
+      span.style.width = `${coords.width}px`;
+      span.style.height = `${coords.height}px`;
+      span.style.left = `${window.scrollX + coords.left}px`;
+      span.style.top = `${window.scrollY + coords.top}px`;
+    }
+    
+    links.forEach(link => link.addEventListener("mouseenter", highlightTheLink));
   </script>
 </body>
 </html>
