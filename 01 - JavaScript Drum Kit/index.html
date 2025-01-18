@@ -60,6 +60,36 @@
 
 <script>
 
+  function playSoundAndAnimate(e){
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    // e.key retuns the key pressed
+
+    // const key = document.querySelector(`div[data-key="${e.keyCode}"]`) // selecting using tag
+    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`) // selecting using class
+
+    if(!audio) return;
+    audio.currentTime = 0; // so that you can immediately play the same sound 
+    audio.play()
+    // console.log(key)
+    key.classList.add('playing')
+  }
+
+  function removeTransition(e){
+    // if(e.propertyName !== 'transform') return;
+    // console.log(e)
+    // console.log(e.propertyName) // transform
+    
+    this.classList.remove('playing')
+  }
+
+  window.addEventListener('keydown', playSoundAndAnimate);
+
+ 
+
+  const keys = document.querySelectorAll('.key')
+  // when transition ends, do this
+  keys.forEach((key) => key.addEventListener('transitionend', removeTransition) ) 
+  // similarly there is an event named animationend
 </script>
 
 
