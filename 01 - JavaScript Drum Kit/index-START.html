@@ -59,6 +59,11 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+
+  // e is short for event and is an object full of information. currently, the code prints
+  // a whole bunch of info, like a code, the key, if the ctrlKey is being pressed or not etc
+  // if i only wanted the key, i could change console.log(e); to console.log(e.key); for example
+  // since im just making a reference to data contained in this object.
   window.addEventListener('keydown', function(e) {
     console.log(e);
   });
