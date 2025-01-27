@@ -65,7 +65,10 @@
   // if i only wanted the key, i could change console.log(e); to console.log(e.key); for example
   // since im just making a reference to data contained in this object.
   window.addEventListener('keydown', function(e) {
-    console.log(e);
+    // console.log(e.keyCode);
+
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
+    console.log(audio)
   });
 </script>
 
