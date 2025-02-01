@@ -14,6 +14,17 @@ body {
   font-family: 'Amatic SC', cursive;
 }
 
+.btn{
+  padding: 30px;
+}
+button{
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 h1 {
   text-align: center;
   font-size: 10rem;
