@@ -4,8 +4,54 @@
   <meta charset="UTF-8">
   <title>Mouse Shadow</title>
   <link rel="icon" href="https://fav.farm/✅" />
+  <style>
+    *, *::before, *::after { cursor: none !important; }
+
+    #cursor, #trail {
+      position: fixed;
+      top: 0; left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+    }
+
+    #cursor {
+      width: 26px; height: 26px;
+      margin: -13px 0 0 -13px;
+      background: rgba(255, 0, 180, 0.95);
+      box-shadow: 0 0 12px 5px rgba(255, 0, 180, 0.95), 0 0 32px 10px rgba(255,0,180,0.4);
+      transition: width .2s, height .2s, margin .2s, background .2s, box-shadow .2s;
+      z-index: 9999;
+    }
+
+    #trail {
+      width: 60px; height: 60px;
+      margin: -30px 0 0 -30px;
+      background: rgba(255,0,180,0.08);
+      box-shadow: 0 0 30px 14px rgba(255,0,180,0.15);
+      transition: width .2s, height .2s, margin .2s, background .2s, box-shadow .2s;
+      z-index: 9998;
+    }
+
+    #cursor.hovered {
+      width: 44px; height: 44px;
+      margin: -22px 0 0 -22px;
+      background: rgba(238, 7, 11, 0.95);
+      box-shadow: 0 0 16px 7px rgba(238, 7, 11, 0.95), 0 0 52px 18px rgba(0,255,140,0.4);
+    }
+
+    #trail.hovered {
+      width: 88px; height: 88px;
+      margin: -44px 0 0 -44px;
+      background: rgba(0,255,140,0.08);
+      box-shadow: 0 0 44px 22px rgba(0,255,140,0.18);
+    }
+  </style>
 </head>
 <body>
+
+  <div id="cursor"></div>
+  <div id="trail"></div>
 
   <div class="hero">
     <h1 contenteditable>🔥WOAH!</h1>
@@ -19,6 +65,7 @@
 
   body {
     margin: 0;
+    background: #0d0d0d;
   }
 
   .hero {
@@ -26,7 +73,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: #fff;
   }
 
   h1 {
@@ -62,6 +109,26 @@
   }
 
   hero.addEventListener('mousemove', shadow);
+
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const trail  = document.getElementById('trail');
+  let mx = 0, my = 0, tx = 0, ty = 0;
+
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  (function animate() {
+    cursor.style.transform = `translate(${mx}px,${my}px)`;
+    tx += (mx - tx) * 0.1;
+    ty += (my - ty) * 0.1;
+    trail.style.transform = `translate(${tx}px,${ty}px)`;
+    requestAnimationFrame(animate);
+  })();
+
+  document.querySelectorAll('a, button, h1').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hovered'); trail.classList.add('hovered'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hovered'); trail.classList.remove('hovered'); });
+  });
 </script>
 </body>
 </html>
