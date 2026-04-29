@@ -57,7 +57,7 @@ Feel free to submit a PR by adding a link to your own recaps, guides, or reviews
 * [Stiaannel's](https://stiaannel.co.za/my-projects/javascript30) implementation of the Javascript30 challenge, with small design changes and a couple of extra features.
 * [Kelly CHI's](https://kellychi22.github.io/JavaScript30/) complete JavaScript30 challenges! Click the links to check demos and notes of each challenge. 🇹🇼 🌟
 * [Issam Seghir](https://issam-seghir.github.io/JavaScript30/)  added custom solutions and styles 🍧, improved performance, including fixed bugs/issus 💢. , added articles for each exercise 📝.
-* [Khush Gupta's](https://guptakhush14dec-rgb.github.io/JavaScript30/) implementation of the JavaScript30 challenge with custom UI and extended logic.
+* [Khush Gupta's](https://khushgupta14.github.io/JavaScript30/) implementation of the JavaScript30 challenge with custom UI and extended logic.
 
 ## Alternative Implementations
 Here are some links of people who have done the tutorials, but in a different language or framework:
