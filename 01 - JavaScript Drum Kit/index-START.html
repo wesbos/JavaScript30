@@ -59,6 +59,91 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+  function removeTransition(e) {
+  if (e.propertyName !== 'transform') return;
+  e.target.classList.remove('playing');
+}
+
+function playSound(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+
+  if (!audio) return;
+
+  audio.currentTime = 0;
+  audio.play();
+  key.classList.add('playing');
+}
+
+const keys = Array.from(document.querySelectorAll('.key'));
+
+keys.forEach(key =>
+  key.addEventListener('transitionend', removeTransition)
+);
+
+window.addEventListener('keydown', playSound);
+
+
+
+
+
+let totalPressCount = 0;
+
+const activityPanel = document.createElement('div');
+
+activityPanel.innerHTML = `
+  <h2>Keyboard Activity</h2>
+  <p id="last-key">Last Key Pressed: None</p>
+  <p id="press-count">Total Press Count: 0</p>
+  <h3>Key History</h3>
+  <ul id="key-history"></ul>
+  <button id="clear-history">Clear History</button>
+`;
+
+activityPanel.style.marginTop = '30px';
+activityPanel.style.padding = '20px';
+activityPanel.style.background = 'rgba(0,0,0,0.7)';
+activityPanel.style.color = 'white';
+activityPanel.style.borderRadius = '10px';
+activityPanel.style.width = '400px';
+
+document.body.appendChild(activityPanel);
+
+const lastKeyDisplay = document.getElementById('last-key');
+const pressCountDisplay = document.getElementById('press-count');
+const keyHistory = document.getElementById('key-history');
+const clearButton = document.getElementById('clear-history');
+
+window.addEventListener('keydown', function(event) {
+
+  totalPressCount++;
+
+  lastKeyDisplay.textContent =
+    `Last Key Pressed: ${event.key.toUpperCase()}`;
+
+  pressCountDisplay.textContent =
+    `Total Press Count: ${totalPressCount}`;
+
+  const listItem = document.createElement('li');
+
+  listItem.textContent =
+    `Pressed Key: ${event.key.toUpperCase()}`;
+
+  keyHistory.prepend(listItem);
+});
+
+clearButton.addEventListener('click', function() {
+
+  keyHistory.innerHTML = '';
+
+  totalPressCount = 0;
+
+  pressCountDisplay.textContent =
+    'Total Press Count: 0';
+
+  lastKeyDisplay.textContent =
+    'Last Key Pressed: None';
+});
 
 </script>
 
